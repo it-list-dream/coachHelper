@@ -108,9 +108,11 @@ input {
   padding: 0 15rpx;
   color: #666666; */
 }
-.tags-item:nth-child(n+2){
+
+.tags-item:nth-child(n+2) {
   margin-left: 30rpx;
 }
+
 .tags-item>text:first-child {
   background: #EEEEEE;
   border-radius: 4rpx 0px 0px 4rpx;
@@ -153,13 +155,15 @@ input {
   color: #333333;
   box-sizing: border-box;
 }
-.targetFitness .set-box{
+
+.targetFitness .set-box {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 80rpx;
   height: 100%;
 }
+
 .targetFitness .set {
   width: 34rpx;
   height: 34rpx;
@@ -171,6 +175,68 @@ input {
   justify-content: space-between;
 }
 
+.pouponWrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.popupTag {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 40rpx;
+  background: #EAECEF;
+  box-sizing: border-box;
+  font-size: 32rpx;
+}
+
+.cancel1 {
+  color: #999999;
+}
+
+.setTag {
+  color: #222222;
+}
+
+.confrim1 {
+  color: #2564F6;
+}
+
+.tag-content {
+  padding: 0 40rpx;
+  height: 800rpx;
+}
+
+.tag-content .fitnesss-action {
+  height: 110rpx;
+  box-sizing: border-box;
+  line-height: 110rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-bottom: 1px solid #DFDFDF;
+  font-size: 36rpx;
+  color: #222222;
+}
+.tag-content .new-tags{
+  font-size: 36rpx;
+  color: #999999;
+  height: 110rpx;
+  line-height: 110rpx;
+  border-bottom: 1px solid #DFDFDF;
+  margin-bottom: 30rpx;
+}
+.content{
+  padding: 0 40rpx;
+}
+.textarea{
+  margin-top: 40rpx;
+  width: 100%;
+  min-height: 120rpx;
+  height: auto;
+}
 .fitness-type {
   padding: 0 25rpx;
   display: flex;
@@ -183,7 +249,8 @@ input {
   color: #FFFFFF;
   border: 1px solid transparent;
 }
-.fitnessTag{
+
+.fitnessTag {
   margin: 0 15rpx 40rpx;
   font-size: 30rpx;
   padding: 6rpx 24rpx;
@@ -192,6 +259,7 @@ input {
   border-radius: 26rpx;
   box-sizing: border-box;
 }
+
 .save {
   display: flex;
   justify-content: center;

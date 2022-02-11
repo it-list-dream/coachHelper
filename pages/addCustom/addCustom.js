@@ -46,7 +46,11 @@ Page({
       }
     ],
     newTargetsList: [],
-    pictures: ''
+    pictures: '',
+    showTag: true,
+    showTag1: false,
+    createTagList: ["减脂", "增肌", "塑形", "改善状态", "康复", "减脂"],
+    newTagValue: ""
   },
   /**
    * 生命周期函数--监听页面加载
@@ -169,8 +173,41 @@ Page({
       newTargetsList: arr
     })
   },
-  setTarget(e){
-      console.log('设置标签')
+  setTarget(e) {
+    this.setData({
+      showTag: true
+    });
+  },
+  onClose() {
+    this.setData({
+      showTag: false
+    });
+  },
+  onClose1() {
+    //let 
+    if(this.data.newTagValue.legnth>0){
+        
+    }
+    this.setData({
+      showTag1: false
+    });
+  },
+  newCreateTag() {
+    console.log('新建标签');
+    this.setData({
+      showTag1: true
+    })
+  },
+  onConfrim1() {
+    this.setData({
+      showTag1: false
+    })
+  },
+  changeTextarea(e) {
+    //console.log(e)
+    this.setData({
+      newTagValue: e.detail.value
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -58,6 +58,29 @@
         <image src="/assets/images/set.png" class="set"></image>
       </view>
     </view>
+    <van-popup show="{{ showTag }}" position="bottom" custom-style="height: 900rpx;" bind:close="onClose">
+      <view class="pouponWrapper">
+        <view class="popupTag">
+          <text class="cancel1">取消</text>
+          <text class="setTag">设置标签</text>
+          <text class="confrim1">确定</text>
+        </view>
+        <scroll-view class="tag-content" scroll-y>
+          <view class="fitnesss-action" wx:for="{{createTagList}}" wx:key="index">{{item}}</view>
+          <view class="new-tags" bindtap="newCreateTag">+新建标签</view>
+        </scroll-view>
+        <van-popup show="{{ showTag1 }}" position="bottom" custom-style="height: 400rpx;" bind:close="onClose1" >
+          <view class="popupTag">
+            <text class="cancel1">取消</text>
+            <text class="setTag">设置标签</text>
+            <text class="confrim1" bindtap="onConfrim1">确定</text>
+          </view>
+          <view class="content">
+            <textarea placeholder="请输入内容"  class="textarea" 	value="{{newTagValue}}"  placeholder-style="color: #999999;" bindinput="changeTextarea"/>
+          </view>
+        </van-popup>
+      </view>
+    </van-popup>
     <view class="fitness-type">
       <block wx:for="{{targetList}}" wx:key="index">
         <view bindtap="checkLabs" data-index="{{index}}" data-value="{{item.value}}" class="fitnessTag {{item.checked?'fitness-active':''}}">{{item.value}}</view>

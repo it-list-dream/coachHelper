@@ -1,8 +1,9 @@
 {
   "usingComponents": {
-    "dialog":"/components/dialog/dialog"
+    "dialog": "/components/dialog/dialog",
+    "van-popup": "@vant/weapp/popup/index"
   },
-  "navigationBarBackgroundColor":"#2564F6",
-  "navigationBarTextStyle":"white",
-  "navigationBarTitleText":"添加客户"
+  "navigationBarBackgroundColor": "#2564F6",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "添加客户"
 }

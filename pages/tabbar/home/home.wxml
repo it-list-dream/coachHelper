@@ -1,9 +1,10 @@
 <!--pages/tabbar/home/home.wxml-->
 <view>首页</view>
 <button size="mini" bindtap="showPopup">展示弹出层</button>
-<van-popup show="{{ show }}" bind:close="onClose">内容</van-popup>
-<van-button type="default">默认按钮</van-button>
-<van-button type="primary">主要按钮</van-button>
-<van-button type="info">信息按钮</van-button>
-<van-button type="warning">警告按钮</van-button>
-<van-button type="danger">危险按钮</van-button>
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  custom-style="height: 50%;"
+  bind:close="onClose"
+>
+</van-popup>
