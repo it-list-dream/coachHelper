@@ -1,0 +1,14 @@
+<view class='wx_dialog_container' wx:if="{{isShow}}">
+  <view class='wx-mask'></view>
+  <view class='wx-dialog'>
+    <view class='wx-dialog-title'>客户标记</view>
+    <view class='wx-dialog-content'>
+     <input type="text" maxlength="10" placeholder="请输入内容" value="{{tagValue}}" bindinput="getTagContent" focus/>
+     <view class="count">{{tagValue.length}}/10</view>
+    </view>
+    <view class='wx-dialog-footer'>
+      <view class='wx-dialog-btn' catchtap='_cancelEvent'>取消</view>
+      <view class='wx-dialog-btn' catchtap='_confirmEvent'>保存</view>
+    </view>
+  </view>
+</view>

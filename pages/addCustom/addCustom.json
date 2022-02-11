@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "dialog":"/components/dialog/dialog"
+  },
+  "navigationBarBackgroundColor":"#2564F6",
+  "navigationBarTextStyle":"white",
+  "navigationBarTitleText":"添加客户"
+}

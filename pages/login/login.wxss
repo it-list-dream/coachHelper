@@ -1,0 +1,62 @@
+/* pages/login/login.wxss */
+.login-container{
+  overflow: hidden;
+}
+.login-title {
+  margin-top: 50rpx;
+  font-size: 56rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  padding: 0 50rpx;
+}
+
+.login-content {
+  margin-top: 180rpx;
+  display: flex;
+  align-items: center;
+}
+
+.login-content .login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 690rpx;
+  height: 90rpx;
+  background: #2564F6;
+  border-radius: 45rpx;
+}
+
+.login-btn .text {
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  color: #FFFFFF;
+}
+
+.login-content image {
+  width: 46rpx;
+  height: 46rpx;
+}
+
+.login-bottom{
+  margin-top: 540rpx;
+}
+.wechat-icon {
+  text-align: center;
+}
+
+.wechat-icon>image {
+  width: 74rpx;
+  height: 74rpx;
+}
+
+.agreement-box {
+  display: flex;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.agreement-box .blue-text {
+  color: #87A5D3;
+}

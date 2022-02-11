@@ -1,0 +1,209 @@
+/* pages/addCustom/addCustom.wxss */
+page {
+  background-color: #F2F4F8;
+}
+
+.addCustomInform {
+  padding: 0 40rpx;
+  background-color: #ffffff;
+}
+
+.photo-wrapper {
+  padding-top: 30rpx;
+  text-align: center;
+}
+
+.photo-wrapper>image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.flex {
+  display: flex;
+  height: 120rpx;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.5px solid #EDEDED;
+}
+
+input {
+  text-align: right;
+}
+
+.placeholder {
+  text-align: right;
+  font-size: 30rpx;
+  color: #C3C3C3;
+}
+
+.chooseSex {
+  display: flex;
+  justify-content: space-between;
+  width: 210rpx;
+}
+
+.sex {
+  width: 90rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  text-align: center;
+  border: 1px solid #D2D2D2;
+  border-radius: 21rpx;
+  font-size: 30rpx;
+  color: #C3C3C3;
+}
+
+.sex-active {
+  background: #3B8EF1;
+  color: #ffffff;
+  border: none;
+}
+
+.picker {
+  font-size: 30rpx;
+}
+
+.customer-tag {
+  margin-top: 20rpx;
+  width: 750rpx;
+  box-sizing: border-box;
+  padding: 0 40rpx;
+  height: 190rpx;
+  background: #FFFFFF;
+  overflow: hidden;
+}
+
+.customer-tag .tags {
+  margin-top: 30rpx;
+}
+
+.customer-tag .tag-title {
+  margin-top: 30rpx;
+}
+
+.addTag {
+  width: 154rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border: 1px dotted #CBCBCB;
+  border-radius: 4rpx;
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.tags {
+  display: flex;
+}
+
+.tags-item {
+  display: flex;
+  font-size: 26rpx;
+  color: #666666;
+  /* background: #EEEEEE;
+  border-radius: 4rpx 0px 0px 4rpx;
+  font-size: 26rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  padding: 0 15rpx;
+  color: #666666; */
+}
+.tags-item:nth-child(n+2){
+  margin-left: 30rpx;
+}
+.tags-item>text:first-child {
+  background: #EEEEEE;
+  border-radius: 4rpx 0px 0px 4rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 0 15rpx;
+  box-sizing: border-box;
+}
+
+.tags-item .close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4rpx;
+  width: 50rpx;
+  height: 50rpx;
+  background: #EEEEEE;
+  border-radius: 0px 4rpx 4rpx 0px;
+}
+
+.tags-item .close image {
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.targetFitness {
+  margin-top: 30rpx;
+  width: 750rpx;
+  height: 551rpx;
+  background: #FFFFFF;
+  box-sizing: border-box;
+}
+
+.fitness-title {
+  padding: 0 16rpx 0 40rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333333;
+  box-sizing: border-box;
+}
+.targetFitness .set-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80rpx;
+  height: 100%;
+}
+.targetFitness .set {
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.fitness-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fitness-type {
+  padding: 0 25rpx;
+  display: flex;
+  /* margin-top: 35rpx; */
+  flex-wrap: wrap;
+}
+
+.fitness-type .fitness-active {
+  background: #3B8EF1;
+  color: #FFFFFF;
+  border: 1px solid transparent;
+}
+.fitnessTag{
+  margin: 0 15rpx 40rpx;
+  font-size: 30rpx;
+  padding: 6rpx 24rpx;
+  border: 1px solid #D2D2D2;
+  color: #C3C3C3;
+  border-radius: 26rpx;
+  box-sizing: border-box;
+}
+.save {
+  display: flex;
+  justify-content: center;
+  margin-top: 150rpx;
+}
+
+.save .saveBtn {
+  width: 620rpx;
+  height: 86rpx;
+  background: #2564F6;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  color: #FFFFFF;
+  font-weight: 500;
+}

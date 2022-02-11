@@ -1,0 +1,141 @@
+/* pages/schedule/schedule.wxss */
+.tab-container {
+  display: flex;
+  width: 100%;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+
+.tab-item {
+  position: relative;
+  width: 50%;
+  text-align: center;
+  font-size: 34rpx;
+  color: #666666;
+}
+
+.tab-container .tab-active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 20rpx;
+  transform: translateX(-50%);
+  width: 100rpx;
+  height: 8rpx;
+  background-color: #2A67F7;
+  border-radius: 6rpx 6rpx 0 0;
+}
+
+/*  */
+.tab-list {
+  padding: 0 30rpx;
+}
+
+.tab-detail {
+  position: relative;
+}
+
+.tab-detail .border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 690rpx;
+  height: 180rpx;
+}
+
+.course-content {
+  position: relative;
+  width: 690rpx;
+  height: 220rpx;
+  z-index: 10;
+}
+
+.course-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.left-box {
+  font-family: PingFang SC;
+}
+
+.left-title {
+  margin-top: 40rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+.time-wrapper {
+  margin-top: 16rpx;
+}
+
+.time-wrapper .quantum {
+  font-size: 30rpx;
+  color: #6C6C6C;
+  vertical-align: middle;
+  margin-left: 18rpx;
+}
+
+.left-box .time {
+  width: 32rpx;
+  height: 32rpx;
+  vertical-align: middle;
+}
+
+.right-box {
+  margin-top: 40rpx;
+}
+
+.right-box .status {
+  display: block;
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.right-box .success {
+  border: 2rpx solid #999999;
+  border-radius: 12rpx;
+  color: #999999;
+}
+
+.right-box .beCompleted {
+  background: #2564F6;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  color: #FEFEFE;
+}
+
+.right-box .already {
+  background: #FFFFFF;
+  border: 2rpx solid #2564F6;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  color: #2564F6;
+}
+
+/* add-appointment */
+.add-appointment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 690rpx;
+  height: 180rpx;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20rpx 0px rgba(102, 102, 102, 0.1);
+  border-radius: 9rpx;
+  margin-bottom: 120rpx;
+}
+
+.add-appointment image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.add {
+  font-size: 36rpx;
+  color: #2564F6;
+}

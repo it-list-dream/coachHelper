@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "dialog": "/components/dialog/dialog",
+    "calendar":"/components/calendar/calendar"
+  },
+  "navigationBarBackgroundColor":"#2564F6",
+  "navigationBarTextStyle":"white",
+  "navigationBarTitleText":"日程"
+}

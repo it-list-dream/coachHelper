@@ -1,0 +1,24 @@
+<!--pages/login/login.wxml-->
+<view class="login-container">
+  <view class="login-title">
+    <view>你好，</view>
+    <view>欢迎使用教练小助手</view>
+  </view>
+  <view class="login-content">
+    <button size="mini" class="login-btn">
+      <image src="/assets/images/wechat.png" class="wechat"></image>
+      <text class="text">微信一键登录</text>
+    </button>
+  </view>
+  <view class="login-bottom">
+    <view class="wechat-icon">
+      <image src="/assets/images/black-chat.png"></image>
+    </view>
+    <view class="agreement-box">
+      <text>注册/登录即代表同意</text>
+      <navigator hover-class="navigator-hover" class="blue-text">隐私政策</navigator>
+      和
+      <navigator hover-class="navigator-hover" class="blue-text">服务条款</navigator>
+    </view>
+  </view>
+</view>

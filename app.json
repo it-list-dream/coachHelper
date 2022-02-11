@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/tabbar/schedule/schedule",
+    "pages/tabbar/home/home",
+    "pages/tabbar/clientele/clientele",
+    "pages/tabbar/profile/profile",
+    "pages/addCustom/addCustom",
+    "pages/selectStore/selectStore"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
