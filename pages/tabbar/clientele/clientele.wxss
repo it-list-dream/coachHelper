@@ -1,4 +1,7 @@
 /* pages/chooseCustom/chooseCustom.wxss */
+.chooseCustomContainer{
+  padding-bottom: 140rpx;
+}
 .serach-box {
   display: flex;
   align-items: center;

@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "dialog": "/components/dialog/dialog",
-    "calendar":"/components/calendar/calendar"
+    "calendar":"/components/calendar/calendar",
+    "tabbar":"/components/tabbar/tabbar"
   },
   "navigationBarBackgroundColor":"#2564F6",
   "navigationBarTextStyle":"white",

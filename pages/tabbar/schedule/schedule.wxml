@@ -1,4 +1,4 @@
-<view class="container">
+<view class="scheduleContainer">
   <calendar bind:change="dateChange" spot="{{spot}}" defaultTime="{{nowTime}}"></calendar>
   <view class="tab-container">
     <!-- <view class="tab-item">私教</view>
@@ -31,3 +31,4 @@
     </navigator>
   </view>
 </view>
+<tabbar tabbar="{{tabbar}}"></tabbar>

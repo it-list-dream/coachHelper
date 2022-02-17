@@ -6,28 +6,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    tabbar: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  doLogin(){
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+  },
   onLoad: function (options) {
     this.setData({
-      menuRight:app.globalData.menuRight,
-      navHeight:app.globalData.navHeight,
-      navTop:app.globalData.navTop,
+      menuRight: app.globalData.menuRight,
+      navHeight: app.globalData.navHeight,
+      navTop: app.globalData.navTop,
     })
+    app.editTabbar();
   },
-  toChooseStore(){
+  toChooseStore() {
     wx.navigateTo({
       url: '/pages/selectStore/selectStore',
     })
   },
-  allotCustom(){
+  allotCustom() {
 
   },
-  turnClass(){
+  turnClass() {
 
   },
   /**

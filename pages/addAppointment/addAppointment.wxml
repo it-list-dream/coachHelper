@@ -3,7 +3,7 @@
     <view class="appoinment-from" wx:if="{{isOthers == 0}}">
         <view class="from-col">
             <view>选择客户</view>
-            <view class="from-item">
+            <view class="from-item" bindtap="chooseCustom">
                 <text>请选择客户</text>
                 <image src="/assets/images/right_arrow.png" />
             </view>

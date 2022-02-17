@@ -16,15 +16,24 @@
           "name": "",
           "pathName": "pages/tabbar/schedule/schedule",
           "query": "",
-          "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
           "pathName": "pages/tabbar/clientele/clientele",
           "query": "",
-          "scene": null,
-          "launchMode": "default"
+          "scene": null
+        },
+        {
+          "name": "pages/tabbar/home/home",
+          "pathName": "pages/tabbar/home/home",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/tabbar/clientele/clientele",
+          "pathName": "pages/tabbar/clientele/clientele",
+          "scene": null
         }
       ]
     }

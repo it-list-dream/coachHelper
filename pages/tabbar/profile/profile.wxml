@@ -10,7 +10,7 @@
       </view>
     </view>
     <!--  -->
-    <view class="bussinessCard">
+    <view class="bussinessCard" bindtap="doLogin">
       <view class="header">
         <image src="/assets/images/profile/avtar.png"></image>
       </view>
@@ -68,3 +68,4 @@
     </view>
   </view>
 </view>
+<tabbar tabbar="{{tabbar}}"></tabbar>

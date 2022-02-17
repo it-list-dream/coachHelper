@@ -12,9 +12,13 @@ Page({
   showPopup() {
     this.setData({ show: true });
   },
-
   onClose() {
     this.setData({ show: false });
+  },
+  memberDetail(){
+     wx.navigateTo({
+       url: '/pages/customerDetail/customerDetail',
+     })
   },
   /**
    * 生命周期函数--监听页面加载

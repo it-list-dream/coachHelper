@@ -1,4 +1,5 @@
 // pages/chooseCustom/chooseCustom.js
+const app = getApp()
 Page({
 
   /**
@@ -28,7 +29,8 @@ Page({
         firstName:"使"
       }
 
-    ]
+    ],
+    tabbar:{}
   },
   swichNav: function (res) {
     if (this.data.currentActive == res.detail.currentNum) return;
@@ -37,15 +39,20 @@ Page({
     })
   },
   addPeople(){
+    wx.navigateTo({
+      url: '/pages/addCustom/addCustom',
+    })
+  },
+  memberDetail(){
      wx.navigateTo({
-       url: '/pages/addCustom/addCustom',
+       url: '/pages/customerDetail/customerDetail',
      })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    app.editTabbar();
   },
 
   /**

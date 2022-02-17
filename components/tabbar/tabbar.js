@@ -13,31 +13,31 @@ Component({
         "selectedColor": "#1c1c1b",
         "list": [
           {
-            "pagePath": "pages/tabbar/home/home",
+            "pagePath": "/pages/tabbar/home/home",
             "text": "首页",
             "iconPath": "/assets/images/tabbar/home.png",
             "selectedIconPath": "/assets/images/tabbar/home-active.png"
           },
           {
-            "pagePath": "pages/tabbar/schedule/schedule",
+            "pagePath": "/pages/tabbar/schedule/schedule",
             "text": "日程",
             "iconPath": "/assets/images/tabbar/calendar.png",
             "selectedIconPath": "/assets/images/tabbar/calendar_active.png"
           },
           {
-            "pagePath": "pages/addCustom/addCustom",
+            "pagePath": "/pages/addCustom/addCustom",
             "text": "",
             "iconPath": "/assets/images/tabbar/addCustom.png",
             "isSpecial": true
           },
           {
-            "pagePath": "pages/tabbar/clientele/clientele",
+            "pagePath": "/pages/tabbar/clientele/clientele",
             "text": "客户",
             "iconPath": "/assets/images/tabbar/customer.png",
             "selectedIconPath": "/assets/images/tabbar/customer-active.png"
           },
           {
-            "pagePath": "pages/tabbar/profile/profile",
+            "pagePath": "/pages/tabbar/profile/profile",
             "text": "我的",
             "iconPath": "/assets/images/tabbar/profile.png",
             "selectedIconPath": "/assets/images/tabbar/profile_active.png"

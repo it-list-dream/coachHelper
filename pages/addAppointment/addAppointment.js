@@ -73,6 +73,11 @@ Page({
   onLoad: function (options) {
 
   },
+  chooseCustom(){
+     wx.navigateTo({
+       url: '/pages/chooseCustom/chooseCustom',
+     })
+  },
   onClose() {
     this.setData({
       showclass: false

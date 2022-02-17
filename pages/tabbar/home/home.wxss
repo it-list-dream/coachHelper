@@ -1,1 +1,4 @@
 /* pages/tabbar/home/home.wxss */
+.indexContainer{
+  padding-bottom: 140rpx;
+}
