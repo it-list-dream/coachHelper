@@ -1,1 +1,152 @@
 /* pages/tabbar/profile/profile.wxss */
+.profile-header {
+  position: relative;
+  height: 488rpx;
+  overflow: hidden;
+}
+
+.profile-header .profile-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.nav-wrap {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.navbar {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.navbar-action-wrap {
+  position: absolute;
+  overflow: hidden;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  z-index: 11;
+  height: 32px;
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 17px;
+}
+
+.arrow-icon {
+  margin-left: 7px;
+  width: 18px;
+  height: 18px;
+}
+
+.bussinessCard {
+  position: absolute;
+  top: 180rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30rpx;
+  color: #FFFFFF;
+}
+
+.bussinessCard .header {
+  text-align: center;
+}
+
+.bussinessCard .header>image {
+  width: 110rpx;
+  height: 110rpx;
+}
+
+.bussinessCard .coach-name {
+  margin: 10rpx 0 14rpx 0;
+  text-align: center;
+}
+
+.coach-skill {
+  position: relative;
+  display: flex;
+  width: 690rpx;
+  height: 150rpx;
+  margin: 0 auto;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 21rpx 0px rgba(25, 77, 196, 0.08);
+  border-radius: 9rpx;
+  transform: translateY(-35%);
+}
+
+.coach-skill .skill-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.skill-item image {
+  width: 36rpx;
+  height: 36rpx;
+  vertical-align: middle;
+}
+
+.skill-item text {
+  margin-left: 16rpx;
+  font-size: 32rpx;
+  color: #333333
+}
+
+.coach-skill .line {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 2rpx;
+  height: 38rpx;
+  background: #E7E7E7;
+}
+
+.profile-content {
+  padding: 0 60rpx;
+}
+
+.rows {
+  display: flex;
+  height: 130rpx;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-bottom: 1px solid #E6EAF1;
+}
+
+.rows .icon {
+  margin-right: 22rpx;
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle;
+}
+
+.rows-item text {
+  vertical-align: middle;
+}
+
+.rows image {
+  width: 20rpx;
+  height: 20rpx;
+}
+
+.rows text {
+  font-size: 32rpx;
+  color: #333333;
+}

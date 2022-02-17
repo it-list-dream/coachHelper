@@ -1,0 +1,30 @@
+<view class="r-wrap">
+  <!-- 每一条数据 -->
+  <view class="r-wrap-title">昨天</view>
+  <view class="r1">
+    <view class="r-wrap-item" wx:for="{{stepList}}">
+      <!-- 左子项 -->
+      <view class="r-item-left">
+        <!-- 左子项上块 -->
+        <view class="r-item-left-crd {{index== 0 ?'first':''}} "></view>
+        <!-- 点 -->
+        <view class="r-point-wrap">
+          <view class="r-point-item"></view>
+        </view>
+        <!-- 左子项下块 -->
+        <view class="r-item-left-crd {{index == stepList.length - 1?'last':''}}"></view>
+      </view>
+      <!-- 右子项 -->
+      <view class="r-item-right">
+        <!-- 内容 -->
+        <view class="r-item-right-content">
+          <view class="r-item-text">
+            <text class="time1">{{item.time}}</text>
+            <text class="name">测试数据</text>
+          </view>
+          <view class="r-item-time"> {{item.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

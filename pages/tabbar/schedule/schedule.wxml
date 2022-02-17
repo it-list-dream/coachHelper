@@ -25,10 +25,9 @@
         </view>
       </view>
     </view>
-    <view class="add-appointment" bindtap="addPlain">
+    <navigator class="add-appointment" url="/pages/addAppointment/addAppointment">
          <image src="/assets/images/add.png"></image>
          <text class="add">添加预约</text>
-    </view>
+    </navigator>
   </view>
-
 </view>

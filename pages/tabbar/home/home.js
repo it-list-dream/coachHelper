@@ -1,4 +1,5 @@
 // pages/tabbar/home/home.js
+const app = getApp();
 Page({
 
   /**
@@ -6,6 +7,7 @@ Page({
    */
   data: {
     show: false,
+    tabbar: {},
   },
   showPopup() {
     this.setData({ show: true });
@@ -18,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    app.editTabbar();
   },
 
   /**

@@ -8,3 +8,5 @@
   bind:close="onClose"
 >
 </van-popup>
+<tabbar tabbar="{{tabbar}}"></tabbar>
+

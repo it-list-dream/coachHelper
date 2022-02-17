@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-popup": "@vant/weapp/popup/index",
+    "datetimepicker": "/components/timePicker/timePicker"
+  },
+  "navigationBarBackgroundColor": "#2564F6",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "添加预约"
+}

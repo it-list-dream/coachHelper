@@ -1,3 +1,9 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "slideTab":"/components/tabs-list/tabs-list",
+    "van-search": "@vant/weapp/search/index"
+  },
+  "navigationBarBackgroundColor":"#2564F6",
+  "navigationBarTextStyle":"white",
+  "navigationBarTitleText":"客户"
 }

@@ -1,0 +1,11 @@
+<!--components/tabs-list/tabs-list.wxml-->
+<view class="tab-list">
+  <scroll-view scroll-x="true" class="scroll-view-x">
+    <view class="scroll-view-item" wx:for="{{tList}}" wx:key="*this" hover-class="none">
+      <view class="{{currentTab==(index) ? 'on' : ''}}" bindtap="_swichNav" data-current="{{index}}" hover-class="none">{{ item }}</view>
+    </view>
+  </scroll-view>
+  <!--内容列表-->
+  <slot>
+  </slot>
+</view>

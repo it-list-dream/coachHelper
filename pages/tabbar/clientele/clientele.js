@@ -1,13 +1,46 @@
-// pages/tabbar/clientele/clientele.js
+// pages/chooseCustom/chooseCustom.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    value: "",
+    currentActive: 0,
+    //tablist
+    tabsList:['最近联系', '全部客户','私教会员','普通会员','意向会员','公海池'],
+    memberList: [{
+        name: "宁康",
+        phone: '1213131313',
+        img: '',
+        firstName:"宁"
+      },
+      {
+        name: "长进",
+        phone: '3213131313',
+        img: '',
+        firstName:"长"
+      },
+      {
+        name: "使者",
+        phone: '6213131313',
+        img: '',
+        firstName:"使"
+      }
 
+    ]
   },
-
+  swichNav: function (res) {
+    if (this.data.currentActive == res.detail.currentNum) return;
+    this.setData({
+      currentActive: res.detail.currentNum
+    })
+  },
+  addPeople(){
+     wx.navigateTo({
+       url: '/pages/addCustom/addCustom',
+     })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

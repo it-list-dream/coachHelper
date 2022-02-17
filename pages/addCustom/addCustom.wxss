@@ -63,85 +63,10 @@ input {
   font-size: 30rpx;
 }
 
-.customer-tag {
-  margin-top: 20rpx;
-  width: 750rpx;
-  box-sizing: border-box;
-  padding: 0 40rpx;
-  height: 190rpx;
-  background: #FFFFFF;
-  overflow: hidden;
-}
-
-.customer-tag .tags {
-  margin-top: 30rpx;
-}
-
-.customer-tag .tag-title {
-  margin-top: 30rpx;
-}
-
-.addTag {
-  width: 154rpx;
-  height: 50rpx;
-  line-height: 50rpx;
-  text-align: center;
-  border: 1px dotted #CBCBCB;
-  border-radius: 4rpx;
-  font-size: 26rpx;
-  color: #666666;
-}
-
-.tags {
-  display: flex;
-}
-
-.tags-item {
-  display: flex;
-  font-size: 26rpx;
-  color: #666666;
-  /* background: #EEEEEE;
-  border-radius: 4rpx 0px 0px 4rpx;
-  font-size: 26rpx;
-  height: 54rpx;
-  line-height: 54rpx;
-  padding: 0 15rpx;
-  color: #666666; */
-}
-
-.tags-item:nth-child(n+2) {
-  margin-left: 30rpx;
-}
-
-.tags-item>text:first-child {
-  background: #EEEEEE;
-  border-radius: 4rpx 0px 0px 4rpx;
-  height: 50rpx;
-  line-height: 50rpx;
-  padding: 0 15rpx;
-  box-sizing: border-box;
-}
-
-.tags-item .close {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 4rpx;
-  width: 50rpx;
-  height: 50rpx;
-  background: #EEEEEE;
-  border-radius: 0px 4rpx 4rpx 0px;
-}
-
-.tags-item .close image {
-  width: 34rpx;
-  height: 34rpx;
-}
-
 .targetFitness {
   margin-top: 30rpx;
   width: 750rpx;
-  height: 551rpx;
+  /* height: 551rpx; */
   background: #FFFFFF;
   box-sizing: border-box;
 }
@@ -220,7 +145,8 @@ input {
   font-size: 36rpx;
   color: #222222;
 }
-.tag-content .new-tags{
+
+.tag-content .new-tags {
   font-size: 36rpx;
   color: #999999;
   height: 110rpx;
@@ -228,15 +154,18 @@ input {
   border-bottom: 1px solid #DFDFDF;
   margin-bottom: 30rpx;
 }
-.content{
+
+.content {
   padding: 0 40rpx;
 }
-.textarea{
+
+.textarea {
   margin-top: 40rpx;
   width: 100%;
   min-height: 120rpx;
   height: auto;
 }
+
 .fitness-type {
   padding: 0 25rpx;
   display: flex;
@@ -257,6 +186,30 @@ input {
   border: 1px solid #D2D2D2;
   color: #C3C3C3;
   border-radius: 26rpx;
+  box-sizing: border-box;
+}
+
+.remark-box {
+  padding: 0 39rpx;
+  margin-top: 40rpx;
+}
+
+.remark-title {
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.remark-box .remark-textarea {
+  margin-top: 31rpx;
+  width: 669rpx;
+  height: 376rpx;
+  border: 1px dotted #A7A7A7;
+  box-sizing: border-box;
+}
+
+.remark-box .remark-textarea textarea {
+  width: 100%;
+  padding: 26rpx 20rpx;
   box-sizing: border-box;
 }
 

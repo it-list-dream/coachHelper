@@ -1,0 +1,21 @@
+<!--pages/classDettail/classDetail.wxml-->
+<view class="classdetailContainer">
+  <view class="classes_header">
+    <view class="classes-bg">
+      <image src="/assets/images/classes_bg.png"></image>
+      <view class="bg-mask"></view>
+    </view>
+    <!--  -->
+    <view class="classes-box">
+      <view class="classes-rows">
+        <text class="cl">女性塑形课程</text>
+        <text class="cl_time">时长：45分钟</text>
+      </view>
+      <view class="classes-price">¥300.0</view>
+    </view>
+  </view>
+  <view class="classes_content">
+    <view class="classes-title">课程介绍</view>
+    <view class="classess_desc">如果你是爱美之人，学完课程之后，你将通晓个人形象规律，获得终身美丽的科学秘诀，由内的而外的美丽升级。起</view>
+  </view>
+</view>

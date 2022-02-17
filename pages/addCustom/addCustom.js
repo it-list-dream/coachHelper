@@ -16,8 +16,6 @@ Page({
     chooseIndex: -1,
     sexList: ["男", "女"],
     endDate: '',
-    tagList: ['没有办卡，只做了问卷', '哈哈哈哈'],
-    isDialog: false,
     targetList: [{
         id: 1,
         value: '减脂',
@@ -45,12 +43,15 @@ Page({
         checked: false
       }
     ],
+    //选中的标签
     newTargetsList: [],
     pictures: '',
-    showTag: true,
+    showTag: false,
     showTag1: false,
-    createTagList: ["减脂", "增肌", "塑形", "改善状态", "康复", "减脂"],
-    newTagValue: ""
+    //新建标签
+    newTagValue: "",
+    //备注
+    remark:""
   },
   /**
    * 生命周期函数--监听页面加载
@@ -115,40 +116,6 @@ Page({
       [updateMembership]: value
     })
   },
-  addTags() {
-    this.setData({
-      isDialog: !this.data.isDialog
-    })
-  },
-  deleteTag(e) {
-    let tag = e.currentTarget.dataset.tag;
-    let deleteIndex, tagList = this.data.tagList;
-    console.log(tag)
-    for (var i = 0; i < tagList.length; i++) {
-      if (tag == tagList[i]) {
-        deleteIndex = i;
-        break;
-      }
-    }
-    tagList.splice(deleteIndex, 1);
-    this.setData({
-      tagList: tagList
-    })
-  },
-  confirm(event) {
-    console.log(event.detail)
-    let tagsList = this.data.tagList;
-    tagsList.push(event.detail)
-    this.setData({
-      tagList: tagsList,
-      isDialog: false
-    })
-  },
-  cancel() {
-    this.setData({
-      isDialog: false
-    })
-  },
   checkLabs(e) {
     //newTargetsList
     var that = this,
@@ -184,10 +151,6 @@ Page({
     });
   },
   onClose1() {
-    //let 
-    if(this.data.newTagValue.legnth>0){
-        
-    }
     this.setData({
       showTag1: false
     });
@@ -199,14 +162,27 @@ Page({
     })
   },
   onConfrim1() {
+    let newTag = this.data.newTagValue;
+    let targetList = this.data.targetList;
+    targetList.push({
+      id: Number(targetList[targetList.length-1].id) + 1,
+      value: newTag,
+      checked:false
+    })
     this.setData({
-      showTag1: false
+      showTag1: false,
+      targetList:targetList,
+      newTagValue:""
     })
   },
   changeTextarea(e) {
-    //console.log(e)
     this.setData({
       newTagValue: e.detail.value
+    })
+  },
+  onRemark(e){
+    this.setData({
+      remark: e.detail.value
     })
   },
   /**

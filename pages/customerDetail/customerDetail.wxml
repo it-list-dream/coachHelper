@@ -1,0 +1,56 @@
+<view class="customDetailContainer">
+  <view class="customdetail-header"></view>
+  <!-- calc(514rpx + {{navHeight}}px) -->
+  <view class="customer-tips" style="top: 540rpx">
+    <view class="grid-box">
+      <image src="/assets/images/customer-detail/1.png"></image>
+      <text>调查问卷</text>
+    </view>
+    <view class="grid-box">
+      <image src="/assets/images/customer-detail/2.png"></image>
+      <text>训练方案</text>
+    </view>
+    <view class="grid-box">
+      <image src="/assets/images/customer-detail/3.png"></image>
+      <text>训练计划</text>
+    </view>
+    <view class="grid-box">
+      <image src="/assets/images/customer-detail/4.png"></image>
+      <text>课程规划</text>
+    </view>
+  </view>
+  <view class="service-coach">
+    <view class="service">
+      <text class="service-title">服务教练</text>
+      <text class="allocate-coach">分配教练</text>
+    </view>
+    <view class="scroll-x">
+      <view class="choose-coach">
+        <image src="/assets/images/customer-detail/avatar.png"></image>
+        <text>王教练</text>
+      </view>
+    </view>
+  </view>
+  <view class="dynamic-box">
+    <view class="dynamic-tabslist">
+      <block wx:for="{{tabsList}}" wx:key="index">
+        <view class="tabs-item {{index == tabIndex?'tab-active':''}}" bindtap="tabClick" data-index="{{index}}">{{item}}</view>
+      </block>
+    </view>
+    <view wx:if="{{tabIndex == 0}}" class="tab-content">
+      <view class="sub-order-step">
+        <text class="sub-order-no">2022年</text>
+        <ct-step id="step" stepList="{{stepList}}"></ct-step>
+      </view>
+      <view class="sub-order-step">
+        <text class="sub-order-no">2022年</text>
+        <ct-step id="step" stepList="{{stepList}}"></ct-step>
+      </view>
+    </view>
+    <view wx:else class="tab-content">
+      <!-- tabIndex1 -->
+      <button size="mini" bindtap="addClick">添加</button>
+      <ct-dialog isShow="{{addRecords}}" bindconfirmEvent="confrimEvent" bindcancelEvent="cancelEvent"></ct-dialog>
+    </view>
+  </view>
+</view>

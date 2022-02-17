@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ct-step": "/components/step/step",
+    "ct-dialog":"/components/dialog/dialog"
+  }
+}

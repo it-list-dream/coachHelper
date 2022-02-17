@@ -21,28 +21,7 @@
         },
         {
           "name": "",
-          "pathName": "pages/addCustom/addCustom",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/index/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/selectStore/selectStore",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/tabbar/home/home",
+          "pathName": "pages/tabbar/clientele/clientele",
           "query": "",
           "scene": null,
           "launchMode": "default"

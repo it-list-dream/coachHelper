@@ -1,0 +1,102 @@
+/* pages/classDettail/classDetail.wxss */
+page {
+  background-color: #F5F3FF;
+}
+
+.classes_header {
+  min-height: 655rpx;
+  background-color: #ffffff;
+}
+
+.classes-bg {
+  position: relative;
+}
+
+.classes-bg>image {
+  width: 100%;
+  height: 500rpx;
+  vertical-align: bottom;
+}
+
+.classes-bg .bg-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500rpx;
+  z-index: 10;
+  background: #2665F6;
+  opacity: 0.2;
+}
+
+.classes-box {
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 36rpx 20rpx 62rpx;
+  min-height: 155rpx;
+  box-sizing: border-box;
+}
+
+.classes-box .classes-rows {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.classes-rows .cl {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #000000;
+}
+
+.classes-rows .cl_time {
+  white-space: nowrap;
+  font-size: 26rpx;
+  color: #999999;
+}
+
+.classes-box .classes-price {
+  margin-top: 15rpx;
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #F25E53;
+}
+
+.classes_content {
+  margin-top: 20rpx;
+  width: 100%;
+  padding: 30rpx;
+  background-color: #ffffff;
+  min-height: 540rpx;
+  box-sizing: border-box;
+}
+
+.classes_content .classes-title {
+  position: relative;
+  padding-left: 50rpx;
+  font-size: 30rpx;
+  font-weight: 800;
+  color: #000000;
+}
+
+.classes_content .classes-title::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 20rpx;
+  height: 20rpx;
+  border: 4px solid #FB9335;
+  border-radius: 50%;
+}
+
+.classess_desc {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  color: #000000;
+  line-height: 45rpx;
+  margin-left: 2em;
+}

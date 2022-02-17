@@ -6,7 +6,12 @@
     "pages/tabbar/clientele/clientele",
     "pages/tabbar/profile/profile",
     "pages/addCustom/addCustom",
-    "pages/selectStore/selectStore"
+    "pages/selectStore/selectStore",
+    "pages/addAppointment/addAppointment",
+    "pages/chooseCustom/chooseCustom",
+    "pages/customerDetail/customerDetail",
+    "pages/classType/classType",
+    "pages/classDetail/classDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

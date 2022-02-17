@@ -5,7 +5,7 @@
     <view>欢迎使用教练小助手</view>
   </view>
   <view class="login-content">
-    <button size="mini" class="login-btn">
+    <button size="mini" class="login-btn" open-type="getPhoneNumber" hover-class="none" bindgetphonenumber="getPhoneNumber" hover-stay-time="100">
       <image src="/assets/images/wechat.png" class="wechat"></image>
       <text class="text">微信一键登录</text>
     </button>

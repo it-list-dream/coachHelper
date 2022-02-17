@@ -7,12 +7,20 @@ Page({
   data: {
 
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
+  },
+  getPhoneNumber: function (e) {
+    if (e.detail.errMsg == 'getPhoneNumber:ok') {
+      //登录
+      console.log('登录成功')
+    }else if(e.detail.errMsg == 'getPhoneNumber:fail user deny'){
+      //返回上一个页面
+      console.log('登录失败')
+    }
   },
 
   /**
