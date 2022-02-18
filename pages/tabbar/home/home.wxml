@@ -9,4 +9,3 @@
 >
 </van-popup>
 <tabbar tabbar="{{tabbar}}"></tabbar>
-

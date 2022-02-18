@@ -19,6 +19,39 @@
     "navigationBarTitleText": "Weixin",
     "navigationBarTextStyle": "black"
   },
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/tabbar/home/home",
+        "text": "首页",
+        "iconPath": "/assets/images/tabbar/home.png",
+        "selectedIconPath": "/assets/images/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/tabbar/schedule/schedule",
+        "text": "日程",
+        "iconPath": "/assets/images/tabbar/calendar.png",
+        "selectedIconPath": "/assets/images/tabbar/calendar_active.png"
+      },
+      {
+        "pagePath": "pages/tabbar/clientele/clientele",
+        "text": "购物车",
+        "iconPath": "/assets/images/tabbar/customer.png",
+        "selectedIconPath": "/assets/images/tabbar/customer-active.png"
+      },
+      {
+        "pagePath": "pages/tabbar/profile/profile",
+        "text": "我的",
+        "iconPath": "/assets/images/tabbar/profile.png",
+        "selectedIconPath": "/assets/images/tabbar/profile_active.png"
+      }
+    ]
+  },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
 }
