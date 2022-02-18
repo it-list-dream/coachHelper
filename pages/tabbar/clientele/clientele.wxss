@@ -1,15 +1,25 @@
 /* pages/chooseCustom/chooseCustom.wxss */
+.chooseCustomContainer{
+  padding-bottom: 140rpx;
+}
 .serach-box {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 28rpx;
+  padding:0 30rpx 0 15rpx;
   box-sizing: border-box;
+  height: 135rpx;
 }
-
+.van-cell{
+  width: 476rpx !important;
+}
 .serach-box>.add {
   width: 40rpx;
   height: 40rpx;
+}
+/*  */
+.clienteList{
+  /* background-color: rebeccapurple; */
 }
 /*  */
 .tab-item{

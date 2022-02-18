@@ -1,4 +1,7 @@
 /* pages/schedule/schedule.wxss */
+.scheduleContainer{
+  padding-bottom: 140rpx;
+}
 .tab-container {
   display: flex;
   width: 100%;

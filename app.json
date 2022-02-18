@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/tabbar/schedule/schedule",
     "pages/tabbar/home/home",
+    "pages/login/login",
     "pages/tabbar/clientele/clientele",
     "pages/tabbar/profile/profile",
     "pages/addCustom/addCustom",
@@ -11,7 +11,8 @@
     "pages/chooseCustom/chooseCustom",
     "pages/customerDetail/customerDetail",
     "pages/classType/classType",
-    "pages/classDetail/classDetail"
+    "pages/classDetail/classDetail",
+    "pages/newtrainProgram/newtrainProgram"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,12 +22,10 @@
   },
   "tabBar": {
     "custom": true,
-    "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
-    "borderStyle": "black",
     "backgroundColor": "#ffffff",
-    "list": [
-      {
+    "color": "#222222",
+    "selectedColor": "#2564F6",
+    "list": [{
         "pagePath": "pages/tabbar/home/home",
         "text": "首页",
         "iconPath": "/assets/images/tabbar/home.png",
@@ -40,7 +39,7 @@
       },
       {
         "pagePath": "pages/tabbar/clientele/clientele",
-        "text": "购物车",
+        "text": "客户",
         "iconPath": "/assets/images/tabbar/customer.png",
         "selectedIconPath": "/assets/images/tabbar/customer-active.png"
       },
@@ -49,8 +48,7 @@
         "text": "我的",
         "iconPath": "/assets/images/tabbar/profile.png",
         "selectedIconPath": "/assets/images/tabbar/profile_active.png"
-      }
-    ]
+      }]
   },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"

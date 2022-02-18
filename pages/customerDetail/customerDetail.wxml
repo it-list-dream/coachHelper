@@ -1,6 +1,22 @@
+<navbar page-name="{{pageName}}" show-nav="{{showNav}}"></navbar>
 <view class="customDetailContainer">
-  <view class="customdetail-header"></view>
-  <!-- calc(514rpx + {{navHeight}}px) -->
+  <view class="customdetail-header">
+    <image src="/assets/images/customer-detail/edit.png" class="edit-icon"></image>
+    <view class="header-info">
+      <view class="custom-des">
+        <image src="/assets/images/customer-detail/touxiang.png"></image>
+        <view class="coach-info">
+          <text class="name">娜娜</text>
+          <text>27</text>
+        </view>
+        <view>13588888888</view>
+      </view>
+      <!-- 备注 -->
+      <view class="custom-remark">
+        备注：没有办卡，主动性比较低
+      </view>
+    </view>
+  </view>
   <view class="customer-tips" style="top: 540rpx">
     <view class="grid-box">
       <image src="/assets/images/customer-detail/1.png"></image>
@@ -34,7 +50,8 @@
   <view class="dynamic-box">
     <view class="dynamic-tabslist">
       <block wx:for="{{tabsList}}" wx:key="index">
-        <view class="tabs-item {{index == tabIndex?'tab-active':''}}" bindtap="tabClick" data-index="{{index}}">{{item}}</view>
+        <view class="tabs-item {{index == tabIndex?'tab-active':''}}" bindtap="tabClick" data-index="{{index}}">{{item}}
+        </view>
       </block>
     </view>
     <view wx:if="{{tabIndex == 0}}" class="tab-content">
@@ -49,6 +66,7 @@
     </view>
     <view wx:else class="tab-content">
       <!-- tabIndex1 -->
+      <ct-step class="follow" stepList="{{followRecords}}"></ct-step>
       <button size="mini" bindtap="addClick">添加</button>
       <ct-dialog isShow="{{addRecords}}" bindconfirmEvent="confrimEvent" bindcancelEvent="cancelEvent"></ct-dialog>
     </view>

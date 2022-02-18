@@ -3,7 +3,7 @@
     <view class="appoinment-from" wx:if="{{isOthers == 0}}">
         <view class="from-col">
             <view>选择客户</view>
-            <view class="from-item">
+            <view class="from-item" bindtap="chooseCustom">
                 <text>请选择客户</text>
                 <image src="/assets/images/right_arrow.png" />
             </view>
@@ -123,6 +123,14 @@
                 </view>
             </view>
         </van-popup>
+        <!--  -->
+        <view class="from-col" wx:if="{{eventTypeText == '客户体测' || eventTypeText == '客户跟进'}}">
+            <view>选择客户</view>
+            <view class="from-item" bindtap="chooseCustom">
+                <text>请选择客户</text>
+                <image src="/assets/images/right_arrow.png" />
+            </view>
+        </view>
         <view class="from-col">
             <view>开始时间</view>
             <view class="from-item">

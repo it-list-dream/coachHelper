@@ -28,7 +28,6 @@ App({
     (pagePath.indexOf('/') != 0) && (pagePath = '/' + pagePath);
     for (var i in tabbar.list) {
       tabbar.list[i].selected = false;
-      console.log(tabbar.list[i].pagePath, pagePath);
       (tabbar.list[i].pagePath == pagePath) && (tabbar.list[i].selected = true);
     }
     that.setData({

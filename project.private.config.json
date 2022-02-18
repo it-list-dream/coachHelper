@@ -13,25 +13,28 @@
     "miniprogram": {
       "list": [
         {
-          "name": "",
-          "pathName": "pages/tabbar/schedule/schedule",
+          "name": "pages/addAppointment/addAppointment",
+          "pathName": "pages/addAppointment/addAppointment",
           "query": "",
-          "launchMode": "default",
           "scene": null
         },
         {
-          "name": "",
+          "name": "pages/tabbar/clientele/clientele",
           "pathName": "pages/tabbar/clientele/clientele",
           "query": "",
-          "launchMode": "default",
           "scene": null
         },
         {
-          "name": "",
-          "pathName": "pages/tabbar/home/home",
+          "name": "pages/customerDetail/customerDetail",
+          "pathName": "pages/customerDetail/customerDetail",
           "query": "",
-          "scene": null,
-          "launchMode": "default"
+          "scene": null
+        },
+        {
+          "name": "pages/newtrainProgram/newtrainProgram",
+          "pathName": "pages/newtrainProgram/newtrainProgram",
+          "query": "",
+          "scene": null
         }
       ]
     }

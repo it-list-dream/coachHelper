@@ -71,7 +71,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      //console.log(options.type == 0)
+      this.setData({
+        isOthers:options.type
+      })
+  },
+  chooseCustom(){
+     wx.navigateTo({
+       url: '/pages/chooseCustom/chooseCustom',
+     })
   },
   onClose() {
     this.setData({
@@ -185,11 +193,9 @@ Page({
         arr[index].checked = false
       }
     })
-    eventTypeText = eventList.filter(item => item.checked)[0].event_name
-    console.log(eventList.filter(item => item.checked))
+    this.eventTypeText = eventList.filter(item => item.checked)[0].event_name
     this.setData({
-      eventList: eventList,
-      eventTypeText: eventTypeText
+      eventList: eventList
     })
   },
   onCancel2() {
@@ -200,7 +206,8 @@ Page({
   },
   onConfirm2() {
     this.setData({
-      isEvent: false
+      isEvent: false,
+      eventTypeText: this.eventTypeText
     })
   },
   eventPoupon() {

@@ -1,11 +1,5 @@
 <!--pages/tabbar/home/home.wxml-->
-<view>首页</view>
-<button size="mini" bindtap="showPopup">展示弹出层</button>
-<van-popup
-  show="{{ show }}"
-  position="bottom"
-  custom-style="height: 50%;"
-  bind:close="onClose"
->
-</van-popup>
+<view class="indexContainer">
+  <navigator url="/pages/classType/classType" style="height:80px;line-height:80px;">教练列表</navigator>
+</view>
 <tabbar tabbar="{{tabbar}}"></tabbar>

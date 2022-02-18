@@ -1,13 +1,13 @@
-<view class="container">
+<view class="scheduleContainer">
   <calendar bind:change="dateChange" spot="{{spot}}" defaultTime="{{nowTime}}"></calendar>
   <view class="tab-container">
-    <!-- <view class="tab-item">私教</view>
-    <view class="tab-item">自定义</view> -->
+    <!-- <view class="tab-item">私教</view><view class="tab-item">自定义</view> -->
     <block wx:for="{{tabList}}">
-      <view class="tab-item {{tabIndex==index?'tab-active':''}}" bindtap="tabClick" data-index="{{index}}">{{item}}</view>
+      <view class="tab-item {{tabIndex==index?'tab-active':''}}" bindtap="tabClick" data-index="{{index}}">{{item}}
+      </view>
     </block>
   </view>
-  <view class="tab-list">
+  <view class="tab-list" wx:if="{{tabIndex == 0}}">
     <view class="tab-detail" wx:for="{{4}}">
       <image src="/assets/images/border.png" class="border"></image>
       <view class="course-content">
@@ -25,9 +25,33 @@
         </view>
       </view>
     </view>
-    <navigator class="add-appointment" url="/pages/addAppointment/addAppointment">
-         <image src="/assets/images/add.png"></image>
-         <text class="add">添加预约</text>
+    <navigator class="add-appointment" url="/pages/addAppointment/addAppointment?type=0">
+      <image src="/assets/images/add.png"></image>
+      <text class="add">添加预约</text>
+    </navigator>
+  </view>
+  <view class="tab-list" wx:elif="{{tabIndex == 1}}">
+    <view class="tab-detail" wx:for="{{2}}">
+      <image src="/assets/images/border.png" class="border"></image>
+      <view class="course-content">
+        <view class="left-box">
+          <view class="left-title">迪迪:女性塑形课</view>
+          <view class="time-wrapper">
+            <image src="/assets/images/time.png" class="time"></image>
+            <text class="quantum">08:00--09：00</text>
+          </view>
+        </view>
+        <view class="right-box">
+          <!-- <text class="success status">已完成</text> -->
+          <text class="already status">已预约</text>
+          <!-- <text class="beCompleted status">待完成</text> -->
+        </view>
+      </view>
+    </view>
+    <navigator class="add-appointment" url="/pages/addAppointment/addAppointment?type=1">
+      <image src="/assets/images/add.png"></image>
+      <text class="add">添加预约</text>
     </navigator>
   </view>
 </view>
+<tabbar tabbar="{{tabbar}}"></tabbar>

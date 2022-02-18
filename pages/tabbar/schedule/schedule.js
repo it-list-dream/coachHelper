@@ -1,4 +1,5 @@
 // pages/schedule/schedule.js
+const app = getApp();
 Page({
 
   /**
@@ -9,7 +10,8 @@ Page({
     spot: [],
     nowTime: "2022-02-09",
     tabIndex: 0,
-    tabList: ['私教', '自定义']
+    tabList: ['私教', '自定义'],
+    tabbar: {},
   },
   dateChange(e) {
     console.log("选中日期变了,现在日期是", e.detail.dateString)
@@ -30,7 +32,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    app.editTabbar();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

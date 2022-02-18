@@ -1,4 +1,7 @@
 /* pages/tabbar/profile/profile.wxss */
+.profileContainer{
+  padding-bottom: 140rpx;
+}
 .profile-header {
   position: relative;
   height: 488rpx;

@@ -1,0 +1,263 @@
+/* pages/newtrainProgram/newtrainProgram.wxss */
+.newTrainIndex {
+  position: relative;
+  padding: 0 30rpx;
+  height: 520rpx;
+  background: linear-gradient(0deg, #6996FF, #2565F6);
+  box-sizing: border-box;
+}
+
+.newTrainIndex .trainset-icon {
+  position: absolute;
+  right: 36rpx;
+  top: 50rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.newTrainIndex .body-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.body-data .body-weight {
+  margin-top: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  color: #A9C3FF;
+}
+
+.body-data .body-weight .weight-num {
+  margin: 20rpx 0 10rpx 0;
+  font-size: 76rpx;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.newTrainIndex .body-others {
+  margin-top: 64rpx;
+  align-self: flex-start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.body-others .body-others-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  flex-shrink: 0;
+}
+
+.body-others-grid>text:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 36rpx;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.body-others-grid>text:last-child {
+  margin-top: 8rpx;
+  font-size: 26rpx;
+  color: #A9C3FF;
+}
+
+.fitness-target {
+  position: absolute;
+  top: 460rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 690rpx;
+  min-height: 220rpx;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 12rpx 0px rgba(0, 0, 0, 0.08);
+  border-radius: 9rpx;
+  padding: 28rpx 0;
+  box-sizing: border-box;
+}
+
+.fitness-target .fitness-title {
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.fitness-content {
+  margin-top: 30rpx;
+  display: flex;
+  padding: 0 5rpx;
+}
+
+.fitness-content .fitness-tg {
+  width: 100rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  background: #2565F6;
+  border-radius: 20rpx;
+  margin: 0 25rpx;
+  font-size: 26rpx;
+  color: #FFFFFF;
+}
+
+.runCount {
+  margin-top: 200rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
+}
+
+.runCount .run-item {
+  width: 335rpx;
+  min-height: 124rpx;
+  line-height: 124rpx;
+  text-align: center;
+  background: #E4ECFE;
+  border-radius: 12rpx;
+}
+
+.runCount .run-item text {
+  margin-left: 10rpx;
+  font-size: 30rpx;
+  color: #222222;
+  vertical-align: middle;
+}
+
+.runCount .run-item image {
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle;
+}
+
+.van-cell__title {
+  position: relative;
+  padding: 30rpx;
+}
+
+.van-cell {
+  display: flex !important;
+  align-items: center;
+  padding: 0 30rpx !important;
+}
+
+.van-cell__title::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 20rpx;
+  height: 20rpx;
+  background: #333333;
+}
+
+.period-list {
+  margin-top: 32rpx;
+  margin: 0 auto;
+  width: 690rpx;
+  height: auto;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 12rpx 0px rgba(0, 0, 0, 0.08);
+  border-radius: 12rpx 12rpx 0px 0px;
+}
+
+.collaspe-rows-title {
+  padding-left: 30rpx;
+  position: relative;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.collaspe-rows-title::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 6rpx;
+  height: 26rpx;
+  background: #FF9500;
+}
+
+.train-period-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 630rpx;
+  height: 80rpx;
+  border: 1px solid #E9E9E9;
+  padding: 0 5rpx;
+  box-sizing: border-box;
+  margin: 15rpx 0;
+}
+
+.train-add {
+  width: 100%;
+  height: 100%;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.train-period-item .period-item-left text {
+  margin: 0 20rpx;
+}
+
+.train-period-item .period-item-right image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.jieduan {
+  padding: 0 72rpx 0 28rpx;
+}
+
+.train-reamrk {
+  margin: 0 auto;
+  margin-top: 30rpx;
+  width: 630rpx;
+  height: 280rpx;
+  border: 2rpx dotted #D7D7D7;
+}
+
+.train-reamrk .train-remark-text {
+  width: 100%;
+  box-sizing: border-box;
+  height: 220rpx;
+  padding: 24rpx;
+  font-size: 30rpx;
+  color: #222222;
+}
+
+.limitCharacter {
+  padding: 0 24rpx;
+  text-align: right;
+}
+
+/*  */
+.addMyStage {
+  margin: 0 auto;
+  margin-top: 20rpx;
+  width: 690rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  border: 2rpx dotted #DCDCDC;
+}
+.createBtn{
+  margin: 0 auto;
+  width: 690rpx;
+height: 90rpx;
+background: #2565F6;
+border-radius: 12px;
+}

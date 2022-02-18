@@ -29,7 +29,25 @@ Page({
     ],
     addRecords: false,
     //记录数组
-    recordsList: []
+    recordsList: [],
+    pageName: '客户详情',
+    showNav: false,
+    //跟进记录
+    // stepList1:[]
+    followRecords:[
+      {
+        name:"名称",
+        time:"2021-07-16：12:30:01",
+      },
+      {
+        name:"张三1",
+        time:"2021-07-19：12:30:01",
+      },
+      {
+        name:"李四",
+        time:"2021-07-20：12:30:01",
+      }
+    ]
   },
 
   /**
