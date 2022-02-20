@@ -1,0 +1,76 @@
+/* pages/referenceData/referenceData.wxss */
+page {
+  background-color: #F5F3FF;
+  font-family: PingFang SC;
+}
+
+.reference-from {
+  padding: 30rpx;
+  background-color: #ffffff;
+}
+
+.reference-from .fitness-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.from-item .from-title {
+  margin: 30rpx 0 40rpx 0;
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.weui-group-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.weui-cell {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 30rpx 40rpx;
+}
+
+.weui-cell__bd {
+  margin-left: 32rpx;
+}
+
+/* 身体状态 */
+.body-status {
+  margin-top: 20rpx;
+  padding: 40rpx 30rpx;
+  background-color: #ffffff;
+}
+
+.body-status .body-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.body-form .body-from-rows {
+  margin: 36rpx 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 30rpx;
+  color: #222222;
+}
+
+.body-form .body-from-item {
+  display: flex;
+  margin-bottom: 30rpx;
+  align-items: center;
+  width: 280rpx;
+}
+.body-form .body-from-item:nth-child(2n){
+    justify-content: flex-end;
+}
+.body-form .input-box .input-text {
+  display: inline-block;
+  width: 90rpx;
+  border-bottom: 1px solid #DEDEDE;
+  margin: 0 18rpx;
+  text-align: center;
+}

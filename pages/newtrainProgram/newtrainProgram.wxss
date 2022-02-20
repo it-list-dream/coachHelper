@@ -6,11 +6,17 @@
   background: linear-gradient(0deg, #6996FF, #2565F6);
   box-sizing: border-box;
 }
-
-.newTrainIndex .trainset-icon {
+.newTrainIndex .setTrainBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  right: 36rpx;
-  top: 50rpx;
+  right: 20rpx;
+  top: 30rpx;
+  width: 72rpx;
+  height: 72rpx;
+}
+.newTrainIndex .trainset-icon {
   width: 40rpx;
   height: 40rpx;
 }
@@ -214,6 +220,7 @@
 }
 
 .train-period-item .period-item-right image {
+  margin-right: 14rpx;
   width: 40rpx;
   height: 40rpx;
 }
@@ -254,10 +261,14 @@
   text-align: center;
   border: 2rpx dotted #DCDCDC;
 }
-.createBtn{
+
+.createBtn {
   margin: 0 auto;
+  margin-top: 116rpx;
   width: 690rpx;
-height: 90rpx;
-background: #2565F6;
-border-radius: 12px;
+  height: 90rpx;
+  line-height: 90rpx !important;
+  background: #2565F6;
+  color: #FFFFFF;
+  border-radius: 12px;
 }

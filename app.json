@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/newtrainProgram/newtrainProgram",
+    "pages/referenceData/referenceData",
     "pages/tabbar/schedule/schedule",
     "pages/tabbar/home/home",
     "pages/login/login",
@@ -11,8 +13,7 @@
     "pages/chooseCustom/chooseCustom",
     "pages/customerDetail/customerDetail",
     "pages/classType/classType",
-    "pages/classDetail/classDetail",
-    "pages/newtrainProgram/newtrainProgram"
+    "pages/classDetail/classDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

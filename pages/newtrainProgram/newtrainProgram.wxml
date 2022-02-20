@@ -1,7 +1,9 @@
 <!--pages/newtrainProgram/newtrainProgram.wxml-->
 <view class="newTrainContainer">
   <view class="newTrainIndex">
-    <image src="/assets/images/train/setTrain.png" class="trainset-icon"></image>
+    <navigator url="/pages/referenceData/referenceData" hover-class="none" class="setTrainBox">
+      <image src="/assets/images/train/setTrain.png" class="trainset-icon"></image>
+    </navigator>
     <view class="body-data">
       <view class="body-weight">
         <view>身体数据</view>
@@ -75,34 +77,33 @@
         </view>
         <view class="collaspe-rows-title">训练目标</view>
         <view class="train-period-item jieduan">
-            <text>体重记录</text>
-            <text>kg</text>
+          <text>体重记录</text>
+          <text>kg</text>
         </view>
         <view class="train-period-item jieduan">
-            <text>体脂变化</text>
-            <text>%</text>
+          <text>体脂变化</text>
+          <text>%</text>
         </view>
         <view class="train-period-item jieduan">
-            <text>肌肉变化</text>
-            <text>kg</text>
+          <text>肌肉变化</text>
+          <text>kg</text>
         </view>
         <view class="train-period-item jieduan">
-            <text>阶段频率</text>
-            <text>次/周</text>
+          <text>阶段频率</text>
+          <text>次/周</text>
         </view>
         <view class="train-period-item jieduan">
-            <text>阶段周期</text>
-            <text>周</text>
+          <text>阶段周期</text>
+          <text>周</text>
         </view>
         <view class="train-period-item jieduan">
-            <text>阶段次数</text>
-            <text>次</text>
+          <text>阶段次数</text>
+          <text>次</text>
         </view>
         <!-- 备注 -->
         <view class="train-reamrk">
-            <textarea name="" id="" cols="30" rows="10" 
-            placeholder="备注" class="train-remark-text"></textarea>
-            <view class="limitCharacter">0/200</view>
+          <textarea name="" id="" cols="30" rows="10" placeholder="备注" class="train-remark-text"></textarea>
+          <view class="limitCharacter">0/200</view>
         </view>
       </van-collapse-item>
     </van-collapse>
@@ -133,34 +134,33 @@
         </view>
         <view class="collaspe-rows-title">训练目标</view>
         <view class="train-period-item jieduan">
-            <text>体重记录</text>
-            <text>kg</text>
+          <text>体重记录</text>
+          <text>kg</text>
         </view>
         <view class="train-period-item jieduan">
-            <text>体脂变化</text>
-            <text>%</text>
+          <text>体脂变化</text>
+          <text>%</text>
         </view>
         <view class="train-period-item jieduan">
-            <text>肌肉变化</text>
-            <text>kg</text>
+          <text>肌肉变化</text>
+          <text>kg</text>
         </view>
         <view class="train-period-item jieduan">
-            <text>阶段频率</text>
-            <text>次/周</text>
+          <text>阶段频率</text>
+          <text>次/周</text>
         </view>
         <view class="train-period-item jieduan">
-            <text>阶段周期</text>
-            <text>周</text>
+          <text>阶段周期</text>
+          <text>周</text>
         </view>
         <view class="train-period-item jieduan">
-            <text>阶段次数</text>
-            <text>次</text>
+          <text>阶段次数</text>
+          <text>次</text>
         </view>
         <!-- 备注 -->
         <view class="train-reamrk">
-            <textarea name="" id="" cols="30" rows="10" 
-            placeholder="备注" class="train-remark-text"></textarea>
-            <view class="limitCharacter">0/200</view>
+          <textarea name="" id="" cols="30" rows="10" placeholder="备注" class="train-remark-text"></textarea>
+          <view class="limitCharacter">0/200</view>
         </view>
       </van-collapse-item>
     </van-collapse>
@@ -191,38 +191,37 @@
         </view>
         <view class="collaspe-rows-title">训练目标</view>
         <view class="train-period-item jieduan">
-            <text>体重记录</text>
-            <text>kg</text>
+          <text>体重记录</text>
+          <text>kg</text>
         </view>
         <view class="train-period-item jieduan">
-            <text>体脂变化</text>
-            <text>%</text>
+          <text>体脂变化</text>
+          <text>%</text>
         </view>
         <view class="train-period-item jieduan">
-            <text>肌肉变化</text>
-            <text>kg</text>
+          <text>肌肉变化</text>
+          <text>kg</text>
         </view>
         <view class="train-period-item jieduan">
-            <text>阶段频率</text>
-            <text>次/周</text>
+          <text>阶段频率</text>
+          <text>次/周</text>
         </view>
         <view class="train-period-item jieduan">
-            <text>阶段周期</text>
-            <text>周</text>
+          <text>阶段周期</text>
+          <text>周</text>
         </view>
         <view class="train-period-item jieduan">
-            <text>阶段次数</text>
-            <text>次</text>
+          <text>阶段次数</text>
+          <text>次</text>
         </view>
         <!-- 备注 -->
         <view class="train-reamrk">
-            <textarea name="" id="" cols="30" rows="10" 
-            placeholder="备注" class="train-remark-text"></textarea>
-            <view class="limitCharacter">0/200</view>
+          <textarea name="" id="" cols="30" rows="10" placeholder="备注" class="train-remark-text"></textarea>
+          <view class="limitCharacter">0/200</view>
         </view>
       </van-collapse-item>
     </van-collapse>
-    <view class="addMyStage">+    添加阶段</view>
+    <view class="addMyStage">+ 添加阶段</view>
     <button size="mini" class="createBtn">创建训练方案</button>
   </view>
 </view>

@@ -1,0 +1,82 @@
+<!--pages/referenceData/referenceData.wxml-->
+<view class="referenceIndex">
+  <view class="reference-from">
+    <view class="fitness-title">健身目标</view>
+    <view class="from-item">
+      <view class="from-title">1.您希望通过健身达到哪些改变？（多选）</view>
+      <checkbox-group bindchange="checkboxChange" class="weui-group-list">
+        <label class="weui-cell" wx:for="{{items}}" wx:key="{{item.value}}">
+          <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+          <view class="weui-cell__bd">{{item.name}}</view>
+        </label>
+      </checkbox-group>
+    </view>
+    <view class="from-item">
+      <view class="from-title">2.您最想改变哪个部位？（多选）</view>
+      <checkbox-group bindchange="checkboxChange" class="weui-group-list">
+        <label class="weui-cell" wx:for="{{items}}" wx:key="{{item.value}}">
+          <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+          <view class="weui-cell__bd">{{item.name}}</view>
+        </label>
+      </checkbox-group>
+    </view>
+    <view class="from-item">
+      <view class="from-title">3.您希望多长时间完成目标？</view>
+      <checkbox-group bindchange="checkboxChange" class="weui-group-list">
+        <label class="weui-cell" wx:for="{{items}}" wx:key="{{item.value}}">
+          <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+          <view class="weui-cell__bd">{{item.name}}</view>
+        </label>
+      </checkbox-group>
+    </view>
+    <view class="from-item">
+      <view class="from-title">4.为了您的目标您每周能来运动几天？</view>
+      <checkbox-group bindchange="checkboxChange" class="weui-group-list">
+        <label class="weui-cell" wx:for="{{items}}" wx:key="{{item.value}}">
+          <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+          <view class="weui-cell__bd">{{item.name}}</view>
+        </label>
+      </checkbox-group>
+    </view>
+  </view>
+  <!-- 身体状态 -->
+  <view class="body-status">
+    <view class="body-title">
+      身体状态
+    </view>
+    <view class="body-form">
+      <view class="body-from-rows">
+        <view class="body-from-item">
+          <label for="">身高</label>
+          <view class="input-box">
+            <input type="number" class="input-text"/>cm
+          </view>
+        </view>
+        <view class="body-from-item">
+          <label for="">肌肉量</label>
+          <view class="input-box">
+            <input type="number" class="input-text"/>kg
+          </view>
+        </view>
+        <view class="body-from-item">
+          <label for="">体重</label>
+          <view class="input-box">
+            <input type="number" class="input-text"/>kg
+          </view>
+        </view>
+        <view class="body-from-item">
+          <label for="">体脂率</label>
+          <view class="input-box">
+            <input type="number" class="input-text"/>%
+          </view>
+        </view>
+        <view class="body-from-item">
+          <label for="">BMI</label>
+          <view class="input-box">
+            <input type="number" class="input-text"/>kg
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
