@@ -1,9 +1,11 @@
 {
   "pages": [
+    "pages/trainReport/trainReport",
+    "pages/tabbar/home/home",
+    "pages/trainning/trainning",
     "pages/newtrainProgram/newtrainProgram",
     "pages/referenceData/referenceData",
     "pages/tabbar/schedule/schedule",
-    "pages/tabbar/home/home",
     "pages/login/login",
     "pages/tabbar/clientele/clientele",
     "pages/tabbar/profile/profile",
@@ -49,7 +51,8 @@
         "text": "我的",
         "iconPath": "/assets/images/tabbar/profile.png",
         "selectedIconPath": "/assets/images/tabbar/profile_active.png"
-      }]
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"

@@ -5,14 +5,85 @@ Page({
    * 页面的初始数据
    */
   data: {
-    items: [
-      {value: 'USA', name: '美国'},
-      {value: 'CHN', name: '中国', checked: 'true'},
-      {value: 'BRA', name: '巴西'},
-      {value: 'JPN', name: '日本'},
-      {value: 'ENG', name: '英国'},
-      {value: 'FRA', name: '法国'}
+    fitnessList: {
+      example: [{
+          value: '减脂',
+          name: '减脂'
+        },
+        {
+          value: '增肌',
+          name: '增肌'
+        },
+        {
+          value: '瘦身',
+          name: '瘦身'
+        },
+        {
+          value: '塑形',
+          name: '塑形'
+        },
+        {
+          value: '运动康复',
+          name: '运动康复'
+        },
+        {
+          value: '提高运动表现',
+          name: '提高运动表现'
+        }
+      ],
+      example2: [{
+          value: '腹部',
+          name: '腹部'
+        }, {
+          value: "背部",
+          name: "背部"
+        },
+        {
+          value: "手臂",
+          name: "手臂"
+        },
+        {
+          value: "腿部",
+          name: "腿部"
+        }
+      ],
+      example3: [{
+          value: "1个月",
+          name: "1个月"
+        }, {
+          value: "2个月",
+          name: "2个月"
+        },
+        {
+          value: "3个月",
+          name: "3个月"
+        }, {
+          value: "6个月",
+          name: "6个月"
+        }
+      ],
+      example4: [{
+        value: "1-2天",
+        name: "1-2天"
+      }, {
+        value: "2-3天",
+        name: "2-3天"
+      },
+      {
+        value: "3-4天",
+        name: "3-4天"
+      }, {
+        value: "4-5天",
+        name: "4-5天"
+      },{
+        value:"5-6天",
+        name:"5-6天"
+      },{
+        value:"6-7天",
+        name:"6-7天"
+      }
     ]
+    }
   },
 
   /**
@@ -22,10 +93,19 @@ Page({
 
   },
   //复选框
-  checkboxChange(){
+  checkboxChange() {
 
   },
+  checkboxChange2() {
 
+  },
+  onChange2(){
+
+  },
+  onChange(){
+
+  },
+  //单选框
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

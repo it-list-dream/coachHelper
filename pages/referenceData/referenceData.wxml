@@ -5,7 +5,7 @@
     <view class="from-item">
       <view class="from-title">1.您希望通过健身达到哪些改变？（多选）</view>
       <checkbox-group bindchange="checkboxChange" class="weui-group-list">
-        <label class="weui-cell" wx:for="{{items}}" wx:key="{{item.value}}">
+        <label class="weui-cell" wx:for="{{ fitnessList.example}}" wx:key="{{item.value}}">
           <checkbox value="{{item.value}}" checked="{{item.checked}}" />
           <view class="weui-cell__bd">{{item.name}}</view>
         </label>
@@ -13,8 +13,8 @@
     </view>
     <view class="from-item">
       <view class="from-title">2.您最想改变哪个部位？（多选）</view>
-      <checkbox-group bindchange="checkboxChange" class="weui-group-list">
-        <label class="weui-cell" wx:for="{{items}}" wx:key="{{item.value}}">
+      <checkbox-group bindchange="checkboxChange2" class="weui-group-list">
+        <label class="weui-cell" wx:for="{{fitnessList.example2}}" wx:key="{{item.value}}">
           <checkbox value="{{item.value}}" checked="{{item.checked}}" />
           <view class="weui-cell__bd">{{item.name}}</view>
         </label>
@@ -22,21 +22,19 @@
     </view>
     <view class="from-item">
       <view class="from-title">3.您希望多长时间完成目标？</view>
-      <checkbox-group bindchange="checkboxChange" class="weui-group-list">
-        <label class="weui-cell" wx:for="{{items}}" wx:key="{{item.value}}">
-          <checkbox value="{{item.value}}" checked="{{item.checked}}" />
-          <view class="weui-cell__bd">{{item.name}}</view>
-        </label>
-      </checkbox-group>
+      <van-radio-group value="{{ radio }}" bind:change="onChange" direction="horizontal" custom-class="group_radio">
+        <block wx:for="{{fitnessList.example3}}">
+          <van-radio name="{{item.name}}" shape="square">{{item.value}}</van-radio>
+        </block>
+      </van-radio-group>
     </view>
     <view class="from-item">
       <view class="from-title">4.为了您的目标您每周能来运动几天？</view>
-      <checkbox-group bindchange="checkboxChange" class="weui-group-list">
-        <label class="weui-cell" wx:for="{{items}}" wx:key="{{item.value}}">
-          <checkbox value="{{item.value}}" checked="{{item.checked}}" />
-          <view class="weui-cell__bd">{{item.name}}</view>
-        </label>
-      </checkbox-group>
+      <van-radio-group value="{{ radio }}" bind:change="onChange2" direction="horizontal" custom-class="group_radio">
+        <block wx:for="{{fitnessList.example4}}">
+          <van-radio name="{{item.name}}" shape="square">{{item.value}}</van-radio>
+        </block>
+      </van-radio-group>
     </view>
   </view>
   <!-- 身体状态 -->
@@ -49,34 +47,37 @@
         <view class="body-from-item">
           <label for="">身高</label>
           <view class="input-box">
-            <input type="number" class="input-text"/>cm
+            <input type="number" class="input-text" />cm
           </view>
         </view>
         <view class="body-from-item">
           <label for="">肌肉量</label>
           <view class="input-box">
-            <input type="number" class="input-text"/>kg
+            <input type="number" class="input-text" />kg
           </view>
         </view>
         <view class="body-from-item">
           <label for="">体重</label>
           <view class="input-box">
-            <input type="number" class="input-text"/>kg
+            <input type="number" class="input-text" />kg
           </view>
         </view>
-        <view class="body-from-item">
+        <view class="body-from-item percentage">
           <label for="">体脂率</label>
           <view class="input-box">
-            <input type="number" class="input-text"/>%
+            <input type="number" class="input-text" />%
           </view>
         </view>
         <view class="body-from-item">
           <label for="">BMI</label>
           <view class="input-box">
-            <input type="number" class="input-text"/>kg
+            <input type="number" class="input-text" />kg
           </view>
         </view>
       </view>
+    </view>
+    <view class="btnlist">
+       <button type="mini" class="fitness-save">保存</button>
     </view>
   </view>
 </view>

@@ -1,0 +1,29 @@
+<!--pages/trainning/trainning.wxml-->
+<view class="trainningContainer">
+  <view class="train_header">
+    <view class="train_picture">
+      <view class="picture_box">
+        <image src="/assets/images/header.png"></image>
+      </view>
+      <view class="trainer_name">娜娜</view>
+      <navigator url="/pages/newtrainProgram/newtrainProgram" open-type="navigateTo" class="train_add_btn" hover-class="none"> +添加训练方案</navigator>
+    </view>
+  </view>
+  <view class="train-content">
+    <block wx:for="{{5}}" wx:key="index">
+      <view class="train-item" bindtap="trainDetail">
+        <image src="/assets/images/tag_flag.png"></image>
+        <view class="train-info">
+          <text>王教练</text>
+          <text>2022.02.11</text>
+        </view>
+        <view class="train-tag">减脂、增肌、塑形、增强体质、康复</view>
+        <view class="train-timer">
+          <text>频率4次/周</text>
+          <text>周期5月</text>
+          <text>次数86次</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -60,17 +60,84 @@ page {
 
 .body-form .body-from-item {
   display: flex;
+  justify-content: flex-start;
   margin-bottom: 30rpx;
   align-items: center;
   width: 280rpx;
 }
-.body-form .body-from-item:nth-child(2n){
-    justify-content: flex-end;
+
+.body-form .body-from-item:nth-child(2n) {
+  /* justify-content: flex-end; */
+  padding-left: 22rpx;
 }
+
 .body-form .input-box .input-text {
   display: inline-block;
   width: 90rpx;
   border-bottom: 1px solid #DEDEDE;
   margin: 0 18rpx;
   text-align: center;
+}
+
+
+/* 复选框 */
+checkbox .wx-checkbox-input {
+  width: 34rpx;
+  height: 34rpx;
+  border-radius: 6rpx;
+}
+
+/*checkbox选中后样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #0394F0;
+  border-color: transparent;
+}
+
+/*checkbox选中后图标样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 24rpx;
+  height: 18rpx;
+  line-height: 18rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+.van-radio-group {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
+}
+
+.van-radio {
+  margin-bottom: 40rpx;
+}
+
+.van-radio__label {
+  margin-left: 10rpx !important;
+}
+
+.van-radio__icon {
+  width: 34rpx !important;
+  height: 34rpx !important;
+  border-radius: 6rpx !important;
+  font-size: 30rpx !important;
+}
+
+.btnlist {
+  margin-top: 160rpx;
+}
+
+.btnlist .fitness-save {
+  margin: 0 auto;
+  width: 690rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #2564F6;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  color: #FFFFFF;
 }

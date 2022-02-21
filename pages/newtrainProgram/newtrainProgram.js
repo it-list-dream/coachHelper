@@ -6,6 +6,7 @@ Page({
    */
   data: {
     activeNames: ['0'],
+    periodList:['适应期','进步期','巩固期']
   },
 
   /**

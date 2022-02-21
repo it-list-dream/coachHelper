@@ -1,30 +1,21 @@
-// pages/tabbar/home/home.js
-const app = getApp();
+// pages/trainReport/trainReport.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tabbar: {},
+
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.editTabbar();
+
   },
-  coachList(){
-    wx.navigateTo({
-      url: '/pages/classType/classType',
-    })
-  },
-  train(){
-     wx.navigateTo({
-       url: '/pages/trainning/trainning',
-     })
-  },
-    /**
+
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {

@@ -1,30 +1,26 @@
-// pages/tabbar/home/home.js
-const app = getApp();
+// pages/trainning/trainning.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tabbar: {},
+
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.editTabbar();
+
   },
-  coachList(){
-    wx.navigateTo({
-      url: '/pages/classType/classType',
-    })
+  trainDetail(){
+    //  wx.navigateTo({
+    //    url: '/pages/train',
+    //  })
   },
-  train(){
-     wx.navigateTo({
-       url: '/pages/trainning/trainning',
-     })
-  },
-    /**
+
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {

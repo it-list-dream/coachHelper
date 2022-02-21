@@ -1,5 +1,14 @@
 <!--pages/tabbar/home/home.wxml-->
 <view class="indexContainer">
-  <navigator url="/pages/classType/classType" style="height:80px;line-height:80px;">教练列表</navigator>
+  <view>
+    <van-button type="primary" style="margin:0 auto;" bindtap="coachList">
+      教练列表
+    </van-button>
+  </view>
+  <view style="margin-top:40rpx;">
+    <van-button type="primary" style="margin:0 auto;" bindtap="train">
+      训练方案
+    </van-button>
+  </view>
 </view>
 <tabbar tabbar="{{tabbar}}"></tabbar>

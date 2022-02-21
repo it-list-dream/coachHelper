@@ -1,0 +1,76 @@
+<van-collapse value="{{ activeNames }}" bind:change="onChange" accordion>
+  <van-collapse-item title="{{periodTitle}}" name="{{activeNames[0]}}">
+    <view class="collaspe-rows-title">训练重点</view>
+    <view class="train-period-item">
+      <view wx:if="{{pointList.length>0}}" class="tbox">
+        <view class="period-item-left">
+          <text wx:for="{{pointList}}">{{item}}</text>
+          <!-- <text>有氧</text> -->
+        </view>
+        <view class="period-item-right" bindtap="editTrain">
+          <image src="/assets/images/train/editTrain.png"></image>
+        </view>
+      </view>
+      <view class="train-add" bindtap="addTrainPoint" wx:else>+添加项目</view>
+    </view>
+    <van-popup show="{{ show }}" bind:close="onClose">
+      <view class="poupon_list">
+        <view class="poupon_list_title">添加训练重点</view>
+        <view class="poupon-content">
+          <block wx:for="{{trainPointList}}" wx:for-index="j" wx:key="j">
+            <view class="poupon_item {{item.checked?'active-item':''}}" bindtap="trainTag" data-index="{{j}}">
+              {{item.name}}</view>
+          </block>
+        </view>
+        <view class="poupon_button">
+          <button class="cancel button" bindtap="onClose">取消</button>
+          <button class="confrim button" bindtap="onConfrim">确定</button>
+        </view>
+      </view>
+    </van-popup>
+    <view class="collaspe-rows-title">训练项目</view>
+    <view class="train-period-item">
+      <view class="period-item-left">
+        <text>力量</text>
+        <text>有氧</text>
+      </view>
+      <view class="period-item-right" bindtap="editTrain">
+        <image src="/assets/images/train/editTrain.png"></image>
+      </view>
+    </view>
+    <view class="collaspe-rows-title">训练目标</view>
+    <view class="train-period-item jieduan">
+      <text>体重记录</text>
+      <picker mode="multiSelector" class="weight-picker" header-text="体重记录(kg)" range="weightReworadList" bindchange="bindWeightChange"
+        bindcolumnchange="bindWeightColumnChange" value="{{weightIndex}}">
+        {{weightReworadList[1][weightIndex[1]]}}.{{weightReworadList[2][weightIndex[2]]}}
+        <text>kg</text>
+      </picker>
+    </view>
+    <view class="train-period-item jieduan">
+      <text>体脂变化</text>
+      <text>%</text>
+    </view>
+    <view class="train-period-item jieduan">
+      <text>肌肉变化</text>
+      <text>kg</text>
+    </view>
+    <view class="train-period-item jieduan">
+      <text>阶段频率</text>
+      <text>次/周</text>
+    </view>
+    <view class="train-period-item jieduan">
+      <text>阶段周期</text>
+      <text>周</text>
+    </view>
+    <view class="train-period-item jieduan">
+      <text>阶段次数</text>
+      <text>次</text>
+    </view>
+    <!-- 备注 -->
+    <view class="train-reamrk">
+      <textarea name="" id="" cols="30" rows="10" placeholder="备注" class="train-remark-text"></textarea>
+      <view class="limitCharacter">0/200</view>
+    </view>
+  </van-collapse-item>
+</van-collapse>

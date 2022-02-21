@@ -35,6 +35,18 @@
           "pathName": "pages/newtrainProgram/newtrainProgram",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/referenceData/referenceData",
+          "pathName": "pages/referenceData/referenceData",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/trainning/trainning",
+          "pathName": "pages/trainning/trainning",
+          "query": "",
+          "scene": null
         }
       ]
     }

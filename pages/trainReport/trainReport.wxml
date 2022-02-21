@@ -1,0 +1,45 @@
+<view class="trainReportContainer">
+  <view class="class-plain">
+    <view class="plain-tips">
+      <image src=""></image>
+      <text>课程规划</text>
+    </view>
+    <!--  -->
+    <view class="member-info">
+      <view class="member-header">
+        <view>娜娜</view>
+        <image></image>
+      </view>
+
+      <view class="member-target">
+        <view class="fitness-tip">健身目标</view>
+        <view class="fitness-groupcheckbox">
+          <view class="checkbox">减脂</view>
+          <view class="checkbox">增肌</view>
+          <view class="checkbox">塑形</view>
+          <view class="checkbox">康复</view>
+        </view>
+        <view class="frequency">
+          <text>健身频率</text>
+          <text>3次/周</text>
+        </view>
+        <view class="total-cycle">
+          <text>健身总周期</text>
+          <text>6月</text>
+        </view>
+        <view class="total-degree">
+          <text>健身总次数</text>
+          <text>77次</text>
+        </view>
+      </view>
+
+      <view class="stage-list">
+           <view class="stage-title">适应期</view>
+           <view class="stage-row">
+                <view>训练重点</view>
+                <view></view>
+           </view>
+      </view>
+    </view>
+  </view>
+</view>
