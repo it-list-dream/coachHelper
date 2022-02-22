@@ -1,16 +1,15 @@
 <view class="trainReportContainer">
   <view class="class-plain">
     <view class="plain-tips">
-      <image src=""></image>
+      <image src="/assets/images/report/course.png"></image>
       <text>课程规划</text>
     </view>
     <!--  -->
     <view class="member-info">
       <view class="member-header">
-        <view>娜娜</view>
-        <image></image>
+        <view class="member-name">娜娜</view>
+        <image src="/assets/images/report/header.png"></image>
       </view>
-
       <view class="member-target">
         <view class="fitness-tip">健身目标</view>
         <view class="fitness-groupcheckbox">
@@ -19,27 +18,26 @@
           <view class="checkbox">塑形</view>
           <view class="checkbox">康复</view>
         </view>
-        <view class="frequency">
+        <view class="frequency fCount">
           <text>健身频率</text>
           <text>3次/周</text>
         </view>
-        <view class="total-cycle">
+        <view class="total-cycle fCount">
           <text>健身总周期</text>
           <text>6月</text>
         </view>
-        <view class="total-degree">
+        <view class="total-degree fCount">
           <text>健身总次数</text>
           <text>77次</text>
         </view>
       </view>
-
-      <view class="stage-list">
-           <view class="stage-title">适应期</view>
-           <view class="stage-row">
-                <view>训练重点</view>
-                <view></view>
-           </view>
-      </view>
     </view>
+  </view>
+  <!-- 时间段 -->
+  <view class="stage-list">
+    <import src="/template/periodical/periodical.wxml" />
+    <block wx:for="{{4}}" wx:key="index">
+      <template is="period" data="{{stageList}}"></template>
+    </block>
   </view>
 </view>

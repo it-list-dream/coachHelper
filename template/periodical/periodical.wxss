@@ -1,0 +1,108 @@
+/* template/periodical/periodical.wxss */
+.stage-item {
+  background-color: #FFFFFF;
+  padding-bottom: 30rpx;
+  margin-bottom: 20rpx;
+}
+.stage-item .stage-title {
+  padding: 0 32rpx;
+  font-size: 36rpx;
+  color: #000000;
+}
+.stage-item:nth-child(n+2) .stage-title{
+  padding: 30rpx 32rpx 10rpx;
+}
+.stage-item .stage-row {
+  position: relative;
+  width: 690rpx;
+  min-height: 136rpx;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20rpx 0px rgba(0, 30, 101, 0.14);
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  padding: 20rpx 34rpx;
+  overflow: hidden;
+}
+.stage-item .stage-row::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6rpx;
+  height: 100%;
+  background-color: #2565F6;
+}
+
+.stage-item .stage-row>view:first-child {
+  font-size: 30rpx;
+  color: #2565F6;
+}
+
+.stage-item .stage-row>view:last-child {
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  color: #333333;
+}
+
+/*  */
+/* .body-change {
+  display: flex;
+  justify-content: space-between;
+} */
+
+.body-change {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 690rpx;
+  height: 261rpx;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20rpx 0px rgba(0, 30, 101, 0.14);
+  border-radius: 20rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  padding: 40rpx 40rpx 40rpx 52rpx;
+  box-sizing: border-box;
+}
+
+.body-change-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.body-change-item .fData {
+  vertical-align: middle;
+  font-size: 30rpx;
+  color: #010101;
+}
+
+.body-change-item .fData image {
+  width: 36rpx;
+  height: 36rpx;
+  vertical-align: middle;
+}
+
+/*  */
+.stage-change-list {
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
+}
+
+.stage-change-list .changeItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 220rpx;
+  height: 136rpx;
+  padding: 26rpx 0;
+  box-sizing: border-box;
+  background: linear-gradient(0deg, #2564F6 0%, #6796FF 100%);
+  border-radius: 9rpx;
+  font-size: 30rpx;
+  color: #FFFFFF;
+}

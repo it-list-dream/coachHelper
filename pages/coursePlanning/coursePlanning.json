@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-stepper": "@vant/weapp/stepper/index",
+    "addClass":"/components/class-type/class-type"
+  },
+  "navigationBarBackgroundColor":"#ffffff",
+  "navigationBarTextStyle":"black",
+  "navigationBarTitleText":"课程规划"
+}

@@ -1,4 +1,4 @@
-// pages/trainning/trainning.js
+// pages/courseContract/courseContract.js
 Page({
 
   /**
@@ -13,11 +13,6 @@ Page({
    */
   onLoad: function (options) {
 
-  },
-  trainDetail(){
-     wx.navigateTo({
-       url: '/pages/trainReport/trainReport',
-     })
   },
 
   /**

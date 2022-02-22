@@ -1,0 +1,44 @@
+<view class="classPlainContainer">
+  <view class='tab-wrapper'>
+    <scroll-view class="tab-scroll-view" scroll-x="{{true}}" enable-flex>
+      <block wx:for="{{vanTabsList}}" wx:key="index">
+        <view class='tab-item {{tabsActive === index ? "tab-active":""}}' data-current="{{index}}" bindtap='switchTab'>
+          {{item}}</view>
+      </block>
+      <view class="btn-list">
+        <button class="addPlain" bindtap="addPlus">+</button>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="tab-content">
+    <view class="tab-content-title">课程名称</view>
+    <!-- 滚动面板 -->
+    <block>
+      <scroll-view class="scroll-y" style="height:calc({{windowHeight}}px - 470rpx)" scroll-y>
+        <view class="class-item" wx:for="{{4}}">
+          <view class="class-tips">
+            <view class="class-picture">
+              <image src="/assets/images/fitness_img.png"></image>
+            </view>
+            <view class="class-info">
+              <view class="class-name">女性塑形课程</view>
+              <view class="class-price">￥300.0</view>
+            </view>
+          </view>
+          <view class="number-box">
+            <van-stepper value="{{ class_number }}" bind:change="changePrice" integer />
+          </view>
+          <view class="close">
+            <image src="/assets/images/close1.png"></image>
+          </view>
+        </view>
+        <view class="addClassWrapper">+添加课程</view>
+      </scroll-view>
+    </block>
+  </view>
+  <addClass type-list="{{typeList}}" poupon-height="80vh" isChecked="{{false}}"></addClass>
+  <view class="class-bottom-plain">
+    <view class="totalPrice">合计：￥6000</view>
+    <button class="price-confrim">确定</button>
+  </view>
+</view>

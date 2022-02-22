@@ -1,1 +1,117 @@
 /* pages/trainReport/trainReport.wxss */
+@import '/template/periodical/periodical.wxss';
+
+page {
+  background-color: #F5F3FF;
+}
+
+/* template */
+.class-plain {
+  padding: 0 30rpx 30rpx;
+  background-color: #FFFFFF;
+}
+
+.class-plain .plain-tips>image {
+  width: 36rpx;
+  height: 36rpx;
+  vertical-align: middle;
+}
+
+.class-plain .plain-tips>text {
+  padding-top: 10rpx;
+  margin-left: 18rpx;
+  font-size: 30rpx;
+  line-height: 1.5;
+  color: #2565F6;
+  vertical-align: middle;
+}
+
+.class-plain .member-info {
+  margin: 0 auto;
+  margin-top: 44rpx;
+  width: 690rpx;
+  height: 538rpx;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20rpx 0px rgba(0, 30, 101, 0.14);
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.member-info .member-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90rpx;
+  padding: 0 50rpx;
+  background-color: #2565F6;
+}
+
+.member-info .member-header .member-name {
+  font-size: 36rpx;
+  color: #FFFFFF;
+}
+
+.member-info .member-header image {
+  width: 65rpx;
+  height: 65rpx;
+}
+
+.member-info .member-target {
+  width: 100%;
+  padding: 50rpx;
+  box-sizing: border-box;
+}
+
+.member-info .member-target .fitness-tip {
+  font-size: 32rpx;
+  color: #000000;
+}
+
+.member-target .fitness-groupcheckbox {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.fitness-groupcheckbox .checkbox {
+  width: 90rpx;
+  height: 40rpx;
+  min-width: 90rpx;
+  line-height: 40rpx;
+  text-align: center;
+  border: 1px solid #2565F6;
+  border-radius: 20rpx;
+  font-size: 26rpx;
+  color: #2565F6;
+}
+
+.fitness-groupcheckbox .checkbox:nth-child(n+2) {
+  margin-left: 20rpx;
+}
+
+.fCount {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 30rpx;
+  color: #010101;
+}
+
+.frequency {
+  margin-top: 54rpx;
+}
+
+.total-cycle,
+.total-degree {
+  margin-top: 24rpx;
+}
+
+/* 时间段 */
+.stage-list {
+  box-sizing: border-box;
+}
+
+.stage-list .stage-item:nth-child(n+2) {
+  margin-bottom: 20rpx;
+}

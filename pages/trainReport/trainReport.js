@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    stageList: [{
+      stageTitle: "适应期",
+      trainpointList: ['力量', '有氧', '柔韧性'],
+      trainprojectList: ['被动牵引', '自由重量', '自重训练', '有氧训练', '私教团课'],
+    }]
   },
 
   /**

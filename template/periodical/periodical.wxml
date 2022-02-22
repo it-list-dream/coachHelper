@@ -1,0 +1,44 @@
+<template name="period">
+  <view class="stage-item">
+    <view class="stage-title">适应期</view>
+    <view class="stage-row">
+      <view>训练重点</view>
+      <view>力量、有氧、柔韧性</view>
+    </view>
+    <view class="stage-row">
+      <view>训练项目</view>
+      <view>被动牵引、自由重量、自重训练、有氧训练、 私教团课</view>
+    </view>
+    <view class="body-change">
+      <view class="body-change-item">
+        <text>体重变化</text>
+        <view class="fData">0.2kg <image src="/assets/images/report/deline.png"></image>
+        </view>
+      </view>
+      <view class="body-change-item">
+        <text>体脂变化</text>
+        <view class="fData">20% <image src="/assets/images/report/deline.png"></image>
+        </view>
+      </view>
+      <view class="body-change-item">
+        <text>肌肉变化</text>
+        <view class="fData">0.3kg <image src="/assets/images/report/rise.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="stage-change-list">
+      <view class="changeItem">
+        <text>阶段频率</text>
+        <text>3次/周</text>
+      </view>
+      <view class="changeItem">
+        <text>阶段周期</text>
+        <text>6周</text>
+      </view>
+      <view class="changeItem">
+        <text>阶段次数</text>
+        <text>18次</text>
+      </view>
+    </view>
+  </view>
+</template>

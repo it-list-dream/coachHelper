@@ -1,8 +1,10 @@
 {
   "pages": [
+    "pages/coursePlanning/coursePlanning",
+    "pages/courseContract/courseContract",
+    "pages/trainning/trainning",
     "pages/trainReport/trainReport",
     "pages/tabbar/home/home",
-    "pages/trainning/trainning",
     "pages/newtrainProgram/newtrainProgram",
     "pages/referenceData/referenceData",
     "pages/tabbar/schedule/schedule",
@@ -28,7 +30,8 @@
     "backgroundColor": "#ffffff",
     "color": "#222222",
     "selectedColor": "#2564F6",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/tabbar/home/home",
         "text": "首页",
         "iconPath": "/assets/images/tabbar/home.png",
