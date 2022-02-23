@@ -15,19 +15,7 @@
                 <image src="/assets/images/right_arrow.png" />
             </view>
         </view>
-        <van-popup show="{{ showclass }}" position="bottom" custom-style="height: 1000rpx;" bind:close="onClose">
-            <view class="pouponWrapper">
-                <view class="class-title">请选择课程类型</view>
-                <scroll-view class="class-content" scroll-y>
-                    <block wx:for="{{clsstypeList}}" wx:for-index="idx" wx:for-item="type">
-                        <view class="typeitem">
-                            <text> {{type}}</text>
-                            <image src="/assets/images/hook.png"></image>
-                        </view>
-                    </block>
-                </scroll-view>
-            </view>
-        </van-popup>
+        <class-type poupon-height="80vh" is-show="{{showclass}}" type-list="{{clsstypeList}}" is-checked="{{true}}" bind:cancel="handleCancel" bind:confrim="handleConfrim"></class-type>
         <view class="from-col">
             <view>上课时间</view>
             <view class="date">

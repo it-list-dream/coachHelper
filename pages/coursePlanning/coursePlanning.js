@@ -52,7 +52,9 @@ Page({
         name: "减脂课",
         checked: false
       }
-    ]
+    ],
+    //是否显示添加课程弹窗
+    showClass:false
   },
 
   /**
@@ -86,6 +88,24 @@ Page({
     let current = e.currentTarget.dataset.current;
     this.setData({
       tabsActive: current
+    })
+  },
+  //确定 取消
+  onCancel(){
+     this.setData({
+       showClass:false
+     })
+  },
+  onConfrim(e){
+    console.log(e)
+     this.setData({
+       showClass:false,
+       typeList:e.detail
+     })
+  },
+  showMask(){
+    this.setData({
+      showClass:true
     })
   },
   /**

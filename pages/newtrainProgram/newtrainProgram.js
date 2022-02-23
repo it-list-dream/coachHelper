@@ -6,7 +6,7 @@ Page({
    */
   data: {
     activeNames: ['0'],
-    periodList:['适应期','进步期','巩固期']
+    periodList: ['适应期', '进步期', '巩固期']
   },
 
   /**
@@ -19,6 +19,13 @@ Page({
     this.setData({
       activeNames: event.detail,
     });
+  },
+  addperiod() {
+    let pList = this.data.periodList;
+    pList.push('第' + (pList.length + 1) + '阶段');
+    this.setData({
+      periodList: pList
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

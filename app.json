@@ -1,11 +1,13 @@
 {
   "pages": [
-    "pages/coursePlanning/coursePlanning",
-    "pages/courseContract/courseContract",
-    "pages/trainning/trainning",
-    "pages/trainReport/trainReport",
+    "pages/addTrainPlan/addTrainPlan",
     "pages/tabbar/home/home",
+    "pages/trialClass/trialClass",
+    "pages/trainning/trainning",
+    "pages/courseContract/courseContract",
     "pages/newtrainProgram/newtrainProgram",
+    "pages/coursePlanning/coursePlanning",
+    "pages/trainReport/trainReport",
     "pages/referenceData/referenceData",
     "pages/tabbar/schedule/schedule",
     "pages/login/login",

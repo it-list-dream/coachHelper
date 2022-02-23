@@ -1,4 +1,6 @@
 // components/stage-list/stage-list.js
+var list = [],
+  list2 = [];
 Component({
   /**
    * 组件的属性列表
@@ -43,19 +45,43 @@ Component({
     ],
     pointList: [],
     //体重
-    // [['无脊柱动物', '脊柱动物'], ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'], ['猪肉绦虫', '吸血虫']]
     weightReworadList: [
-      ['增加', '减少'],
-      [1, 3, 4, 5],
-      [5, 6, 8]
+      ['增加', '减少']
     ],
     weightIndex: [0, 0, 0],
+    //阶段频次
+    stageCountList: [],
+    countIndex: 0,
+    //阶段周期
+    stageTimeList: [
+      [],
+      ['周', '月']
+    ],
+    stageTimeIndex: [0, 0]
   },
   lifetimes: {
     attached() {
       let activeList = this.properties.activeName;
+      let weightReworadList = this.data.weightReworadList;
+      let stageCountList = this.data.stageCountList;
+      let stageTimeList = this.data.stageTimeList;
+      for (let i = 0; i < 50; i++) {
+        list.push(i)
+        if (i > 0) {
+          stageCountList.push(i)
+          stageTimeList[0].push(i)
+        }
+      }
+      for (let j = 1; j < 10; j++) {
+        list2.push(j)
+      }
+      weightReworadList[1] = list;
+      weightReworadList[2] = list2;
+      //console.log(weightReworadList)
       this.setData({
-        activeNames: activeList
+        activeNames: activeList,
+        weightReworadList: weightReworadList,
+        stageCountList: stageCountList
       })
     }
   },
@@ -84,7 +110,6 @@ Component({
     onConfrim() {
       let trainList = this.data.trainPointList;
       let tList = trainList.filter(item => item.checked).map(it => it.name);
-      // console.log(tList, tList2)
       this.setData({
         pointList: tList,
         show: false
@@ -110,68 +135,65 @@ Component({
         weightIndex: e.detail.value
       })
     },
-    bindWeightColumnChange() {
+    bindWeightColumnChange(e) {
       console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
-      var data = {
-        weightReworadList: this.data.multiArray,
-        weightIndex: this.data.weightIndex
-      };
-      data.weightIndex[e.detail.column] = e.detail.value;
+      var multiArray = this.data.weightReworadList;
+      console.log(multiArray)
+      var multiIndex = this.data.weightIndex;
+      multiIndex[e.detail.column] = e.detail.value;
       switch (e.detail.column) {
-        case 0:
-          switch (data.weightIndex[0]) {
-            case 0:
-              data.weightReworadList[1] = ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'];
-              data.weightReworadList[2] = ['猪肉绦虫', '吸血虫'];
-              break;
-            case 1:
-              data.weightReworadList[1] = ['鱼', '两栖动物', '爬行动物'];
-              data.weightReworadList[2] = ['鲫鱼', '带鱼'];
-              break;
-          }
-          data.weightIndex[1] = 0;
-          data.weightIndex[2] = 0;
+        case 0: //改变第一列
+          console.log(multiIndex);
+          multiIndex[1] = 0;
+          //将二、三列的index设为0，即第一个值
+          multiIndex[2] = 0;
+          //设置二、三列的列表
+          multiArray[1] = list;
+          multiArray[2] = list2;
+          console.log(multiIndex);
           break;
-        case 1:
-          // switch (data.multiIndex[0]) {
-          //   case 0:
-          //     switch (data.multiIndex[1]) {
-          //       case 0:
-          //         data.multiArray[2] = ['猪肉绦虫', '吸血虫'];
-          //         break;
-          //       case 1:
-          //         data.multiArray[2] = ['蛔虫'];
-          //         break;
-          //       case 2:
-          //         data.multiArray[2] = ['蚂蚁', '蚂蟥'];
-          //         break;
-          //       case 3:
-          //         data.multiArray[2] = ['河蚌', '蜗牛', '蛞蝓'];
-          //         break;
-          //       case 4:
-          //         data.multiArray[2] = ['昆虫', '甲壳动物', '蛛形动物', '多足动物'];
-          //         break;
-          //     }
-          //     break;
-          //   case 1:
-          //     switch (data.multiIndex[1]) {
-          //       case 0:
-          //         data.multiArray[2] = ['鲫鱼', '带鱼'];
-          //         break;
-          //       case 1:
-          //         data.multiArray[2] = ['青蛙', '娃娃鱼'];
-          //         break;
-          //       case 2:
-          //         data.multiArray[2] = ['蜥蜴', '龟', '壁虎'];
-          //         break;
-          //     }
-          //     break;
-          // }
-          // data.multiIndex[2] = 0;
-          // console.log(data.multiIndex);
-          // break;
+        case 1: //改变第二列
+          console.log(multiIndex);
+          multiIndex[2] = 0;
+          //设置第三列列表
+          multiArray[2] = list2;
+          console.log(multiIndex);
+          break;
       }
-      this.setData(data);
+      this.setData({ //将设置好的列表和选项index赋值
+        weightReworadList: multiArray,
+        weightIndex: multiIndex,
+      });
+    },
+    //阶段频率
+    bindCountChange(e) {
+      this.setData({
+        countIndex: e.detail.value
+      })
+    },
+    //阶段周期
+    timesColumnChange(e) {
+      let multiArray = this.data.stageTimeList;
+      let multiIndex = this.data.stageTimeIndex;
+      let numberList = [];
+      multiIndex[e.detail.column] = e.detail.value;
+      if (e.detail.column == 0) {
+        // 这里可以自行更改,例如通过下表来获取
+        multiIndex[0] = 0;
+        for (let i = 1; i < 50; i++) {
+          numberList.push(i)
+        }
+        multiArray[0] = numberList;
+      }
+      this.setData({
+        stageTimeList: multiArray,
+        stageTimeIndex: multiIndex,
+      })
     }
+  },
+  bindTimesChange(e) {
+    this.setData({
+      stageTimeIndex: e.detail.value
+    });
   }
 })

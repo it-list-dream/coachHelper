@@ -217,6 +217,7 @@ input {
   display: flex;
   justify-content: center;
   margin-top: 150rpx;
+  padding-bottom: 30rpx;
 }
 
 .save .saveBtn {

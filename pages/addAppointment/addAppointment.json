@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "van-popup": "@vant/weapp/popup/index",
-    "datetimepicker": "/components/timePicker/timePicker"
+    "datetimepicker": "/components/timePicker/timePicker",
+    "class-type":"/components/class-type/class-type"
   },
   "navigationBarBackgroundColor": "#2564F6",
   "navigationBarTextStyle": "white",

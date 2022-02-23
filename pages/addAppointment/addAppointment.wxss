@@ -31,8 +31,8 @@ page {
 
 .from-col .date image {
   margin-left: 10rpx;
-  width: 15rpx;
-  height: 20rpx;
+  width: 25rpx;
+  height: 25rpx;
 }
 .from-item{
   display: flex;
@@ -49,7 +49,7 @@ page {
 
 .from-item image {
   margin-left: 10rpx;
-  width: 15rpx;
+  width: 25rpx;
   height: 25rpx;
   vertical-align: middle;
   flex-shrink: 0;
@@ -71,6 +71,7 @@ page {
    color: #A7A7A7;
    min-height: 150px;
 }
+/*  */
 .class-title {
   height: 100rpx;
   line-height: 100rpx;
@@ -85,28 +86,7 @@ page {
   box-sizing: border-box;
   height: 900rpx;
 }
-
-.pouponWrapper .typeitem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 110rpx;
-  line-height: 110rpx;
-  box-sizing: border-box;
-  border-bottom: 1px solid #EDEDED;
-  font-size: 36rpx;
-  color: #222222;
-}
-
-.pouponWrapper .typeitem image {
-  width: 40rpx;
-  height: 40rpx;
-}
-
-.pouponWrapper .typeitem:last-child {
-  border: none;
-}
-
+/*  */
 .alarm-box {
   padding: 0 40rpx;
 }

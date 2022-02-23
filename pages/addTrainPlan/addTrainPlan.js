@@ -1,42 +1,20 @@
-// pages/courseContract/courseContract.js
-const util = require('../../utils/util.js')
+// pages/addTrainPlan/addTrainPlan.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    saleDate: "",
-    methodsList: ['线上', '线下'],
-    payIndex: -1,
-    showPay:false
+
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let nowtime = util.format(new Date(), 'yyyy-mm-dd')
-    this.setData({
-      saleDate: nowtime
-    })
+
   },
-  // 支付方式
-  payChange(e) {
-    let index = e.detail.value;
-    if(index == 0){
-       this.setData({
-        showPay:true
-       })
-    }
-    this.setData({
-      payIndex: index
-    })
-  },
-  onClose(){
-     this.setData({
-      showPay:false
-     })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -50,6 +28,7 @@ Page({
   onShow: function () {
 
   },
+
   /**
    * 生命周期函数--监听页面隐藏
    */

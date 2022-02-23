@@ -6,7 +6,38 @@ Page({
    */
   data: {
     showclass: false,
-    clsstypeList: ["女性塑形课程", "廋身课程", "增肌课程", "健身入门课程", "运动康复课程", "产后修复课程", "私教体验课", "自主训练", "减脂课"],
+    // clsstypeList: ["女性塑形课程", "廋身课程", "增肌课程", "健身入门课程", "运动康复课程", "产后修复课程", "私教体验课", "自主训练", "减脂课"],
+    clsstypeList: [{
+      name: "女性塑形课程",
+      checked: false
+    }, {
+      name: "瘦身课程",
+      checked: false
+    }, {
+      name: "增肌课程",
+      checked: false
+    }, {
+      name: "健身入门课程",
+      checked: false
+    },
+    {
+      name: "运动康复课程",
+      checked: false
+    }, {
+      name: "产后修复课程",
+      checked: false
+    }, {
+      name: "私教体验课",
+      checked: false
+    }, {
+      name: "自主训练",
+      checked: false
+    },
+    {
+      name: "减脂课",
+      checked: false
+    }
+  ],
     //是否显示重复
     showtips: false,
     weekList: [{
@@ -80,11 +111,6 @@ Page({
      wx.navigateTo({
        url: '/pages/chooseCustom/chooseCustom',
      })
-  },
-  onClose() {
-    this.setData({
-      showclass: false
-    })
   },
   onClose1() {
     this.setData({
@@ -221,9 +247,17 @@ Page({
       selectedTime: e.detail.value
     })
   },
-  //保存
-  saveAll(){
-
+  //弹窗
+  handleConfrim(e){
+     this.setData({
+       showclass:false,
+       clsstypeList:e.detail
+     })
+  },
+  handleCancel(){
+      this.setData({
+        showclass:false
+      })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

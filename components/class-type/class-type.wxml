@@ -1,14 +1,14 @@
-<van-popup show="{{show }}" position="bottom" custom-style="height:{{pouponHeight}};" bind:close="onClose"
-  catch:touchstart>
+<van-popup show="{{isShow}}" position="bottom" custom-style="height:{{pouponHeight}};" bind:close="onClose"
+  data-index="0">
   <view class="pouponList">
     <view class="class-header">
-        <text class="class-cancel cl" bindtap="classCancel">取消</text>
-        <text class="class-title">请选择课程类型</text>
-        <text class="class-confrim cl" bindtap="classConfrim">确定</text>
+      <text class="class-cancel cl" bindtap="onClose" data-index="1">取消</text>
+      <text class="class-title">请选择课程类型</text>
+      <text class="class-confrim cl" bindtap="classConfrim">确定</text>
     </view>
     <scroll-view class="class-content" scroll-y style="height:calc({{pouponHeight}} - 100rpx)">
       <block wx:for="{{ list}}" wx:for-index="idx" wx:for-item="type">
-        <view class="scroll-box">
+        <view class="scroll-box" bindtap="selectedType" data-type="{{type}}">
           <view class="typeitem">
             <text> {{type.name}}</text>
             <image src="/assets/images/hook.png" wx:if="{{type.checked}}"></image>

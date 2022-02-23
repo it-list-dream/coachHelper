@@ -145,8 +145,8 @@
 }
 
 .rows image {
-  width: 20rpx;
-  height: 20rpx;
+  width: 25rpx;
+  height: 25rpx;
 }
 
 .rows text {

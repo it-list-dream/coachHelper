@@ -1,1 +1,166 @@
 /* pages/courseContract/courseContract.wxss */
+page {
+  background-color: #F5F5FF;
+}
+
+.contract-tips {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 121rpx;
+  line-height: 121rpx;
+  background: #FFFFFF;
+  font-size: 30rpx;
+  color: #222222;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.class-list {
+  margin-top: 20rpx;
+  width: 100%;
+  height: auto;
+  background-color: #FFFFFF;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.class-type-row {
+  display: flex;
+  justify-content: space-between;
+  height: 120rpx;
+  line-height: 120rpx;
+  border-bottom: 1px solid #EDEDED;
+}
+
+.class-list .class-title {
+  font-size: 34rpx;
+  color: #222222;
+}
+
+.class-list .class-info {
+  font-size: 30rpx;
+  color: #222222;
+}
+
+.class-row {
+  display: flex;
+  height: 120rpx;
+  line-height: 120rpx;
+  justify-content: flex-end;
+  font-size: 34rpx;
+  color: #222222;
+}
+
+.classbox {
+  margin-top: 20rpx;
+}
+
+.class-row .classTotalPrice {
+  color: #FF4642;
+}
+
+/*  */
+.cell-group {
+  margin-top: 20rpx;
+  height: auto;
+  background-color: #FFFFFF;
+  padding: 0 30rpx;
+}
+
+.cell {
+  display: flex;
+  height: 121rpx;
+  line-height: 121rpx;
+  border-bottom: 1px solid #EDEDED;
+  justify-content: space-between;
+}
+
+.cell-title {
+  white-space: nowrap;
+  font-size: 34rpx;
+  color: #222222;
+}
+
+.cell-content {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  font-size: 30rpx;
+  color: #222222;
+}
+
+.picker-pay .cell-icon {
+  width: 15rpx;
+  height: 22rpx;
+}
+
+/*  */
+.pay-box {
+  position: relative;
+  width: 603rpx;
+  height: 648rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+}
+
+.pay-box::before {
+  position: absolute;
+  top: 95rpx;
+  left: 0;
+  width: 30rpx;
+  height: 30rpx;
+  content: '';
+  background-color: #4c4c4c;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.pay-box::after {
+  position: absolute;
+  top: 95rpx;
+  right: 0;
+  width: 30rpx;
+  height: 30rpx;
+  content: '';
+  background-color: #4c4c4c;
+  border-radius: 50%;
+  transform: translateX(50%);
+}
+
+.pay-title {
+  text-align: center;
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #010101;
+  padding: 32rpx 0;
+}
+
+.wechat-code {
+  text-align: center;
+  border-top: 1px solid #F0F0F0;
+  overflow: hidden;
+}
+
+.wechat-code .wechat-icon {
+  padding-top: 30rpx;
+  width: 340rpx;
+  height: 340rpx;
+}
+
+.pay-bottom {
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pay-bottom .w-icon {
+  width: 56rpx;
+  height: 54rpx;
+}
+
+.pay-bottom text {
+  margin-left: 25rpx;
+}

@@ -16,12 +16,16 @@ Component({
     isChecked: {
       type: Boolean,
       value: false
+    },
+    isShow: {
+      type: Boolean,
+      value: false
     }
   },
   lifetimes: {
     attached() {
       this.setData({
-        list:this.properties.typeList
+        list: this.properties.typeList
       })
     }
   },
@@ -42,7 +46,7 @@ Component({
    */
   data: {
     show: true,
-    list:[]
+    list: []
   },
 
   /**
@@ -50,20 +54,40 @@ Component({
    */
   methods: {
     onClose(e) {
-      this.setData({
-        show: false
-      });
+      let index = e.currentTarget.dataset.index,
+        myList = this.data.list;
+      if (index > 0) {
+        for (let i = 0; i < myList.length;i++) {
+            if(myList[i].checked){
+                myList.checked  = false;
+            }
+        }
+      }
+      this.triggerEvent('cancel')
     },
     // 选择
-    classCancel() {
-      this.setData({
-        show: false
-      });
-    },
+    // classCancel() {
+    //   console.log('取消')
+    //   this.setData({
+    //     show: false
+    //   });
+    // },
     classConfrim() {
-      this.triggerEvent('confrim', {
-        name: 'zs',
-        sex: '男'
+      console.log('确定按钮')
+      let typeList = this.data.list;
+      this.triggerEvent('confrim',typeList)
+    },
+    selectedType(e) {
+      let type = e.currentTarget.dataset.type;
+      let allList = this.data.list;
+      console.log(type)
+      for (let i = 0; i < allList.length; i++) {
+        if (allList[i].name == type.name) {
+          allList[i].checked = !allList[i].checked
+        }
+      }
+      this.setData({
+        list: allList
       })
     }
   }

@@ -1,0 +1,41 @@
+<view class="trialClassContainer">
+  <view class="train_header">
+    <view class="train_picture">
+      <view class="picture_box">
+        <image src="/assets/images/header.png"></image>
+      </view>
+      <view class="trainer_name">娜娜</view>
+      <view  class="train_add_btn" hover-class="none" bindtap="addTrialClass"> +添加体验课</view>
+    </view>
+  </view>
+  <view class="trial-content">
+    <view class="trial-record" wx:for="{{3}}">
+      <view class="left-record">
+        <text class="serial">{{index + 1}}</text>
+        <text class="trial-name">私教体验课</text>
+      </view>
+      <view class="right-record">
+        <view class="right-status">
+          <text>已完成</text>
+          <text>02月16日</text>
+        </view>
+        <image class="right-icon" src="/assets/images/right_arrow.png"></image>
+      </view>
+    </view>
+  </view>
+  <van-popup show="{{ isshow }}" bind:close="onClose" position="bottom" custom-style="height: 40%">
+    <view class="trial-poupon">
+      <view class="trial-header">
+        <text class="text"></text>
+        <text class="trial-title">选择体验课</text>
+        <text class="trial-confrim text">确定</text>
+      </view>
+      <view class="trial-poupon-content">
+        <view class="trial-row">
+          <text>私教体验课</text>
+          <image src="/assets/images/double.png"></image>
+        </view>
+      </view>
+    </view>
+  </van-popup>
+</view>

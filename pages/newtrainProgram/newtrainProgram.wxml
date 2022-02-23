@@ -109,7 +109,7 @@
         </view>
       </van-collapse-item>
     </van-collapse> -->
-    <view class="addMyStage">+ 添加阶段</view>
+    <view class="addMyStage" bindtap="addperiod">+ 添加阶段</view>
     <button size="mini" class="createBtn">创建训练方案</button>
   </view>
 </view>

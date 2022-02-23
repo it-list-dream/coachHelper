@@ -32,11 +32,11 @@
             <image src="/assets/images/close1.png"></image>
           </view>
         </view>
-        <view class="addClassWrapper">+添加课程</view>
+        <view class="addClassWrapper" bindtap="showMask">+添加课程</view>
       </scroll-view>
     </block>
   </view>
-  <addClass type-list="{{typeList}}" poupon-height="80vh" isChecked="{{false}}"></addClass>
+  <addClass type-list="{{typeList}}" poupon-height="80vh" isChecked="{{false}}" is-show="{{showClass}}" bind:cancel="onCancel" bind:confrim="onConfrim"></addClass>
   <view class="class-bottom-plain">
     <view class="totalPrice">合计：￥6000</view>
     <button class="price-confrim">确定</button>

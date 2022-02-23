@@ -1,8 +1,8 @@
 {
   "usingComponents": {
-    "van-popup": "@vant/weapp/popup/index"
+    
   },
   "navigationBarBackgroundColor":"#2564F6",
   "navigationBarTextStyle":"white",
-  "navigationBarTitleText":"课程合同"
+  "navigationBarTitleText":"添加训练计划"
 }
