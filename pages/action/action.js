@@ -168,7 +168,7 @@ Page({
     })
   },
   onClose() {
-    thhis.setData({
+    this.setData({
       isShowDialog: false
     })
   },

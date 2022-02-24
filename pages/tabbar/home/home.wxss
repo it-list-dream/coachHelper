@@ -1,4 +1,7 @@
 /* pages/tabbar/home/home.wxss */
 .indexContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding-bottom: 140rpx;
 }

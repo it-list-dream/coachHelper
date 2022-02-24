@@ -24,6 +24,11 @@ Page({
        url: '/pages/trainning/trainning',
      })
   },
+  trainPlan(){
+    wx.navigateTo({
+      url: '/pages/coursePlanning/coursePlanning',
+    })
+  },
     /**
    * 生命周期函数--监听页面初次渲染完成
    */

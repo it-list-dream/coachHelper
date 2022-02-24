@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/tabbar/home/home",
     "pages/action/action",
     "pages/addAction/addAction",
-    "pages/tabbar/home/home",
     "pages/addTrainPlan/addTrainPlan",
     "pages/trialClass/trialClass",
     "pages/trainning/trainning",

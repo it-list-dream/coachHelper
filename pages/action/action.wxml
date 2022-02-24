@@ -83,10 +83,10 @@
   <van-popup show="{{ isShowDialog }}" position="bottom" custom-style="height: 50vh;" bind:close="onClose">
     <view class="actionMask">
       <view class="mask-title">
-        <text>已选动作</text>
-        <view>
-          <image></image>
-          清空
+        <view>已选动作</view>
+        <view class="r-text">
+          <image src="/assets/images/acion/add3.png"></image>
+          <text>清空</text>
         </view>
       </view>
     </view>

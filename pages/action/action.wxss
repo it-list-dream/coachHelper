@@ -283,3 +283,11 @@ page {
   font-size: 36rpx;
   color: #FFFFFF;
 }
+.mask-title{
+  display: flex;
+  justify-content: space-between;
+}
+.r-text image{
+   width: 28rpx;
+   height: 28rpx;
+}

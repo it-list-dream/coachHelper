@@ -1,4 +1,7 @@
 /* pages/addTrainPlan/addTrainPlan.wxss */
+.addTrainPlanContainer{
+  padding-bottom: 120rpx;
+}
 .fixed {
   display: flex;
   justify-content: space-around;
@@ -108,7 +111,12 @@ van-cell:nth-child(n+3) .van-cell__value {
 }
 
 .confrim-btn {
-  margin-top: 136rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding-bottom: 30rpx;
+  width: 100%;
+  /* margin-top: 136rpx; */
 }
 
 .plan-confrim {
