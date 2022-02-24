@@ -1,1 +1,123 @@
 /* pages/addTrainPlan/addTrainPlan.wxss */
+.fixed {
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  top: 10rpx;
+  right: 0;
+  width: 228rpx;
+  height: 84rpx;
+  background: #F5F5FF;
+  border-radius: 42rpx 0px 0px 42rpx;
+}
+
+.fixed-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 20rpx;
+  color: #333333;
+  padding: 0 5rpx;
+}
+
+.fixed .profile-picture {
+  width: 36rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  font-size: 16rpx;
+  text-align: center;
+  background-color: #00A0E9;
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+.fixed-item image {
+  width: 36rpx;
+  height: 36rpx;
+}
+.trainPlanTips .edit-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64rpx;
+  height: 64rpx;
+}
+.trainPlanTips .edit-box image {
+  position: relative;
+  width: 36rpx;
+  height: 36rpx;
+  z-index: 100;
+}
+
+.trainPlanTips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 204rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/*  */
+van-cell:nth-child(n+3) .van-cell__value {
+  padding-right: 1.5em;
+}
+
+.van-hairline--top-bottom:after {
+  border: none !important;
+}
+
+.van-cell__value {
+  font-size: 30rpx;
+  color: #222222 !important;
+}
+
+.van-cell-content {
+  font-size: 30rpx;
+  color: #A7A7A7;
+}
+
+.haveClass {
+  margin-top: 92rpx;
+  padding: 0 30rpx;
+}
+
+.teacher-list {
+  margin-top: 36rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 200rpx;
+  height: 220rpx;
+  text-align: center;
+  border: 2px solid #2664F6;
+  border-radius: 10rpx;
+}
+
+.teacher-list image {
+  width: 86rpx;
+  height: 86rpx;
+}
+
+.teacher-list text {
+  font-size: 30rpx;
+  font-weight: 800;
+  color: #000000;
+}
+
+.confrim-btn {
+  margin-top: 136rpx;
+}
+
+.plan-confrim {
+  margin: 0 auto;
+  width: 690rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #2564F6;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  color: #FFFFFF;
+}

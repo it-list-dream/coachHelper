@@ -57,35 +57,39 @@ Component({
       let index = e.currentTarget.dataset.index,
         myList = this.data.list;
       if (index > 0) {
-        for (let i = 0; i < myList.length;i++) {
-            if(myList[i].checked){
-                myList.checked  = false;
-            }
+        for (let i = 0; i < myList.length; i++) {
+          if (myList[i].checked) {
+            myList.checked = false;
+          }
         }
       }
       this.triggerEvent('cancel')
     },
-    // 选择
-    // classCancel() {
-    //   console.log('取消')
-    //   this.setData({
-    //     show: false
-    //   });
-    // },
     classConfrim() {
       console.log('确定按钮')
       let typeList = this.data.list;
-      this.triggerEvent('confrim',typeList)
+      this.triggerEvent('confrim', typeList)
     },
     selectedType(e) {
       let type = e.currentTarget.dataset.type;
       let allList = this.data.list;
-      console.log(type)
-      for (let i = 0; i < allList.length; i++) {
-        if (allList[i].name == type.name) {
-          allList[i].checked = !allList[i].checked
+      if (this.properties.isChecked) {
+        //console.log('fsdf')
+        for (let j = 0; j < allList.length; j++) {
+          if (allList[j].name == type.name) {
+            allList[j].checked = true;
+          }else{
+            allList[j].checked = false;
+          }
+        }
+      } else {
+        for (let i = 0; i < allList.length; i++) {
+          if (allList[i].name == type.name) {
+            allList[i].checked = !allList[i].checked
+          }
         }
       }
+      console.log(allList)
       this.setData({
         list: allList
       })

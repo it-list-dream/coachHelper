@@ -11,11 +11,11 @@
         <view class="from-col">
             <view>课程类型</view>
             <view class="from-item" bindtap="chooseclasstype">
-                <text class="">请选择课程类型</text>
+                <text style="color:{{formData.classType.length>0?'#222222':'#A7A7A7'}}">{{formData.classType.length>0?formData.classType:'请选择课程类型'}}</text>
                 <image src="/assets/images/right_arrow.png" />
             </view>
         </view>
-        <class-type poupon-height="80vh" is-show="{{showclass}}" type-list="{{clsstypeList}}" is-checked="{{true}}" bind:cancel="handleCancel" bind:confrim="handleConfrim"></class-type>
+        <class-type poupon-height="80vh" is-show="{{showclass}}" type-list="{{clsstypeList}}" is-checked="{{true}}" bind:cancel="handleCancel" bind:confrim="bindConfrim"></class-type>
         <view class="from-col">
             <view>上课时间</view>
             <view class="date">
@@ -74,7 +74,7 @@
                 <view class="plain-title">选择训练计划</view>
             </view>
             <view class="pain-content">
-                <view class="pain-item" wx:for="{{2}}">
+                <view class="pain-item" wx:for="{{2}}" bindtap="chooseClassPlan">
                     <view class="pain-text">
                         娜娜的训练计划
                         <text>0/12</text>

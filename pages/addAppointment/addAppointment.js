@@ -8,36 +8,36 @@ Page({
     showclass: false,
     // clsstypeList: ["女性塑形课程", "廋身课程", "增肌课程", "健身入门课程", "运动康复课程", "产后修复课程", "私教体验课", "自主训练", "减脂课"],
     clsstypeList: [{
-      name: "女性塑形课程",
-      checked: false
-    }, {
-      name: "瘦身课程",
-      checked: false
-    }, {
-      name: "增肌课程",
-      checked: false
-    }, {
-      name: "健身入门课程",
-      checked: false
-    },
-    {
-      name: "运动康复课程",
-      checked: false
-    }, {
-      name: "产后修复课程",
-      checked: false
-    }, {
-      name: "私教体验课",
-      checked: false
-    }, {
-      name: "自主训练",
-      checked: false
-    },
-    {
-      name: "减脂课",
-      checked: false
-    }
-  ],
+        name: "女性塑形课程",
+        checked: false
+      }, {
+        name: "瘦身课程",
+        checked: false
+      }, {
+        name: "增肌课程",
+        checked: false
+      }, {
+        name: "健身入门课程",
+        checked: false
+      },
+      {
+        name: "运动康复课程",
+        checked: false
+      }, {
+        name: "产后修复课程",
+        checked: false
+      }, {
+        name: "私教体验课",
+        checked: false
+      }, {
+        name: "自主训练",
+        checked: false
+      },
+      {
+        name: "减脂课",
+        checked: false
+      }
+    ],
     //是否显示重复
     showtips: false,
     weekList: [{
@@ -96,21 +96,24 @@ Page({
     endTime: '',
     eventTypeText: "",
     //是否显示textarea
-    isShowTextarea:true
+    isShowTextarea: true,
+    formData: {
+      classType: ""
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      //console.log(options.type == 0)
-      this.setData({
-        isOthers:options.type
-      })
+    //console.log(options.type == 0)
+    this.setData({
+      isOthers: options.type
+    })
   },
-  chooseCustom(){
-     wx.navigateTo({
-       url: '/pages/chooseCustom/chooseCustom',
-     })
+  chooseCustom() {
+    wx.navigateTo({
+      url: '/pages/chooseCustom/chooseCustom',
+    })
   },
   onClose1() {
     this.setData({
@@ -120,13 +123,13 @@ Page({
   chooseclasstype() {
     this.setData({
       showclass: true,
-      isShowTextarea:false
+      isShowTextarea: false
     })
   },
   repetition() {
     this.setData({
       showtips: true,
-      isShowTextarea:false
+      isShowTextarea: false
     })
   },
   // 当选
@@ -187,19 +190,19 @@ Page({
   onClose2() {
     this.setData({
       trianPlain: false,
-      isShowTextarea:true
+      isShowTextarea: true
     })
   },
   trianPlain1() {
     this.setData({
       trianPlain: true,
-      isShowTextarea:false
+      isShowTextarea: false
     })
   },
   addPlain() {
-    //  wx.navigateTo({
-    //    url: '',
-    //  })
+     wx.navigateTo({
+       url: '/pages/addTrainPlan/addTrainPlan',
+     })
   },
   bindMultiPickerChange2() {
 
@@ -227,7 +230,7 @@ Page({
   onCancel2() {
     this.setData({
       isEvent: false,
-      isShowTextarea:true
+      isShowTextarea: true
     })
   },
   onConfirm2() {
@@ -239,7 +242,7 @@ Page({
   eventPoupon() {
     this.setData({
       isEvent: true,
-      isShowTextarea:false
+      isShowTextarea: false
     })
   },
   selectedTime(e) {
@@ -248,16 +251,24 @@ Page({
     })
   },
   //弹窗
-  handleConfrim(e){
-     this.setData({
-       showclass:false,
-       clsstypeList:e.detail
-     })
+  bindConfrim(e) {
+    let classType = e.detail.filter(item => item.checked == true).map(item=>item.name);
+    this.setData({
+      showclass: false,
+      clsstypeList: e.detail,
+      "formData.classType": classType[0]
+    })
   },
-  handleCancel(){
-      this.setData({
-        showclass:false
-      })
+  handleCancel() {
+    this.setData({
+      showclass: false
+    })
+  },
+  // 选择训练计划
+  chooseClassPlan(){
+    this.setData({
+      trianPlain:false
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

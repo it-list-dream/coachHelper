@@ -1,0 +1,94 @@
+<view class="actionConatainer">
+  <view class="action-header">
+    <view class="search-box">
+      <view class="search-left">
+        <view class="source">
+          <text>动作来源</text>
+          <image src="/assets/images/acion/left.png"></image>
+        </view>
+        <view class="serach-text">
+          <image src="/assets/images/acion/search.png"></image>
+          <input type="text" placeholder="搜索动作" class="input-text" />
+        </view>
+      </view>
+      <view class="search-right">
+        <text>排序</text>
+        <!-- <image src=""></image> -->
+      </view>
+    </view>
+    <!-- 动作 -->
+    <view class="action-classify">
+      <scroll-view class="classify-x" enable-flex scroll-x>
+        <block wx:for="{{actionIconList}}">
+          <view class="classify-item">
+            <view class="wrapper">
+              <image src="{{item.actionPic}}"></image>
+            </view>
+            <view class="body-item">{{item.actionName}}</view>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+  <!--主盒子-->
+  <view class="actionContainer">
+    <!--左侧栏-->
+    <view class="nav_left">
+      <scroll-view scroll-y style="height:60vh;" class="left_scroll">
+        <block wx:for="{{cateItems}}">
+          <view class="nav_left_items {{curNav == item.cate_id ? 'active' : ''}}" bindtap="switchRightTab"
+            data-index="{{index}}" data-id="{{item.cate_id}}">{{item.cate_name}}</view>
+        </block>
+        <view class="nav_left_items add">+添加</view>
+      </scroll-view>
+    </view>
+    <!--右侧栏-->
+    <view class="nav_right" style="height:60vh;">
+      <scroll-view scroll-y class="right_scroll">
+        <!--如果有数据，才遍历项-->
+        <view wx:if="{{cateItems[curIndex].ishaveChild}}">
+          <block wx:for="{{cateItems[curIndex].children}}">
+            <view class="nav_right_items">
+              <view class="right_items_left">
+                <image src="/assets/images/acion/c.png"></image>
+              </view>
+              <view class="right_items_center">
+                <view>比目鱼肌腓肠肌</view>
+                <view>柔韧性 热身 放松</view>
+              </view>
+              <view class="right_items_right">
+                <image class="add-actions" src="/assets/images/acion/add3.png">+</image>
+              </view>
+            </view>
+          </block>
+        </view>
+        <!--如果无数据，则显示数据-->
+        <view class="nodata_text" wx:else>该分类暂无数据</view>
+      </scroll-view>
+    </view>
+  </view>
+  <view class="action-bottom">
+    <view class="none-box"></view>
+    <view class="action-details">
+      <view class="action-num">动作数量：<text style="color:#2564F6;">3</text></view>
+      <view class="details" bindtap="showDetail">
+        明细
+        <image src="/assets/images/acion/bottom.png" class="{{showActionDetail?'action-active':''}}"></image>
+      </view>
+      <view class="aciton-confrim">
+        <button bindtap="actionConfrim">确定</button>
+      </view>
+    </view>
+  </view>
+  <van-popup show="{{ isShowDialog }}" position="bottom" custom-style="height: 50vh;" bind:close="onClose">
+    <view class="actionMask">
+      <view class="mask-title">
+        <text>已选动作</text>
+        <view>
+          <image></image>
+          清空
+        </view>
+      </view>
+    </view>
+  </van-popup>
+</view>

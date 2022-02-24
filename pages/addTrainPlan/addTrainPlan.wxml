@@ -1,1 +1,49 @@
-
+<view class="addTrainPlanContainer">
+  <view class="fixed">
+    <view class="fixed-item">
+      <image src="" hidden="{{true}}"></image>
+      <view class="profile-picture">娜</view>
+      <text>娜娜</text>
+    </view>
+    <view class="fixed-item">
+      <image src="/assets/images/toggle.png"></image>
+      <text>切换客户</text>
+    </view>
+  </view>
+  <view class="trainPlanTips">
+    <input type="text" class="plan-text" value="{{customInfo.planName}}"
+      style="width:{{customInfo.planName.length* 32 }}rpx;" 	bindinput="setClassName" disabled="{{customInfo.isDisabled}}" maxlength="30"/>
+      <view class="edit-box" bindtap="setCustomName">
+        <image src="/assets/images/edit2.png"></image>
+      </view>
+  </view>
+  <!--  -->
+  <view class="plan-content">
+    <van-cell-group>
+      <van-cell title="课程类型*" is-link>
+        <picker class="van-cell-content"  header-text="总课时" mode="selector" range="{{classesTypeList}}" bindchange="setClassType">
+            <view wx:if="{{!classesTypeList[typeIndex]}}">请选择课程类型</view>
+            <view wx:else style="color:#222222;">{{classesTypeList[typeIndex]}}</view>
+        </picker>
+      </van-cell>
+      <van-cell title="总课时*" is-link>
+        <picker class="van-cell-content"  header-text="总课时" mode="selector" range="{{classesList}}" bindchange="classNumber">
+            <view wx:if="{{!classesList[classesIndex]}}">请选择总课时</view>
+            <view wx:else style="color:#222222;">{{classesList[classesIndex]}}</view>
+        </picker>
+      </van-cell>
+      <van-cell title="课单价" value="420" />
+      <van-cell title="有效期" value="2022.02.23" />
+    </van-cell-group>
+    <view class="haveClass">
+      <view class="haveclass-teacher">上课教练</view>
+      <view class="teacher-list">
+        <image src="/assets/images/people.png"></image>
+        <text>王教练</text>
+      </view>
+    </view>
+    <view class="confrim-btn">
+      <button class="plan-confrim">确定</button>
+    </view>
+  </view>
+</view>

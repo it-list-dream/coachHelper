@@ -6,7 +6,9 @@
   padding-right: 28rpx;
   box-sizing: border-box;
 }
-
+.van-cell{
+  width: 476rpx !important;
+}
 .serach-box>.add {
   width: 40rpx;
   height: 40rpx;

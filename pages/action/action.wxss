@@ -1,0 +1,285 @@
+page {
+  background-color: #F5F5FF;
+}
+
+.action-header {
+  height: 278rpx;
+  background-color: #ffffff;
+}
+
+.search-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 16rpx 30rpx;
+}
+
+.search-box .search-left {
+  display: flex;
+  width: 512rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: #F5F5FF;
+  border-radius: 4rpx;
+  font-size: 26rpx;
+  color: #666666;
+  box-sizing: border-box;
+}
+
+.search-left .source {
+  flex-shrink: 0;
+  position: relative;
+  padding-left: 24rpx;
+}
+
+.search-left .source::after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  content: "";
+  width: 1px;
+  height: 30rpx;
+  background-color: #D3D3D3;
+}
+
+.search-left .source text {
+  vertical-align: middle;
+}
+
+.search-left .source image {
+  margin: 0 14rpx 0 6rpx;
+  width: 25rpx;
+  height: 25rpx;
+  vertical-align: middle;
+}
+
+
+.search-left .serach-text {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.search-left .serach-text>image {
+  position: absolute;
+  left: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.serach-text .input-text {
+  padding-left: 64rpx;
+}
+
+.search-box .search-right text {
+  line-height: 70rpx;
+  font-size: 30rpx;
+  color: #2564F6;
+}
+
+.action-classify .classify-x {
+  display: flex;
+  height: 188rpx;
+}
+
+.action-classify .classify-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 18%;
+  flex-shrink: 0;
+  height: 100%;
+}
+
+.classify-x .body-item {
+  font-size: 24rpx;
+  color: #909090;
+}
+
+.classify-item .wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80rpx;
+  height: 80rpx;
+  background: #E9EFFE;
+  border-radius: 50%;
+}
+
+.classify-item .wrapper image {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+/*总体主盒子*/
+.actionContainer {
+  margin-top: 20rpx;
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+}
+
+/*左侧栏主盒子*/
+.nav_left {
+  /*设置行内块级元素（没使用定位）*/
+  display: inline-block;
+  width: 25%;
+  height: 100%;
+  background: #f5f5f5;
+  text-align: center;
+}
+
+/*左侧栏list的item*/
+.nav_left .nav_left_items {
+  position: relative;
+  height: 110rpx;
+  line-height: 110rpx;
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.nav_left .add {
+  color: #2564F6 !important;
+}
+
+/*左侧栏list的item被选中时*/
+.nav_left .nav_left_items.active {
+  font-weight: bold;
+  background: #fff;
+  color: #2564F6;
+}
+
+.nav_left .nav_left_items.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10rpx;
+  height: 110rpx;
+  background: #2564F6;
+}
+
+/*右侧栏主盒子*/
+.nav_right {
+  /*右侧盒子使用了绝对定位*/
+  position: absolute;
+  top: 0;
+  right: 0;
+  flex: 1;
+  /*宽度75%，高度占满，并使用百分比布局*/
+  width: 75%;
+  height: 60vh;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.right_scroll,
+.left_scroll {
+  height: 60vh;
+}
+
+/*右侧栏list的item*/
+.nav_right .nav_right_items {
+  display: flex;
+  align-items: center;
+  height: 177rpx;
+  border-bottom: 1px solid #F7F7F5;
+  overflow: hidden;
+}
+
+.nav_right_items .right_items_left {
+  width: 144rpx;
+  height: 96rpx;
+  flex-shrink: 0;
+}
+
+.nav_right_items .right_items_left image {
+  width: 100%;
+  height: 100%;
+}
+
+.right_items_center {
+  margin: 0 36rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 96rpx;
+}
+
+.right_items_center>view:first-child {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #222222;
+}
+
+.right_items_center>view:last-child {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  color: #A8A8A8;
+}
+
+.right_items_right {
+  align-self: flex-end;
+  text-align: right;
+  width: 60rpx;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+}
+
+.right_items_right image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.nodata_text {
+  color: black;
+  font-size: 14px;
+  text-align: center;
+}
+
+.action-bottom {
+  height: 325rpx;
+  background: #FFFFFF;
+}
+
+.action-bottom .none-box {
+  height: 124rpx;
+}
+
+.action-bottom .action-details {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 200rpx;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20rpx 0px rgba(16, 7, 82, 0.06);
+}
+
+.details image {
+  width: 25rpx;
+  height: 25rpx;
+  animation: all ease .6s;
+}
+
+.action-active {
+  transform: rotate(180deg);
+}
+
+.aciton-confrim button {
+  width: 230rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: #2564F6;
+  border-radius: 34rpx;
+  font-size: 36rpx;
+  color: #FFFFFF;
+}
