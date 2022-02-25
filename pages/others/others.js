@@ -1,4 +1,4 @@
-// pages/addAction/addAction.js
+// pages/others/others.js
 Page({
 
   /**

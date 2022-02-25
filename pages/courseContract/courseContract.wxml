@@ -9,7 +9,7 @@
       <view class="class-title">女性塑形课程</view>
       <view class="class-info">
         ￥300.0
-        <text>x 10</text>
+        <text style="margin:0 30rpx;">x 10</text>
         <text>￥3000.0</text>
       </view>
     </view>
@@ -20,24 +20,31 @@
   </view>
 
   <view class="cell-group">
-    <view class="cell">
-      <view class="cell-title">销售日期</view>
-      <view class="cell-content">2022-01-13</view>
-    </view>
-
-    <view class="cell">
-      <view class="cell-title">支付方式</view>
-      <view class="cell-content">
-        <picker mode="selector" bindchange="payChange" range="{{methodsList}}">
-          <view class="picker-pay" style="color:{{!methodsList[payIndex]?'#A7A7A7':'#222222'}}">
-            {{!methodsList[payIndex]?'请选择':methodsList[payIndex]}}
-            <image src="/assets/images/right_arrow.png" class="cell-icon"></image>
+    <van-cell-group>
+      <van-cell title="销售日期" value="2022-01-13" class="sale-date" />
+      <van-cell title="开始日期" is-link>
+        <picker class="date-picker" mode="date" value="{{formStart}}" start="{{startDate}}" end="{{lastDate}}"
+          bindchange="startDateChange">
+          <view style="color:{{formStart.length>0?'#222222':'#A7A7A7'}}">
+            {{formStart.length>0?formStart:'请选择'}}
           </view>
         </picker>
-      </view>
-    </view>
-  </view>
+      </van-cell>
+      <van-cell title="结束日期" is-link>
+        <picker class="date-picker" mode="date" value="2022-02-18" start="{{formEnd}}" end="{{lastDate}}"
+          bindchange="endDateChange">
+          <view style="color:{{formEnd.length>0?'#222222':'#A7A7A7'}}">
+            {{formEnd.length>0?formEnd:'请选择'}}
+          </view>
+        </picker>
+      </van-cell>
+    </van-cell-group>
 
+  </view>
+  <!-- 提交 -->
+  <view class="submit">
+    <button class="submit-btn" bindtap="payChange">确定</button>
+  </view>
   <van-popup show="{{ showPay}}" bind:close="onClose">
     <view class="pay-box">
       <view class="pay-title">线上支付</view>

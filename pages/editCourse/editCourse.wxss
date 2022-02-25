@@ -1,0 +1,124 @@
+/* pages/editCourse/editCourse.wxss */
+page {
+  background-color: #F7F4FB;
+}
+
+.editClass {
+  padding: 20rpx 30rpx;
+}
+
+.editClass .edit-input {
+  padding: 0 30rpx;
+  margin: 0 auto;
+  width: 690rpx;
+  height: 114rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  font-size: 36rpx;
+  color: #A6A6A6;
+  box-sizing: border-box;
+}
+
+.perparat-before-class {
+  padding: 0 30rpx;
+  height: auto;
+  background-color: #FFFFFF;
+  margin-bottom: 20rpx;
+}
+
+.perparat-before-class .perparat-tips {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 690rpx;
+  border-radius: 8rpx;
+  margin: 0 auto;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1px solid #F0F2F5;
+}
+
+.perparat-before-class .perparat-tips:last-child {
+  border: none !important;
+  margin-bottom: 0;
+}
+
+.perparat-tips .perparat-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.perparat-before-class .perparat-item {
+  padding: 30rpx 0;
+}
+
+.instrument-add {
+  font-size: 30rpx;
+  color: #2664F6;
+  text-align: center;
+  padding: 30rpx 0;
+}
+
+.perparat-before-class .perparat-item .instrument {
+  position: relative;
+  text-align: center;
+  padding: 38rpx 0;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.perparat-item .instrument::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 100rpx;
+  width: 10rpx;
+  height: 10rpx;
+  background: #C0C0C0;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.perparat-tips .arrow-box {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.perparat-tips .arrow-box .arrow {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+/*  */
+.addaction {
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #2664F6;
+  border-top: 1px solid #F0F2F5;
+}
+
+.edit-button {
+  margin-top: 300rpx;
+}
+
+.edit-button .edit-confrim {
+  margin: 0 auto;
+  width: 690rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #2564F6;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  color: #FFFFFF;
+}

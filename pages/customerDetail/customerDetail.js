@@ -1,4 +1,5 @@
 // pages/customerDetail/customerDetail.js
+// "navigationStyle":"custom"
 const app = getApp();
 Page({
 

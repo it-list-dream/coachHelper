@@ -112,32 +112,76 @@ Page({
     ],
     curNav: 1,
     curIndex: 0,
-    //
+    //动作下标
+    actionIndex: 0,
     actionIconList: [{
+        actionName: "全部",
+        actionPic: "/assets/images/acion/all_active.png",
+        activeActionPic: "/assets/images/acion/all.png",
+        selected: true
+      },
+      {
+        actionName: "胸部",
+        actionPic: "/assets/images/acion/chest_active.png",
+        activeActionPic: "/assets/images/acion/chest.png",
+        selected: false
+      },
+      {
+        actionName: "背部",
+        actionPic: "/assets/images/acion/backside_active.png",
+        activeActionPic: "/assets/images/acion/backside.png",
+        selected: false
+      },
+      {
+        actionName: "肩部",
+        actionPic: "/assets/images/acion/shoulders_active.png",
+        activeActionPic: "/assets/images/acion/shoulders.png",
+        selected: false
+      }, {
+        actionName: "手臂",
+        actionPic: "/assets/images/acion/arm_active.png",
+        activeActionPic: "/assets/images/acion/arm.png",
+        selected: false
+      },
+      {
         actionName: "颈部",
-        actionPic: "/assets/images/acion/neck.png"
+        actionPic: "/assets/images/acion/neck_active.png",
+        activeActionPic: "/assets/images/acion/neck.png",
+        selected: false
       },
       {
         actionName: "腹部",
-        actionPic: "/assets/images/acion/belly.png"
+        actionPic: "/assets/images/acion/belly_active.png",
+        activeActionPic: "/assets/images/acion/belly.png",
+        selected: false
       }, {
         actionName: "腰部",
-        actionPic: "/assets/images/acion/waist.png"
+        actionPic: "/assets/images/acion/waist_active.png",
+        activeActionPic: "/assets/images/acion/waist.png",
+        selected: false
       }, {
         actionName: "臀部",
-        actionPic: "/assets/images/acion/haunch.png"
+        actionPic: "/assets/images/acion/haunch_active.png",
+        activeActionPic: "/assets/images/acion/haunch.png",
+        selected: false
       }, {
         actionName: "腿部",
-        actionPic: "/assets/images/acion/leg.png"
+        actionPic: "/assets/images/acion/leg_active.png",
+        activeActionPic: "/assets/images/acion/leg.png",
+        selected: false
       }, {
         actionName: "全身",
-        actionPic: "/assets/images/acion/whole_body.png"
+        actionPic: "/assets/images/acion/whole_body_active.png",
+        activeActionPic: "/assets/images/acion/whole_body.png",
+        selected: false
       }, {
         actionName: "躯干",
-        actionPic: "/assets/images/acion/trunk.png"
+        actionPic: "/assets/images/acion/trunk_active.png",
+        activeActionPic: "/assets/images/acion/trunk.png",
+        selected: false
       }
     ],
-    value: "",
+    serachText: "",
     isShowDialog: false,
     showActionDetail: false
   },
@@ -168,8 +212,25 @@ Page({
     })
   },
   onClose() {
-    thhis.setData({
-      isShowDialog: false
+    this.setData({
+      isShowDialog: false,
+      isShowDialog: !this.data.isShowDialog
+    })
+  },
+  switchBodyPart(e) {
+    let index = e.currentTarget.dataset.index,
+      actionIconList = this.data.actionIconList;
+    //console.log(index, actionIconList)
+    for (let i = 0; i < actionIconList.length; i++) {
+        if(actionIconList[index] == actionIconList[i]){
+            actionIconList[i].selected = true
+        }else{
+          actionIconList[i].selected = false
+        }
+    }
+    this.setData({
+      actionIconList:actionIconList,
+      actionIndex:index
     })
   },
   /**

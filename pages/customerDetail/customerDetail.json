@@ -4,5 +4,7 @@
     "ct-dialog":"/components/dialog/dialog",
     "navbar":"/components/navbar/navbar"
   },
-  "navigationStyle":"custom"
+  "navigationBarBackgroundColor":"#2564F6",
+  "navigationBarTextStyle":"white",
+  "navigationBarTitleText":"客户类型"
 }

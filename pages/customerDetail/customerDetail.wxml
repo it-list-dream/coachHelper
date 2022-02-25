@@ -1,4 +1,4 @@
-<navbar page-name="{{pageName}}" show-nav="{{showNav}}"></navbar>
+<!-- <navbar page-name="{{pageName}}" show-nav="{{showNav}}"></navbar> -->
 <view class="customDetailContainer">
   <view class="customdetail-header">
     <image src="/assets/images/customer-detail/edit.png" class="edit-icon"></image>

@@ -1,0 +1,56 @@
+/* pages/others/others.wxss */
+page {
+  font-family: PingFang SC;
+}
+
+.othersContainer {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.other-icon {
+  text-align: center;
+}
+
+.other-icon>image {
+  width: 516rpx;
+  height: 350rpx;
+}
+
+.other-icon .icon-title {
+  margin-top: 40rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #2564F6;
+}
+
+.other-buttons {
+  margin-top: 120rpx;
+}
+
+.other-buttons .btn {
+  margin: 0 auto;
+  width: 630rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  outline: none !important;
+  border-radius: 45px;
+  font-size: 36rpx;
+  text-align: center;
+}
+
+.other-buttons .others {
+  background: #2564F6;
+  border: none;
+  font-size: 36rpx;
+  color: #FFFFFF;
+}
+
+.other-buttons .others2{
+   margin-top: 68rpx;
+   border: 1px solid #888b92;
+   background-color: #FFFFFF;
+}

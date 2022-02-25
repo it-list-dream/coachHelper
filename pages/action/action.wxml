@@ -1,28 +1,15 @@
 <view class="actionConatainer">
   <view class="action-header">
     <view class="search-box">
-      <view class="search-left">
-        <view class="source">
-          <text>动作来源</text>
-          <image src="/assets/images/acion/left.png"></image>
-        </view>
-        <view class="serach-text">
-          <image src="/assets/images/acion/search.png"></image>
-          <input type="text" placeholder="搜索动作" class="input-text" />
-        </view>
-      </view>
-      <view class="search-right">
-        <text>排序</text>
-        <!-- <image src=""></image> -->
-      </view>
+      <van-search value="{{ serachText}}" placeholder="搜索动作" class="search" />
     </view>
     <!-- 动作 -->
     <view class="action-classify">
       <scroll-view class="classify-x" enable-flex scroll-x>
         <block wx:for="{{actionIconList}}">
-          <view class="classify-item">
-            <view class="wrapper">
-              <image src="{{item.actionPic}}"></image>
+          <view class="classify-item" bindtap="switchBodyPart" data-index="{{index}}">
+            <view class="wrapper  {{actionIndex == index?'active-action':''}}">
+              <image src="{{item.selected?item.activeActionPic:item.actionPic}}"></image>
             </view>
             <view class="body-item">{{item.actionName}}</view>
           </view>
@@ -39,7 +26,6 @@
           <view class="nav_left_items {{curNav == item.cate_id ? 'active' : ''}}" bindtap="switchRightTab"
             data-index="{{index}}" data-id="{{item.cate_id}}">{{item.cate_name}}</view>
         </block>
-        <view class="nav_left_items add">+添加</view>
       </scroll-view>
     </view>
     <!--右侧栏-->
@@ -68,7 +54,7 @@
     </view>
   </view>
   <view class="action-bottom">
-    <view class="none-box"></view>
+    <!-- <view class="none-box"></view> -->
     <view class="action-details">
       <view class="action-num">动作数量：<text style="color:#2564F6;">3</text></view>
       <view class="details" bindtap="showDetail">
@@ -80,13 +66,39 @@
       </view>
     </view>
   </view>
-  <van-popup show="{{ isShowDialog }}" position="bottom" custom-style="height: 50vh;" bind:close="onClose">
+  <van-popup show="{{ isShowDialog }}" position="bottom" custom-style="height: 65vh;" bind:close="onClose">
     <view class="actionMask">
       <view class="mask-title">
         <text>已选动作</text>
-        <view>
-          <image></image>
+        <view class="clear" bindtap="clearAction">
+          <image src="/assets/images/acion/clear.png"></image>
           清空
+        </view>
+      </view>
+      <view class="mask-content">
+        <scroll-view scroll-y class="action-scroll" style="height:calc(65vh - 320rpx);">
+          <view class="mask-action-item" wx:for="{{4}}">
+            <view class="right_items_left">
+              <image src="/assets/images/acion/c.png"></image>
+            </view>
+            <view class="right_items_center">
+              <view>比目鱼肌腓肠肌</view>
+              <view>柔韧性 热身 放松</view>
+            </view>
+            <view class="right_items_right" bindtap="deleteActions">
+              <image class="delete-actions" src="/assets/images/acion/delete.png"></image>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+      <view class="bottom-mask">
+        <view class="action-num">动作数量：<text style="color:#2564F6;">3</text></view>
+        <view class="details" bindtap="showDetail">
+          明细
+          <image src="/assets/images/acion/bottom.png" class="{{showActionDetail?'action-active':''}}"></image>
+        </view>
+        <view class="aciton-confrim">
+          <button bindtap="actionConfrim">确定</button>
         </view>
       </view>
     </view>

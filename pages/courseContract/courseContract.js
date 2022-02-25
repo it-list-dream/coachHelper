@@ -6,10 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // methodsList: ['线上', '线下'],
+    // payIndex: -1,
+    showPay: false,
+    //日期
+    startDate: "2018-01-01",
+    lastDate: "2100-01-01",
     saleDate: "",
-    methodsList: ['线上', '线下'],
-    payIndex: -1,
-    showPay:false
+    // 
+    formStart: "",
+    formEnd: ""
   },
   /**
    * 生命周期函数--监听页面加载
@@ -22,20 +28,34 @@ Page({
   },
   // 支付方式
   payChange(e) {
-    let index = e.detail.value;
-    if(index == 0){
-       this.setData({
-        showPay:true
-       })
+    if(this.data.formStart && this.data.formEnd){
+      this.setData({
+        showPay: true
+      })
+    }else{
+      wx.showToast({
+        icon:"none",
+        title: '请选择开始日期或结束日期',
+      })
+       return
     }
+    //轮询判断是否付款
+  },
+  onClose() {
     this.setData({
-      payIndex: index
+      showPay: false
     })
   },
-  onClose(){
-     this.setData({
-      showPay:false
-     })
+  //日期
+  startDateChange(e) {
+    this.setData({
+      formStart: e.detail.value
+    })
+  },
+  endDateChange(e) {
+    this.setData({
+      formEnd: e.detail.value
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
