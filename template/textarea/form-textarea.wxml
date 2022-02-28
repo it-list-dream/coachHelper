@@ -1,0 +1,6 @@
+<!-- <view class="question-item tt" hidden="{{ questionNum !== index}}" wx:if="{{item.type == 3}}">
+  <view class="question-topic" style="border:none;">{{item.topic}}</view>
+  <view class="idea-textare">
+    <textarea name="" id="" class="textarea" placeholder="填写（限200字）" placeholder-style="color:#B3B3B3;"></textarea>
+  </view>
+</view> -->

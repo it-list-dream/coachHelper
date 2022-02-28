@@ -1,0 +1,88 @@
+<view class="questionContainer">
+  <image src="./images/question.png" class="question_bg"></image>
+  <view class="question-content">
+    <view class="question-title">您好!感谢您抽时间填写该健康问卷,我们会根据您的宝贵意见不断改进的，谢谢！</view>
+    <view class="question-list">
+      <block wx:for="{{questionList}}">
+        <!-- 单选 只有两个选项的 -->
+        <view class="question-item" hidden="{{ questionNum !== index}}" wx:if="{{item.type == 1}}">
+          <view class="question-topic">{{item.topic}}</view>
+          <view class="radio-group">
+            <radio-group bindchange="radioChange" class="radio-group" data-id="{{index}}">
+              <label wx:for="{{item.answerList}}" wx:key="{{index}}" wx:for-item="radio">
+                <view class="weui-cell">
+                  <radio value="{{radio.name}}" checked="{{radio.checked}}" />
+                  <view class="weui-cell__value">{{radio.name}}</view>
+                </view>
+              </label>
+            </radio-group>
+          </view>
+        </view>
+        <!-- 多选 -->
+        <view class="question-item multiple" hidden="{{ questionNum !== index}}" wx:elif="{{item.type == 2}}">
+          <view class="question-topic" style="padding: 50rpx 34rpx 40rpx;">{{item.topic}}</view>
+          <view class="checkbox-group">
+            <checkbox-group bindchange="checkboxChange" class="c-group">
+              <label wx:for="{{item.answerList}}" wx:key="{{item.value}}" wx:for-item="checkbox">
+                <view class="weui-cell-checkbox">
+                  <checkbox value="{{checkbox.name}}" checked="{{checkbox.checked}}" />
+                  <view class="checkbox-value">{{checkbox.name}}</view>
+                </view>
+              </label>
+              <view class="self-defaine" bindtap="defined" wx:if="{{item.isOhters}}">+自定义</view>
+            </checkbox-group>
+          </view>
+        </view>
+        <!-- 单选 答案在两个以上 -->
+        <view class="question-item" hidden="{{ questionNum !== index}}" wx:if="{{item.type == 0}}">
+          <view class="question-topic">{{item.topic}}</view>
+          <view class="radio-group">
+            <radio-group bindchange="radioChange" class="radio-group multiple-radio" data-id="{{index}}">
+              <label wx:for="{{item.answerList}}" wx:key="{{index}}" wx:for-item="radio">
+                <view class="weui-cell multiple-cell">
+                  <radio value="{{radio.name}}" checked="{{radio.checked}}" />
+                  <view class="weui-cell__value">{{radio.name}}</view>
+                </view>
+              </label>
+              <view class="self-defaine  df" bindtap="defined" data-type="{{item.type}}" wx:if="{{item.isOhters}}">+自定义
+              </view>
+            </radio-group>
+          </view>
+        </view>
+        <!-- textarea -->
+        <view class="question-item tt" hidden="{{ questionNum !== index}}" wx:if="{{item.type == 3}}">
+          <view class="question-topic" style="border:none;">{{item.topic}}</view>
+          <view class="idea-textare">
+            <textarea name="" id="" class="textarea" placeholder="填写（限200字）"
+              placeholder-style="color:#B3B3B3;"></textarea>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="question-tips"
+      style="justify-content:{{questionNum == 0 || questionNum == questionList.length-1?'center':'space-between'}}"
+      wx:if="{{questionNum < questionList.length-1}}">
+      <view class="perv" bindtap="perv" wx:if="{{questionNum > 0}}">
+        <text decode='true'>&lt;</text> 上一题
+      </view>
+      <view class="next" bindtap="next">下一题 <text decode='true'>&gt;</text></view>
+    </view>
+    <view class="question-btn" wx:else>
+      <button class="assess">风险评估</button>
+      <button class="commit">提交</button>
+    </view>
+  </view>
+</view>
+<van-popup show="{{  isShowQuestion }}" bind:close="onClose">
+  <view class="question-mask">
+    <view class="question-mask-title">自定义</view>
+    <view class="textarea-list">
+      <textarea name="" placeholder-style="color:#999999" class="textarea2" placeholder="请输入内容"></textarea>
+      <view class="limitFont">0/6</view>
+    </view>
+    <view class="marks-btn">
+      <button class="cancel" bindtap="onCancel">取消</button>
+      <button class="save" bindtap="onSave">保存</button>
+    </view>
+  </view>
+</van-popup>

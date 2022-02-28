@@ -1,0 +1,50 @@
+
+/* 默认样式 */
+/*radio未选中时样式 */
+radio .wx-radio-input {
+  /* 自定义样式.... */
+  width: 32rpx;
+  height: 32rpx;
+  border: 1px solid #CCCCCC;
+  background: transparent;
+}
+
+
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked {
+  background-color: #FFFFFF;
+  border: 1px solid #FF9E00;
+}
+
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked::before {
+  /* 去除对号 */
+  content: '';
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  background-color: #FF9E00;
+}
+
+/*checkbox未选中时样式 */
+checkbox .wx-checkbox-input {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 6rpx;
+  box-sizing: border-box;
+}
+
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #FF9E00;
+  border: none !important;
+}
+
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 36rpx;
+  height: 24rpx;
+  line-height: 24rpx;
+  text-align: center;
+  color: #FFFFFF;
+}

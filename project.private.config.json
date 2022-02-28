@@ -47,6 +47,18 @@
           "pathName": "pages/trainning/trainning",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "questionnaire/pages/riskEvaluation/riskEvaluation",
+          "pathName": "questionnaire/pages/riskEvaluation/riskEvaluation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "questionnaire/pages/question/question",
+          "pathName": "questionnaire/pages/question/question",
+          "query": "",
+          "scene": null
         }
       ]
     }

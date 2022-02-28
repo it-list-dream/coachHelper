@@ -24,6 +24,15 @@
     "pages/classType/classType",
     "pages/classDetail/classDetail"
   ],
+  "subpackages": [
+    {
+      "root": "questionnaire",
+      "pages": [
+        "pages/question/question",
+        "pages/riskEvaluation/riskEvaluation"
+      ]
+    }
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

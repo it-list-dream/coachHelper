@@ -13,8 +13,9 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : `0${n}`
 }
+
 function subTen(value) {
-  return  value < 10 ? ('0' + value) : value;
+  return value < 10 ? ('0' + value) : value;
 }
 
 function format(date, fmt) {
