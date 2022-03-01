@@ -59,6 +59,24 @@
           "pathName": "questionnaire/pages/question/question",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "questionnaire/pages/systemQuestion/systemQuestion",
+          "pathName": "questionnaire/pages/systemQuestion/systemQuestion",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "测试评估",
+          "pathName": "evaluation/pages/testEvaluation/testEvaluation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "体适能测试",
+          "pathName": "evaluation/pages/physicalTest/physicalTest",
+          "query": "",
+          "scene": null
         }
       ]
     }

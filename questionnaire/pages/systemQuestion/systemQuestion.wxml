@@ -1,0 +1,48 @@
+<view class="systemInfi">
+  <van-tabs active="{{ active }}" bind:change="onChange" color="#333333" sticky border="{{true}}"
+    title-active-color="#2564F6">
+    <van-tab title="基础问卷">
+      <view class="basequestion" wx:for="{{12}}">
+        <view class="question-item">
+          {{index+1}}.您之前有没有参加过健身？
+        </view>
+        <view class="qustion-answer">
+          <text>有</text>
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="风险评估">
+      <view class="assessment">
+        <view class="basequestion" wx:for="{{12}}">
+          <view class="question-item">
+            {{index+1}}.医生曾否说过你的心脏有问题并只可以进行医生建议 的体能活动？
+          </view>
+          <view class="qustion-answer">
+            <text>有</text>
+          </view>
+        </view>
+      </view>
+      <!--  -->
+      <view class="assessment-content">
+        <view class="text-character">
+          <text>结果说明 </text>
+          <text>如果全部问题回答“否”：</text>
+          如果你对所有PAR-Q问题都回答了“否”，那么，你有理由相信你能：参加更多的体力活动，但要缓慢开始并循序渐进，这是最安全，最容易的方法。进行体适能评价，这是确定你的额基础体适能的良好方法，并是你能够确定实现积极生活方式的最佳途径。强烈推荐你测量血压。如果你的血压高于144/94Hmmg,请在参加更多体力活动前咨询医生。
+        </view>
+        <!--  -->
+        <view class="active-assess">
+          <view class="as-title">下列情况应推迟体力活动：</view>
+          <view class="as_cont">如果你由于暂时的疾病，如感冒或发烧，感到身体不适，请等到疾病康复后再锻炼； 如果你怀孕了或可能怀孕了，在参加更多的体力活动前，请咨询医生。
+            <text> 【注意】如果你的健康状态改变了，对以上任何一个问题回答了“是”，请告诉体适能或健康专家，询问是否需要调整体力活动计划。</text>
+          </view>
+        </view>
+        <!-- canvas -->
+        <view class="sign-handle">
+            <view class="sign-title">我已经阅读、理解并完成了这份问卷，对于我的所有疑问都得到了令我满意的回答。</view>
+            <image src="https://img0.baidu.com/it/u=3698738501,3481126800&fm=253&fmt=auto&app=138&f=JPEG?w=499&h=339"></image>
+            <button class="success">完成</button>
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>

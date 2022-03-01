@@ -39,8 +39,7 @@ Page({
         }, {
           name: "有",
           checked: false
-        }
-        ],
+        }],
         type: 1,
         isOhters: false
       }, {
@@ -51,10 +50,9 @@ Page({
         }, {
           name: "有",
           checked: false
-        }
-        ],
+        }],
         type: 1,
-        isOhters:false
+        isOhters: false
       },
       {
         topic: "5.您的骨骼或关节是否有问题，且因改变体能活动而恶化？",
@@ -93,13 +91,66 @@ Page({
         isOhters: false
       }
     ],
-    str:"结果说明#如果全部问题回答“否”：#如果你对所有PAR-Q问题都回答了“否”，那么，你有理由相信你能：参加更多的体力活动，但要缓慢开始并循序渐进，这是最安全，最容易的方法。进行体适能评价，这是确定你的额基础体适能的良好方法，并是你能够确定实现积极生活方式的最佳途径。强烈推荐你测量血压。如果你的血压高于14494Hmmg,请在参加更多体力活动前咨询医生"
+    context1: null,
+    hasDraw: false, //默认没有画
+    src: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var context1 = wx.createCanvasContext('handWriting1');
+    context1.setStrokeStyle("#000000")
+    context1.setLineWidth(3);
+    this.setData({
+      context1: context1,
+    })
+  },
+  touchstart: function (e) {
+    var context1 = this.data.context1;
+    context1.moveTo(e.touches[0].x, e.touches[0].y);
+    this.setData({
+      context1: context1,
+      hasDraw: true, //要签字了
+    });
+  },
+  touchmove: function (e) {
+    var x = e.touches[0].x;
+    var y = e.touches[0].y;
+    var context1 = this.data.context1;
+    context1.setLineWidth(3);
+    context1.lineTo(x, y);
+    context1.stroke();
+    context1.setLineCap('round');
+    context1.draw(true);
+    context1.moveTo(x, y);
+  },
+  reSign: function () { //重新画
+    var that = this;
+    var context1 = that.data.context1;
+    context1.draw(); //清空画布
+    that.setData({
+      hasDraw: false, //没有画
+      src: null
+    });
+  },
+  handleSubmit() {
+    var that = this;
+    if (!that.data.hasDraw) {
+      console.log("签字是空白的 没有签字")
+    } else {
+      var context1 = that.data.context1;
+      context1.draw(true, wx.canvasToTempFilePath({
+        canvasId: 'handWriting1',
+        success(res) {
+          console.log(res.tempFilePath) //得到了图片下面自己写上传吧
+          that.setData({
+            src: res.tempFilePath
+          })
+        }
+      }))
+    }
   },
   //上一题
   perv() {
@@ -121,7 +172,7 @@ Page({
       })
     }
   },
-    /**
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {

@@ -29,7 +29,14 @@
       "root": "questionnaire",
       "pages": [
         "pages/question/question",
-        "pages/riskEvaluation/riskEvaluation"
+        "pages/riskEvaluation/riskEvaluation",
+        "pages/systemQuestion/systemQuestion"
+      ]
+    },{
+      "root": "evaluation",
+      "pages": [
+        "pages/testEvaluation/testEvaluation",
+        "pages/physicalTest/physicalTest"
       ]
     }
   ],

@@ -1,6 +1,8 @@
 <view class="questionContainer">
-  <image src="./images/question.png" class="question_bg"></image>
   <view class="question-content">
+    <view class="risk_picture">
+      <image src="../../pages/riskEvaluation/images/bg.png"></image>
+    </view>
     <view class="question-title">您好!感谢您抽时间填写该健康问卷,我们会根据您的宝贵意见不断改进的，谢谢！</view>
     <view class="question-list">
       <block wx:for="{{questionList}}">

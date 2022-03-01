@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationStyle":"custom"
+  "navigationBarBackgroundColor":"#5D3DCA",
+  "navigationBarTextStyle":"white",
+  "navigationBarTitleText":"风险评估（PAR-Q)"
 }

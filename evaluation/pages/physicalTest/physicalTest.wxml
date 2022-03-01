@@ -1,0 +1,131 @@
+<view class="physicalTest">
+  <view class="physical-header">
+    <view class="physical-time">体侧时间 2022-01-26</view>
+    <view class="physical-avatar">
+      <image src="/assets/images/header.png"></image>
+      <text>娜娜</text>
+    </view>
+  </view>
+  <view class="physical-content">
+    <view class="physical-baseinfo">基本信息</view>
+    <view class="self-grid">
+      <view class="self-grid-item">
+        <text> 年龄</text>
+        <input type="number" class="age" value="{{selfInfo.age}}" />
+        <text>岁</text>
+      </view>
+      <view class="self-grid-item">
+        <text>身高</text>
+        <input type="number" class="age" value="{{selfInfo.height}}" />
+        <text>cm</text>
+      </view>
+      <view class="self-grid-item">
+        <text>体重</text>
+        <input type="number" class="age" value="{{selfInfo.weight}}" />
+        <text>kg</text>
+      </view>
+    </view>
+    <!--  -->
+    <van-tabs active="{{ active }}" bind:change="onChange" color="#333333" sticky border="{{true}}"
+      title-active-color="#2564F6">
+      <van-tab title="身体成分">
+        <view class="apparatus">
+          <view class="apparatus-item">
+            <image src="./images/insruct.png"></image>
+            <text class="text">佑久体测</text>
+            <text class="last">X-ONE PRO</text>
+          </view>
+        </view>
+        <view class="apparatus-form">
+          <view class="apparatus-rows">
+            <view class="apparatus-rows-item">
+              <image src="./images/fat.png"></image>
+              <text class="rows-title">脂肪量</text>
+            </view>
+            <view class="apparatus-rows-item">
+              <input type="text" value="0" />
+              <text class="unit">kg</text>
+            </view>
+          </view>
+          <view class="apparatus-rows">
+            <view class="apparatus-rows-item">
+              <image src="./images/water.png"></image>
+              <text class="rows-title">水分</text>
+            </view>
+            <view class="apparatus-rows-item">
+              <input type="text" value="0" />
+              <text class="unit">kg</text>
+            </view>
+          </view>
+          <view class="apparatus-rows">
+            <view class="apparatus-rows-item">
+              <image src="./images/guangjie.png"></image>
+              <text class="rows-title">骨骼肌</text>
+            </view>
+            <view class="apparatus-rows-item">
+              <input type="text" value="1" />
+              <text class="unit">kg</text>
+            </view>
+          </view>
+          <view class="apparatus-rows">
+            <view class="apparatus-rows-item">
+              <image src="./images/muscle.png"></image>
+              <text class="rows-title">肌肉量</text>
+            </view>
+            <view class="apparatus-rows-item">
+              <input type="text" value="1" />
+              <text class="unit">kg</text>
+            </view>
+          </view>
+          <view class="apparatus-rows">
+            <view class="apparatus-rows-item">
+              <image src="./images/waist.png"></image>
+              <text class="rows-title">腰臀比</text>
+            </view>
+            <view class="apparatus-rows-item">
+              <input type="text" value="1" />
+            </view>
+          </view>
+        </view>
+        <view class="next-step">
+          <button class="next-btn">下一步</button>
+        </view>
+      </van-tab>
+      <van-tab title="身体测量">
+        <view class="picture-list">
+          <view class="body_pic">
+            <image src="./images/takePhoto.png"></image>
+            <text>正面照片</text>
+          </view>
+          <view class="body_pic">
+            <image src="./images/takePhoto.png"></image>
+            <text>左侧面照片</text>
+          </view>
+          <view class="body_pic">
+            <image src="./images/takePhoto.png"></image>
+            <text>右侧面照片</text>
+          </view>
+          <view class="body_pic">
+            <image src="./images/takePhoto.png"></image>
+            <text>背面照片</text>
+          </view>
+        </view>
+        <view class="apparatus-form">
+          <view class="apparatus-rows somatometry" wx:for="{{20}}">
+            <view class="apparatus-rows-item">
+              <image src="./images/fat.png"></image>
+              <text class="rows-title">脂肪量</text>
+            </view>
+            <view class="apparatus-rows-item">
+              <input type="text" value="0" />
+              <text class="unit">kg</text>
+            </view>
+          </view>
+        </view>
+        <view class="generate-report">
+          <button class="reportbtn">生成报告</button>
+        </view>
+      </van-tab>
+    </van-tabs>
+  </view>
+</view>

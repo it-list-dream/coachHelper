@@ -1,0 +1,224 @@
+/* evaluation/pages/physicalTest/physicalTest.wxss */
+page {
+  background-color: #F5F5FF;
+}
+
+.physical-header {
+  width: 100%;
+  height: 500rpx;
+  /* background: linear-gradient(90deg, #2565F6 0%, #6996FF 100%); */
+  background-color: #2565F6;
+}
+
+.physical-header .physical-time {
+  padding: 30rpx 30rpx 0;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.physical-avatar {
+  margin-top: 48rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.physical-avatar image {
+  margin-top: 28rpx;
+  width: 110rpx;
+  height: 110rpx;
+}
+
+.physical-content {
+  margin: 0 auto;
+  width: 690rpx;
+  height: auto;
+  background: #FFFFFF;
+  border-radius: 40rpx 40rpx 0px 0px;
+  transform: translateY(-130rpx);
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+
+.physical-content .physical-baseinfo {
+  padding-top: 50rpx;
+  font-size: 28rpx;
+  color: #000000;
+}
+
+.physical-content .self-grid {
+  margin-top: 26rpx;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.physical-content .self-grid .self-grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200rpx;
+  height: 94rpx;
+  line-height: 94rpx;
+  text-align: center;
+  background: #F5F5FF;
+  border-radius: 8px;
+  font-size: 26rpx;
+  color: #2666F6;
+}
+
+.self-grid-item input {
+  width: 78rpx;
+  border-bottom: 0.5px solid #C7C7C7;
+}
+
+.van-tabs__line {
+  background-color: #2564F6 !important;
+}
+
+.van-tabs__wrap {
+  padding: 30rpx 0 !important;
+}
+
+/*  */
+.apparatus {
+  display: flex;
+  width: 100%;
+  height: 188rpx;
+  box-sizing: border-box;
+  border: 1px dotted #999999;
+}
+
+.apparatus-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 28%;
+  height: 100%;
+  padding: 30rpx 0;
+  box-sizing: border-box;
+}
+
+.apparatus-item .text {
+  font-size: 25rpx;
+  color: #222222;
+  text-align: center;
+}
+
+.apparatus-item .last {
+  text-align: center;
+  font-size: 19rpx;
+  color: #999999;
+}
+
+.apparatus-item image {
+  width: 82rpx;
+  height: 58rpx;
+}
+
+.apparatus-form {
+  margin-top: 12rpx;
+}
+
+.apparatus-form .apparatus-rows {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120rpx;
+  border-bottom: 0.5px solid #EDEDED;
+  box-sizing: border-box;
+  font-size: 34rpx;
+  color: #222222;
+}
+
+.apparatus-rows .apparatus-rows-item {
+  text-align: right;
+  line-height: 120rpx;
+}
+
+.apparatus-rows .apparatus-rows-item .unit {
+  margin-left: 44rpx;
+  font-size: 30rpx;
+  color: #A7A7A7;
+}
+
+.apparatus-rows .apparatus-rows-item input {
+  display: inline-block;
+  width: 45%;
+}
+
+.apparatus-rows-item image {
+  width: 36rpx;
+  height: 36rpx;
+  vertical-align: middle;
+}
+
+.apparatus-rows-item .rows-title {
+  margin-left: 14rpx;
+  font-size: 34rpx;
+  color: #222222;
+}
+
+/*  */
+.next-step {
+  padding-top: 110rpx;
+  padding-bottom: 60rpx;
+}
+
+.next-step .next-btn {
+  width: 620rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  background: #2564F6;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  color: #FFFFFF;
+}
+
+/* 身体测量 */
+.picture-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.picture-list .body_pic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 150rpx;
+  height: 188rpx;
+  border: 0.5px dotted #999999;
+  box-sizing: border-box;
+}
+
+.picture-list .body_pic text {
+  font-size: 24rpx;
+  color: #BEBEBE;
+}
+
+.picture-list .body_pic image {
+  width: 56rpx;
+  height: 56rpx;
+}
+
+/*  */
+.generate-report {
+  padding: 160rpx 0 50rpx;
+}
+
+.generate-report .reportbtn {
+  width: 620rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  text-align: center;
+  background: #2564F6;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  color: #FFFFFF;
+}

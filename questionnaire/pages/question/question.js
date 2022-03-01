@@ -163,14 +163,15 @@ Page({
         type: 3,
       }
     ],
-    isShowQuestion: false
+    isShowQuestion: false,
+    //是否超过页面
+    isOverHeight: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
   radioChange(e) {
     let answer_value = e.detail.value;
@@ -223,7 +224,7 @@ Page({
       isShowQuestion: false
     })
   },
-  defined(){
+  defined() {
     this.setData({
       isShowQuestion: true
     })

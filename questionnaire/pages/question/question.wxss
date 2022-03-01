@@ -4,27 +4,30 @@
   position: relative;
   width: 100%;
   height: 100%;
+  background: linear-gradient(0deg, #597AF5 0%, #5D3DCA 100%);
+  background-repeat: no-repeat;
 }
-
-.question_bg {
-  position: fixed;
-  top: 0;
-  left: 0;
+.question-content {
   width: 100%;
   height: 100%;
+  background: linear-gradient(0deg, #597AF5 0%, #5D3DCA 100%);
+  background-repeat: no-repeat;
+}
+.risk_picture {
+  position: relative;
+  width: 100%;
+  height: 390rpx;
 }
 
-.question-content {
+.risk_picture>image {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  right: 0;
+  width: 690rpx;
   height: 100%;
-  z-index: 10;
 }
-
-.question-content .question-title {
-  margin-top: 450rpx;
+.question-title {
+  /* margin-top: 450rpx; */
   padding: 0 100rpx;
   line-height: 1.8;
   box-sizing: border-box;
