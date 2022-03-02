@@ -42,8 +42,8 @@
               <image src="./images/fat.png"></image>
               <text class="rows-title">脂肪量</text>
             </view>
-            <view class="apparatus-rows-item">
-              <input type="text" value="0" />
+            <view class="apparatus-input-box">
+              <input type="number" value="" />
               <text class="unit">kg</text>
             </view>
           </view>
@@ -52,8 +52,8 @@
               <image src="./images/water.png"></image>
               <text class="rows-title">水分</text>
             </view>
-            <view class="apparatus-rows-item">
-              <input type="text" value="0" />
+            <view class="apparatus-input-box">
+              <input type="number" value="" />
               <text class="unit">kg</text>
             </view>
           </view>
@@ -62,8 +62,8 @@
               <image src="./images/guangjie.png"></image>
               <text class="rows-title">骨骼肌</text>
             </view>
-            <view class="apparatus-rows-item">
-              <input type="text" value="1" />
+            <view class="apparatus-input-box">
+              <input type="number" value="1" />
               <text class="unit">kg</text>
             </view>
           </view>
@@ -72,8 +72,8 @@
               <image src="./images/muscle.png"></image>
               <text class="rows-title">肌肉量</text>
             </view>
-            <view class="apparatus-rows-item">
-              <input type="text" value="1" />
+            <view class="apparatus-input-box">
+              <input type="number" value="1" />
               <text class="unit">kg</text>
             </view>
           </view>
@@ -82,13 +82,14 @@
               <image src="./images/waist.png"></image>
               <text class="rows-title">腰臀比</text>
             </view>
-            <view class="apparatus-rows-item">
-              <input type="text" value="1" />
+            <view class="apparatus-input-box">
+              <input type="digit" value="1" />
+              <text class="unit"></text>
             </view>
           </view>
         </view>
         <view class="next-step">
-          <button class="next-btn">下一步</button>
+          <button class="next-btn" bindtap="nextstep">下一步</button>
         </view>
       </van-tab>
       <van-tab title="身体测量">
@@ -111,14 +112,14 @@
           </view>
         </view>
         <view class="apparatus-form">
-          <view class="apparatus-rows somatometry" wx:for="{{20}}">
+          <view class="apparatus-rows" wx:for="{{bodyComposition.physicalStateList}}" wx:key="physicalName">
             <view class="apparatus-rows-item">
-              <image src="./images/fat.png"></image>
-              <text class="rows-title">脂肪量</text>
+              <image src="{{item.physicalImage}}"></image>
+              <text class="rows-title">{{item.physicalName}}</text>
             </view>
-            <view class="apparatus-rows-item">
-              <input type="text" value="0" />
-              <text class="unit">kg</text>
+            <view class="apparatus-input-box">
+              <input type="number" value="{{item.value}}" />
+              <text class="unit">{{item.unit}}</text>
             </view>
           </view>
         </view>

@@ -77,6 +77,18 @@
           "pathName": "evaluation/pages/physicalTest/physicalTest",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "体适能报告",
+          "pathName": "evaluation/pages/physicalReport/physicalReport",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "体适能对比报告",
+          "pathName": "evaluation/pages/fitnessContrastReport/fitnessContrastReport",
+          "query": "",
+          "scene": null
         }
       ]
     }

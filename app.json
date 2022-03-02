@@ -36,7 +36,9 @@
       "root": "evaluation",
       "pages": [
         "pages/testEvaluation/testEvaluation",
-        "pages/physicalTest/physicalTest"
+        "pages/physicalTest/physicalTest",
+        "pages/physicalReport/physicalReport",
+        "pages/fitnessContrastReport/fitnessContrastReport"
       ]
     }
   ],

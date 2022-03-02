@@ -1,29 +1,26 @@
 <view class="testEvaluation">
-  <view class="testheader"></view>
-  <view class="test-list">
-    <view class="test-item">
-      <view class="next-icon">
-        <image src="/assets/images/white-arrow.png"></image>
-      </view>
-      <image class="test_bg" src="./images/test.png"></image>
-      <view class="wrapper">
-        <view class="test-title">测试体适能</view>
-        <view class="test-content">评测体适能，使您更加了解自己</view>
-        <view class="attentionPeople">8123人已经测试过</view>
-      </view>
+  <view class="test-item">
+    <view class="next-icon">
+      <image src="/assets/images/white-arrow.png"></image>
     </view>
-    <view class="test-item">
-      <view class="next-icon">
-        <image src="/assets/images/white-arrow.png"></image>
-      </view>
-      <image class="test_bg" src="./images/evaluation.png"></image>
-      <view class="wrapper">
-        <view class="test-title">测试体适能</view>
-        <view class="test-content">良好的体态为下一步运动做好准备</view>
-        <view class="attentionPeople">
-              <text>8123</text>
-              人已经测试过
-        </view>
+    <image class="test_bg" src="./images/test.png"></image>
+    <view class="wrapper">
+      <view class="test-title">测试体适能</view>
+      <view class="test-content">评测体适能，使您更加了解自己</view>
+      <view class="attentionPeople">8123人已经测试过</view>
+    </view>
+  </view>
+  <view class="test-item">
+    <view class="next-icon">
+      <image src="/assets/images/white-arrow.png"></image>
+    </view>
+    <image class="test_bg" src="./images/evaluation.png"></image>
+    <view class="wrapper">
+      <view class="test-title">测试体适能</view>
+      <view class="test-content">良好的体态为下一步运动做好准备</view>
+      <view class="attentionPeople">
+        <text>8123</text>
+        人已经测试过
       </view>
     </view>
   </view>

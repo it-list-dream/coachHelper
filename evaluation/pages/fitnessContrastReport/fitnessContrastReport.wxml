@@ -1,0 +1,215 @@
+<view class="fitnessContrastIndex">
+  <view class="addcase-box">
+    <view class="addcase-btn">+添加为案例</view>
+    <view class="addcase-info">
+      <image src="/assets/images/header.png" class="headportrait"></image>
+      <text>娜娜</text>
+      <text>2021.01.06 vs 2022.01.06</text>
+    </view>
+  </view>
+  <!-- 变化数据 -->
+  <view class="physical-change">
+    <view class="physical-change-title">变化数据</view>
+    <view class="physical-image">
+      <view class="physical-backgroud">
+        <image src=""></image>
+      </view>
+      <view class="physical-branch">
+        <text>左上臂围25cm</text>
+        <image src=""></image>
+      </view>
+      <view class="physical-branch">
+        <text>肩围39cm</text>
+        <image src=""></image>
+
+      </view>
+      <view class="physical-branch">
+        <text>胸围24cm</text>
+        <image src=""></image>
+      </view>
+      <view class="physical-branch">
+        <text>右上臂围26cm</text>
+        <image src=""></image>
+      </view>
+      <view class="physical-branch">
+        <text>腰围27cm</text>
+        <image src=""></image>
+      </view>
+      <view class="physical-branch">
+        <text>下胸围35cm</text>
+        <image src=""></image>
+      </view>
+      <view class="physical-branch">
+        <text>臀围30cm</text>
+        <image src=""></image>
+      </view>
+      <view class="physical-branch">
+        <text>下腹围25cm</text>
+        <image src=""></image>
+      </view>
+      <view class="physical-branch">
+        <text>左大腿围74cm</text>
+        <image src=""></image>
+      </view>
+      <view class="physical-branch">
+        <text>右大腿围74cm</text>
+        <image src=""></image>
+      </view>
+      <view class="physical-branch">
+        <text>左小腿围</text>
+        <image src=""></image>
+      </view>
+      <view class="physical-branch">
+        <text>右小腿围</text>
+        <image src=""></image>
+      </view>
+    </view>
+    <view class="physical-detail">
+      <view class="physical-detail-item">
+        <text></text>
+        <view>体重 <image></image>
+        </view>
+      </view>
+      <view class="physical-detail-item">
+        <text></text>
+        <view>体重 <image></image>
+        </view>
+      </view>
+      <view class="physical-detail-item">
+        <text></text>
+        <view>体重 <image></image>
+        </view>
+      </view>
+      <view class="physical-detail-item">
+        <text></text>
+        <view>体重 <image></image>
+        </view>
+      </view>
+      <view class="physical-detail-item">
+        <text></text>
+        <view>体重 <image></image>
+        </view>
+      </view>
+      <view class="physical-detail-item">
+        <text></text>
+        <view>体重 <image></image>
+        </view>
+      </view>
+      <view class="physical-detail-item">
+        <text></text>
+        <view>体重 <image></image>
+        </view>
+      </view>
+      <view class="physical-detail-item">
+        <text></text>
+        <view>体重 <image></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 体侧照片 -->
+  <view class="sidephoto-box">
+       <view class="sidephoto-title">体侧照片</view>
+       <view class="sidephoto-content">
+            <view class="side-item">1</view>
+            <view class="side-item">2</view>
+            <view class="side-item">3</view>
+            <view class="side-item">4</view>
+            <view class="side-item">5</view>
+            <view class="side-item">6</view>
+            <view class="side-item">7</view>
+            <view class="side-item">8</view>
+       </view>
+  </view>
+  <!-- 身体数据 -->
+  <view class="physicaldata-box">
+      <view class="physicaldata-title">身体数据</view>
+      <view class="physicaldata-content">
+         <view class="physical-tr">
+            <view class="physical-td"></view>
+            <view class="physical-td">2021.01.06</view>
+            <view class="physical-td">2022.01.06</view>
+         </view>
+         <view class="physical-tr">
+            <view class="physical-td">BMI</view>
+            <view class="physical-td">20.9</view>
+            <view class="physical-td">20.9</view>
+         </view>
+         <view class="physical-tr">
+            <view class="physical-td">升高(cm)</view>
+            <view class="physical-td">165</view>
+            <view class="physical-td">167</view>
+         </view>
+         <view class="physical-tr">
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+         </view>
+         <view class="physical-tr">
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+         </view>
+         <view class="physical-tr">
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+         </view>
+         <view class="physical-tr">
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+         </view>
+         <view class="physical-tr">
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+         </view>
+         <view class="physical-tr">
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+         </view>
+         <view class="physical-tr">
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+         </view>
+         <view class="physical-tr">
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+            <view class="physical-td"></view>
+         </view>
+      </view>
+  </view>
+  <!-- 成分数据 -->
+  <view class="ingredientdata-list">
+  <view class="ingredientdata-list-title">成分数据</view>
+     <view class="ingredient-tr">
+       <view class="ingredient-td"></view>
+       <view class="ingredient-td">2021.01.06</view>
+       <view class="ingredient-td">2021.01.07</view>
+     </view>
+     <view class="ingredient-tr">
+       <view class="ingredient-td">体脂率</view>
+       <view class="ingredient-td">43.8</view>
+       <view class="ingredient-td">26.4</view>
+     </view>
+     <view class="ingredient-tr">
+       <view class="ingredient-td">脂肪量(kg)</view>
+       <view class="ingredient-td">45</view>
+       <view class="ingredient-td">31</view>
+     </view>
+     <view class="ingredient-tr">
+       <view class="ingredient-td">水分</view>
+       <view class="ingredient-td">20.9</view>
+       <view class="ingredient-td">18.1</view>
+     </view>
+     <view class="ingredient-tr">
+       <view class="ingredient-td">骨骼肌(kg)</view>
+       <view class="ingredient-td">45</view>
+       <view class="ingredient-td">46</view>
+     </view>
+     <button class="constract-poster">生成对比海报</button>
+  </view>
+</view>

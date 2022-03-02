@@ -135,23 +135,26 @@ page {
   font-size: 34rpx;
   color: #222222;
 }
-
-.apparatus-rows .apparatus-rows-item {
-  text-align: right;
-  line-height: 120rpx;
+.apparatus-rows .apparatus-rows-item{
+  flex-shrink: 0;
 }
-
-.apparatus-rows .apparatus-rows-item .unit {
-  margin-left: 44rpx;
+.apparatus-rows .apparatus-input-box{
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   flex: 1;
+}
+.apparatus-rows .apparatus-input-box input{
+  text-align: right;
+  width: 40%;
+}
+.apparatus-rows .apparatus-input-box .unit {
+  width: 94rpx;
+  text-align: center;
+  margin-left: 20rpx;
   font-size: 30rpx;
   color: #A7A7A7;
 }
-
-.apparatus-rows .apparatus-rows-item input {
-  display: inline-block;
-  width: 45%;
-}
-
 .apparatus-rows-item image {
   width: 36rpx;
   height: 36rpx;
