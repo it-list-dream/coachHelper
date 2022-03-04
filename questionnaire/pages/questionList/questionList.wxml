@@ -1,0 +1,19 @@
+<view class="questionList">
+  <view class="questionList-head">
+    <view class="member">
+      <image src="/assets/images/header.png"></image>
+      <view class="member-name">娜娜</view>
+    </view>
+    <navigator url="/questionnaire/pages/question/question" hover-class="none" class="addquestionBtn">+添加问卷调查</navigator>
+  </view>
+  <view class="questionnaire">
+    <view class="questionnaire-item" wx:for="{{2}}" wx:key="idnex" bindtap="defaultquestion">
+      <view class="left-questionbox">系统默认问卷</view>
+      <view class="right-questionbox">
+        <text>王教练</text>
+        <text class="date">2022.02.16</text>
+        <image src="/assets/images/right@2x.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

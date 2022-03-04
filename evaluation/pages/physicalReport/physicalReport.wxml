@@ -136,7 +136,7 @@
           <image src="https://img1.baidu.com/it/u=4020265515,2294312709&fm=253&fmt=auto&app=138&f=JPEG?w=577&h=500"></image>
           <image src="https://img1.baidu.com/it/u=4020265515,2294312709&fm=253&fmt=auto&app=138&f=JPEG?w=577&h=500"></image>
         </view>
-        <!--  -->
+        <!-- 身体测量 -->
         <view class="health-title">身体测量</view>
         <view class="measurement">
           <view class="measurement-item">

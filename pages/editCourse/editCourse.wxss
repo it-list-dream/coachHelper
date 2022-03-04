@@ -19,6 +19,11 @@ page {
   box-sizing: border-box;
 }
 
+/*  */
+.editcontent {
+  padding: 0 30rpx;
+}
+
 .perparat-before-class {
   padding: 0 30rpx;
   height: auto;
@@ -26,24 +31,10 @@ page {
   margin-bottom: 20rpx;
 }
 
-.perparat-before-class .perparat-tips {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 690rpx;
-  border-radius: 8rpx;
-  margin: 0 auto;
+.perparat-title {
+  text-align: center;
   height: 100rpx;
   line-height: 100rpx;
-  border-bottom: 1px solid #F0F2F5;
-}
-
-.perparat-before-class .perparat-tips:last-child {
-  border: none !important;
-  margin-bottom: 0;
-}
-
-.perparat-tips .perparat-title {
   font-size: 32rpx;
   font-weight: bold;
   color: #333333;
@@ -51,13 +42,42 @@ page {
 
 .perparat-before-class .perparat-item {
   padding: 30rpx 0;
+  border-top: 0.5px solid #F0F2F5;
+}
+
+.perparat-before-class .perparat-item .perparat-item-title {
+  position: relative;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #F5F5FF;
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.perparat-item .perparat-item-title .arrow-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 72rpx;
+  height: 100%;
+  z-index: 10;
+}
+
+.perparat-item .perparat-item-title .arrow {
+  width: 36rpx;
+  height: 36rpx;
 }
 
 .instrument-add {
   font-size: 30rpx;
   color: #2664F6;
   text-align: center;
-  padding: 30rpx 0;
+  height: 100rpx;
+  line-height: 100rpx;
 }
 
 .perparat-before-class .perparat-item .instrument {
@@ -80,23 +100,6 @@ page {
   transform: translateY(-50%);
 }
 
-.perparat-tips .arrow-box {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 72rpx;
-  height: 72rpx;
-}
-
-.perparat-tips .arrow-box .arrow {
-  width: 36rpx;
-  height: 36rpx;
-}
-
 /*  */
 .addaction {
   text-align: center;
@@ -105,11 +108,11 @@ page {
   box-sizing: border-box;
   font-size: 30rpx;
   color: #2664F6;
-  border-top: 1px solid #F0F2F5;
+  border-top: 0.5px solid #F0F2F5;
 }
 
 .edit-button {
-  margin-top: 300rpx;
+  margin-top: 87rpx;
 }
 
 .edit-button .edit-confrim {
@@ -121,4 +124,17 @@ page {
   border-radius: 8rpx;
   font-size: 30rpx;
   color: #FFFFFF;
+}
+
+.delete-right {
+  width: 130rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 24rpx;
+  text-align: center;
+ color: #FFFFFF;
+  background-color: #FF0000;
+}
+.van-swipe-cell{
+  touch-action: none !important;
 }

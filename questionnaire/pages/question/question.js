@@ -229,6 +229,11 @@ Page({
       isShowQuestion: true
     })
   },
+  handleAssess(){
+     wx.navigateTo({
+       url: '/questionnaire/pages/riskEvaluation/riskEvaluation',
+     })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

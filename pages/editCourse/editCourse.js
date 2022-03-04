@@ -14,14 +14,15 @@ Page({
   onLoad: function (options) {
 
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
 
   },
-
+  deleteAction(){
+     console.log('删除动作')
+  },
   /**
    * 生命周期函数--监听页面显示
    */

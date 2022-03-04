@@ -16,7 +16,7 @@
     </view>
     <image class="test_bg" src="./images/evaluation.png"></image>
     <view class="wrapper">
-      <view class="test-title">测试体适能</view>
+      <view class="test-title">体态评估</view>
       <view class="test-content">良好的体态为下一步运动做好准备</view>
       <view class="attentionPeople">
         <text>8123</text>

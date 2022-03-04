@@ -1,0 +1,162 @@
+/* evaluation/pages/fitnessList/fitnessList.wxss */
+.fitness-bg {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 350rpx;
+  padding: 0 30rpx;
+  background: #2664F6;
+  box-sizing: border-box;
+}
+
+.fitness-member {
+  margin-top: 30rpx;
+  text-align: center;
+}
+
+.fitness-member image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.fitness-member .name {
+  margin-top: 6rpx;
+  font-size: 36rpx;
+  color: #FFFFFF;
+}
+
+.fitness-comparison {
+  margin-top: 40rpx;
+  display: flex;
+}
+
+.fitness-comparison .addbodytest,
+.addappoinment {
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #2664F6;
+  padding: 0 16rpx;
+}
+
+.addappoinment {
+  margin-left: 20rpx;
+}
+
+.addappoinment image {
+  width: 24rpx;
+  height: 24rpx;
+  vertical-align: middle;
+}
+
+.addappoinment text {
+  vertical-align: middle;
+}
+
+.fitness-comparison .comparisonbtn {
+  margin-left: 60rpx;
+  width: 156rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border: 1px solid #FFFFFF;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.fitness-content {
+  margin-top: 30rpx;
+}
+
+.fitness-content .fitness-item {
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 30rpx;
+  width: 690rpx;
+  height: 214rpx;
+  padding: 0 22rpx;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 14px 0px rgba(0, 34, 112, 0.08);
+  border-radius: 12rpx;
+
+}
+
+.icon-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.f-box {
+  position: relative;
+  z-index: 10;
+}
+
+.test-report {
+  display: flex;
+  height: 86rpx;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #EDEDED;
+}
+
+.test-report .report-info {
+  flex: 1;
+}
+
+.test-report .report-info text:first-child {
+  position: relative;
+  padding-left: 30rpx;
+  display: inline-block;
+  font-size: 28rpx;
+  color: #2765F6;
+}
+
+.report-info text:first-child::after {
+  content: '';
+  width: 6rpx;
+  height: 26rpx;
+  background: #2765F6;
+}
+
+.test-report .report-info text:last-child {
+  margin-left: 28rpx;
+  font-size: 22rpx;
+  color: #666666;
+}
+
+.test-report .m36 {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.test-report-data {
+  display: flex;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.test-report-data text:first-child {
+  font-weight: bold;
+}
+
+.test-report-data .test-report-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+  height: 128rpx;
+  padding: 28rpx 0;
+  box-sizing: border-box;
+}

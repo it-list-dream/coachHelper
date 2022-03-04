@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
+  },
+  "navigationBarBackgroundColor":"#2564F6",
+  "navigationBarTextStyle":"white",
+  "navigationBarTitleText":"选择课程存为模板"
+}

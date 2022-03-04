@@ -1,0 +1,72 @@
+/* questionnaire/pages/questionList/questionList.wxss */
+.questionList-head {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 400rpx;
+  padding: 40rpx 0;
+  box-sizing: border-box;
+  background-color: #4178F9;
+}
+
+.member {
+  text-align: center;
+}
+
+.member image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.member .member-name {
+  margin-top: 6rpx;
+  font-size: 36rpx;
+  color: #FFFFFF;
+}
+
+.questionList-head .addquestionBtn {
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  padding: 0 16rpx;
+  color: #2664F6;
+}
+
+.questionnaire {
+  width: 100%;
+}
+
+.questionnaire .questionnaire-item {
+  display: flex;
+  padding-top: 60rpx;
+  justify-content: space-around;
+  width: 100%;
+  height: 120rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid  #EDEDED;
+}
+
+.questionnaire .questionnaire-item .left-questionbox {
+  font-size: 30rpx;
+  color: #000000;
+}
+.questionnaire-item .right-questionbox{
+  font-size: 26rpx;
+color: #999999;
+}
+.questionnaire-item .right-questionbox .date{
+  margin: 0 20rpx;
+}
+.right-questionbox text{
+  vertical-align: middle;
+}
+.right-questionbox image{
+  width: 28rpx;
+  height: 28rpx;
+  vertical-align: middle;
+}

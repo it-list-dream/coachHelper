@@ -1,0 +1,44 @@
+<view class="fitnessListIndex">
+  <view class="fitness-bg">
+    <view class="fitness-member">
+      <image src="/assets/images/header.png"></image>
+      <view class="name">娜娜</view>
+    </view>
+    <view class="fitness-comparison">
+      <navigator url="/evaluation/pages/physicalReport/physicalReport" class="addbodytest">+添加身体测试</navigator>
+      <view class="addappoinment">
+        <image src="./images/appointment.png"></image>
+        <text>预约下次体侧</text>
+      </view>
+      <view class="comparisonbtn">对比</view>
+    </view>
+  </view>
+  <view class="fitness-content">
+    <view class="fitness-item" wx:for="{{2}}">
+      <image src="./images/bg.png" class="icon-bg"></image>
+      <view class="f-box">
+        <view class="test-report">
+          <view class="report-info">
+            <text>测试报告</text>
+            <text>王教练 2022.02.11</text>
+          </view>
+          <image src="/assets/images/right_arrow.png" class="m36"></image>
+        </view>
+        <view class="test-report-data">
+          <view class="test-report-item">
+            <text>130.0kg</text>
+            <text>体重</text>
+          </view>
+          <view class="test-report-item">
+            <text>-22.1%</text>
+            <text>体脂率</text>
+          </view>
+          <view class="test-report-item">
+            <text>1.0</text>
+            <text>腰臀比</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

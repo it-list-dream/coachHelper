@@ -1,0 +1,48 @@
+/* pages/courseTemplate/courseTemplate.wxss */
+/* .courseTemplateContainer{
+  padding-top: 30rpx;
+} */
+.group-checkbox {
+  margin-top: 30rpx !important;
+}
+
+.van-cell__value {
+  flex: unset !important;
+}
+
+.van-cell {
+  padding: 46rpx 0 46rpx 60rpx !important;
+}
+
+.cell-title {
+  font-size: 30rpx;
+  color: #000000;
+}
+
+.cell-title .cell-number {
+  margin-right: 20rpx;
+  font-weight: bold;
+}
+
+.van-checkbox__icon--checked {
+  background-color: #2564F6 !important;
+}
+
+.template-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-bottom: 60rpx;
+}
+
+.template-btn .template-confrim {
+  width: 690rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background: #2564F6;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  color: #FFFFFF;
+}

@@ -1,5 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "table-view": "../../../miniprogram_npm/miniprogram-table-component",
+    "van-popup": "@vant/weapp/popup/index"
+  },
   "navigationBarBackgroundColor": "#2564F6",
   "navigationBarTextStyle": "white",
   "navigationBarTitleText": "体适能对比报告"

@@ -1,10 +1,13 @@
 {
   "pages": [
+    "pages/courseTemplate/courseTemplate",
+    "pages/trainPlanDetail/trainPlanDetail",
+    "pages/trainPlan/trainPlan",
+    "pages/tabbar/home/home",
     "pages/others/others",
     "pages/editCourse/editCourse",
     "pages/courseContract/courseContract",
     "pages/action/action",
-    "pages/tabbar/home/home",
     "pages/addTrainPlan/addTrainPlan",
     "pages/trialClass/trialClass",
     "pages/trainning/trainning",
@@ -29,6 +32,7 @@
       "root": "questionnaire",
       "pages": [
         "pages/question/question",
+        "pages/questionList/questionList",
         "pages/riskEvaluation/riskEvaluation",
         "pages/systemQuestion/systemQuestion"
       ]
@@ -38,7 +42,8 @@
         "pages/testEvaluation/testEvaluation",
         "pages/physicalTest/physicalTest",
         "pages/physicalReport/physicalReport",
-        "pages/fitnessContrastReport/fitnessContrastReport"
+        "pages/fitnessContrastReport/fitnessContrastReport",
+        "pages/fitnessList/fitnessList"
       ]
     }
   ],

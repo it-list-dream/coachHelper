@@ -89,6 +89,36 @@
           "pathName": "evaluation/pages/fitnessContrastReport/fitnessContrastReport",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "问卷调查列表",
+          "pathName": "questionnaire/pages/questionList/questionList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "体适能列表页",
+          "pathName": "evaluation/pages/fitnessList/fitnessList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/trialClass/trialClass",
+          "pathName": "pages/trialClass/trialClass",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "编辑课程",
+          "pathName": "pages/editCourse/editCourse",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/addTrainPlan/addTrainPlan",
+          "pathName": "pages/addTrainPlan/addTrainPlan",
+          "query": "",
+          "scene": null
         }
       ]
     }

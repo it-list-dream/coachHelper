@@ -70,7 +70,7 @@
       <view class="next" bindtap="next">下一题 <text decode='true'>&gt;</text></view>
     </view>
     <view class="question-btn" wx:else>
-      <button class="assess">风险评估</button>
+      <button class="assess" bindtap="handleAssess">风险评估</button>
       <button class="commit">提交</button>
     </view>
   </view>
