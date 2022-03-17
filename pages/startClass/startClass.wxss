@@ -1,0 +1,157 @@
+/* pages/startClass/startClass.wxss */
+page {
+  background-color: #F5F3FF;
+}
+
+.count-down {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 128rpx;
+  background: #FFFFFF;
+}
+
+.item {
+  display: inline-block;
+  font-size: 30rpx;
+  color: #523AFC;
+  text-align: center;
+}
+
+.finished {
+  margin-left: 50rpx;
+  width: 162rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  text-align: center;
+  background: #FF2020;
+  border-radius: 10rpx;
+}
+
+.finished text {
+  position: relative;
+  font-size: 30rpx;
+  color: #FFFFFF;
+  padding-left: 30rpx;
+}
+
+.finished text::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 14rpx;
+  height: 14rpx;
+  background: #F5F3FF;
+}
+
+/* 全部动作 */
+.actionAll {
+  margin-top: 20rpx;
+  padding: 30rpx;
+  height: 1000rpx;
+  background-color: #FFFFFF;
+}
+
+.actionAll .actionbtn {
+  width: 140rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  background: #2564F6;
+  border-radius: 25rpx;
+  font-size: 26rpx;
+  color: #FFFFFF;
+}
+
+.instrument {
+  display: flex;
+  justify-content: space-between;
+  padding: 36rpx 0;
+  font-size: 26rpx;
+  color: #999999;
+}
+
+.triangle-box image {
+  width: 22rpx;
+  height: 22rpx;
+}
+
+.triangle-box .left {
+  transform: rotate(-180deg);
+  margin-right: 6rpx;
+}
+
+.triangle-box .right {
+  margin-left: 6rpx;
+}
+
+.current-action {
+  color: #333333;
+}
+
+.instrument-title {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.instrument-title text {
+  font-size: 26rpx;
+  color: #999999;
+  margin-left: 40rpx;
+}
+
+.instrument-table-tr {
+  display: flex;
+  width: 100%;
+  height: 100rpx;
+  background: #F5F3FF;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+
+.instrument-table-tr .left-td {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.instrument-table-tr .left-td text {
+  border-right: 0.5px solid #DBDBDB;
+}
+
+.instrument-table-tr .left-td>text {
+  min-width: 86rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.instrument-table-tr .right-td {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20rpx;
+}
+
+.instrument-table-tr .right-td>text {
+  font-size: 26rpx;
+  color: #999999;
+  margin-left: 30rpx;
+}
+
+.ohter-tr {
+  width: 690rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background: #F5F3FF;
+  font-size: 30rpx;
+  color: #2564F6;
+}
+
+/*  */

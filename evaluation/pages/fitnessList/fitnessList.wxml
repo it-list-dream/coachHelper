@@ -5,16 +5,16 @@
       <view class="name">娜娜</view>
     </view>
     <view class="fitness-comparison">
-      <navigator url="/evaluation/pages/physicalReport/physicalReport" class="addbodytest">+添加身体测试</navigator>
-      <view class="addappoinment">
+      <navigator url="/evaluation/pages/physicalTest/physicalTest" class="addbodytest">+添加身体测试</navigator>
+      <view class="addappoinment" bindtap="appoinement">
         <image src="./images/appointment.png"></image>
         <text>预约下次体侧</text>
       </view>
-      <view class="comparisonbtn">对比</view>
+      <view class="comparisonbtn" bindtap="handleComparison">对比</view>
     </view>
   </view>
   <view class="fitness-content">
-    <view class="fitness-item" wx:for="{{2}}">
+    <view class="fitness-item" wx:for="{{2}}" bindtap="test">
       <image src="./images/bg.png" class="icon-bg"></image>
       <view class="f-box">
         <view class="test-report">
@@ -39,6 +39,9 @@
           </view>
         </view>
       </view>
+    </view>
+    <view class="bottombtn">
+      <button wx:if="{{ isComparison}}" class="complete" bindtap="toCompeletDetail">对比</button>
     </view>
   </view>
 </view>

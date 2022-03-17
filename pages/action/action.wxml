@@ -38,7 +38,7 @@
               <view class="right_items_left">
                 <image src="/assets/images/acion/c.png"></image>
               </view>
-              <view class="right_items_center">
+              <view class="right_items_center" bindtap="actionDetail">
                 <view>比目鱼肌腓肠肌</view>
                 <view>柔韧性 热身 放松</view>
               </view>
@@ -72,7 +72,7 @@
         <text>已选动作</text>
         <view class="clear" bindtap="clearAction">
           <image src="/assets/images/acion/clear.png"></image>
-          清空
+          <text>清空</text>
         </view>
       </view>
       <view class="mask-content">

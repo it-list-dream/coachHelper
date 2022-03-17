@@ -5,20 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: 0,
+    type: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-  onChange(event) {
-   console.log(event.detail.index);
-   this.setData({
-     active:event.detail.index
-   })
+    let pageTitle = options.type == 1 ? "基础问卷" : "风险评估";
+    wx.setNavigationBarTitle({
+      title: pageTitle
+    })
+    this.setData({
+      type: options.type
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

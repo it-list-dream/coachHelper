@@ -1,0 +1,46 @@
+<view class="perparationClass">
+  <view class="perparation-title">课前准备</view>
+  <view class="perparation-content">
+    <view class="custom-status">
+      <view class="status-text">客户状态</view>
+      <view class="choosestatus">
+        <text bindtap="status" data-index="0" style="color:{{currentStatus == 0?'#000000':'#999999'}}">不好</text>
+        <text bindtap="status" data-index="1" style="color:{{currentStatus == 1?'#000000':'#999999'}}">一般</text>
+        <text bindtap="status" data-index="2" style="color:{{currentStatus == 2?'#000000':'#999999'}}">好</text>
+        <text bindtap="status" data-index="3" style="color:{{currentStatus == 3?'#000000':'#999999'}}">非常好</text>
+      </view>
+    </view>
+    <view class="custom-data">
+      <view class="custom-data-title">客户数据</view>
+      <view class="custom-info">
+        <view class="custom-body">
+          <text>客户体重</text>
+          <input type="digit" maxlength="4" />
+          <text>kg</text>
+        </view>
+        <view class="custom-body">
+          <text>睡眠时长</text>
+          <input type="digit" maxlength="4" />
+          <text>h</text>
+        </view>
+        <view class="custom-body">
+          <text>胃口指数</text>
+          <text class="line" bindtap="appetite">{{chooseMood}}</text>
+          <image src="/assets/images/right.png"></image>
+        </view>
+        <view class="custom-body">
+          <text>活力指数</text>
+          <text class="line" bindtap="active">{{chooseActive}}</text>
+          <image src="/assets/images/right.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <mood is-show="{{moodShow}}" status-title="胃口指数" status-list="{{moodList}}" bind:close="handleclose"
+    bind:confrim="moodindex"></mood>
+  <mood is-show="{{activeShow}}" status-title="活力指数" status-list="{{activeList}}" bind:close="activeclose"
+    bind:confrim="vitalindex"></mood>
+  <view class="startclass">
+    <button class="startclassbtn" type="primary" bindtap="startClass">开始上课</button>
+  </view>
+</view>

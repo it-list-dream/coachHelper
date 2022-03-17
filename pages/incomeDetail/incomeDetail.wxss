@@ -1,0 +1,178 @@
+.incomeContainer .top {
+  background-color: white;
+  padding: 56rpx 46rpx 34rpx;
+  border-bottom: 20rpx solid #F5F5FF;
+}
+
+.incomeContainer .top-blue {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.incomeContainer .top-blue>view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.incomeContainer .top-blue>view view:nth-child(1) {
+  font-size: 40rpx;
+  font-family: PingFangSC-Medium, PingFangSC;
+  font-weight: 500;
+  color: rgba(48, 122, 245, 1);
+
+}
+
+.incomeContainer .top-blue>view view:nth-child(2) {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Medium, PingFangSC;
+  font-weight: 500;
+  color: rgba(48, 122, 245, 1);
+}
+
+.income-head {
+  display: flex;
+  margin-top: 64rpx;
+}
+
+.income-head .income-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  font-family: PingFang SC;
+}
+
+.income-head .income-item text:first-child {
+  margin-top: 16rpx;
+  font-size: 36rpx;
+  color: #000000;
+}
+
+.income-head .income-item text:nth-child(2) {
+  margin-top: 10rpx;
+}
+
+.income-head .income-item text:nth-child(2),
+.income-head .income-item text:last-child {
+  font-size: 20rpx;
+  color: #747474;
+}
+
+/*   */
+.income-date {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 106rpx;
+  border-bottom: 1px solid #EDEDED;
+  box-sizing: border-box;
+  padding: 0 70rpx;
+}
+
+.income-date .picker .blue-icon {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.income-date .picker {
+  font-size: 32rpx;
+  color: #2565F6;
+}
+
+.income-date .kong {
+  /* margin: 0 44rpx; */
+  width: 50rpx;
+  height: 1px;
+  background-color: #7D7D7D;
+}
+
+.income-source {
+  padding: 0 48rpx;
+}
+
+.van-search {
+  width: 640rpx !important;
+  padding: 30rpx 0 !important;
+}
+
+.van-icon {
+  color: #C2BCBC !important;
+}
+
+.memberlist {
+  margin-top: 8rpx;
+}
+
+.member-item {
+  display: flex;
+  height: 160rpx;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-bottom: 1px solid #E6EAF1;
+}
+
+.left-box {
+  display: flex;
+}
+
+.left-box .wrapper image {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+}
+
+.left-box .wrapper text {
+  display: block;
+  width: 88rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  border-radius: 50%;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  background: rgba(65,128,255,1);
+}
+
+.left-box .member-info {
+  margin-left: 50rpx;
+}
+
+.left-box .member-info text {
+  display: block;
+}
+
+.left-box .member-info text:first-child {
+  font-size: 28rpx;
+  color: #0D0E15;
+}
+
+.left-box .member-info text:last-child {
+  margin-top: 6rpx;
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.right-box>text {
+  display: block;
+  text-align: right;
+  font-size: 28rpx;
+  color: #FF2424;
+}
+
+.right-box>text:last-child {
+  margin-top: 6rpx;
+}
+.botEnd{
+  text-align: center;
+  margin: 30rpx 0;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular,PingFangSC;
+  font-weight: 400;
+  color: rgba(51,51,51,1);
+}

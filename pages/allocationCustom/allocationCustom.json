@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-search": "@vant/weapp/search/index",
+    "tabs-list":"/components/tabs-list/tabs-list"
+  },
+  "navigationBarBackgroundColor":"#2564F6",
+  "navigationBarTextStyle":"white",
+  "navigationBarTitleText":"分配客户"
+}

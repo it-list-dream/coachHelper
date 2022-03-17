@@ -172,6 +172,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
   },
   radioChange(e) {
     let answer_value = e.detail.value;
@@ -230,9 +231,14 @@ Page({
     })
   },
   handleAssess(){
-     wx.navigateTo({
-       url: '/questionnaire/pages/riskEvaluation/riskEvaluation',
-     })
+     wx.redirectTo({
+      url: '/questionnaire/pages/riskEvaluation/riskEvaluation',
+    })
+  },
+  questionCommit(){
+    wx.redirectTo({
+      url: '/questionnaire/pages/questionList/questionList',
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

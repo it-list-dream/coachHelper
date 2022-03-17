@@ -1,31 +1,53 @@
-/* pages/courseTemplate/courseTemplate.wxss */
-/* .courseTemplateContainer{
-  padding-top: 30rpx;
-} */
-.group-checkbox {
-  margin-top: 30rpx !important;
+.courseTemplateContainer {
+  padding-top: 32rpx;
 }
 
-.van-cell__value {
-  flex: unset !important;
+.checkbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 120rpx;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  border-bottom: 0.5px solid #EDEDED;
 }
 
-.van-cell {
-  padding: 46rpx 0 46rpx 60rpx !important;
-}
-
-.cell-title {
+.checkbox .left-checkbox {
+  margin-left: 30rpx;
   font-size: 30rpx;
   color: #000000;
 }
 
-.cell-title .cell-number {
-  margin-right: 20rpx;
+.checkbox .left-checkbox .order {
+  font-size: 36rpx;
   font-weight: bold;
+  color: #000000;
 }
 
-.van-checkbox__icon--checked {
-  background-color: #2564F6 !important;
+.checkbox .left-checkbox .template-name {
+  margin-left: 30rpx;
+}
+
+.checkbox .right-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.right-checkbox .no-choose {
+  width: 34rpx;
+  height: 34rpx;
+  border: 1px solid #BFBFBF;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.right-checkbox .success {
+  width: 34rpx;
+  height: 34rpx;
 }
 
 .template-btn {
@@ -45,4 +67,64 @@
   border-radius: 8rpx;
   font-size: 30rpx;
   color: #FFFFFF;
+}
+
+/*  */
+.savetemplate {
+  width: 690rpx;
+  height: 552rpx;
+  background: #FFFFFF;
+  border-radius: 8px;
+}
+
+.savetitle {
+  padding: 50rpx 0;
+  text-align: center;
+  font-size: 32rpx;
+  color: #010101;
+}
+
+.save-content {
+  padding: 0 50rpx;
+  margin-top: 60rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.save-content .template-name {
+  font-size: 28rpx;
+  color: #000000;
+}
+
+.save-content input {
+  text-align: right;
+}
+
+.btnlist {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 180rpx;
+}
+
+.btnlist .cancel {
+  border: 1px solid #CECECE;
+  border-radius: 34rpx;
+  color: #B3B3B3;
+  background-color: #FFFFFF;
+}
+
+.btnlist .save{
+  background: #2564F6;
+  color: #FFFFFF;
+}
+
+.btnlist .btn {
+  width: 220rpx;
+  height: 65rpx;
+  line-height: 65rpx;
+  text-align: center;
+  border-radius: 34rpx;
+  font-size: 28rpx;
 }

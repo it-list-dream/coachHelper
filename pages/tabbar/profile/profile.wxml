@@ -31,20 +31,20 @@
   </view>
   <!--  -->
   <view class="profile-content">
-    <view class="rows">
+    <navigator  hover-class="none" class="rows" url="/pages/birthdayList/birthdayList">
       <view class="rows-item">
         <image src="/assets/images/profile/birthday.png" class="icon"></image>
         <text>客户生日</text>
       </view>
       <image src="/assets/images/profile/left_arrow.png"></image>
-    </view>
-    <view class="rows">
+    </navigator>
+    <navigator  hover-class="none" class="rows" url="/pages/clientCase/clientCase">
       <view class="rows-item">
         <image src="/assets/images/profile/exmple.png" class="icon"></image>
         <text>客户案例</text>
       </view>
       <image src="/assets/images/profile/left_arrow.png"></image>
-    </view>
+    </navigator>
     <view class="rows">
       <view class="rows-item">
         <image src="/assets/images/profile/achievement.png" class="icon"></image>
@@ -52,13 +52,13 @@
       </view>
       <image src="/assets/images/profile/left_arrow.png"></image>
     </view>
-    <view class="rows">
+    <navigator hover-class="none" class="rows" url="/pages/notification/notification">
       <view class="rows-item">
         <image src="/assets/images/profile/message.png" class="icon"></image>
         <text>消息提醒</text>
       </view>
       <image src="/assets/images/profile/left_arrow.png"></image>
-    </view>
+    </navigator>
     <view class="rows">
       <view class="rows-item">
         <image src="/assets/images/profile/set1.png" class="icon"></image>

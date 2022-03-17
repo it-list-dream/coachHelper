@@ -1,0 +1,36 @@
+<view class="memberturncoach">
+  <view class="turnMmeber">
+    <view class="member-head">
+      <!-- <image src="/assets/images/header.png"></image> -->
+      <view>周</view>
+    </view>
+    <view class="member-info">
+      <view class="member-first">
+        星轻灿 <text style="color:#2564F6;">（王教练/15节）</text>
+      </view>
+      <view class="member-last">
+        <text>ruyu909090</text>
+        <text>有效期：2022/3/10</text>
+      </view>
+    </view>
+  </view>
+  <view class="turnClassinfo">
+    <view class="turn-title">转课会员信息</view>
+    <view class="card">
+      <view class="card-title">会员姓名</view>
+      <picker class="mmeberPicker"  bindchange="bindPickerChange" value="{{chooseIndex}}" range="{{memberList}}">
+        <view class="picker-box">
+           <text>{{memberList[chooseIndex]?memberList[chooseIndex]:'选择会员'}}</text>
+           <image src="/assets/images/black-arrow.png"></image>
+        </view>
+      </picker>
+    </view>
+    <view class="card">
+      <view class="card-title">会员卡号</view>
+      <view class="card-item">ftb0918</view>
+    </view>
+  </view>
+  <view class="submit-box">
+    <button class="turnSubmit">提交</button>
+  </view>
+</view>

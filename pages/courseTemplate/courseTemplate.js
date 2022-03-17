@@ -9,60 +9,74 @@ Page({
       templateId: 1,
       templateName: "女性塑形课程初级",
       courseName: "塑形",
-      selected:false
+      selected: false
     }, {
       templateId: 2,
       templateName: "女性减脂课程初级",
       courseName: "减脂",
-      selected:false
+      selected: false
     }, {
       templateId: 3,
       templateName: "增肌课程初级",
       courseName: "增肌",
-      selected:false
+      selected: false
     }, {
       templateId: 4,
       templateName: "拳击课程初级",
       courseName: "拳击",
-      selected:true
+      selected: false
     }],
-    result1: [{
-      templateId: 1,
-      templateName: "女性塑形课程初级",
-      courseName: "塑形",
-      selected:false
-    }, {
-      templateId: 2,
-      templateName: "女性减脂课程初级",
-      courseName: "减脂",
-      selected:false
-    }],
-    list: ['a', 'b', 'c'],
-    result: [],
+    isShow:false,
+    templateValue:""
   },
-
+  onClose(){
+    this.setData({
+      isShow:false
+    })
+  },
+  onCancel(){
+    this.setData({
+      isShow:false,
+      templateValue:""
+    })
+  },
+  getTemplateName(e){
+      this.setData({
+        templateValue:e.detail.value
+      })
+  },
+  templateconfrim(){
+    this.setData({
+      isShow:true
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
   },
-  onChange(event) {
+  chooseTemplate(e) {
+    let classes =  e.currentTarget.dataset.template;
+    console.log(classes)
+    let templateList = this.data.templateList;
+    for (var i = 0; i < templateList.length; i++) {
+        if(classes.templateName == templateList[i].templateName){
+          templateList[i].selected = true;
+        }else{
+          templateList[i].selected = false;
+        }
+    }
     this.setData({
-      result: event.detail,
-    });
-     console.log(111,event)
+      templateList:templateList
+    })
   },
-  toggle(event) {
-    const {
-      index
-    } = event.currentTarget.dataset;
-    const checkbox = this.selectComponent(`.checkboxes-${index}`);
-    console.log(checkbox)
-    checkbox.toggle();
+  //保存
+  save(){
+    wx.navigateTo({
+      url:"/pages/trainPlanDetail/trainPlanDetail"
+    })
   },
-  noop() {},
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

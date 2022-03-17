@@ -14,7 +14,11 @@ Page({
   onLoad: function (options) {
 
   },
-
+  planDetail() {
+    wx.navigateTo({
+      url: '/pages/trainPlanDetail/trainPlanDetail',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

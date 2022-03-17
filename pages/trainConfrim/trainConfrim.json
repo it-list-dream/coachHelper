@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "mood":"/components/pouple-status/index",
+    "van-slider": "@vant/weapp/slider/index"
+  },
+  "navigationBarBackgroundColor": "#2564F6",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "训练确定"
+}

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+     isComparison:false
   },
 
   /**
@@ -14,7 +14,26 @@ Page({
   onLoad: function (options) {
 
   },
-
+  appoinement() {
+    wx.navigateTo({
+      url: '/pages/addAppointment/addAppointment?type=1',
+    })
+  },
+  handleComparison(){
+    this.setData({
+      isComparison:true
+    })
+  },
+  test(){
+    wx.navigateTo({
+      url: '/evaluation/pages/physicalReport/physicalReport',
+    })
+  },
+  toCompeletDetail(){
+   wx.navigateTo({
+     url: '/evaluation/pages/fitnessContrastReport/fitnessContrastReport',
+   })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

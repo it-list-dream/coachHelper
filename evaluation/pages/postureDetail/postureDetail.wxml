@@ -1,0 +1,47 @@
+<view class="postureDetail">
+  <view class="detail">
+    <view class="angle-title">正面</view>
+    <view class="picturelist">
+        <view class="picture-date">2022.01.01</view>
+        <view class="picture">
+          <image src="https://img0.baidu.com/it/u=1463147281,167950081&fm=253&fmt=auto&app=138&f=PNG?w=365&h=370"
+            mode="widthFix"></image>
+        </view>
+        <view class="describe">
+          <text>头部：向右扭转</text>
+          <text>肩部：右侧耸肩</text>
+        </view>
+        <view class="remark"></view>
+      </view>
+  </view>
+  <view class="detail">
+    <view class="angle-title">左侧</view>
+    <view class="picturelist">
+        <view class="picture-date">2022.01.01</view>
+        <view class="picture">
+          <image src="https://img0.baidu.com/it/u=1463147281,167950081&fm=253&fmt=auto&app=138&f=PNG?w=365&h=370"
+            mode="widthFix"></image>
+        </view>
+        <view class="describe">
+          <text>头部：向右扭转</text>
+          <text>肩部：右侧耸肩</text>
+        </view>
+        <view class="remark"></view>
+      </view>
+  </view>
+  <view class="detail">
+    <view class="angle-title">右侧</view>
+    <view class="picturelist">
+        <view class="picture-date">2022.01.01</view>
+        <view class="picture">
+          <image src="https://img0.baidu.com/it/u=1463147281,167950081&fm=253&fmt=auto&app=138&f=PNG?w=365&h=370"
+            mode="widthFix"></image>
+        </view>
+        <view class="describe">
+          <text>头部：向右扭转</text>
+          <text>肩部：右侧耸肩</text>
+        </view>
+        <view class="remark"></view>
+      </view>
+  </view>
+</view>

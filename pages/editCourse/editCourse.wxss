@@ -41,7 +41,7 @@ page {
 }
 
 .perparat-before-class .perparat-item {
-  padding: 30rpx 0;
+  /* padding: 30rpx 0; */
   border-top: 0.5px solid #F0F2F5;
 }
 
@@ -68,8 +68,13 @@ page {
 }
 
 .perparat-item .perparat-item-title .arrow {
+  transform: rotate(180deg);
   width: 36rpx;
   height: 36rpx;
+}
+
+.perparat-item .perparat-item-title .tansition {
+  transform: rotate(0deg) !important;
 }
 
 .instrument-add {
@@ -82,22 +87,12 @@ page {
 
 .perparat-before-class .perparat-item .instrument {
   position: relative;
-  text-align: center;
-  padding: 38rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
   font-size: 28rpx;
   color: #333333;
-}
-
-.perparat-item .instrument::before {
-  position: absolute;
-  content: "";
-  top: 50%;
-  left: 100rpx;
-  width: 10rpx;
-  height: 10rpx;
-  background: #C0C0C0;
-  border-radius: 50%;
-  transform: translateY(-50%);
 }
 
 /*  */
@@ -132,9 +127,41 @@ page {
   line-height: 100rpx;
   font-size: 24rpx;
   text-align: center;
- color: #FFFFFF;
+  color: #FFFFFF;
   background-color: #FF0000;
 }
-.van-swipe-cell{
+
+.van-swipe-cell {
   touch-action: none !important;
+}
+
+.instrument .instrument-row {
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.perparat-item .instrument .instrument-row::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 100rpx;
+  width: 10rpx;
+  height: 10rpx;
+  background: #C0C0C0;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.instrument .delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64rpx;
+  height: 64rpx;
+  margin-left: 10rpx;
+}
+
+.instrument .delete image {
+  width: 30rpx;
+  height: 30rpx;
 }

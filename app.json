@@ -1,9 +1,29 @@
 {
   "pages": [
+    
+    "pages/selectCoach/selectCoach",
+    "pages/allocationCustom/allocationCustom",
+    "pages/memberTurnCoach/memberTurnCoach",
+    "pages/turnCoach/turnCoach",
+    "pages/turnClasDeatil/turnClasDeatil",
+    "pages/memberTurnClass/memberTurnClass",
+    "pages/incomeDetail/incomeDetail",
+    "pages/serviceAchievements/serviceAchievements",
+    "pages/tabbar/home/home",
+    "pages/rank/rank",
+    "pages/stadiumData/stadiumData",
+    "pages/birthdayList/birthdayList",
+    "pages/notification/notification",
+    "pages/clientCaseDetail/clientCaseDetail",
+    "pages/clientCase/clientCase",
     "pages/courseTemplate/courseTemplate",
+    "pages/trainConfrim/trainConfrim",
+    "pages/startClass/startClass",
+    "pages/preparationClass/preparationClass",
+    "pages/actionDetail/actionDetail",
+    "pages/haveClass/haveClass",
     "pages/trainPlanDetail/trainPlanDetail",
     "pages/trainPlan/trainPlan",
-    "pages/tabbar/home/home",
     "pages/others/others",
     "pages/editCourse/editCourse",
     "pages/courseContract/courseContract",
@@ -34,7 +54,8 @@
         "pages/question/question",
         "pages/questionList/questionList",
         "pages/riskEvaluation/riskEvaluation",
-        "pages/systemQuestion/systemQuestion"
+        "pages/systemQuestion/systemQuestion",
+        "pages/systemList/systemList"
       ]
     },{
       "root": "evaluation",
@@ -43,7 +64,11 @@
         "pages/physicalTest/physicalTest",
         "pages/physicalReport/physicalReport",
         "pages/fitnessContrastReport/fitnessContrastReport",
-        "pages/fitnessList/fitnessList"
+        "pages/fitnessList/fitnessList",
+        "pages/postureDetail/postureDetail",
+        "pages/postureContrast/postureContrast",
+        "pages/postureAssessment/postureAssessment",
+        "pages/newPosture/newPosture"
       ]
     }
   ],

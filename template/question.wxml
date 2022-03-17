@@ -1,0 +1,18 @@
+<template name="question-item">
+  <navigator class="scroll-list" url="{{q}}">
+    <view class="scroll-item">
+      <image src="/assets/images/doubt.png"></image>
+      <view class="right-box">
+        <view class="top">
+          <text>基础问卷</text>
+          <image src="/assets/images/right.png"></image>
+        </view>
+        <view class="bottom">
+          王教练
+          <text>2022.02.16</text>
+        </view>
+      </view>
+    </view>
+    <image class="question-bg" src="/assets/images/course_bg.png"></image>
+  </navigator>
+</template>

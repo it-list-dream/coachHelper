@@ -10,7 +10,7 @@
     </view>
   </view>
   <view class="plan-list">
-    <view class="plan-item" wx:for="{{2}}">
+    <view class="plan-item" wx:for="{{2}}" bindtap="planDetail">
       <image class="course-bg" src="/assets/images/course_bg.png"></image>
       <view class="plan-mask">
         <view class="course">

@@ -4,11 +4,10 @@
     <van-grid-item icon="photo-o" text="调查问卷" url="/questionnaire/pages/questionList/questionList"/>
     <van-grid-item icon="photo-o" text="测试评估" url="/evaluation/pages/testEvaluation/testEvaluation"/>
     <van-grid-item icon="photo-o" text="训练方案" url="/pages/trainning/trainning" />
-    <van-grid-item icon="photo-o" text="课程规划" />
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
-    <van-grid-item icon="photo-o" text="文字" />
+    <van-grid-item icon="photo-o" text="课程规划" url="/pages/coursePlanning/coursePlanning"/>
+    <van-grid-item icon="photo-o" text="训练计划" url="/pages/trainPlan/trainPlan"/>
+    <van-grid-item icon="photo-o" text="体验课" url="/pages/trialClass/trialClass"/>
+    <van-grid-item icon="photo-o" text="课程介绍" url="/pages/classType/classType"/>
   </van-grid>
 </view>
 <tabbar tabbar="{{tabbar}}"></tabbar>

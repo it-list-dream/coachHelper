@@ -1,16 +1,6 @@
-/* questionnaire/pages/systemQuestion/systemQuestion.wxss */
-.van-tabs__line {
-  background-color: #2564F6 !important;
+.pageContainer{
+  padding: 0 30rpx;
 }
-
-.van-hairline--top-bottom {
-  border-bottom: 1px solid #E6EAF1 !important;
-}
-
-.van-tab__pane {
-  padding: 0 30rpx !important;
-}
-
 .basequestion {
   display: flex;
   flex-direction: column;

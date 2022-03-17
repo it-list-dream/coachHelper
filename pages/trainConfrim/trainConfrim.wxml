@@ -1,0 +1,117 @@
+<view class="trainConfrim">
+  <!--  -->
+  <view class="trainheader">
+    <view class="header-box">
+      <view class="portrait">
+        <image class="protarit-icon" src="/assets/images/header.png"></image>
+        <image src="/assets/images/gril.png" class="sex"></image>
+      </view>
+      <view class="custom">
+        <text>娜娜</text>
+        <text>29岁</text>
+      </view>
+      <view class="phone">15298131341</view>
+    </view>
+  </view>
+  <!-- 客户评价 -->
+  <view class="train-content">
+    <view class="customfeel">
+      <view class="feel-item">
+        <text>非常好</text>
+        <text>客户心情</text>
+      </view>
+      <view class="feel-item">
+        <text>00:14</text>
+        <text>课程时长/分</text>
+      </view>
+      <view class="feel-item sucessdate">
+        <text>01.18</text>
+        <text>完成日期</text>
+      </view>
+    </view>
+    <!-- 教练确定 -->
+    <view class="coachConfrim">
+      <view class="confrim-title">请教练确定</view>
+      <view class="classes">课程内容</view>
+      <view class="action-table" wx:for="{{3}}">
+        <view class="action-th">
+          <view class="action-td-left">
+            跪式俯卧撑<text>3/3组</text>
+          </view>
+          <view class="action-td-right">
+            <text class="emoticon">一般</text>
+            <text class="emoticon">良好</text>
+            <view class="switch emoticon">
+              <text>优秀</text>
+              <image src="/assets/images/bottom.png"></image>
+            </view>
+          </view>
+        </view>
+        <!-- <view class="action-tr" wx:for="{{3}}">
+          <view class="left-td">
+            <text>20次</text>
+            <text>--</text>
+            <text>0s</text>
+            <text>--</text>
+          </view>
+          <view class="right-td">
+            <text bindtap="estimate">一般</text>
+            <text bindtap="estimate">良好</text>
+            <text bindtap="estimate">优秀</text>
+          </view>
+        </view> -->
+      </view>
+    </view>
+    <!-- 客户确定 -->
+    <view class="customConfrim">
+      <view class="confrim-title">请客户确认</view>
+      <view class="custom-info">
+        <view class="custom-body">
+          <text>客户体重</text>
+          <input type="digit" maxlength="4" value="{{customInfo.weight}}" />
+          <text>kg</text>
+        </view>
+        <view class="custom-body">
+          <text>睡眠时长</text>
+          <input type="digit" maxlength="4" value="{{customInfo.sleeptime}}" />
+          <text>h</text>
+        </view>
+        <view class="custom-body">
+          <text>胃口指数</text>
+          <text class="line" bindtap="appetite">{{customInfo.appetite}}</text>
+          <image src="/assets/images/right.png"></image>
+        </view>
+        <view class="custom-body">
+          <text>活力指数</text>
+          <text class="line" bindtap="active">{{customInfo.vitality}}</text>
+          <image src="/assets/images/right.png"></image>
+        </view>
+      </view>
+      <view class="slider-box">
+        <view class="icon2">稍轻松</view>
+        <view class="emotion-icon2">
+          <view>非常轻松</view>
+          <van-slider value="{{ sliderValue}}" bind:change="sliderChange" step="10" bar-height="10"
+            active-color="#2564F6" />
+          <view>非常吃力</view>
+        </view>
+      </view>
+      <!-- 训练感受 -->
+      <view class="mytrainfeels">
+        <textarea class="textarea2" placeholder-style="color:#A7A7A7;" placeholder="说说你的训练感受" name="" id="" cols="30"
+          rows="10"></textarea>
+      </view>
+      <view class="custom-sign">
+        <view class="sign-title">客户签字</view>
+        <!-- <image src=""></image> -->
+      </view>
+      <view class="customconfrim">
+        <button class="cbtn">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+<mood is-show="{{moodShow}}" status-title="胃口指数" status-list="{{moodList}}" bind:close="handleclose"
+  bind:confrim="moodindex"></mood>
+<mood is-show="{{activeShow}}" status-title="活力指数" status-list="{{activeList}}" bind:close="activeclose"
+  bind:confrim="vitalindex"></mood>

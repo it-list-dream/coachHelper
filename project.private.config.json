@@ -119,6 +119,42 @@
           "pathName": "pages/addTrainPlan/addTrainPlan",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "体态对比",
+          "pathName": "pages/postureContrast/postureContrast",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "客户",
+          "pathName": "pages/tabbar/clientele/clientele",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "系统",
+          "pathName": "questionnaire/pages/systemList/systemList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "evaluation/pages/fitnessList/fitnessList",
+          "pathName": "evaluation/pages/fitnessList/fitnessList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "evaluation/pages/fitnessList/fitnessList",
+          "pathName": "evaluation/pages/fitnessList/fitnessList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/stadiumData/stadiumData",
+          "pathName": "pages/stadiumData/stadiumData",
+          "query": "",
+          "scene": null
         }
       ]
     }

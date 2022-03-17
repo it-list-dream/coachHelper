@@ -1,0 +1,50 @@
+<view class="startclass">
+  <van-count-down class="control-count-down" use-slot time="{{ time }}" bind:change="onChange" finish="gameover">
+    <view class="count-down">
+      <text class="item">{{ timeData.minutes }}:{{ timeData.seconds }}</text>/
+      <text class="item">{{ time/60/1000 }}:00</text>
+      <view class="finished" bindtap="finish">
+        <text>结束</text>
+      </view>
+    </view>
+  </van-count-down>
+  <view class="actionAll">
+    <view class="actionbtn" bindtap="lookallAction">全部动作</view>
+    <view class="instrument">
+      <view class="triangle-box">
+        <image class="left" src="/assets/images/triangle.png"></image>
+        <text>箭步蹲</text>
+      </view>
+      <view class="current-action">四足支撑</view>
+      <view class="triangle-box">
+        <text>跪资俯卧撑</text>
+        <image class="right" src="/assets/images/triangle.png"></image>
+      </view>
+    </view>
+    <!-- 全部动作  -->
+    <view class="instrument-content">
+      <view class="instrument-title">
+        <text>数量</text>
+        <text>重量</text>
+        <text>休息</text>
+        <text>器械</text>
+      </view>
+      <view class="instrument-table">
+        <view class="instrument-table-tr" wx:for="{{4}}">
+          <view class="left-td">
+            <text>20次</text>
+            <text>--</text>
+            <text>0s</text>
+            <text>--</text>
+          </view>
+          <view class="right-td">
+            <text bindtap="estimate">一般</text>
+            <text bindtap="estimate">良好</text>
+            <text bindtap="estimate">优秀</text>
+          </view>
+        </view>
+        <view class="ohter-tr">+添加组</view>
+      </view>
+    </view>
+  </view>
+</view>

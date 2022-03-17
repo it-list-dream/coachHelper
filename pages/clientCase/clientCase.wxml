@@ -1,0 +1,40 @@
+<view class="clientCase">
+  <navigator class="client-item" url="/pages/clientCaseDetail/clientCaseDetail">
+    <image class="case_bg" src="/assets/images/clientCase/lose_weight.png"></image>
+    <view class="case-box">
+      <text>减脂</text>
+      <text>2个案例</text>
+    </view>
+  </navigator>
+  <navigator class="client-item" url="/pages/clientCaseDetail/clientCaseDetail">
+    <image class="case_bg" src="/assets/images/clientCase/gain_muscle.png"></image>
+    <view class="case-box">
+      <text>增肌</text>
+      <text>2个案例</text>
+    </view>
+  </navigator>
+  <navigator class="client-item" url="/pages/clientCaseDetail/clientCaseDetail">
+    <image class="case_bg" src="/assets/images/clientCase/moulding.png"></image>
+    <view class="case-box">
+      <text>塑形</text>
+      <text>2个案例</text>
+    </view>
+  </navigator>
+  <navigator class="client-item" url="/pages/clientCaseDetail/clientCaseDetail">
+    <image class="case_bg" src="/assets/images/clientCase/revover.png"></image>
+    <view class="case-box">
+      <text>恢复</text>
+      <text>2个案例</text>
+    </view>
+  </navigator>
+  <navigator class="client-item" url="/pages/clientCaseDetail/clientCaseDetail">
+    <image class="case_bg" src="/assets/images/clientCase/performance.png"></image>
+    <view class="case-box">
+      <text>运动表现力</text>
+      <text>2个案例</text>
+    </view>
+  </navigator>
+  <view class="add-clientcase">
+    <text style="font-size:60rpx;">+</text>添加客户案例
+  </view>
+</view>

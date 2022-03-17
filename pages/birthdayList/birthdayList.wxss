@@ -1,0 +1,47 @@
+/* pages/birthdayList/birthdayList.wxss */
+.birthdayList {
+  padding-top: 30rpx;
+}
+
+.scroll-y {
+  box-sizing: border-box;
+}
+
+.birthday-content {
+  padding: 0 30rpx;
+  overflow: hidden;
+}
+
+.birthday-content .birthday-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 158rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #E6EAF1;
+}
+
+.birthday-item image {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+}
+
+.birthday-item .birthday-info {
+  margin-left: 41rpx;
+}
+
+.birthday-info .name {
+  font-size: 28rpx;
+  color: #222222;
+}
+
+.birthday-info .name text {
+  color: #666666;
+}
+
+.birthday-info .phone {
+  margin-top: 12rpx;
+  font-size: 28rpx;
+  color: #666666;
+}

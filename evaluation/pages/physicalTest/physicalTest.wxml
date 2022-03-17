@@ -124,7 +124,7 @@
           </view>
         </view>
         <view class="generate-report">
-          <button class="reportbtn">生成报告</button>
+          <button class="reportbtn" bindtap="report">生成报告</button>
         </view>
       </van-tab>
     </van-tabs>

@@ -1,0 +1,26 @@
+<view class="turnClass">
+  <van-search class="search-box" value="{{ value }}" placeholder="请输入会员姓名、手机号" />
+  <scroll-view  scroll-y bindscrolltolower="loadMore" style="height:calc(100vh - {{searchHeight}}px - 120rpx)">
+    <view class="scroll-wrapper">
+      <view class="turn-item" wx:for="{{memberList}}" wx:key="index" bindtap="selectMember" data-index="{{index}}">
+        <view class="check-box">
+          <image src="{{item.selected?'/assets/images/blue-circle.png':'/assets/images/gray-circle.png'}}"></image>
+        </view>
+        <view class="avatar">
+          <!-- <image src="/assets/images/header.png"></image> -->
+          <view class="avatar-text">张</view>
+        </view>
+        <view class="member-info">
+          <view class="coach">
+            张万森
+            <text>（刘教练/8节）</text>
+          </view>
+          <view class="coach-phone">123456789</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="turnclass-btn">
+    <button class="turnBtn" bindtap="turnClass">转课</button>
+  </view>
+</view>

@@ -1,0 +1,78 @@
+.detail {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: 0.5px solid #EDEDED;
+  padding-bottom: 40rpx;
+}
+
+.angle-title {
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2666F6;
+  padding: 36rpx 0;
+}
+
+.picturelist {
+  width: 326rpx;
+}
+
+
+.picture-date {
+  text-align: center;
+  font-size: 30rpx;
+  color: #333333;
+  margin-bottom: 15rpx;
+}
+
+.picture {
+  width: 326rpx;
+}
+
+.picture image {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+.describe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.describe text {
+  padding: 0 14rpx;
+  height: 42rpx;
+  margin-top: 20rpx;
+  line-height: 42rpx;
+  text-align: center;
+  border: 0.5px solid #999999;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  color: #999999;
+  box-sizing: border-box;
+}
+
+.remark {
+  margin-top: 40rpx;
+  font-size: 24rpx;
+  color: #999999;
+  line-height: 40rpx;
+}
+
+.success {
+  margin-top: 110rpx;
+  padding-bottom: 30rpx;
+}
+
+.success .successbtn {
+  width: 620rpx;
+  height: 86rpx;
+  text-align: center;
+  line-height: 86rpx;
+  background: #2564F6;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  color: #FFFFFF;
+}

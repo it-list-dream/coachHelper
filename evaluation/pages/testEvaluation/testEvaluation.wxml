@@ -1,5 +1,5 @@
 <view class="testEvaluation">
-  <view class="test-item">
+  <navigator class="test-item" hover-class="none" url="/evaluation/pages/fitnessList/fitnessList">
     <view class="next-icon">
       <image src="/assets/images/white-arrow.png"></image>
     </view>
@@ -9,8 +9,8 @@
       <view class="test-content">评测体适能，使您更加了解自己</view>
       <view class="attentionPeople">8123人已经测试过</view>
     </view>
-  </view>
-  <view class="test-item">
+  </navigator>
+  <navigator class="test-item" hover-class="none" url="/evaluation/pages/postureAssessment/postureAssessment">
     <view class="next-icon">
       <image src="/assets/images/white-arrow.png"></image>
     </view>
@@ -23,5 +23,5 @@
         人已经测试过
       </view>
     </view>
-  </view>
+  </navigator>
 </view>

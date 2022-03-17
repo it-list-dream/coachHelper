@@ -1,0 +1,51 @@
+<view class="actionDetail">
+  <view class="action-name">上下台阶</view> <!--  -->
+  <view class="action-params">
+    <view class="action-tips">动作参数</view>
+    <view class="action-detail">
+      <view class="action-rows">
+        <text class="action-rows-title">组数</text>
+        <text>:3组</text>
+      </view>
+      <view class="action-rows">
+        <text class="action-rows-title">每组次数</text>
+        <text>:3组</text>
+      </view>
+      <view class="action-rows">
+        <text class="action-rows-title">每组时间</text>
+        <text>:15s</text>
+      </view>
+      <view class="action-rows">
+        <text class="action-rows-title">组间休息</text>
+        <text>:60s</text>
+      </view>
+      <view class="action-rows">
+        <text class="action-rows-title">阻力</text>
+        <text>:3组</text>
+      </view>
+      <view class="action-rows">
+        <text class="action-rows-title">器械</text>
+        <text>:壶铃</text>
+      </view>
+    </view>
+  </view>
+  <!-- 锻炼部位 -->
+  <view class="exercisepace">
+    <view class="expercise-title action-tips">锻炼部位</view>
+    <vie class="expercise-content">无</vie>
+  </view>
+  <!-- 动作详情 -->
+  <view class="actionlist">
+    <view class="expercise-title action-tips">动作详情</view>
+    <view class="actionlist-item">
+      目标：心肺
+      要点1：挺胸收腹，背部挺直 要点
+      2：脚尖与膝盖朝前，眼睛目视前方 要点
+      3：速度越快，燃脂效果越好
+    </view>
+    <!-- <view class="action-item">目标：心肺</view>
+    <view class="action-item">要点1：挺胸收腹，背部挺直 要点</view>
+    <view >2：脚尖与膝盖朝前，眼睛目视前方 要点</view>
+    <view>3：速度越快，燃脂效果越好</view> -->
+  </view>
+</view>

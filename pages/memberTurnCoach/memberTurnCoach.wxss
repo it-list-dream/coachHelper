@@ -1,0 +1,123 @@
+.memberturncoach{
+  padding: 0 30rpx;
+}
+.turnMmeber {
+  display: flex;
+  align-items: center;
+  height: 150rpx;
+  margin: 0 18rpx;
+  box-sizing: border-box;
+  border-bottom: 0.5px solid #E6EAF1;
+}
+
+.turnMmeber .member-head {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.turnMmeber image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.turnMmeber .member-head>view {
+  width: 100%;
+  height: 100%;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+  background-color: #4A81FF;
+}
+
+.member-info {
+  margin-left: 30rpx;
+  flex: 1;
+}
+
+.member-info .member-first {
+  font-size: 28rpx;
+  color: #0D0E15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.member-last {
+  margin-top: 8rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #666666;
+}
+/*  */
+
+.turnClassinfo .turn-title {
+  padding: 30rpx 0;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #010101;
+}
+
+.turnClassinfo .card{
+  display: flex;
+  align-items: center;
+  width: 652rpx;
+  height: 62rpx;
+  line-height: 62rpx;
+  border: 1px solid #AAACB1;
+  border-radius: 8rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+
+.turnClassinfo .card .card-title {
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  color: #222222;
+}
+
+.turnClassinfo .card .card-item,
+.mmeberPicker {
+  margin-left: 32rpx;
+  flex: 1;
+  font-size: 26rpx;
+  color: #222222;
+}
+
+.mmeberPicker .picker-box {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 24rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mmeberPicker .picker-box image {
+  width: 30rpx;
+  height: 30rpx;
+}
+.submit-box{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-bottom: 30rpx;
+}
+.turnSubmit {
+  margin: 0 auto;
+  margin-top: 230rpx;
+  width: 690rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background: #2564F6;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  color: #FFFFFF;
+}

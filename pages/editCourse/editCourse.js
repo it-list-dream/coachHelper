@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    warmUp: false,
+    official: false,
+    relax: false
   },
 
   /**
@@ -14,14 +16,37 @@ Page({
   onLoad: function (options) {
 
   },
+  closeArrow() {
+    this.setData({
+      warmUp: !this.data.warmUp
+    })
+  },
+  editConfrim() {
+    wx.navigateTo({
+      url: '/pages/haveClass/haveClass',
+    })
+  },
+  addAction() {
+    wx.navigateTo({
+      url: '/pages/action/action',
+    })
+  },
+  actionDetail() {
+    wx.navigateTo({
+      url: '/pages/actionDetail/actionDetail',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
 
   },
-  deleteAction(){
-     console.log('删除动作')
+  deleteAction() {
+    console.log('删除动作')
+  },
+  delete() {
+    console.log('删除')
   },
   /**
    * 生命周期函数--监听页面显示

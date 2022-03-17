@@ -71,7 +71,7 @@
     </view>
     <view class="question-btn" wx:else>
       <button class="assess" bindtap="handleAssess">风险评估</button>
-      <button class="commit">提交</button>
+      <button class="commit" bindtap="questionCommit">提交</button>
     </view>
   </view>
 </view>

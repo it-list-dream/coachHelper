@@ -248,7 +248,9 @@ page {
   font-size: 30rpx;
   color: #A8A8A8;
 }
-
+.mask-title .clear text{
+  vertical-align: middle;
+}
 .mask-title .clear image {
   width: 32rpx;
   height: 32rpx;

@@ -1,9 +1,7 @@
 {
   "usingComponents": {
-    "van-tab": "@vant/weapp/tab/index",
-    "van-tabs": "@vant/weapp/tabs/index"
   },
   "navigationBarBackgroundColor":"#3873F8",
   "navigationBarTextStyle":"white",
-  "navigationBarTitleText":"系统问卷"
+  "navigationBarTitleText":"问卷"
 }

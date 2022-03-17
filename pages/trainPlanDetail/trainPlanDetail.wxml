@@ -4,7 +4,7 @@
       <image src="/assets/images/header.png"></image>
       <text>娜娜的女性塑型课</text>
     </view>
-    <view class="train-templete">
+    <view class="train-templete" bindtap="saveTemplate">
       <view class="savetemplete template-btn">
         <image src="/assets/images/import.png" class="template-icon"></image>
         <text>存为模板</text>

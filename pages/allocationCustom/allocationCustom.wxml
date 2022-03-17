@@ -1,0 +1,27 @@
+<view class="allocationContainer">
+  <van-search class="search-box" value="{{ value }}" placeholder="请输入会员姓名、手机号" />
+  <tabs-list id="tabs" is-border="{{true}}" tList="{{tabsList}}" current-tab="{{tabIndex}}"
+    bind:changeCurrent="tabsChange" bind:scrollHeight="getHeight">
+    <scroll-view scroll-y class="scroll" style="height:calc(100vh - {{ searchHeight}}px - {{tabsHeight}}px - 120rpx)"
+      wx:if="{{tabIndex == 0}}" bindscrolltolower="loadMore">
+      <view class="scroll-y">
+        <view class="scroll-item" wx:for="{{12}}">
+        <view class="select-icon">
+          <image src="/assets/images/gray-circle.png"></image>
+        </view>
+        <view class="head">
+          <image src="/assets/images/header.png"></image>
+          <!-- <view></view> -->
+        </view>
+        <view class="member-info">
+          <text>桃桃</text>
+          <text>ruyu909090</text>
+        </view>
+      </view>
+      </view>
+    </scroll-view>
+  </tabs-list>
+  <view class="allocation-btn">
+    <button class="allBtn">确定</button>
+  </view>
+</view>

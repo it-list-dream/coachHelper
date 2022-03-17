@@ -1,0 +1,23 @@
+<view class="birthdayList">
+  <van-tabs active="{{ active }}" bind:change="tabChange" color="#2564F6" title-active-color="#2564F6"
+    title-inactive-color="#333333" ellipsis="{{false}}" id="tabs">
+    <block wx:for="{{tabList}}" wx:key="index">
+      <van-tab title="{{item}}">
+        <scroll-view wx:if="{{active == 0}}" class="scroll-y" style="height:{{scrollHeight}}px;" scroll-y>
+          <view class="birthday-content">
+            <view class="birthday-item" wx:for="{{10}}">
+              <image src="/assets/images/header.png"></image>
+              <view class="birthday-info">
+                <view class="name">  
+                  娜娜
+                  <text>02月17日生日</text>
+                </view>
+                <view class="phone">18763451111</view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </van-tab>
+    </block>
+  </van-tabs>
+</view>

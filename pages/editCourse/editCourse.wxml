@@ -10,20 +10,25 @@
                 <van-swipe-cell right-width="{{ 65 }}">
                     <view class="perparat-item-title">
                         <text>扶墙俯卧撑：3组×10次 20kg·间休60s</text>
-                        <view class="arrow-box">
-                            <image class="arrow" src="/assets/images/top.png"></image>
+                        <view class="arrow-box" bindtap="closeArrow">
+                            <image class="arrow {{warmUp?'tansition':''}}" src="/assets/images/top.png">
+                            </image>
                         </view>
                     </view>
                     <view slot="right" class="delete-right" bindtap="deleteAction">删除</view>
                 </van-swipe-cell>
-                <view class="instrument">10次（无器械）-- 间休60s</view>
-                <view class="instrument">10次（无器械）-- 间休60s</view>
-                <view class="instrument">10次（无器械）-- 间休60s</view>
-                <view class="instrument">10次（无器械）-- 间休60s</view>
-                <view class="instrument-add">+增加</view>
+                <view class="swipe-list" hidden="{{!warmUp}}">
+                    <view class="instrument" wx:for="{{4}}">
+                        <view class="instrument-row">10次（无器械）-- 间休60s</view>
+                        <view class="delete" bindtap="delete" data-index="{{index}}">
+                            <image class="delete-icon" src="/assets/images/delete.png"></image>
+                        </view>
+                    </view>
+                    <view class="instrument-add">+增加</view>
+                </view>
             </view>
             <!--  -->
-            <view class="addaction">+添加动作</view>
+            <view class="addaction" bindtap="addAction">+添加动作</view>
         </view>
         <view class="perparat-before-class">
             <view class="perparat-title">正式训练</view>
@@ -35,7 +40,7 @@
         </view>
         <!--  -->
         <view class="edit-button">
-            <button class="edit-confrim">确定</button>
+            <button class="edit-confrim" bindtap="editConfrim">保存</button>
         </view>
     </view>
 </view>
