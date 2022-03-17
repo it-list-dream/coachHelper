@@ -10,10 +10,11 @@
         <image src="./images/bottom_arrow.png" class="arrow"></image>
       </view>
       <view class="course-time">时长：45分钟</view>
-      <view class="course-text">
+      <view class="course-price">￥300.0</view>
+      <!-- <view class="course-text">
         <text>消耗卡路里：245kcal</text>
         <text class="course-price">￥300.0</text>
-      </view>
+      </view> -->
     </view>
   </view>
 </view>

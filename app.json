@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/selectCoach/selectCoach",
     "pages/allocationCustom/allocationCustom",
     "pages/memberTurnCoach/memberTurnCoach",

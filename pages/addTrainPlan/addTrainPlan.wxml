@@ -12,24 +12,27 @@
   </view>
   <view class="trainPlanTips">
     <input type="text" class="plan-text" value="{{customInfo.planName}}"
-      style="width:{{customInfo.planName.length* 32 }}rpx;" 	bindinput="setClassName" disabled="{{customInfo.isDisabled}}" maxlength="30"/>
-      <view class="edit-box" bindtap="setCustomName">
-        <image src="/assets/images/edit2.png"></image>
-      </view>
+      style="width:{{customInfo.planName.length* 33 }}rpx;" bindinput="setClassName"
+      disabled="{{customInfo.isDisabled}}" maxlength="30" />
+    <view class="edit-box" bindtap="setCustomName">
+      <image src="/assets/images/edit2.png"></image>
+    </view>
   </view>
   <!--  -->
   <view class="plan-content">
     <van-cell-group>
       <van-cell title="课程类型*" is-link>
-        <picker class="van-cell-content"  header-text="总课时" mode="selector" range="{{classesTypeList}}" bindchange="setClassType">
-            <view wx:if="{{!classesTypeList[typeIndex]}}">请选择课程类型</view>
-            <view wx:else style="color:#222222;">{{classesTypeList[typeIndex]}}</view>
+        <picker class="van-cell-content" header-text="总课时" mode="selector" range="{{classesTypeList}}"
+          bindchange="setClassType">
+          <view wx:if="{{!classesTypeList[typeIndex]}}">请选择课程类型</view>
+          <view wx:else style="color:#222222;">{{classesTypeList[typeIndex]}}</view>
         </picker>
       </van-cell>
       <van-cell title="总课时*" is-link>
-        <picker class="van-cell-content"  header-text="总课时" mode="selector" range="{{classesList}}" bindchange="classNumber">
-            <view wx:if="{{!classesList[classesIndex]}}">请选择总课时</view>
-            <view wx:else style="color:#222222;">{{classesList[classesIndex]}}</view>
+        <picker class="van-cell-content" header-text="总课时" mode="selector" range="{{classesList}}"
+          bindchange="classNumber">
+          <view wx:if="{{!classesList[classesIndex]}}">请选择总课时</view>
+          <view wx:else style="color:#222222;">{{classesList[classesIndex]}}</view>
         </picker>
       </van-cell>
       <van-cell title="课单价" value="420" />
