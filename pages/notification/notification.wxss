@@ -1,0 +1,53 @@
+/* pages/notification/notification.wxss */
+.notification {
+  padding-top: 30rpx;
+}
+
+.van-tabs__wrap {
+  border-bottom: 1px solid #E6EAF1 !important;
+}
+
+.scroll-y {
+  box-sizing: border-box;
+}
+
+.scroll-content {
+  padding: 0 30rpx;
+  overflow: hidden;
+}
+
+.scroll-content .scroll-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 150rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #F0F2F5;
+  padding: 40rpx 0 24rpx;
+}
+
+.scroll-item .scroll-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.scroll-item .scroll-info text:first-child {
+  font-size: 28rpx;
+  color: #333333;
+}
+
+
+.scroll-item .scroll-info text:last-child {
+  font-size: 26rpx;
+  color: #A2A2A2;
+}
+
+.lastrows {
+  font-size: 28rpx;
+  color: #A2A2A2;
+}
+.lastrows .card-text{
+  margin-left: 20rpx;
+}

@@ -53,62 +53,6 @@
     <block wx:for="{{periodList}}" wx:for-index="idx" wx:key="idx">
       <stage-list activeName="{{['step'+idx]}}"  periodTitle="{{item}}"></stage-list>
     </block>
-    <!-- <van-collapse value="{{ activeNames }}" bind:change="onChange">
-      <van-collapse-item title="适应期" name="1">
-        <view class="collaspe-rows-title">训练重点</view>
-        <view class="train-period-item">
-          <view hidden="{{true}}">
-            <view class="period-item-left">
-              <text>力量</text>
-              <text>有氧</text>
-            </view>
-            <view class="period-item-right">
-              <image src="/assets/images/train/editTrain.png"></image>
-            </view>
-          </view>
-          <view class="train-add">+添加项目</view>
-        </view>
-        <view class="collaspe-rows-title">训练项目</view>
-        <view class="train-period-item">
-          <view class="period-item-left">
-            <text>力量</text>
-            <text>有氧</text>
-          </view>
-          <view class="period-item-right">
-            <image src="/assets/images/train/editTrain.png"></image>
-          </view>
-        </view>
-        <view class="collaspe-rows-title">训练目标</view>
-        <view class="train-period-item jieduan">
-          <text>体重记录</text>
-          <text>kg</text>
-        </view>
-        <view class="train-period-item jieduan">
-          <text>体脂变化</text>
-          <text>%</text>
-        </view>
-        <view class="train-period-item jieduan">
-          <text>肌肉变化</text>
-          <text>kg</text>
-        </view>
-        <view class="train-period-item jieduan">
-          <text>阶段频率</text>
-          <text>次/周</text>
-        </view>
-        <view class="train-period-item jieduan">
-          <text>阶段周期</text>
-          <text>周</text>
-        </view>
-        <view class="train-period-item jieduan">
-          <text>阶段次数</text>
-          <text>次</text>
-        </view>
-        <view class="train-reamrk">
-          <textarea name="" id="" cols="30" rows="10" placeholder="备注" class="train-remark-text"></textarea>
-          <view class="limitCharacter">0/200</view>
-        </view>
-      </van-collapse-item>
-    </van-collapse> -->
     <view class="addMyStage" bindtap="addperiod">+ 添加阶段</view>
     <button size="mini" class="createBtn">创建训练方案</button>
   </view>

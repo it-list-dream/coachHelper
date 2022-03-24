@@ -47,7 +47,7 @@
   text-align: center;
   background: #2664F6;
   border-radius: 12rpx;
-  font-size: 40rpx;
+  font-size: 42rpx;
   color: #FFFFFF;
   margin: 0 !important;
 }

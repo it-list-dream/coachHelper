@@ -1,0 +1,167 @@
+/* pages/editCourse/editCourse.wxss */
+page {
+  background-color: #F7F4FB;
+}
+
+.editClass {
+  padding: 20rpx 30rpx;
+}
+
+.editClass .edit-input {
+  padding: 0 30rpx;
+  margin: 0 auto;
+  width: 690rpx;
+  height: 114rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  font-size: 36rpx;
+  color: #A6A6A6;
+  box-sizing: border-box;
+}
+
+/*  */
+.editcontent {
+  padding: 0 30rpx;
+}
+
+.perparat-before-class {
+  padding: 0 30rpx;
+  height: auto;
+  background-color: #FFFFFF;
+  margin-bottom: 20rpx;
+}
+
+.perparat-title {
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.perparat-before-class .perparat-item {
+  /* padding: 30rpx 0; */
+  border-top: 0.5px solid #F0F2F5;
+}
+
+.perparat-before-class .perparat-item .perparat-item-title {
+  position: relative;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #F5F5FF;
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.perparat-item .perparat-item-title .arrow-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 72rpx;
+  height: 100%;
+  z-index: 10;
+}
+
+.perparat-item .perparat-item-title .arrow {
+  transform: rotate(180deg);
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.perparat-item .perparat-item-title .tansition {
+  transform: rotate(0deg) !important;
+}
+
+.instrument-add {
+  font-size: 30rpx;
+  color: #2664F6;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.perparat-before-class .perparat-item .instrument {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+/*  */
+.addaction {
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #2664F6;
+  border-top: 0.5px solid #F0F2F5;
+}
+
+.edit-button {
+  margin-top: 87rpx;
+}
+
+.edit-button .edit-confrim {
+  margin: 0 auto;
+  width: 690rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #2564F6;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  color: #FFFFFF;
+}
+
+.delete-right {
+  width: 130rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 24rpx;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #FF0000;
+}
+
+.van-swipe-cell {
+  touch-action: none !important;
+}
+
+.instrument .instrument-row {
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.perparat-item .instrument .instrument-row::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 100rpx;
+  width: 10rpx;
+  height: 10rpx;
+  background: #C0C0C0;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.instrument .delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64rpx;
+  height: 64rpx;
+  margin-left: 10rpx;
+}
+
+.instrument .delete image {
+  width: 30rpx;
+  height: 30rpx;
+}

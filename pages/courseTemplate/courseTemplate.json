@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+     "template-popup":"./children/template-popup/template-popup"
+  },
+  "navigationBarBackgroundColor":"#2564F6",
+  "navigationBarTextStyle":"white",
+  "navigationBarTitleText":"选择课程存为模板"
+}

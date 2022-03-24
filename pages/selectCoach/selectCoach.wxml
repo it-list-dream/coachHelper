@@ -1,0 +1,17 @@
+<view class="select-box">
+  <van-search value="{{ value }}" placeholder="请输入教练姓名、手机号" />
+  <view class="select-content">
+     <view class="selelct-item" wx:for="{{12}}">
+        <view class="icon-box">
+          <image src="/assets/images/gray-circle.png"></image>
+        </view>
+        <view class="coach-info">
+            <text>张三分</text>
+            <text>156124214124</text>
+        </view>
+     </view>
+  </view>
+  <view class="select-btn">
+    <button class="blue-btn">确定</button>
+  </view>
+</view>

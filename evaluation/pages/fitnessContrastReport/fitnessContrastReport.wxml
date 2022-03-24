@@ -1,0 +1,195 @@
+<view class="fitnessContrastIndex">
+  <view class="addcase-box">
+    <view class="addcase-btn" bindtap="addexmple">{{exampleText}}</view>
+    <view class="addcase-info">
+      <image src="/assets/images/header.png" class="headportrait"></image>
+      <text>娜娜</text>
+      <text>2021.01.06 vs 2022.01.06</text>
+    </view>
+  </view>
+  <van-popup show="{{  addExmple }}" bind:close="onClose">
+    <view class="poupon_list">
+      <view class="poupon_list_title">添加案例标签</view>
+      <view class="poupon-content">
+        <block wx:for="{{exmpleList}}" wx:for-index="j" wx:key="j">
+          <view class="poupon_item {{item.checked?'active-item':''}}" bindtap="trainTag" data-index="{{j}}">
+            {{item.name}}</view>
+        </block>
+      </view>
+      <view class="poupon_button">
+        <button class="cancel button" bindtap="onClose">取消</button>
+        <button class="confrim button" bindtap="onConfrim">确定</button>
+      </view>
+    </view>
+  </van-popup>
+  <!-- 变化数据 -->
+  <view class="physical-change">
+    <view class="physical-change-title">变化数据</view>
+    <view class="physical-image">
+      <view class="physical-backgroud">
+        <image src="./images/body.png"></image>
+      </view>
+      <view class="physical-branch left-arm">
+        <text>左上臂围25cm</text>
+        <image src="./images/rise.png"></image>
+      </view>
+      <view class="physical-branch shoulders">
+        <text>肩围39cm</text>
+        <image src="./images/rise.png"></image>
+      </view>
+      <view class="physical-branch bust">
+        <text>胸围24cm</text>
+        <image src="./images/rise.png"></image>
+      </view>
+      <view class="physical-branch right-arm">
+        <text>右上臂围26cm</text>
+        <image src="./images/rise.png"></image>
+      </view>
+      <view class="physical-branch waist">
+        <text>腰围27cm</text>
+        <image src="./images/rise.png"></image>
+      </view>
+      <view class="physical-branch bottom-waist">
+        <text>下胸围35cm</text>
+        <image src="./images/rise.png"></image>
+      </view>
+      <view class="physical-branch hip">
+        <text>臀围30cm</text>
+        <image src=""></image>
+      </view>
+      <view class="physical-branch hypogastrium">
+        <text>下腹围25cm</text>
+        <image src="./images/rise.png"></image>
+      </view>
+      <view class="physical-branch left-thigh">
+        <text>左大腿围74cm</text>
+        <image src="./images/rise.png"></image>
+      </view>
+      <view class="physical-branch right-thigh">
+        <text>右大腿围74cm</text>
+        <image src="./images/rise.png"></image>
+      </view>
+      <view class="physical-branch left-shank">
+        <text>左小腿围</text>
+        <image src="./images/rise.png"></image>
+      </view>
+      <view class="physical-branch right-shank">
+        <text>右小腿围</text>
+        <image src="./images/rise.png"></image>
+      </view>
+    </view>
+    <view class="physical-detail">
+      <view class="physical-detail-item">
+        <text>体重</text>
+        <view>
+          52kg
+          <!-- <image src=""></image> -->
+        </view>
+      </view>
+      <view class="physical-detail-item">
+        <text>体脂率</text>
+        <view>
+          17.5%
+          <!-- <image src=""></image> -->
+        </view>
+      </view>
+      <view class="physical-detail-item">
+        <text>血压</text>
+        <view>
+          --
+          <!-- <image src=""></image> -->
+        </view>
+      </view>
+      <view class="physical-detail-item">
+        <text>心率</text>
+        <view>
+          90bpm
+          <!-- <image src=""></image> -->
+        </view>
+      </view>
+      <view class="physical-detail-item">
+        <text>BMI</text>
+        <view>
+          20
+          <!-- <image src=""></image> -->
+        </view>
+      </view>
+      <view class="physical-detail-item">
+        <text>水分</text>
+        <view>
+          23%
+          <!-- <image src=""></image> -->
+        </view>
+      </view>
+      <view class="physical-detail-item">
+        <text>骨骼肌</text>
+        <view>
+          --
+          <!-- <image src=""></image> -->
+        </view>
+      </view>
+      <view class="physical-detail-item">
+        <text>脂肪量</text>
+        <view>
+          43.1kg
+          <!-- <image src=""></image> -->
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 体侧照片 -->
+  <view class="sidephoto-box">
+    <view class="sidephoto-title">体侧照片</view>
+    <view class="sidephoto-content">
+      <view class="side-item">
+        <view class="no-picture" wx:if="{{true}}">暂无照片</view>
+        <image src="./images/profile_photo.png" class="profile-pic" wx:else></image>
+      </view>
+      <view class="side-item">
+        <view class="no-picture" wx:if="{{false}}">2</view>
+        <image src="./images/profile_photo.png" class="profile-pic" wx:else></image>
+      </view>
+      <view class="side-item">
+        <view class="no-picture" wx:if="{{false}}">3</view>
+        <image src="./images/profile_photo.png" class="profile-pic" wx:else></image>
+      </view>
+      <view class="side-item">
+        <view class="no-picture" wx:if="{{false}}">4</view>
+        <image src="./images/profile_photo.png" class="profile-pic" wx:else></image>
+      </view>
+      <view class="side-item">
+        <view class="no-picture" wx:if="{{false}}">5</view>
+        <image src="./images/profile_photo.png" class="profile-pic" wx:else></image>
+      </view>
+      <view class="side-item">
+        <view class="no-picture" wx:if="{{false}}">6</view>
+        <image src="./images/profile_photo.png" class="profile-pic" wx:else></image>
+      </view>
+      <view class="side-item">
+        <view class="no-picture" wx:if="{{false}}">7</view>
+        <image src="./images/profile_photo.png" class="profile-pic" wx:else></image>
+      </view>
+      <view class="side-item">
+        <view class="no-picture" wx:if="{{false}}">8</view>
+        <image src="./images/profile_photo.png" class="profile-pic" wx:else></image>
+      </view>
+    </view>
+  </view>
+  <!-- 身体数据 -->
+  <view class="physicaldata-box">
+    <view class="physicaldata-title">身体数据</view>
+    <view class="physicaldata-content">
+      <table-view headers="{{physical.tableHeader}}" data="{{ physical.row }}" stripe="{{ physical.stripe }}"
+        border="{{ physical.border }}" no-data-msg="{{ msg }}" />
+    </view>
+  </view>
+  <!-- 成分数据 -->
+  <view class="ingredientdata-list">
+    <view class="ingredientdata-list-title">成分数据</view>
+    <view class="ingredientdata-content">
+      <table-view headers="{{bodyIngredient.tableHeader}}" data="{{ bodyIngredient.row }}"
+        stripe="{{ bodyIngredient.stripe }}" border="{{ bodyIngredient.border }}" no-data-msg="{{ msg }}" />
+    </view>
+    <button class="constract-poster">生成对比海报</button>
+  </view>
+</view>

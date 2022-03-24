@@ -3,10 +3,15 @@
     <van-search value="{{ value }}" placeholder="请输入会员姓名、手机号" />
     <image class="add" src="/assets/images/add2.png" bindtap="addPeople"></image>
   </view>
-  <view class="tabs-list">
-    <slideTab tList="{{tabsList}}" bind:changeCurrent="swichNav" currentTab="{{currentActive}}">
-      <scroll-view scroll-y="true" style="height: calc({{windowHight}}px - 235px);" bindscroll="scroll" class="clienteList">
-        <view class="tab-item" wx:if="{{currentActive ==0}}">
+  <van-tabs id="tabs" title-active-color="#2564F6" color="#2564F6" title-inactive-color="#222222" ellipsis="{{false}}"
+    active="{{ currentActive }}" bind:change="swichNav">
+    <van-tab title="{{item}}" wx:for="{{tabsList}}" wx:key="index">
+      <scroll-view class="scroll-y" scroll-y style="height:{{scrollHeight}}px">
+        <view class="screen" wx:if="{{currentActive == 2}}">
+          <text style="color:{{filterIndex == 0?'#2564F6':''}}" bindtap="filterMember" data-index="0">全部私教会员</text>
+          <text style="color:{{filterIndex == 1?'#2564F6':''}}" bindtap="filterMember" data-index="1">所属自己会员</text>
+        </view>
+        <view class="tab-item" wx:if="{{currentActive == index}}">
           <view class="custom-list" wx:for="{{memberList}}" wx:key="index" bindtap="memberDetail">
             <image src="/assets/images/photo.png" class="header" wx:if="{{item.img.indexOf('http') ==-1}}"></image>
             <view class="h1" wx:else>{{item.firstName}}</view>
@@ -16,17 +21,8 @@
             </view>
           </view>
         </view>
-        <view class="tab-item" wx:elif="{{currentActive ==1}}" bindtap="memberDetail">
-          <view class="custom-list">
-            <image src="/assets/images/photo.png" class="header"></image>
-            <view class="custom-info">
-              <view>纪灏</view>
-              <view>18163451113</view>
-            </view>
-          </view>
-        </view>
       </scroll-view>
-    </slideTab>
-  </view>
+    </van-tab>
+  </van-tabs>
 </view>
 <tabbar tabbar="{{tabbar}}"></tabbar>

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-popup": "@vant/weapp/popup/index"
+  },
+  "navigationBarBackgroundColor":"#5D3DCA",
+  "navigationBarTextStyle":"white",
+  "navigationBarTitleText":"问卷调查"
+}

@@ -1,0 +1,175 @@
+/* pages/rank/rank.wxss */
+.rank-date {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 118rpx;
+  background-color: #ffffff;
+  border: 1px solid #EDEDED;
+  padding: 0 70rpx;
+  box-sizing: border-box;
+}
+
+.rank-date .line {
+  width: 50rpx;
+  height: 1px;
+  background-color: #7D7D7D;
+  margin: 0 54rpx;
+}
+
+.picker-date {
+  font-size: 32rpx;
+  color: #2565F6;
+}
+
+.picker-date image {
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle;
+}
+
+/*  */
+.rank-content {
+  margin-top: 56rpx;
+}
+
+.frontThird {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 30rpx;
+  margin-bottom: 14rpx;
+}
+
+.rank-model {
+  position: relative;
+  overflow: hidden;
+}
+
+.rank-model .lump {
+  width: 222rpx;
+  height: 14rpx;
+  background: #2564F6;
+  border-radius: 16rpx;
+}
+
+.bigbox  .coach {
+  margin-top: 72rpx;
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.model .coach {
+  margin-top: 60rpx;
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.rank-model .price {
+  margin: 14rpx 0;
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #2564F6;
+}
+
+.frontThird .model {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 220rpx;
+  height: 270rpx;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20rpx 0px rgba(0, 34, 112, 0.08);
+  border-radius: 16rpx;
+}
+
+.frontThird .bigbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 220rpx;
+  height: 320rpx;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20rpx 0px rgba(0, 34, 112, 0.08);
+  border-radius: 16rpx;
+}
+
+.bigbox .price {
+  margin: 14rpx 0 50rpx;
+}
+
+.rank-model .rank-pic {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 43rpx;
+  height: 47rpx;
+}
+
+.model .rank-pic>image {
+  width: 43rpx;
+  height: 47rpx;
+}
+
+.bigbox .rank-pic>image {
+  width: 54rpx;
+  height: 60rpx;
+}
+
+.addpeople {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.addpeople .addpeople-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  font-size: 24rpx;
+  color: #5F697E;
+}
+
+.addpeople .addpeople-item text:last-child {
+  margin-top: 15rpx;
+}
+
+.rank-table .rank-th {
+  display: flex;
+  align-items: center;
+  height: 106rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.rank-table .rank-th text,
+.rank-table .rank-tr .rank-rows {
+  flex: 1;
+  text-align: center;
+}
+
+.rank-table .rank-tr {
+  display: flex;
+  align-items: center;
+  height: 106rpx;
+  font-size: 28rpx;
+  color: #333333;
+  border-bottom: 1px solid #EDEDED;
+  box-sizing: border-box;
+}
+
+.rank-table .rank-tr text:last-child {
+  color: #2564F6;
+}
+
+.sort {
+  text-align: center;
+}
+
+.sort image {
+  width: 42rpx;
+  height: 47rpx;
+}

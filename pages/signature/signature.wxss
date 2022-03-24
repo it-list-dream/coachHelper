@@ -1,0 +1,35 @@
+.signatureContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-ok {
+  position: absolute;
+  bottom: 300rpx;
+  left: 10rpx;
+  transform: rotate(90deg);
+  z-index: 100;
+}
+
+.btn-reset {
+  display: inline-flex;
+  align-items: center;
+  position: absolute;
+  bottom: 120rpx;
+  left: 0;
+  transform: rotate(90deg);
+  z-index: 100;
+}
+
+.btn-ok,
+.btn-reset {
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  color: #2564F6;
+}
+
+.btn-reset cover-image {
+  width: 32rpx;
+  height: 32rpx;
+}

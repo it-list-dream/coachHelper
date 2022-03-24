@@ -1,0 +1,134 @@
+/* pages/trainPlan/trainPlan.wxss */
+.plan-head {
+  display: flex;
+  height: 354rpx;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(90deg, #2664F6 0%, #6996FF 100%);
+}
+
+.member-info {
+  display: flex;
+  flex-direction: column;
+  padding: 34rpx 0;
+}
+
+.member-info image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.member-info>text {
+  margin-top: 20rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #FFFFFF;
+}
+
+.plan-head .swichbox {
+  width: 230rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+}
+
+.plan-head .swichbox image {
+  width: 36rpx;
+  height: 36rpx;
+  vertical-align: middle;
+}
+
+.plan-head .swichbox>text {
+  margin-left: 10rpx;
+  font-size: 26rpx;
+  color: #2664F6;
+}
+
+.plan-list {
+  margin-top: 30rpx;
+  padding: 0 30rpx;
+}
+
+.plan-list .plan-item {
+  position: relative;
+  width: 690rpx;
+  height: 210rpx;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 14rpx 0px rgba(0, 34, 112, 0.08);
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.plan-item .course-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.plan-mask {
+  position: relative;
+  z-index: 10;
+  padding: 0 24rpx;
+}
+
+.course {
+  display: flex;
+  height: 86rpx;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #EDEDED;
+  box-sizing: border-box;
+}
+
+.course image {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.course-left text:first-child {
+  padding-left: 20rpx;
+  position: relative;
+  font-size: 28rpx;
+  color: #2765F6;
+}
+
+.course-left text:first-child::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 6rpx;
+  height: 26rpx;
+  background: #2765F6;
+}
+
+.course-left text:last-child {
+  margin-left: 40rpx;
+  font-size: 22rpx;
+  color: #666666;
+}
+
+.course-progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 124rpx;
+}
+.progress{
+  margin-top: 8rpx;
+}
+.course-progress .progress-num {
+  font-size: 28rpx;
+  color: #333333;
+}
+
+/* 进度条的样式 */
+.wx-progress-inner-bar {
+  background-color: #E3EBFF;
+}

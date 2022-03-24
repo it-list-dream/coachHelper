@@ -1,0 +1,32 @@
+<view class="front-box">
+  <view class="front-box-title">{{bodyTitle}}</view>
+  <view class="front-picture">
+    <view class="picture" bindtap="takePhone">
+      <image class="front-bg" src="{{!pictureUrl?'../images/border.png':pictureUrl}}"></image>
+    </view>
+    <view class="picture-explain">
+      <view class="explain-text">1.请将身体全部置于方框内</view>
+      <view class="explain-text">2.图片只支持jpg或png格式</view>
+      <view class="explain-text">3.图片大小不能超过5M</view>
+    </view>
+  </view>
+  <view class="record-title">问题记录</view>
+  <view class="question-record">
+    <block wx:for="{{bodyList}}" wx:key="index">
+      <view class="body-regions">{{item.partTitle}}</view>
+      <view class="body-checkbox">
+        <block  wx:for="{{item.list}}" wx:for-item="part" wx:for-index="idx" wx:key="id">
+          <text class="part-item {{part.checked?'active':''}}" bindtap="checkLabs" data-index="{{index}}" data-title="{{item.partTitle}}" data-part="{{part}}">{{part.value}}</text>
+        </block>
+      </view>
+    </block>
+  </view>
+  <view class="coach-remarks">教练备注</view>
+  <view class="remarks-textarea">
+    <textarea bindinput="getLimit" class="textarea" value="{{coachRemark}}" placeholder="备注" placeholder-style="color:#D2D2D2;" 	maxlength="200"></textarea>
+    <view class="limit">{{limit}}/200</view>
+  </view>
+  <view class="savelist">
+    <button class="savebtn" bindtap="nextStep" data-index="{{activeIndex}}">{{buttonText}}</button>
+  </view>
+</view>

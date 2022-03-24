@@ -1,0 +1,33 @@
+/* pagese/newPosture/newPosture.wxss */
+.posture-date {
+  width: 100%;
+  line-height: 124rpx;
+  height: 124rpx;
+  /* background-color: pink; */
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.picker text {
+  vertical-align: middle;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #2565F6;
+}
+
+.picker image {
+  margin-left: 8rpx;
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle;
+}
+
+.van-tabs__line {
+  bottom: 10rpx !important;
+}
+
+.van-tab__pane {
+  padding: 0 30rpx;
+}
+
+/*  */

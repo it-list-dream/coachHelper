@@ -1,0 +1,14 @@
+/* pages/venueIntroduce/venueIntroduce.wxss */
+.venueContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 40rpx;
+}
+.venue-item{
+  width: 48%;
+  margin-bottom: 36rpx;
+}
+.venue-item image{
+  width: 100%;
+}

@@ -1,0 +1,40 @@
+<view class="postureContainer">
+   <view class="header">
+      <view class="profile">
+         <image src="/assets/images/header.png"></image>
+         <text>娜娜</text>
+      </view>
+      <view class="assessmentbtn">
+         <view class="addassement" bindtap="addAssement"><text style="font-size:36rpx;">+</text>添加体态</view>
+         <view class="comparison" bindtap="comparison">{{assessText}}</view>
+      </view>
+   </view>
+   <view class="posture-content">
+      <view class="test-report" bindtap="testReport"
+         wx:for="{{testList}}" wx:key="index">
+         <view class="reportdetail">
+            <view class="test-image">
+               <image src="/assets/images/reporttips.png"></image>
+            </view>
+            <view class="test-info">
+               <view class="top-box">
+                  <text>体态评估</text>
+                  <image wx:if="{{!isAssess}}" class="left-arrow" src="/assets/images/right2.png"></image>
+                  <view wx:else class="circle-box" bindtap="changeCheck" data-index="{{index}}" data-value="{{item.testName}}">
+                     <image src="/assets/images/selected.png" wx:if="{{item.selected}}"></image>
+                     <text class="double-icon" wx:else></text>
+                  </view>
+               </view>
+               <view class="bottom-box">
+                  <text>王教练</text>
+                  <text>2022.02.16</text>
+               </view>
+            </view>
+         </view>
+         <image class="circle" src="/assets/images/circle.png"></image>
+      </view>
+      <view class="btnbox" wx:if="{{isAssess}}">
+         <button class="constractBtn" bindtap="assessContrast">对比</button>
+      </view>
+   </view>
+</view>

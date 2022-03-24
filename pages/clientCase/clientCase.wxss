@@ -1,0 +1,58 @@
+/* pages/clientCase/clientCase.wxss */
+.clientCase {
+  padding: 30rpx;
+}
+
+.clientCase .client-item {
+  position: relative;
+  width: 670rpx;
+  height: 200rpx;
+  margin: 0 auto;
+  margin-bottom: 20rpx;
+}
+
+.clientCase .client-item .case_bg {
+  width: 100%;
+  height: 100%;
+}
+
+.clientCase .case-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  padding: 44rpx 0;
+  box-sizing: border-box;
+  color: #ffffff
+}
+
+.case-box text:first-child {
+  font-size: 42rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.case-box text:last-child {
+  font-size: 30rpx;
+  color: #FFFFFF;
+}
+
+.add-clientcase {
+  margin: 0 auto;
+  width: 670rpx;
+  height: 200rpx;
+  line-height: 200rpx;
+  text-align: center;
+  border: 1px solid #2565F6;
+  border-radius: 8rpx;
+  font-size: 42rpx;
+  color: #2664F6;
+  box-sizing: border-box;
+}

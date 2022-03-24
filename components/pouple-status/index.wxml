@@ -1,0 +1,13 @@
+<van-popup show="{{ isShow }}" position="bottom" custom-style="height: 45%;" bind:close="onClose">
+  <view class="popup-title">
+    <text class="cancel" bindtap="cancle">取消</text>
+    <text class="title">{{statusTitle}}</text>
+    <text class="confrim" bindtap="confrim">确定</text>
+  </view>
+  <view class="popup-content">
+     <view class="popup-item" style="color:{{item.selected?'#2564F6':'#222222'}}" wx:for="{{list}}" wx:key="index" bindtap="selectCore" data-index="{{index}}">
+        <view>{{item.moodtitle}}</view>
+        <image src="/assets/images/double.png" wx:if="{{item.selected}}"></image>
+     </view>
+  </view>
+</van-popup>

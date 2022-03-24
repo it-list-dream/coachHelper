@@ -1,0 +1,70 @@
+/* evaluation/pages/testEvaluation/testEvaluation.wxss */
+page {
+  background-color: #F5F3FF;
+}
+
+.testEvaluation{
+  padding: 30rpx 30rpx 0;
+}
+
+.testEvaluation .test-item {
+  position: relative;
+  width: 690rpx;
+  height: 326rpx;
+  background: #FFFFFF;
+  border-radius: 8rpx;
+  overflow: hidden;
+  margin-bottom: 40rpx;
+}
+
+ .test-item .test_bg {
+  position: absolute;
+  left: -30rpx;
+  top: 66rpx;
+  width: 204rpx;
+  height: 326rpx;
+}
+
+.test-item .wrapper {
+  margin-top:70rpx;
+  margin-left: 210rpx;
+}
+
+.test-item .wrapper .test-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #222222;
+}
+
+.test-item .wrapper .test-content {
+  margin: 34rpx 0;
+  font-size: 30rpx;
+  color: #B0B0B0;
+}
+
+.wrapper .attentionPeople {
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.wrapper .attentionPeople text {
+  color: #B0B0B0;
+}
+
+.test-item .next-icon {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54rpx;
+  height: 54rpx;
+  background-color: #FB8923;
+  border-radius: 50%;
+}
+
+.test-item .next-icon>image {
+  width: 32rpx;
+  height: 32rpx;
+}

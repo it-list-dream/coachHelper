@@ -1,0 +1,356 @@
+page {
+  background-color: #F5F3FF;
+}
+
+.addcase-box {
+  position: relative;
+  width: 100%;
+  height: 300rpx;
+  background: #FFFFFF;
+  padding: 40rpx 0;
+  box-sizing: border-box;
+}
+
+.addcase-btn {
+  position: absolute;
+  top: 50rpx;
+  left: 30rpx;
+  width: 184rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  text-align: center;
+  background: #2564F6;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  color: #FFFFFF;
+}
+
+.addcase-box .addcase-info {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.addcase-box .addcase-info text {
+  font-size: 30rpx;
+  color: #000000;
+}
+
+.addcase-box .addcase-info .headportrait {
+  width: 110rpx;
+  height: 110rpx;
+}
+
+/* 变化 */
+.physical-change {
+  position: relative;
+  margin-top: 20rpx;
+  padding: 28rpx 54rpx 0;
+  height: 884rpx;
+  background-color: #FFFFFF;
+}
+
+.physical-change-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #000000;
+}
+
+.physical-image {
+  position: relative;
+  width: 100%;
+  height: 640rpx;
+}
+
+.physical-backgroud {
+  margin-top: 24rpx;
+  width: 100%;
+  height: 100%;
+}
+
+.physical-backgroud image {
+  width: 636rpx;
+  height: 496rpx;
+}
+
+.physical-branch {
+  font-size: 22rpx;
+  color: #000000;
+}
+
+.physical-branch {
+  vertical-align: middle;
+}
+
+.physical-branch image {
+  margin-left: 15rpx;
+  width: 20rpx;
+  height: 30rpx;
+  vertical-align: middle;
+}
+
+.left-arm {
+  position: absolute;
+  top: 36rpx;
+  left: 0;
+}
+
+.shoulders {
+  position: absolute;
+  top: 15rpx;
+  right: 0;
+}
+
+.bust {
+  position: absolute;
+  top: 84rpx;
+  left: 0;
+}
+
+.right-arm {
+  position: absolute;
+  top: 68rpx;
+  right: 0;
+}
+
+.waist {
+  position: absolute;
+  top: 138rpx;
+  left: 0;
+}
+
+.bottom-waist {
+  position: absolute;
+  top: 120rpx;
+  right: 0;
+}
+
+.hip {
+  position: absolute;
+  top: 184rpx;
+  left: 0;
+}
+
+.hypogastrium {
+  position: absolute;
+  top: 162rpx;
+  right: 0;
+}
+
+.left-thigh {
+  position: absolute;
+  top: 236rpx;
+  left: 0;
+}
+
+.right-thigh {
+  position: absolute;
+  top: 236rpx;
+  right: 0;
+}
+
+.left-shank {
+  position: absolute;
+  top: 310rpx;
+  left: 0;
+}
+
+.right-shank {
+  position: absolute;
+  top: 310rpx;
+  right: 0;
+}
+
+/* physical-detail */
+.physical-detail {
+  position: absolute;
+  left: 0;
+  bottom: 0rpx;
+  display: flex;
+  width: 100%;
+  height: 260rpx;
+  flex-wrap: wrap;
+}
+
+.physical-detail .physical-detail-item {
+  display: flex;
+  height: 80rpx;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 24%;
+  font-size: 24rpx;
+  color: #000000;
+  border-right: 1px solid #E3E3E3;
+}
+
+.physical-detail .physical-detail-item:nth-child(4n) {
+  border-right: none !important;
+}
+
+/*  */
+.sidephoto-box {
+  margin-top: 20rpx;
+  padding: 30rpx 54rpx 0;
+  width: 100%;
+  height: 978rpx;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+}
+
+.sidephoto-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #000000;
+}
+
+.sidephoto-content {
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: space-between;
+  flex-wrap: wrap;
+  height: 832rpx;
+  flex-wrap: wrap;
+}
+
+.sidephoto-content .side-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 188rpx;
+}
+
+.side-item .no-picture {
+  width: 150rpx;
+  height: 188rpx;
+  line-height: 188rpx;
+  text-align: center;
+  border: 1px dotted #AAAAAA;
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.side-item .profile-pic {
+  width: 150rpx;
+  height: 188rpx;
+  vertical-align: bottom;
+}
+
+/* 身体数据 */
+.physicaldata-box {
+  margin-top: 20rpx;
+  width: 100%;
+  height: auto;
+  padding: 30rpx 54rpx 0;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+}
+
+.physicaldata-box .physicaldata-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #000000;
+}
+
+.physicaldata-box .physicaldata-content {
+  margin-top: 30rpx;
+  padding-bottom: 60rpx;
+}
+
+/* 成分 */
+.ingredientdata-list {
+  margin-top: 20rpx;
+  padding: 30rpx 54rpx 60rpx;
+  background-color: #FFFFFF;
+}
+
+.ingredientdata-list-title {
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #000000;
+}
+
+.ingredientdata-list .ingredientdata-content {
+  margin-bottom: 220rpx;
+}
+
+.ingredientdata-list .constract-poster {
+  margin: 0 auto;
+  width: 620rpx;
+  height: 86rpx;
+  text-align: center;
+  line-height: 86rpx;
+  background: #2564F6;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  color: #FFFFFF;
+}
+/* 弹窗 */
+.poupon_list {
+  width: 690rpx;
+  height: 394rpx;
+  background: #FFFFFF;
+  border-radius: 8rpx;
+  box-sizing: border-box;
+  padding:28rpx 18rpx;
+}
+.poupon-content{
+  padding-top: 36rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.poupon_list .poupon_list_title {
+  text-align: center;
+  font-size: 30rpx;
+  color: #222222;
+}
+
+.poupon_list .poupon_item {
+  margin: 0 12rpx 30rpx;
+  width: 126rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  background: #E5E5E5;
+  border-radius: 20rpx;
+  font-size: 26rpx;
+  color: #5C5C5C;
+}
+.poupon_list .active-item{
+  background-color: #2664F6;
+  color: #ffffff;
+}
+.poupon_button {
+  margin-top:60rpx;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.poupon_button .button {
+  width: 178rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 26rpx;
+  border-radius: 25px;
+}
+
+.poupon_button .cancel {
+  border: 2rpx solid #E2E2E2;
+  color: #5C5C5C;
+}
+
+.poupon_button .confrim {
+  background: #2664F6;
+  color: #FFFFFF;
+  border: none;
+}

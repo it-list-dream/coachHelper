@@ -1,4 +1,4 @@
-<van-popup show="{{isShow}}" position="bottom" custom-style="height:{{pouponHeight}};" bind:close="onClose"
+<van-popup catchtouchmove="{{true}}" show="{{isShow}}" position="bottom" custom-style="height:{{pouponHeight}};" bind:close="onClose"
   data-index="0">
   <view class="pouponList">
     <view class="class-header">

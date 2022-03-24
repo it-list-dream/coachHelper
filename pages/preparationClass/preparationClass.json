@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "mood":"/components/pouple-status/index"
+  },
+  "navigationBarBackgroundColor":"#2564F6",
+  "navigationBarTextStyle":"white",
+  "navigationBarTitleText":"减脂"
+}

@@ -1,0 +1,115 @@
+/* pages/preparationClass/preparationClass.wxss */
+.perparation-title {
+  font-size: 36rpx;
+  color: #333333;
+  text-align: center;
+  padding: 36rpx 0;
+}
+
+.perparation-content {
+  margin-top: 40rpx;
+}
+
+.custom-status {
+  padding-left: 50rpx;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 40rpx;
+  border-bottom: 1px solid #EDEDED;
+}
+
+.custom-status .status-text {
+  padding-right: 100rpx;
+  font-size: 30rpx;
+  color: #000000;
+}
+
+.choosestatus {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  font-size: 30rpx;
+  color: #999999;
+}
+
+.custom-data {
+  margin-top: 45rpx;
+  padding: 0 50rpx;
+}
+
+.custom-data .custom-info {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 54rpx;
+}
+
+.custom-data .custom-info .custom-body {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  font-size: 26rpx;
+  color: #333333;
+  box-sizing: border-box;
+  margin-bottom: 40rpx;
+}
+.custom-info .custom-body text:first-child{
+  position: relative;
+  padding-left: 16rpx;
+}
+.custom-info .custom-body text:first-child:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 4rpx;
+  height: 22rpx;
+  background: #2564F6;
+}
+
+.custom-data .custom-info .custom-body:nth-child(2n) {
+  justify-content: center;
+}
+
+.custom-info .custom-body input {
+  padding: 0 16rpx;
+  width: 90rpx;
+  border-bottom: 0.5px solid #DEDEDE;
+  box-sizing: border-box;
+}
+
+.custom-info .custom-body .line {
+  padding: 0 16rpx;
+  min-width: 90rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-bottom: 0.5px solid #DEDEDE;
+  box-sizing: border-box;
+}
+
+.custom-info .custom-body image {
+  width: 30rpx;
+  height: 30rpx;
+  align-self: flex-end;
+}
+
+/*  */
+.startclass {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.startclass .startclassbtn {
+  margin: 0 auto;
+  width: 690rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #2665F6;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  color: #FFFFFF;
+}

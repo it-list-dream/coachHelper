@@ -13,7 +13,7 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/addAppointment/addAppointment",
+          "name": "添加预约",
           "pathName": "pages/addAppointment/addAppointment",
           "query": "",
           "scene": null
@@ -45,6 +45,156 @@
         {
           "name": "pages/trainning/trainning",
           "pathName": "pages/trainning/trainning",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "questionnaire/pages/riskEvaluation/riskEvaluation",
+          "pathName": "questionnaire/pages/riskEvaluation/riskEvaluation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "questionnaire/pages/question/question",
+          "pathName": "questionnaire/pages/question/question",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "questionnaire/pages/systemQuestion/systemQuestion",
+          "pathName": "questionnaire/pages/systemQuestion/systemQuestion",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "测试评估",
+          "pathName": "evaluation/pages/testEvaluation/testEvaluation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "体适能测试",
+          "pathName": "evaluation/pages/physicalTest/physicalTest",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "体适能报告",
+          "pathName": "evaluation/pages/physicalReport/physicalReport",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "体适能对比报告",
+          "pathName": "evaluation/pages/fitnessContrastReport/fitnessContrastReport",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "问卷调查列表",
+          "pathName": "questionnaire/pages/questionList/questionList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "体适能列表页",
+          "pathName": "evaluation/pages/fitnessList/fitnessList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/trialClass/trialClass",
+          "pathName": "pages/trialClass/trialClass",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "编辑课程",
+          "pathName": "pages/editCourse/editCourse",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/addTrainPlan/addTrainPlan",
+          "pathName": "pages/addTrainPlan/addTrainPlan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "客户",
+          "pathName": "pages/tabbar/clientele/clientele",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "系统",
+          "pathName": "questionnaire/pages/systemList/systemList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "evaluation/pages/fitnessList/fitnessList",
+          "pathName": "evaluation/pages/fitnessList/fitnessList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "evaluation/pages/fitnessList/fitnessList",
+          "pathName": "evaluation/pages/fitnessList/fitnessList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/stadiumData/stadiumData",
+          "pathName": "pages/stadiumData/stadiumData",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "选择客户",
+          "pathName": "pages/chooseCustom/chooseCustom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "客户详情",
+          "pathName": "pages/customerDetail/customerDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "训练计划",
+          "pathName": "pages/trainPlan/trainPlan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "模板",
+          "pathName": "pages/courseTemplate/courseTemplate",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "手写签字板",
+          "pathName": "pages/signature/signature",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "体态评估",
+          "pathName": "evaluation/pages/postureAssessment/postureAssessment",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "上课",
+          "pathName": "pages/startClass/startClass",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "新建体态",
+          "pathName": "evaluation/pages/newPosture/newPosture",
           "query": "",
           "scene": null
         }

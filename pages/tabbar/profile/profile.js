@@ -31,10 +31,19 @@ Page({
     })
   },
   allotCustom() {
-
+    wx.navigateTo({
+      url: '/pages/allocationCustom/allocationCustom',
+    })
   },
   turnClass() {
-
+     wx.navigateTo({
+       url: '/pages/memberTurnClass/memberTurnClass',
+     })
+  },
+  turnCoach(){
+    wx.navigateTo({
+      url: '/pages/turnCoach/turnCoach',
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

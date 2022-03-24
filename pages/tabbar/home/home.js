@@ -13,23 +13,28 @@ Page({
    */
   onLoad: function (options) {
     app.editTabbar();
-  },
-  coachList(){
-    wx.navigateTo({
-      url: '/pages/classType/classType',
+    this.setData({
+      menuRight: app.globalData.menuRight,
+      navHeight: app.globalData.navHeight,
+      navTop: app.globalData.navTop
     })
   },
-  train(){
+  courseIntroduce(){
+    wx.navigateTo({
+      url: '/pages/classDetail/classDetail',
+    })
+  },
+  moreText(){
      wx.navigateTo({
-       url: '/pages/trainning/trainning',
+       url: '/pages/classType/classType',
      })
   },
-  trainPlan(){
-    wx.navigateTo({
-      url: '/pages/coursePlanning/coursePlanning',
-    })
+  chooseStore(){
+     wx.navigateTo({
+       url: '/pages/selectStore/selectStore',
+     })
   },
-    /**
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {

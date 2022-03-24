@@ -1,0 +1,47 @@
+/* pages/personalSet/personalSet.wxss */
+.setContainer {
+  padding-top: 20rpx;
+}
+
+.form-cell {
+  padding: 0 45rpx;
+}
+
+.form-cell .set-cell {
+  display: flex;
+  align-items: center;
+  height: 130rpx;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  justify-content: space-between;
+  border-bottom: 0.5px solid #E5E5E5;
+}
+
+.form-cell .set-cell text:first-child {
+  color: #222222;
+}
+
+.form-cell .set-cell text:last-child {
+  color: #AEAEAE;
+}
+
+.exit-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #ffffff;
+  width: 100%;
+  padding-bottom: 30rpx;
+}
+
+.exit-box .exit-btn {
+  width: 630rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background: #FF4A4A;
+  border-radius: 10rpx;
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  color: #FFFFFF;
+}

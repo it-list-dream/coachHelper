@@ -3,8 +3,7 @@
   <view class='wx-dialog'>
     <view class='wx-dialog-title'>添加跟进记录</view>
     <view class='wx-dialog-content'>
-     <!-- <input type="text" maxlength="10" placeholder="请输入内容" value="{{tagValue}}" bindinput="getTagContent" focus/> -->
-     <textarea value="{{tagValue}}" class="textarea" 	placeholder-style="color: #B3B3B3;" placeholder="请输入内容" bindinput="getTagContent" fixed></textarea>
+     <textarea value="{{tagValue}}" class="textarea" 	placeholder-style="color:#999999;" placeholder="请输入内容" bindinput="getTagContent" fixed></textarea>
      <view class="count">{{tagValue.length}}/140</view>
     </view>
     <view class='wx-dialog-footer'>

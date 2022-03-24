@@ -1,0 +1,54 @@
+<view class="fitnessListIndex">
+  <view class="fitness-bg">
+    <view class="fitness-member">
+      <image src="/assets/images/header.png"></image>
+      <view class="name">娜娜</view>
+    </view>
+    <view class="fitness-comparison">
+      <navigator url="/evaluation/pages/physicalTest/physicalTest" class="addbodytest">+添加身体测试</navigator>
+      <view class="addappoinment" bindtap="appoinement">
+        <image src="./images/appointment.png"></image>
+        <text>预约下次体侧</text>
+      </view>
+      <view class="comparisonbtn" bindtap="handleComparison">{{btnType}}</view>
+    </view>
+  </view>
+  <view class="fitness-content">
+    <view class="fitness-item" wx:for="{{testList}}" bindtap="test">
+      <image src="./images/bg.png" class="icon-bg"></image>
+      <view class="f-box">
+        <view class="test-report">
+          <view class="report-info">
+            <text>测试报告</text>
+            <text>{{item.testName}} {{item.testTime}}</text>
+          </view>
+          <view class="icon-box" bindtap="chooseMultip"
+           data-index="{{index}}"
+           data-value="{{item.testName}}"
+           data-test="{{item}}" wx:if="{{isComparison}}">
+            <image wx:if="{{item.selected}}" src="/assets/images/selected.png"></image>
+            <text class="icon-border" wx:else></text>
+          </view>
+          <image wx:else src="/assets/images/right_arrow.png" class="m36"></image>
+        </view>
+        <view class="test-report-data">
+          <view class="test-report-item">
+            <text>130.0kg</text>
+            <text>体重</text>
+          </view>
+          <view class="test-report-item">
+            <text>-22.1%</text>
+            <text>体脂率</text>
+          </view>
+          <view class="test-report-item">
+            <text>1.0</text>
+            <text>腰臀比</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="bottombtn">
+      <button wx:if="{{ isComparison}}" class="complete" bindtap="toCompeletDetail">对比</button>
+    </view>
+  </view>
+</view>

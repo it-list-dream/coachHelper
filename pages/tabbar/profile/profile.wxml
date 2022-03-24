@@ -2,14 +2,11 @@
   <view class="profile-header">
     <image src="/assets/images/profile/bg.png" class="profile-bg"></image>
     <view class='nav-wrap' style='height: {{navHeight}}px;'>
-      <view class="navbar" style='height:{{navHeight}}px;'>
-        <view class="navbar-action-wrap " style="top:{{navTop}}px;left: {{menuRight}}px;" bindtap="toChooseStore">
-          <text>请选择您所在门店</text>
-          <image src="/assets/images/profile/white-arrow.png" class="arrow-icon"></image>
-        </view>
+      <view class="navbar-action-wrap " style="top:{{navTop}}px;left: {{menuRight}}px;" bindtap="toChooseStore">
+        <text>请选择您所在门店</text>
+        <image src="/assets/images/profile/white-arrow.png" class="arrow-icon"></image>
       </view>
     </view>
-    <!--  -->
     <view class="bussinessCard" bindtap="doLogin">
       <view class="header">
         <image src="/assets/images/profile/avtar.png"></image>
@@ -23,49 +20,75 @@
       <image src="/assets/images/profile/role.png"></image>
       <text>分配客户</text>
     </view>
-    <view class="line"></view>
     <view class="skill-item" bindtap="turnClass">
       <image src="/assets/images/profile/course.png"></image>
-      <text>转课</text>
+      <text>会员转课</text>
+    </view>
+    <view class="skill-item" bindtap="turnCoach">
+      <image src="/assets/images/profile/allocation.png"></image>
+      <text>转教练</text>
     </view>
   </view>
   <!--  -->
   <view class="profile-content">
-    <view class="rows">
+    <navigator hover-class="none" class="rows" url="/pages/birthdayList/birthdayList">
       <view class="rows-item">
         <image src="/assets/images/profile/birthday.png" class="icon"></image>
         <text>客户生日</text>
       </view>
       <image src="/assets/images/profile/left_arrow.png"></image>
-    </view>
-    <view class="rows">
+    </navigator>
+    <navigator hover-class="none" class="rows" url="/pages/clientCase/clientCase">
       <view class="rows-item">
         <image src="/assets/images/profile/exmple.png" class="icon"></image>
         <text>客户案例</text>
       </view>
       <image src="/assets/images/profile/left_arrow.png"></image>
-    </view>
-    <view class="rows">
+    </navigator>
+    <navigator hover-class="none" class="rows" url="/pages/serviceAchievements/serviceAchievements">
       <view class="rows-item">
         <image src="/assets/images/profile/achievement.png" class="icon"></image>
         <text>教练服务成果</text>
       </view>
       <image src="/assets/images/profile/left_arrow.png"></image>
-    </view>
-    <view class="rows">
+    </navigator>
+    <!--  -->
+    <navigator hover-class="none" class="rows" url="/pages/amountInclass/amountInclass">
+      <view class="rows-item">
+        <image src="/assets/images/profile/attendClassMoney.png" class="icon"></image>
+        <text>上课金额</text>
+      </view>
+      <image src="/assets/images/profile/left_arrow.png"></image>
+    </navigator>
+    <navigator hover-class="none" class="rows" url="/pages/incomeDetail/incomeDetail">
+      <view class="rows-item">
+        <image src="/assets/images/profile/give_money.png" class="icon"></image>
+        <text>售课金额</text>
+      </view>
+      <image src="/assets/images/profile/left_arrow.png"></image>
+    </navigator>
+    <navigator hover-class="none" class="rows" url="/pages/rank/rank">
+      <view class="rows-item">
+        <image src="/assets/images/profile/rank.png" class="icon"></image>
+        <text>排行榜</text>
+      </view>
+      <image src="/assets/images/profile/left_arrow.png"></image>
+    </navigator>
+    <!--  -->
+    <navigator hover-class="none" class="rows" url="/pages/notification/notification">
       <view class="rows-item">
         <image src="/assets/images/profile/message.png" class="icon"></image>
         <text>消息提醒</text>
       </view>
       <image src="/assets/images/profile/left_arrow.png"></image>
-    </view>
-    <view class="rows">
+    </navigator>
+    <navigator hover-class="none" class="rows" url="/pages/personalSet/personalSet">
       <view class="rows-item">
         <image src="/assets/images/profile/set1.png" class="icon"></image>
         <text>个人设置</text>
       </view>
       <image src="/assets/images/profile/left_arrow.png"></image>
-    </view>
+    </navigator>
   </view>
 </view>
 <tabbar tabbar="{{tabbar}}"></tabbar>

@@ -1,0 +1,85 @@
+.scroll-wrapper{
+  padding: 0 48rpx;
+}
+.scroll-wrapper .turn-item {
+  display: flex;
+  align-items: center;
+  height: 150rpx;
+  box-sizing: border-box;
+  border-bottom: 0.5px solid #E6EAF1;
+}
+
+.turn-item .check-box {
+  width: 32rpx;
+  height: 32rpx;
+}
+.turn-item .check-box image{
+  width: 100%;
+  height: 100%;
+}
+.turn-item .avatar {
+  margin: 0 30rpx;
+  width: 88rpx;
+  height: 88rpx;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.turn-item .avatar image {
+  width: 100%;
+  height: 100%;
+}
+
+.turn-item .avatar .avatar-text {
+  width: 100%;
+  height: 100%;
+  line-height: 88rpx;
+  text-align: center;
+  background: #4A81FF;
+  font-size: 40rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.member-info .coach {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #0D0E15;
+}
+
+.member-info .coach text {
+  color: #2564F6;
+}
+
+.member-info .coach-phone {
+  margin-top: 14rpx;
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.turnclass-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-bottom: 30rpx;
+  background-color: #FFFFFF;
+}
+
+.turnclass-btn .turnBtn {
+  margin: 0 auto;
+  width: 690rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background: #2564F6;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  color: #FFFFFF;
+}
+
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}

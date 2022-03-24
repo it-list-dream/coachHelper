@@ -1,0 +1,27 @@
+<view class="achievenment">
+  <view class="achievenment-time">
+    <text>周期时间由短到长</text>
+    <image src="/assets/images/blue_arrow.png" bindtap="chooseTime"></image>
+    <view class="time-mask" hidden="{{!ishowPeroid}}">
+      <view bindtap="peroidSort" data-index="0">周期时间由短到长</view>
+      <view bindtap="peroidSort" data-index="1">周期时间由长到短</view>
+    </view>
+  </view>
+  <view class="achievenment-content" wx:for="{{4}}">
+    <view class="achievenment-item" bindtap="achievement">
+      <view class="bodychange">
+        <image src="/assets/images/header.png"></image>
+        <text class="body-name">娜娜</text>
+        <text>体重：2.0kg</text>
+        <text>周期：2天</text>
+      </view>
+      <view class="achieve-picture">
+        <image src="/assets/images/case.png"></image>
+        <view class="date">2022.01.16-2022.02.16</view>
+      </view>
+      <view class="arrow-box">
+        <image class="gray" src="/assets/images/gay.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

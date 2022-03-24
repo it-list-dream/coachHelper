@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "van-popup": "@vant/weapp/popup/index"
+    "van-popup": "@vant/weapp/popup/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index"
   },
   "navigationBarBackgroundColor":"#2564F6",
   "navigationBarTextStyle":"white",

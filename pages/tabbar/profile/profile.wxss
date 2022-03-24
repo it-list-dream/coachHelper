@@ -24,16 +24,6 @@
   z-index: 999;
 }
 
-.navbar {
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  width: 100%;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
 .navbar-action-wrap {
   position: absolute;
   overflow: hidden;
@@ -92,32 +82,35 @@
 }
 
 .coach-skill .skill-item {
+  position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex: 1;
 }
-
+.coach-skill .skill-item::after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 40rpx;
+  background: #E7E7E7;
+}
+.coach-skill .skill-item:last-child::after{
+   background: transparent;
+}
 .skill-item image {
   width: 36rpx;
   height: 36rpx;
-  vertical-align: middle;
 }
 
 .skill-item text {
-  margin-left: 16rpx;
+  margin-top: 15rpx;
   font-size: 32rpx;
   color: #333333
-}
-
-.coach-skill .line {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  width: 2rpx;
-  height: 38rpx;
-  background: #E7E7E7;
 }
 
 .profile-content {

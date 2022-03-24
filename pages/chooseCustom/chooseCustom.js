@@ -48,7 +48,22 @@ Page({
         firstName:"使"
       }
 
-    ]
+    ],
+    tabsHeight:0
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this;
+    const query = wx.createSelectorQuery();
+    query.select('.serach-box').boundingClientRect()
+    query.exec(function (res) {
+      that.setData({
+        searchHeight:res[0].height
+      })
+    })
+    //that.getTabHeight();
   },
   swichNav: function (res) {
     if (this.data.currentActive == res.detail.currentNum) return;
@@ -61,13 +76,11 @@ Page({
        url: '/pages/addCustom/addCustom',
      })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  getTabHeight(e){
+      this.setData({
+        tabsHeight:e.detail.height
+      })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

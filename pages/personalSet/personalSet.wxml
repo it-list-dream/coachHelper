@@ -1,0 +1,19 @@
+<view class="setContainer">
+  <view class="form-cell">
+    <view class="set-cell">
+      <text>姓名</text>
+      <text>王刚</text>
+    </view>
+    <view class="set-cell">
+      <text>性别</text>
+      <text>男</text>
+    </view>
+    <view class="set-cell">
+      <text>手机号</text>
+      <text>135478894325</text>
+    </view>
+  </view>
+  <view class="exit-box">
+    <button class="exit-btn">退出</button>
+  </view>
+</view>

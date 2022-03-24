@@ -1,0 +1,61 @@
+<view class="achievement-head">
+  <view class="date-box">
+    <picker class="st-picker" mode="date">
+      <view class="pick">
+        2021.12.01
+        <image src="/assets/images/white-arrow.png"></image>
+      </view>
+    </picker>
+    <view class="line">___</view>
+    <picker class="en-picker" mode="date">
+      <view class="pick">
+        2022.03.01
+        <image src="/assets/images/white-arrow.png"></image>
+      </view>
+    </picker>
+  </view>
+  <view class="date-change">
+    <text class="date-item {{dateIndex == 1?'active':''}}" bindtap="changeDate" data-index="1">1个月</text>
+    <text class="date-item {{dateIndex == 2?'active':''}}" bindtap="changeDate" data-index="2">2个月</text>
+    <text class="date-item {{dateIndex == 3?'active':''}}" bindtap="changeDate" data-index="3">3个月</text>
+  </view>
+  <view class="service-img">
+    <image src="/assets/images/service/service.png"></image>
+  </view>
+</view>
+<view class="achievement-content">
+  <view class="achievement-title">教练服务成果</view>
+  <view class="service-tips">
+    <view>在此期间：</view>
+    <view>
+      我为<text class="orange">1</text>名客户，服务训练<text class="orange">4</text>次
+    </view>
+  </view>
+  <view class="achievement-item">
+    <view class="left-box">
+      <text>3.6</text>
+      <text>征服重量（吨）</text>
+    </view>
+    <view class="picture-box">
+      <image src="/assets/images/service/weight.png"></image>
+    </view>
+  </view>
+  <view class="achievement-item">
+    <view class="left-box">
+      <text>7</text>
+      <text>测试评估（次）</text>
+    </view>
+    <view class="picture-box">
+      <image src="/assets/images/service/risk2.png"></image>
+    </view>
+  </view>
+  <view class="achievement-item">
+    <view class="left-box">
+      <text>肌肉量 +11kg</text>
+      <text>身体变化</text>
+    </view>
+    <view class="picture-box">
+      <image src="/assets/images/service/change.png"></image>
+    </view>
+  </view>
+</view>

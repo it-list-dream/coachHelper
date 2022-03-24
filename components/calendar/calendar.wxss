@@ -82,6 +82,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 72rpx;
+  height: 72rpx;
 }
 
 
@@ -107,7 +109,10 @@
 }
 
 .calendar .calendar-main .day {
-  position: relative;
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100rpx;
   color: #666;
   text-align: center;
@@ -156,7 +161,7 @@
   top: -100rpx;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 430rpx;
+  font-size: 400rpx;
   background: linear-gradient(180deg, #316FFF 50%, #6795FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

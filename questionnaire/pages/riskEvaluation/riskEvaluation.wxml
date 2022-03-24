@@ -1,0 +1,111 @@
+<view class="riskEvaliation">
+   <view class="risk-content">
+      <view class="risk_picture">
+         <image src="./images/bg.png"></image>
+      </view>
+      <view class="risk-title">
+         对于大多数人来说，运动是安全的。而对某些人来说，在明显增加体力活动前应先征求医生的意见。如果你计划参加健身运动，请先回答下表中的7个问题。如果你的年龄在15-69岁之间，PAR-Q会告诉你运动前是否需要咨询医生。如果你超过了69岁，且没有体力活动习惯，那么请咨询医生。回答问题最好依据你的一般感觉。请仔细咨询并诚实回答每一个问题：选择是或否。
+      </view>
+      <view class="question-list" wx:if="{{questionNum !== questionList.length}}">
+         <block wx:for="{{questionList}}" wx:key="index">
+            <!-- 单选 只有两个选项的 -->
+            <view class="question-item" hidden="{{ questionNum !== index}}" wx:if="{{item.type == 1}}">
+               <view class="question-topic">{{item.topic}}</view>
+               <view class="radio-group">
+                  <radio-group bindchange="radioChange" class="radio-group" data-id="{{index}}">
+                     <label wx:for="{{item.answerList}}" wx:key="{{index}}" wx:for-item="radio">
+                        <view class="weui-cell">
+                           <radio value="{{radio.name}}" checked="{{radio.checked}}" />
+                           <view class="weui-cell__value">{{radio.name}}</view>
+                        </view>
+                     </label>
+                  </radio-group>
+               </view>
+            </view>
+            <!-- 多选 -->
+            <view class="question-item multiple" hidden="{{ questionNum !== index}}" wx:elif="{{item.type == 2}}">
+               <view class="question-topic" style="padding: 50rpx 34rpx 40rpx;">{{item.topic}}</view>
+               <view class="checkbox-group">
+                  <checkbox-group bindchange="checkboxChange" class="c-group">
+                     <label wx:for="{{item.answerList}}" wx:key="{{item.value}}" wx:for-item="checkbox">
+                        <view class="weui-cell-checkbox">
+                           <checkbox value="{{checkbox.name}}" checked="{{checkbox.checked}}" />
+                           <view class="checkbox-value">{{checkbox.name}}</view>
+                        </view>
+                     </label>
+                     <view class="self-defaine" bindtap="defined" wx:if="{{item.isOhters}}">+自定义</view>
+                  </checkbox-group>
+               </view>
+            </view>
+            <!-- 单选 答案在两个以上 -->
+            <view class="question-item" hidden="{{ questionNum !== index}}" wx:if="{{item.type == 0}}">
+               <view class="question-topic">{{item.topic}}</view>
+               <view class="radio-group">
+                  <radio-group bindchange="radioChange" class="radio-group multiple-radio" data-id="{{index}}">
+                     <label wx:for="{{item.answerList}}" wx:key="{{index}}" wx:for-item="radio">
+                        <view class="weui-cell multiple-cell">
+                           <radio value="{{radio.name}}" checked="{{radio.checked}}" />
+                           <view class="weui-cell__value">{{radio.name}}</view>
+                        </view>
+                     </label>
+                     <view class="self-defaine  df" bindtap="defined" data-type="{{item.type}}"
+                        wx:if="{{item.isOhters}}">
+                        +自定义
+                     </view>
+                  </radio-group>
+               </view>
+            </view>
+            <!-- textarea -->
+            <view class="question-item tt" hidden="{{ questionNum !== index}}" wx:if="{{item.type == 3}}">
+               <view class="question-topic" style="border:none;">{{item.topic}}</view>
+               <view class="idea-textare">
+                  <textarea name="" id="" class="textarea" placeholder="填写（限200字）"
+                     placeholder-style="color:#B3B3B3;"></textarea>
+               </view>
+            </view>
+         </block>
+      </view>
+      <view class="question-tips" wx:if="{{questionNum !== questionList.length}}"
+         style="justify-content:{{questionNum == 0?'center':'space-between'}}">
+         <view class="perv" bindtap="perv" wx:if="{{questionNum > 0}}">
+            <text decode='true'>&lt;</text> 上一题
+         </view>
+         <view class="next" bindtap="next">下一题 <text decode='true'>&gt;</text></view>
+      </view>
+      <!-- 补充 -->
+      <block wx:if="{{questionNum == questionList.length}}">
+         <view class="repenish">
+            <view class="repenish-title">你有什么好的建议？</view>
+            <view class="repenish-content">
+               <textarea name="" class="repenish-textarea" placeholder="填写（限200字）"
+                  placeholder-style="color:#999999;"></textarea>
+            </view>
+         </view>
+         <view class="fitness-tips">
+            <view class="text1">
+               <text>结果说明</text>
+               <text>如果全部问题回答“否”：</text>
+               如果你对所有PAR-Q问题都回答了“否”，那么，你有理由相信你能：参加更多的体力活动，但要缓慢开始并循序渐进，这是最安全，最容易的方法。进行体适能评价，这是确定你的额基础体适能的良好方法，并是你能够确定实现积极生活方式的最佳途径。强烈推荐你测量血压。如果你的血压高于144/94Hmmg,请在参加更多体力活动前咨询医生。
+            </view>
+            <view class="text2-title">下列情况应推迟体力活动：</view>
+            <view class="text3">
+               如果你由于暂时的疾病，如感冒或发烧，感到身体不适，请等到疾病康复后再锻炼； 如果你怀孕了或可能怀孕了，在参加更多的体力活动前，请咨询医生。
+               【注意】如果你的健康状态改变了，对以上任何一个问题回答了“是”，请告诉体适能或健康专家，询问是否需要调整体力活动计划。
+            </view>
+         </view>
+         <view class="signature-box">
+            <view class="signature-title">我已经阅读、理解并完成了这份问卷，对于我的所有疑问都得到了令我满意的回答。</view>
+            <view class="paper">
+               <canvas class="handWriting" disable-scroll="true" bindtouchstart="touchstart" bindtouchmove="touchmove"
+                  canvas-id="handWriting1">
+               </canvas>
+               <cover-view class="refresh" bindtap="reSign">
+                  <cover-image src="./images/reflesh.png"></cover-image>
+                  <cover-view class="resetWrite">重签</cover-view>
+               </cover-view>
+            </view>
+            <button class="submit" bindtap="handleSubmit">提交</button>
+         </view>
+      </block>
+   </view>
+</view>

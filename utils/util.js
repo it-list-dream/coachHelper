@@ -13,10 +13,16 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : `0${n}`
 }
-function subTen(value) {
-  return  value < 10 ? ('0' + value) : value;
-}
 
+function subTen(value) {
+  return value < 10 ? ('0' + value) : value;
+}
+const yesterday = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = '01'
+  return [year, month, day].map(formatNumber).join('-')
+}
 function format(date, fmt) {
   let d = new Date(date)
   var o = {
@@ -45,5 +51,6 @@ function format(date, fmt) {
 module.exports = {
   format,
   formatTime,
-  subTen
+  subTen,
+  yesterday
 }

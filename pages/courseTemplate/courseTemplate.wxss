@@ -1,0 +1,70 @@
+.saveContainer,.exportContainer {
+  padding-top: 32rpx;
+}
+
+.checkbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 120rpx;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  border-bottom: 0.5px solid #EDEDED;
+}
+
+.checkbox .left-checkbox {
+  margin-left: 30rpx;
+  font-size: 30rpx;
+  color: #000000;
+}
+
+.checkbox .left-checkbox .order {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #000000;
+}
+
+.checkbox .left-checkbox .template-name {
+  margin-left: 30rpx;
+}
+
+.checkbox .right-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.right-checkbox .no-choose {
+  width: 34rpx;
+  height: 34rpx;
+  border: 1px solid #BFBFBF;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.right-checkbox .success {
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.template-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-bottom: 60rpx;
+}
+
+.template-btn .template-confrim {
+  width: 690rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background: #2564F6;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  color: #FFFFFF;
+}

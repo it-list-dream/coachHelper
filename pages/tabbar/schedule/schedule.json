@@ -1,10 +1,11 @@
 {
   "usingComponents": {
-    "dialog": "/components/dialog/dialog",
-    "calendar":"/components/calendar/calendar",
-    "tabbar":"/components/tabbar/tabbar"
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "calendar": "/components/calendar/calendar",
+    "tabbar": "/components/tabbar/tabbar"
   },
-  "navigationBarBackgroundColor":"#2564F6",
-  "navigationBarTextStyle":"white",
-  "navigationBarTitleText":"日程"
+  "navigationBarBackgroundColor": "#2564F6",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "日程"
 }

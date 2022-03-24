@@ -1,0 +1,32 @@
+<view class="trainPlanContainer">
+  <view class="plan-head">
+    <view class="member-info">
+      <image src="/assets/images/header.png"></image>
+      <text>娜娜</text>
+    </view>
+    <view class="swichbox">
+      <image src="/assets/images/switch-icon.png"></image>
+      <text>切换用户</text>
+    </view>
+  </view>
+  <view class="plan-list">
+    <view class="plan-item" wx:for="{{2}}" bindtap="planDetail">
+      <image class="course-bg" src="/assets/images/course_bg.png"></image>
+      <view class="plan-mask">
+        <view class="course">
+          <view class="course-left">
+            <text>女性塑形课程</text>
+            <text>王教练 2022.02.11</text>
+          </view>
+          <image src="/assets/images/right.png"></image>
+        </view>
+        <view class="course-progress">
+          <view class="progress-num">2/12</view>
+          <progress class="progress" percent="20" 
+          border-radius="6"
+          stroke-width="12" activeColor="#2664F6"/>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

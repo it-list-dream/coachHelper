@@ -1,8 +1,12 @@
 {
   "usingComponents": {
+    "van-popup": "@vant/weapp/popup/index",
     "ct-step": "/components/step/step",
-    "ct-dialog":"/components/dialog/dialog",
-    "navbar":"/components/navbar/navbar"
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "rewords":"./rewords/index"
   },
-  "navigationStyle":"custom"
+  "navigationBarBackgroundColor": "#2564F6",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "客户详情"
 }

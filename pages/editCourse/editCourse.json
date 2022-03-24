@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index"
+  },
+  "navigationBarBackgroundColor":"#ffffff",
+  "navigationBarTextStyle":"black",
+  "navigationBarTitleText":"编辑课程"
+}

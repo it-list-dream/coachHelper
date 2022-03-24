@@ -1,0 +1,22 @@
+<view class="newPosture">
+  <view class="posture-date">
+    <picker mode="date" value="{{date}}" start="2018-01-01" end="2017-09-01" bindchange="bindDateChange">
+      <view class="picker">
+        <text>评估时间 {{date}}</text>
+        <image src="./images/blue_arrow.png"></image>
+      </view>
+    </picker>
+  </view>
+  <van-tabs title-inactive-color="#A4ACBF" title-active-color="#2565F6" active="{{ active }}" sticky
+    bind:change="onChange" color="#2565F6">
+    <van-tab title="正面">
+      <body-part body-list="{{frontSide}}" active-index="1" body-title="请上传身体正面照" button-text="下一步" bind:next="handleNext"></body-part>
+    </van-tab>
+    <van-tab title="左侧">
+      <body-part body-list="{{leftSide}}" active-index="2" body-title="请上传身体左侧照" button-text="下一步" bind:next="handleNext"></body-part>
+    </van-tab>
+    <van-tab title="右侧">
+      <body-part body-list="{{rightSide}}" active-index="3" body-title="请上传身体右侧照" button-text="保存" bind:next="handleNext"></body-part>
+    </van-tab>
+  </van-tabs>
+</view>

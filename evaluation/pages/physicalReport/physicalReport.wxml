@@ -1,0 +1,202 @@
+<view class="physicalReportContainer">
+  <van-tabs active="{{ physcalActive }}" bind:change="onChange" title-active-color="#000000"
+    title-inactive-color="#999999" sticky="{{true}}">
+    <van-tab title="综合分析">
+      <view class="synthesis-list">
+        <view class="analysis-synthesis">
+          <view class="analysis-bg">
+            <image src="./images/body-bg.png"></image>
+          </view>
+          <view class="analysis-item analysis-weight">
+            <view>130.0kg</view>
+            <view>体重 <text class="analysis-status">偏高</text></view>
+          </view>
+          <view class="analysis-item fat-percentage">
+            <view>-22.1%</view>
+            <view>体脂率 <text class="analysis-status">偏低</text></view>
+          </view>
+          <view class="analysis-item bmi">
+            <view>38.8</view>
+            <view>BMI <text class="analysis-status">偏高</text></view>
+          </view>
+          <view class="analysis-item whr">
+            <view>1.0</view>
+            <view>腰臀比 <text class="analysis-status">偏高</text></view>
+          </view>
+        </view>
+        <!--  -->
+        <view class="run_type">运动员型</view>
+        <!-- 基本情况 -->
+        <view class="basic-infromation">
+          <view class="basic-title">基本情况</view>
+          <view class="basic-body-box">
+            <view class="basic-body-item">
+              <view class="left">
+                <image src="../physicalTest/images/muscle.png"></image>
+                <text class="b-name">肌肉量</text>
+                <text>23.0kg</text>
+              </view>
+              <view class="right">偏低</view>
+            </view>
+            <view class="basic-body-item">
+              <view class="left">
+                <image src="../physicalTest/images/guangjie.png"></image>
+                <text class="b-name">骨骼肌</text>
+                <text>17.9kg</text>
+              </view>
+              <view class="right">偏低</view>
+            </view>
+            <view class="basic-body-item">
+              <view class="left">
+                <image src="../physicalTest/images/muscle.png"></image>
+                <text class="b-name">肌肉率</text>
+                <text>23.0%</text>
+              </view>
+              <view class="right">偏高</view>
+            </view>
+            <view class="basic-body-item">
+              <view class="left">
+                <image src="../physicalTest/images/fat.png"></image>
+                <text class="b-name">脂肪量</text>
+                <text>50.0kg</text>
+              </view>
+              <view class="right">偏高</view>
+            </view>
+            <view class="basic-body-item">
+              <view class="left">
+                <image src="../physicalTest/images/waist.png"></image>
+                <text class="b-name">脂肪量</text>
+                <text>腰臀比</text>
+              </view>
+              <view class="right">偏高</view>
+            </view>
+            <view class="basic-body-item">
+              <view class="left">
+                <image src="./images/daixie.png"></image>
+                <text class="b-name">基础代谢率</text>
+                <text>2598.0</text>
+              </view>
+              <view class="right">偏高</view>
+            </view>
+          </view>
+          <view class="standard-title">理想标准</view>
+          <!--  -->
+          <view class="standard-list">
+            <view class="standard-item">
+              <text>标准体重</text>
+              <text>72.1kg</text>
+            </view>
+            <view class="standard-item">
+              <text>建议体重</text>
+              <text>-57.9kg</text>
+            </view>
+            <view class="standard-item">
+              <text>建议肌肉量</text>
+              <text>20.0kg</text>
+            </view>
+            <view class="standard-item">
+              <text>建议脂肪量</text>
+              <text>20.0kg</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="体测详情">
+      <view class="examination-detail">
+        <view class="health-title">健康分析</view>
+        <view class="health-item">
+          <view class="health-data"  wx:for="{{10}}">
+            <view class="health-data-left">
+              <view class="data-top-box">
+                <image src="./images/bim.png"></image>
+                <text class="text">体重</text>
+                <text>130kg</text>
+              </view>
+              <view class="health-data-right">偏高</view>
+            </view>
+            <view class="progress-title">
+              <text>53.47</text>
+              <text>69.07</text>
+            </view>
+            <view class="progress-box">
+              <progress percent="20" stroke-width="12" border-radius="6" backgroundColor="#EBEBEB" active="{{true}}"/>
+            </view>
+            <view class="progress-value">
+              <text>偏低</text>
+              <text>正常</text>
+              <text>偏高</text>
+            </view>
+          </view>
+        </view>
+        <!--  hidden="{{true}}" -->
+        <view class="health-picture">
+          <image src="https://img1.baidu.com/it/u=4020265515,2294312709&fm=253&fmt=auto&app=138&f=JPEG?w=577&h=500"></image>
+          <image src="https://img1.baidu.com/it/u=4020265515,2294312709&fm=253&fmt=auto&app=138&f=JPEG?w=577&h=500"></image>
+          <image src="https://img1.baidu.com/it/u=4020265515,2294312709&fm=253&fmt=auto&app=138&f=JPEG?w=577&h=500"></image>
+          <image src="https://img1.baidu.com/it/u=4020265515,2294312709&fm=253&fmt=auto&app=138&f=JPEG?w=577&h=500"></image>
+        </view>
+        <!-- 身体测量 -->
+        <view class="health-title">身体测量</view>
+        <view class="measurement">
+          <view class="measurement-item">
+            <text>身高(cm)</text>
+            <text>183</text>
+          </view>
+          <view class="measurement-item">
+            <text>体重(kg)</text>
+            <text>130.1</text>
+          </view>
+          <view class="measurement-item">
+            <text>血压(mmHg)</text>
+            <text>--</text>
+          </view>
+          <view class="measurement-item">
+            <text>心率(bpm)</text>
+            <text>--</text>
+          </view>
+          <view class="measurement-item">
+            <text>胸围(cm)</text>
+            <text>--</text>
+          </view>
+          <view class="measurement-item">
+            <text>肩围(cm)</text>
+            <text>31</text>
+          </view>
+          <view class="measurement-item">
+            <text>腰围</text>
+            <text>83.0</text>
+          </view>
+          <view class="measurement-item">
+            <text>臀围(cm)</text>
+            <text>--</text>
+          </view>
+          <view class="measurement-item">
+            <text>左上臂围(cm)</text>
+            <text>51.0</text>
+          </view>
+          <view class="measurement-item">
+            <text>右上臂围(cm)</text>
+            <text>--</text>
+          </view>
+          <view class="measurement-item">
+            <text>左大腿围(cm)</text>
+            <text>--</text>
+          </view>
+          <view class="measurement-item">
+            <text>右大腿围(cm)</text>
+            <text>--</text>
+          </view>
+          <view class="measurement-item">
+            <text>左小腿围</text>
+            <text>--</text>
+          </view>
+          <view class="measurement-item">
+            <text>右小腿围</text>
+            <text>--</text>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>

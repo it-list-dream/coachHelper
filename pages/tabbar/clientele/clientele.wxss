@@ -1,31 +1,74 @@
 /* pages/chooseCustom/chooseCustom.wxss */
-.chooseCustomContainer{
+.chooseCustomContainer {
   padding-bottom: 140rpx;
 }
+
 .serach-box {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding:0 30rpx 0 15rpx;
+  padding: 0 30rpx;
   box-sizing: border-box;
   height: 135rpx;
 }
-.van-cell{
-  width: 476rpx !important;
+
+.van-search {
+  width: 554rpx !important;
+  padding: 30rpx 0 !important;
 }
+
+.van-icon {
+  color: #C2BCBC;
+}
+
 .serach-box>.add {
   width: 40rpx;
   height: 40rpx;
 }
+
 /*  */
-.clienteList{
-  /* background-color: rebeccapurple; */
+.scroll-y {
+  background: #ffffff;
+  box-sizing: border-box;
 }
-/*  */
-.tab-item{
-  margin-top: 30rpx;
-  padding: 0 48rpx;
+
+.scroll-y .screen {
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  border-top: 0.5px solid #E6EAF1;
+  border-bottom: 0.5px solid #E6EAF1;
+  box-sizing: border-box;
 }
+
+.screen text {
+  margin: 0 30rpx;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+#tabs .van-tab {
+  position: relative !important;
+}
+
+.van-tabs__nav .van-tab:nth-child(4)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0rpx;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10rpx solid transparent;
+  border-right: 10rpx solid transparent;
+  border-top: 14rpx solid #2665F6;
+}
+
+.tab-item {
+  /* margin-top: 30rpx; */
+  padding: 30rpx 48rpx 0;
+}
+
 .custom-list {
   display: flex;
   align-items: center;
@@ -52,7 +95,8 @@
   font-size: 28rpx;
   color: #666666;
 }
-.custom-list .h1{
+
+.custom-list .h1 {
   width: 88rpx;
   height: 88rpx;
   line-height: 88rpx;

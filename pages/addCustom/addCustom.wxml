@@ -1,10 +1,10 @@
 <!--pages/addCustom/addCustom.wxml-->
 <view class="addCustomContainer">
   <view class="addCustomInform">
-    <view class="photo-wrapper">
+    <!-- <view class="photo-wrapper">
       <image src="/assets/images/photo.png" bindtap="choosePhoto" wx:if="{{pictures.length==0}}"></image>
       <image src="{{pictures}}" wx:else bindtap="choosePhoto"></image>
-    </view>
+    </view> -->
     <view class="phonenumber flex">
       <text>手机号码</text>
       <input type="number" maxlength="11" placeholder="请输入手机号码" placeholder-class="placeholder" bindblur="getCustomPhone" />

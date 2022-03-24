@@ -1,2 +1,0 @@
-<!--components/train-dialog/train-dialog.wxml-->
-<van-popup show="{{ show }}" bind:close="onClose">内容</van-popup>

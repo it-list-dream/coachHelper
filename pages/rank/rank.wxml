@@ -1,0 +1,101 @@
+<view class="rankContainer">
+  <view class="rank-date">
+    <view class="startdate">
+      <picker class="picker-box" mode="date" start="" end="{{endDate}}" value="">
+        <view class="picker-date">
+          2022-01-26
+          <image src="/assets/images/blue_arrow.png"></image>
+        </view>
+      </picker>
+    </view>
+    <view class="line"></view>
+    <view class="enddate">
+      <picker class="picker-box" mode="date" start="" end="{{endDate}}"  value="">
+        <view class="picker-date">
+          2022-01-26
+          <image src="/assets/images/blue_arrow.png"></image>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="rank-content">
+    <view class="frontThird">
+      <view class="rank-model model">
+        <view class="lump"></view>
+        <view class="rank-pic">
+          <image src="/assets/images/silver_medal.png"></image>
+        </view>
+        <view class="coach">张林</view>
+        <view class="price">3300</view>
+        <view class="addpeople">
+          <view class="addpeople-item">
+            <text>1</text>
+            <text>新增</text>
+          </view>
+          <view class="addpeople-item">
+            <text>0</text>
+            <text>邀约</text>
+          </view>
+        </view>
+      </view>
+      <view class="rank-model bigbox">
+        <view class="lump"></view>
+        <view class="rank-pic">
+          <image src="/assets/images/silver_medal.png"></image>
+        </view>
+        <view class="coach">张林</view>
+        <view class="price">3300</view>
+        <view class="addpeople">
+          <view class="addpeople-item">
+            <text>1</text>
+            <text>新增</text>
+          </view>
+          <view class="addpeople-item">
+            <text>0</text>
+            <text>邀约</text>
+          </view>
+        </view>
+      </view>
+      <view class="rank-model model">
+        <view class="lump"></view>
+        <view class="rank-pic">
+          <image src="/assets/images/silver_medal.png"></image>
+        </view>
+        <view class="coach">张林</view>
+        <view class="price">3300</view>
+        <view class="addpeople">
+          <view class="addpeople-item">
+            <text>1</text>
+            <text>新增</text>
+          </view>
+          <view class="addpeople-item">
+            <text>0</text>
+            <text>邀约</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--  -->
+    <view class="rank-table">
+      <view class="rank-th">
+        <text>排名</text>
+        <text>姓名</text>
+        <text>新增</text>
+        <text>邀约</text>
+        <text>业绩</text>
+      </view>
+      <view class="rank-tr" wx:for="{{10}}" wx:key="index">
+        <view class="sort rank-rows">
+          <image wx:if="{{index == 0}}" src="/assets/images/gold.png"></image>
+          <image wx:elif="{{index == 1}}" src="/assets/images/silver_medal.png"></image>
+          <image wx:elif="{{index == 2}}" src="/assets/images/bronze_medal.png"></image>
+          <text wx:else>{{index+1}}</text>
+        </view>
+        <text class="rank-rows">张森</text>
+        <text class="rank-rows">23</text>
+        <text class="rank-rows">0</text>
+        <text class="rank-rows">9800</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,32 @@
+<import src="../../../template/question.wxml" />
+<view class="questionList">
+  <view class="questionList-head">
+    <view class="member">
+      <image src="/assets/images/header.png"></image>
+      <view class="member-name">娜娜</view>
+    </view>
+    <navigator url="/questionnaire/pages/systemList/systemList" hover-class="none" class="addquestionBtn"> <text
+        style="font-size:36rpx;">+</text>添加</navigator>
+  </view>
+  <van-tabs active="{{ active }}" title-inactive-color="#222222" title-active-color="#2665F6" bind:change="onChange"
+    color="#2665F6" id="tabs">
+    <van-tab title="基础问卷">
+      <scroll-view class="scroll-y" style="height:{{scrollHeight}}px;" scroll-y>
+        <view class="scroll-content">
+          <block wx:for="{{10}}">
+            <template is="question-item" data="{{...params}}"></template>
+          </block>
+        </view>
+      </scroll-view>
+    </van-tab>
+    <van-tab title="风险评估">
+      <scroll-view class="scroll-y" style="height:{{scrollHeight}}px;" scroll-y>
+        <view class="scroll-content">
+          <block wx:for="{{10}}">
+            <template is="question-item" data="{{...params2}}"></template>
+          </block>
+        </view>
+      </scroll-view>
+    </van-tab>
+  </van-tabs>
+</view>

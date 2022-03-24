@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
+  },
+  "navigationBarBackgroundColor":"#2564F6",
+  "navigationBarTextStyle":"white",
+  "navigationBarTitleText":"消息提醒"
+}
