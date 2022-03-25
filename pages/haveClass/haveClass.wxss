@@ -116,7 +116,7 @@ page {
   padding: 0 !important;
 }
 
-@keyframes move{
+/* @keyframes move{
   from {
     transform: scale(1);
   }
@@ -124,4 +124,4 @@ page {
   to {
     transform: scale(1.2);
   }
-}
+} */

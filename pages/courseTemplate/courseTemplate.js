@@ -1,4 +1,5 @@
 // pages/courseTemplate/courseTemplate.js
+const app = getApp();
 Page({
 
   /**
@@ -26,29 +27,31 @@ Page({
       courseName: "拳击",
       selected: false
     }],
-    isShow:false,
-    templateValue:""
-  },
-  onClose(){
-    this.setData({
-      isShow:false
-    })
-  },
-  onCancel(){
-    this.setData({
-      isShow:false,
-      templateValue:""
-    })
-  },
-  getTemplateName(e){
-      this.setData({
-        templateValue:e.detail.value
-      })
-  },
-  templateconfrim(){
-    this.setData({
-      isShow:true
-    })
+    isOpen: false,
+    templateValue: "",
+    //判断是导出还是导入
+    templateType: '',
+    exportList: [{
+      templateId: 1,
+      templateName: "女性塑形课程初级",
+      courseName: "塑形",
+      selected: false
+    }, {
+      templateId: 2,
+      templateName: "女性减脂课程初级",
+      courseName: "减脂",
+      selected: false
+    }, {
+      templateId: 3,
+      templateName: "增肌课程初级",
+      courseName: "增肌",
+      selected: false
+    }, {
+      templateId: 4,
+      templateName: "拳击课程初级",
+      courseName: "拳击",
+      selected: false
+    }]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -57,24 +60,65 @@ Page({
 
   },
   chooseTemplate(e) {
-    let classes =  e.currentTarget.dataset.template;
-    console.log(classes)
+    let classes = e.currentTarget.dataset.template;
     let templateList = this.data.templateList;
     for (var i = 0; i < templateList.length; i++) {
-        if(classes.templateName == templateList[i].templateName){
-          templateList[i].selected = true;
-        }else{
-          templateList[i].selected = false;
-        }
+      if (classes.templateName == templateList[i].templateName) {
+        templateList[i].selected = true;
+      } else {
+        templateList[i].selected = false;
+      }
     }
     this.setData({
-      templateList:templateList
+      templateList: templateList
     })
   },
-  //保存
-  save(){
-    wx.navigateTo({
-      url:"/pages/trainPlanDetail/trainPlanDetail"
+  templateConfrim() {
+    this.setData({
+      isOpen: true
+    })
+  },
+  closePopup() {
+    this.setData({
+      isOpen: false
+    })
+  },
+  success(e) {
+    this.setData({
+      isOpen: false,
+      templateValue: e.detail.value
+    })
+    wx.showToast({
+      title: '保存成功',
+      icon: "success",
+      mask: true,
+      duration: 1500,
+      success: function (res) {
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1,
+          })
+        }, 1500)
+      }
+    })
+  },
+  //导出
+  exportTemplate(e) {
+    console.log(e)
+    let template = e.currentTarget.dataset.template;
+    let exportList = this.data.exportList;
+    for (var j = 0; j < exportList.length; j++) {
+      if (template.templateName == exportList[j].templateName) {
+        exportList[j].selected = !exportList[j].selected;
+      }
+    }
+    this.setData({
+      exportList: exportList
+    })
+  },
+  exportConfrim() {
+    wx.navigateBack({
+      delta: 1,
     })
   },
   /**
@@ -88,7 +132,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log(app.globalData.isExportTemplate)
+    let isExportTemplate = app.globalData.isExportTemplate;
+    let navigationBarTitle = isExportTemplate ? '选择导入模板' : '选择课程存为模板';
+    wx.setNavigationBarTitle({
+      title: navigationBarTitle
+    })
+    this.setData({
+      templateType: navigationBarTitle
+    })
   },
 
   /**
@@ -116,13 +168,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

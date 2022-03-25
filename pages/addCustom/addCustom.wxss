@@ -48,7 +48,7 @@ input {
   line-height: 42rpx;
   text-align: center;
   border: 1px solid #D2D2D2;
-  border-radius: 21rpx;
+  border-radius: 22rpx;
   font-size: 30rpx;
   color: #C3C3C3;
 }

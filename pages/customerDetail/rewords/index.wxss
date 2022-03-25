@@ -1,0 +1,117 @@
+/* 每一行数据容器 */
+.r-wrap {
+  position: relative;
+  display: flex;
+}
+
+.r-wrap .r-wrap-title {
+  position: absolute;
+  top: 28rpx;
+  left: 0px;
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.r1 {
+  width: 100%;
+}
+
+.r-wrap-item {
+  display: flex;
+}
+
+/* 左边容器 */
+.r-item-left {
+  display: flex;
+  flex-direction: column;
+  width: 100rpx;
+}
+
+/* 左边容器子项 */
+.r-item-left .r-item-left-crd {
+  flex: 1;
+  border-right: 1rpx solid #D5D5D5;
+}
+
+/* .r-item-right-content {
+  display: flex;
+  justify-content: space-between;
+} */
+
+.r-item-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.r-item-text .r-info {
+  font-size: 26rpx;
+  white-space: nowrap;
+  font-family: PingFang SC;
+  color: #333333;
+}
+
+.r-item-text .r-con {
+  flex: 1;
+  margin: 0 14rpx;
+}
+
+.addRecordText {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  color: #523AFC;
+  padding: 8rpx 0;
+}
+
+/* 点容器 */
+.r-item-left .r-point-wrap {
+  position: relative;
+}
+
+/* 点容器子项 */
+.r-item-left .r-point-wrap .r-point-item {
+  position: absolute;
+  top: -10rpx;
+  left: 92rpx;
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+/* 左子项不要边框块 */
+.r-item-left .r-item-left-crd.first,
+.r-item-left-crd.last {
+  flex: 1;
+  border: none;
+}
+
+/* 右容器 */
+.r-item-right {
+  display: flex;
+  flex-direction: column;
+  flex: 10;
+  font-size: 30rpx;
+  padding: 20rpx 0px 30rpx 20rpx;
+}
+
+/*  */
+.icon-box {
+  display: flex;
+}
+.icon-box .last-icon{
+  margin-left: 20rpx;
+}
+.icon-box .i26 {
+  width: 26rpx;
+  height: 26rpx;
+  vertical-align: middle;
+}
+
+.icon-box .icon-text {
+  vertical-align: middle;
+  font-size: 24rpx;
+  color: #2564F6;
+}

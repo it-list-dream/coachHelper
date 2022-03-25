@@ -1,4 +1,5 @@
 // pages/clientCaseDetail/clientCaseDetail.js
+const app = getApp();
 Page({
 
   /**
@@ -13,6 +14,12 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  achievement(){
+    app.globalData.isCase = true;
+     wx.navigateTo({
+       url: '/evaluation/pages/fitnessContrastReport/fitnessContrastReport',
+     })
   },
   chooseTime(e) {
     this.setData({

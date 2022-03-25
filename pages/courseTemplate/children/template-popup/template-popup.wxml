@@ -1,0 +1,14 @@
+<van-popup show="{{ isOpen }}" bind:close="onClose">
+  <view class="savetemplate">
+    <view class="savetitle">存为模板</view>
+    <view class="save-content">
+      <view class="template-name">模板名称</view>
+      <input class="input" type="text" value="{{inputVlaue}}" placeholder="请输入模板名称" placeholder-style="color: #999999;"
+        bindinput="getTemplateName" />
+    </view>
+    <view class="btnlist">
+      <button class="cancel btn" bindtap="onCancel">取消</button>
+      <button class="save btn" bindtap="onSave">保存</button>
+    </view>
+  </view>
+</van-popup>

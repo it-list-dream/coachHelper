@@ -55,9 +55,9 @@ Page({
   loadMore() {
     console.log('是否还有更多')
   },
-  turnClass(){
+  turnCoach(){
      wx.navigateTo({
-       url: '/pages/turnClasDeatil/turnClasDeatil',
+       url: '/pages/memberTurnCoach/memberTurnCoach',
      })
   },
   /**

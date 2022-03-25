@@ -3,26 +3,47 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 28rpx;
+  padding: 30rpx;
   box-sizing: border-box;
 }
-.van-cell{
+
+.van-search {
   width: 476rpx !important;
+  padding: 0 !important;
+  margin-left: 18rpx !important;
+}
+.van-icon{
+  color: #CEC8CB !important;
 }
 .serach-box>.add {
   width: 40rpx;
   height: 40rpx;
 }
+
 /*  */
-.tab-item{
-  margin-top: 30rpx;
-  padding: 0 48rpx;
+.tab-item {
+  white-space: normal;
 }
+
 .custom-list {
+  position: relative;
+  margin-top: 20rpx;
   display: flex;
   align-items: center;
+  padding: 0 48rpx;
   height: 160rpx;
-  border-bottom: 1px solid #E6EAF1;
+  box-sizing: border-box;
+}
+
+.custom-list::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 654rpx;
+  height: 1px;
+  background: #E6EAF1;
 }
 
 .custom-list .header {
@@ -44,7 +65,8 @@
   font-size: 28rpx;
   color: #666666;
 }
-.custom-list .h1{
+
+.custom-list .h1 {
   width: 88rpx;
   height: 88rpx;
   line-height: 88rpx;

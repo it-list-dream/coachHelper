@@ -25,7 +25,8 @@ Page({
         date: "2022.02.08",
         selected: false
       }
-    ]
+    ],
+    test: []
   },
 
   /**
@@ -44,40 +45,67 @@ Page({
     })
   },
   changeCheck(e) {
-    let testList = this.data.testList,
-      test = e.currentTarget.dataset.test,
-      checkedList = [],
-      sameIndex = -1;
-    for (var i = 0; i < testList.length; i++) {
-      if (checkedList.length > 2) {
-        checkedList.unshift(checkedList[0]);
-        sameIndex = testList.findIndex(item => checkedList[0].testName == item.testName);
-        testList[sameIndex].selected = false;
-      }
-      if (testList[i].testName == test.testName) {
-        testList[i].selected = true;
-        checkedList.push(testList[i])
+    var that = this,
+      index = e.currentTarget.dataset.index,
+      value = e.currentTarget.dataset.value,
+      testList = that.data.testList,
+      test = that.data.test,
+      val = testList[index].selected, //点击前的值
+      limitNum = 2,
+      curNum = 0;
+    //已选择数量
+    for (var i in testList) {
+      if (testList[i].selected) {
+        curNum += 1;
       }
     }
-    console.log(checkedList, testList)
-    this.setData({
-      testList: testList
+    if (!val) {
+      if (curNum == limitNum) {
+        wx.showToast({
+          title: '只能选择两组数据进行比较',
+          icon: "none"
+        })
+        return;
+      }
+      test.push(value);
+    } else {
+      for (var j in test) {
+        if (test[j] == value) {
+          test.splice(j, 1);
+        }
+      }
+    }
+    testList[index].selected = !val;
+    that.setData({
+      testList: testList,
+      test: test
     })
   },
-  addAssement(){
-     wx.navigateTo({
-       url: '/evaluation/pages/newPosture/newPosture',
-     })
-  },
-  assessContrast(){
+  addAssement() {
     wx.navigateTo({
-      url: '/evaluation/pages/postureContrast/postureContrast',
+      url: '/evaluation/pages/newPosture/newPosture',
     })
+  },
+  assessContrast(e) {
+    let selectedList = this.data.test;
+    if (selectedList.length == 2) {
+      wx.navigateTo({
+        url: '/evaluation/pages/postureContrast/postureContrast',
+      })
+    } else {
+      wx.showToast({
+        title: '只能选择两组数据进行比较',
+        icon: "none"
+      })
+    }
   },
   testReport(){
-      wx.navigateTo({
-        url: '/evaluation/pages/postureDetail/postureDetail',
-      })
+     let flag = this.data.isAssess;
+     if(!flag){
+        wx.navigateTo({
+          url: '/evaluation/pages/postureDetail/postureDetail',
+        })
+     }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

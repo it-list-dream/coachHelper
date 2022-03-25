@@ -1,5 +1,4 @@
-// pages/customerDetail/customerDetail.js
-// "navigationStyle":"custom"
+var util = require('../../utils/util.js')
 const app = getApp();
 Page({
 
@@ -7,74 +6,107 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabsList: ['客户动态', '跟进记录'],
+    // tabsList: ['客户动态', '跟进记录'],
     tabIndex: 0,
     stepList: [{
-        name: "下单时间",
-        event: "",
+        name: "训练计划",
         time: "2021-07-19",
         status: "0"
       },
       {
-        name: "支付时间",
-        event: "微信小程序，微信支付10.00元",
+        name: "测试评估",
         time: "2021-07-19",
-        status: "0"
+        status: 0
       },
       {
-        name: "降锁时间",
-        event: "",
+        name: "系统默认问卷",
         time: "2021-07-20",
-        status: "1" //status步骤条状态。=1表示最后一条渲染不同样式
+        status: 1
       }
     ],
     addRecords: false,
     //记录数组
     recordsList: [],
-    pageName: '客户详情',
-    showNav: false,
-    //跟进记录
-    // stepList1:[]
-    followRecords:[
-      {
-        name:"名称",
-        time:"2021-07-16：12:30:01",
+    //只取前10个元素
+    tagsPostion: [
+      [72, 88],
+      [216, 160],
+      [180, 46],
+      [32, 210],
+      [0, 340],
+      [36, 512],
+      [146, 496],
+      [178, 616]
+    ],
+    hobbyTags: ['塑性', '减脂', '增肌', '提高表现力', '瘦身', '运动', '减肥'],
+    isFollow: false,
+    coachList: [{
+        name: "张教练",
+        selected: false
       },
       {
-        name:"张三1",
-        time:"2021-07-19：12:30:01",
+        name: "张教练",
+        selected: false
       },
       {
-        name:"李四",
-        time:"2021-07-20：12:30:01",
+        name: "张教练",
+        selected: false
+      }, {
+        name: "张教练",
+        selected: false
+      }, {
+        name: "张教练",
+        selected: false
+      },
+      {
+        name: "张教练",
+        selected: false
+      },
+      {
+        name: "张教练",
+        selected: false
+      },
+      {
+        name: "张教练",
+        selected: false
+      }, {
+        name: "张教练",
+        selected: false
+      }, {
+        name: "张教练",
+        selected: false
       }
-    ]
+    ],
+    endDate: "",
+    currentDate: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let nowDate = util.format(new Date(), 'yyyy-mm-dd');
     this.setData({
-      menuRight: app.globalData.menuRight,
-      navHeight: app.globalData.navHeight,
-      navTop: app.globalData.navTop,
+      currentDate: nowDate,
+      endDate: nowDate
     })
+
+    // this.setData({
+    //   menuRight: app.globalData.menuRight,
+    //   navHeight: app.globalData.navHeight,
+    //   navTop: app.globalData.navTop,
+    // })
   },
-  tabClick(e) {
-    let index = e.currentTarget.dataset.index;
-    console.log(index)
-    if (index == this.data.tabIndex) {
-      return
-    }
+  tabChange(e) {
+    // console.log(e)
     this.setData({
-      tabIndex: index
+      tabIndex: e.detail.index
     })
   },
   addClick(e) {
-   this.setData({
-    addRecords:true
-   })
+    this.setData({
+      addRecords: true
+    })
   },
   confrimEvent(e) {
     console.log(e.detail)
@@ -82,14 +114,31 @@ Page({
     if (e.detail.trim() && e.detail.length > 0) {
       recordsList.push(e.detail)
       this.setData({
-        recordsList:recordsList,
-        addRecords:false
+        recordsList: recordsList,
+        addRecords: false
       })
     }
   },
   cancelEvent() {
     this.setData({
-      addRecords:false
+      addRecords: false
+    })
+  },
+  editProfile() {
+    wx.navigateTo({
+      url: '/pages/addCustom/addCustom',
+    })
+  },
+  getTagValue(e) {
+    console.log(e)
+    let tagList = this.data.stepList;
+    tagList.push({
+      name: e.detail,
+      time: "2021-07-19",
+      status: 0
+    })
+    this.setData({
+      stepList: tagList
     })
   },
   /**
@@ -98,7 +147,35 @@ Page({
   onReady: function () {
 
   },
-
+  selelctCoach(e) {
+    console.log(e)
+    let index = e.currentTarget.dataset.index,
+      cList = this.data.coachList;
+    for (let i = 0; i < cList.length; i++) {
+      if (index == i) {
+        cList[i].selected = !cList[i].selected;
+      }
+    }
+    this.setData({
+      coachList: cList
+    })
+  },
+  //关闭
+  onClose() {
+    this.setData({
+      isFollow: false
+    })
+  },
+  allocateCoach() {
+    this.setData({
+      isFollow: true
+    })
+  },
+  bindDateChange(e){
+     this.setData({
+      currentDate:e.detail.value
+     })
+  },
   /**
    * 生命周期函数--监听页面显示
    */

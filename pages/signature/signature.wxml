@@ -1,0 +1,11 @@
+<view class="signatureContainer">
+  <canvas class="hand-writing" style="width:{{width}}px;height:{{height}}px;" disable-scroll="true"
+    bindtouchstart="uploadScaleStart" bindtouchmove="uploadScaleMove" bindtouchend="uploadScaleEnd"
+    canvas-id="handWriting">
+  </canvas>
+  <cover-view class="btn-ok" catchtap="subCanvas">确认</cover-view>
+  <cover-view class="btn-reset" catchtap="retDraw">
+    <cover-view class="reset-text">重签</cover-view>
+    <cover-image src="./images/reset.png"></cover-image>
+  </cover-view>
+</view>

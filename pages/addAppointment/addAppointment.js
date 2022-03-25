@@ -74,7 +74,7 @@ Page({
     isEvent: false,
     eventList: [{
         id: 1,
-        event_name: "客户体侧",
+        event_name: "客户体测",
         checked: true
       },
       {
@@ -96,7 +96,7 @@ Page({
     endTime: '',
     eventTypeText: "",
     //是否显示textarea
-    isShowTextarea: true,
+    // isShowTextarea: true,
     formData: {
       classType: ""
     }
@@ -123,13 +123,11 @@ Page({
   chooseclasstype() {
     this.setData({
       showclass: true,
-      isShowTextarea: false
     })
   },
   repetition() {
     this.setData({
       showtips: true,
-      isShowTextarea: false
     })
   },
   // 当选
@@ -190,13 +188,11 @@ Page({
   onClose2() {
     this.setData({
       trianPlain: false,
-      isShowTextarea: true
     })
   },
   trianPlain1() {
     this.setData({
       trianPlain: true,
-      isShowTextarea: false
     })
   },
   addPlain() {
@@ -230,7 +226,6 @@ Page({
   onCancel2() {
     this.setData({
       isEvent: false,
-      isShowTextarea: true
     })
   },
   onConfirm2() {
@@ -241,8 +236,7 @@ Page({
   },
   eventPoupon() {
     this.setData({
-      isEvent: true,
-      isShowTextarea: false
+      isEvent: true
     })
   },
   selectedTime(e) {

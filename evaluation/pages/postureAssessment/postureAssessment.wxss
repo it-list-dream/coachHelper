@@ -30,10 +30,13 @@
 }
 
 .assessmentbtn .addassement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 230rpx;
   height: 60rpx;
   text-align: center;
-  line-height: 60rpx;
+  /* line-height: 60rpx; */
   background: #FFFFFF;
   border-radius: 12rpx;
   font-size: 28rpx;
@@ -61,48 +64,22 @@
   position: relative;
   width: 690rpx;
   height: 180rpx;
-  margin: 0 auto;
-  margin-bottom: 20rpx;
+  margin: 0 auto 20rpx;
   background: #FFFFFF;
   box-shadow: 0px 0px 14rpx rgba(0, 34, 112, 0.08);
   border-radius: 10rpx;
+  box-sizing: border-box;
 }
 
 .test-report .reportdetail {
   display: flex;
-  align-items: center;
-}
-
-.test-checked {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  height: 54rpx;
-  /* background-color: pink; */
-}
-
-.test-checked>view {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 64rpx;
   height: 100%;
-  /* background-color: orange; */
-}
-
-.test-checked image {
-  width: 34rpx;
-  height: 34rpx;
-}
-
-.test-checked .checked {
-  width: 34rpx;
-  height: 34rpx;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30rpx;
   box-sizing: border-box;
-  border: 1px solid #BFBFBF;
-  border-radius: 50%;
 }
+
 
 .circle {
   position: absolute;
@@ -110,10 +87,6 @@
   height: 56rpx;
   right: 0;
   bottom: 0;
-}
-
-.reportdetail {
-  padding: 0 30rpx;
 }
 
 .reportdetail .test-image {
@@ -143,8 +116,17 @@
   height: 30rpx;
 }
 
-.bottom-box>text:last-child {
-  margin-left: 30rpx;
+.circle-box>image {
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.circle-box .double-icon {
+  display: block;
+  width: 34rpx;
+  height: 34rpx;
+  border: 1px solid #BFBFBF;
+  border-radius: 50%;
 }
 
 .test-info {

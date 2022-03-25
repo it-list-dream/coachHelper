@@ -13,8 +13,28 @@ Page({
    */
   onLoad: function (options) {
     app.editTabbar();
+    this.setData({
+      menuRight: app.globalData.menuRight,
+      navHeight: app.globalData.navHeight,
+      navTop: app.globalData.navTop
+    })
   },
-    /**
+  courseIntroduce(){
+    wx.navigateTo({
+      url: '/pages/classDetail/classDetail',
+    })
+  },
+  moreText(){
+     wx.navigateTo({
+       url: '/pages/classType/classType',
+     })
+  },
+  chooseStore(){
+     wx.navigateTo({
+       url: '/pages/selectStore/selectStore',
+     })
+  },
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {

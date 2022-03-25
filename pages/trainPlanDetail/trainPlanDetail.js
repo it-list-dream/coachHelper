@@ -1,4 +1,5 @@
 // pages/trainPlanDetail/trainPlanDetail.js
+const app = getApp();
 Page({
 
   /**
@@ -15,8 +16,15 @@ Page({
 
   },
   saveTemplate() {
+    app.globalData.isExportTemplate = false;
     wx.navigateTo({
-      url: '/pages/courseTemplate/courseTemplate',
+      url: '/pages/courseTemplate/courseTemplate'
+    })
+  },
+  exportTemplate(){
+    app.globalData.isExportTemplate = true;
+    wx.navigateTo({
+      url: '/pages/courseTemplate/courseTemplate'
     })
   },
   newcurriculum() {

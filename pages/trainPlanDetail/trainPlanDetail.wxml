@@ -4,12 +4,13 @@
       <image src="/assets/images/header.png"></image>
       <text>娜娜的女性塑型课</text>
     </view>
-    <view class="train-templete" bindtap="saveTemplate">
-      <view class="savetemplete template-btn">
+    <!--  bindtap="handleTemplate" data-type="0" -->
+    <view class="train-templete">
+      <view class="savetemplete template-btn" bindtap="saveTemplate">
         <image src="/assets/images/import.png" class="template-icon"></image>
         <text>存为模板</text>
       </view>
-      <view class="exporttemplete template-btn">
+      <view class="exporttemplete template-btn" bindtap="exportTemplate">
         <image src="/assets/images/export.png" class="template-icon"></image>
         <text>导出模板</text>
       </view>

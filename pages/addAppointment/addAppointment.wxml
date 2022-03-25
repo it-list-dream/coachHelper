@@ -31,7 +31,7 @@
                 <image src="/assets/images/right_arrow.png" />
             </view>
         </view>
-        <van-popup show="{{ showtips }}" position="bottom" custom-style="height: 640rpx;" bind:close="onClose1">
+        <van-popup catchtouchmove="{{true}}" show="{{ showtips }}" position="bottom" custom-style="height: 640rpx;" bind:close="onClose1">
             <view class="class-title">请选择重复</view>
             <view class="alarm-box">
                 <view class="alarm-item">
@@ -68,7 +68,7 @@
             </view>
         </view>
         <!-- 训练计划 -->
-        <van-popup show="{{ trianPlain }}" position="bottom" custom-style="height: 420rpx;" bind:close="onClose2">
+        <van-popup catchtouchmove="{{true}}" show="{{ trianPlain }}" position="bottom" custom-style="height: 420rpx;" bind:close="onClose2">
             <view class="choosePlain">
                 <text class="no-choose" bindtap="onClose2">暂不选择</text>
                 <view class="plain-title">选择训练计划</view>
@@ -94,7 +94,7 @@
                 <image src="/assets/images/right_arrow.png" />
             </view>
         </view>
-        <van-popup show="{{ isEvent }}" position="bottom" custom-style="height: 540rpx;" bind:close="onClose3">
+        <van-popup catchtouchmove="{{true}}" show="{{ isEvent }}" position="bottom" custom-style="height: 540rpx;" bind:close="onClose3">
             <view class="event-box">
                 <view class="event-title">
                     <text class="eventCancel" bindtap="onCancel2">取消</text>
@@ -136,8 +136,7 @@
         </view>
     </view>
     <view class="remark">
-        <textarea class="mark-text" id="" cols="30" rows="10" placeholder="请输入备注信息" placeholder-style="color: #A7A7A7;" value="{{remarkText}}" bindinput="handleRemark" wx:if="{{isShowTextarea}}"></textarea>
-        <view class="replaceText" wx:else>请输入备注信息</view>
+        <textarea class="mark-text" id="" cols="30" rows="10" placeholder="请输入备注信息" placeholder-style="color: #A7A7A7;" value="{{remarkText}}" bindinput="handleRemark"></textarea>
     </view>
     <view class="savelist">
         <button size="mini" class="save-btn" bindtap="saveAll">保存</button>

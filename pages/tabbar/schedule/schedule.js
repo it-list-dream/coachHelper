@@ -10,7 +10,7 @@ Page({
     spot: [],
     nowTime: "2022-02-09",
     tabIndex: 0,
-    tabList: ['私教', '自定义'],
+    // tabList: ['私教', '自定义'],
     tabbar: {},
   },
   dateChange(e) {
@@ -20,7 +20,7 @@ Page({
     })
   },
   tabClick(event) {
-    let index = event.currentTarget.dataset.index
+    let index = event.detail.index;
     if(index == this.data.tabIndex){
          return
     }

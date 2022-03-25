@@ -1,0 +1,14 @@
+<view class="venueContainer">
+  <view class="venue-item">
+    <image src="https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00532-4010.jpg" mode="widthFix"></image>
+  </view> 
+  <view class="venue-item">
+    <image src="https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00532-4010.jpg" mode="widthFix"></image>
+  </view>
+  <view class="venue-item">
+    <image src="https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00532-4010.jpg" mode="widthFix"></image>
+  </view>
+  <view class="venue-item">
+    <image src="https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00532-4010.jpg" mode="widthFix"></image>
+  </view>
+</view>

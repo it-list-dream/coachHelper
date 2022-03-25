@@ -1,4 +1,5 @@
 // evaluation/pages/fitnessContrastReport/fitnessContrastReport.js
+const app = getApp();
 Page({
 
   /**
@@ -169,54 +170,53 @@ Page({
     },
     addExmple: false,
     exmpleList: [{
-        name: "减脂",
-        checked: false
-      }, {
-        name: "增肌",
-        checked: false
-      }, {
-        name: "塑形",
-        checked: false
-      }, {
-        name: "恢复",
-        checked: false
-      }, {
-        name: "运动表现",
-        checked: false
-      }
-    ]
+      name: "减脂",
+      checked: false
+    }, {
+      name: "增肌",
+      checked: false
+    }, {
+      name: "塑形",
+      checked: false
+    }, {
+      name: "恢复",
+      checked: false
+    }, {
+      name: "运动表现",
+      checked: false
+    }],
+    isExample: false,
+    exampleText: "+添加为案例"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
-  },
+  onLoad: function (options) {},
   //关闭
-  onClose(){
-      this.setData({
-        addExmple:false
-      })
-  },
-  addexmple(){
+  onClose() {
     this.setData({
-      addExmple:true
+      addExmple: false
     })
   },
-  trainTag(e){
-     let index = e.currentTarget.dataset.index;
-     let typeList = this.data.exmpleList;
-     for(let i =0;i<typeList.length;i++){
-       if(index == i){
-        typeList[i].checked =  true;
-       }else{
-        typeList[i].checked =  false;
-       }
-     }
-     this.setData({
-       exmpleList:typeList
-     })
+  addexmple() {
+    this.setData({
+      addExmple: true
+    })
+  },
+  trainTag(e) {
+    let index = e.currentTarget.dataset.index;
+    let typeList = this.data.exmpleList;
+    for (let i = 0; i < typeList.length; i++) {
+      if (index == i) {
+        typeList[i].checked = true;
+      } else {
+        typeList[i].checked = false;
+      }
+    }
+    this.setData({
+      exmpleList: typeList
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -229,21 +229,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let isExample = app.globalData.isCase,
+      exampleText = '';
+    exampleText = isExample ? "移除案例" : "+添加为案例";
+    this.setData({
+      isExample:isExample,
+      exampleText: exampleText
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    app.globalData.isCase = false;
   },
 
   /**

@@ -1,61 +1,37 @@
-/* pages/schedule/schedule.wxss */
-.scheduleContainer{
+.scheduleContainer {
   padding-bottom: 140rpx;
 }
-.tab-container {
-  display: flex;
-  width: 100%;
-  height: 120rpx;
-  line-height: 120rpx;
-}
 
-.tab-item {
-  position: relative;
-  width: 50%;
-  text-align: center;
+.van-ellipsis {
   font-size: 34rpx;
-  color: #666666;
-}
-
-.tab-container .tab-active::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: 20rpx;
-  transform: translateX(-50%);
-  width: 100rpx;
-  height: 8rpx;
-  background-color: #2A67F7;
-  border-radius: 6rpx 6rpx 0 0;
 }
 
 /*  */
-.tab-list {
-  padding: 0 30rpx;
+.van-tab__pane {
+  padding: 34rpx 30rpx 0;
 }
 
-.tab-detail {
+.course-content {
   position: relative;
+  display: flex;
+  justify-content: space-around;
+  width: 690rpx;
+  height: 180rpx;
+  margin: 0 auto 30rpx;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20rpx 0px rgba(102, 102, 102, 0.1);
+  border-radius: 9rpx;
 }
 
-.tab-detail .border {
+.course-content::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 690rpx;
+  width: 10rpx;
   height: 180rpx;
-}
-
-.course-content {
-  position: relative;
-  width: 690rpx;
-  height: 220rpx;
-  z-index: 10;
-}
-
-.course-content {
-  display: flex;
-  justify-content: space-around;
+  background: #FB8923;
+  border-radius: 8rpx 0px 0px 8rpx;
 }
 
 .left-box {

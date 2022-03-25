@@ -1,15 +1,17 @@
-<!-- <navbar page-name="{{pageName}}" show-nav="{{showNav}}"></navbar> -->
 <view class="customDetailContainer">
   <view class="customdetail-header">
-    <image src="/assets/images/customer-detail/edit.png" class="edit-icon"></image>
+    <image src="/assets/images/customer-detail/edit.png" bindtap="editProfile" class="edit-icon"></image>
+    <block wx:for="{{hobbyTags}}" wx:for-index="j" wx:key="{{j}}">
+      <view class="hobby-tags" style="top:{{tagsPostion[j][0]}}rpx;left:{{tagsPostion[j][1]}}rpx">{{item}}</view>
+    </block>
     <view class="header-info">
       <view class="custom-des">
         <image src="/assets/images/customer-detail/touxiang.png"></image>
         <view class="coach-info">
-          <text class="name">娜娜</text>
+          <text>娜娜</text>
           <text>27</text>
         </view>
-        <view>13588888888</view>
+        <view class="phonenumber">13588888888</view>
       </view>
       <!-- 备注 -->
       <view class="custom-remark">
@@ -17,58 +19,89 @@
       </view>
     </view>
   </view>
-  <view class="customer-tips" style="top: 540rpx">
-    <view class="grid-box">
-      <image src="/assets/images/customer-detail/1.png"></image>
-      <text>调查问卷</text>
+  <view class="custom-content">
+    <view class="custom-grid">
+      <navigator hover-class="none" url="/questionnaire/pages/questionList/questionList" class="grid-item">
+        <image src="/assets/images/customer-detail/1.png"></image>
+        <text>调查问卷</text>
+      </navigator>
+      <navigator hover-class="none" url="/pages/trainning/trainning" class="grid-item">
+        <image src="/assets/images/customer-detail/2.png"></image>
+        <text>训练方案</text>
+      </navigator>
+      <navigator hover-class="none" url="/pages/trainPlan/trainPlan" class="grid-item">
+        <image src="/assets/images/customer-detail/3.png"></image>
+        <text>训练计划</text>
+      </navigator>
+      <navigator hover-class="none" url="/pages/coursePlanning/coursePlanning" class="grid-item">
+        <image src="/assets/images/customer-detail/4.png"></image>
+        <text>课程规划</text>
+      </navigator>
     </view>
-    <view class="grid-box">
-      <image src="/assets/images/customer-detail/2.png"></image>
-      <text>训练方案</text>
-    </view>
-    <view class="grid-box">
-      <image src="/assets/images/customer-detail/3.png"></image>
-      <text>训练计划</text>
-    </view>
-    <view class="grid-box">
-      <image src="/assets/images/customer-detail/4.png"></image>
-      <text>课程规划</text>
-    </view>
-  </view>
-  <view class="service-coach">
-    <view class="service">
-      <text class="service-title">服务教练</text>
-      <text class="allocate-coach">分配教练</text>
-    </view>
-    <view class="scroll-x">
-      <view class="choose-coach">
-        <image src="/assets/images/customer-detail/avatar.png"></image>
-        <text>王教练</text>
+    <!--服务教练-->
+    <view class="service-coach">
+      <view class="service">
+        <text class="service-title">服务教练</text>
+        <text class="allocate-coach" bindtap="allocateCoach">分配教练</text>
       </view>
-    </view>
-  </view>
-  <view class="dynamic-box">
-    <view class="dynamic-tabslist">
-      <block wx:for="{{tabsList}}" wx:key="index">
-        <view class="tabs-item {{index == tabIndex?'tab-active':''}}" bindtap="tabClick" data-index="{{index}}">{{item}}
+      <view class="scroll-x">
+        <view class="select-coach">
+          <text>王</text>
+          <text>王教练</text>
         </view>
-      </block>
-    </view>
-    <view wx:if="{{tabIndex == 0}}" class="tab-content">
-      <view class="sub-order-step">
-        <text class="sub-order-no">2022年</text>
-        <ct-step id="step" stepList="{{stepList}}"></ct-step>
-      </view>
-      <view class="sub-order-step">
-        <text class="sub-order-no">2022年</text>
-        <ct-step id="step" stepList="{{stepList}}"></ct-step>
       </view>
     </view>
-    <view wx:else class="tab-content">
-      <!-- tabIndex1 -->
-      <ct-step class="follow" stepList="{{followRecords}}"></ct-step>
-      <button size="mini" bindtap="addClick">添加</button>
-      <ct-dialog isShow="{{addRecords}}" bindconfirmEvent="confrimEvent" bindcancelEvent="cancelEvent"></ct-dialog>
+    <!-- 记录 -->
+    <view class="custom-record">
+      <van-tabs active="{{ tabIndex }}" color="#2564F6" title-active-color="#2564F6" title-inactive-color="#999999"
+        bind:change="tabChange" border>
+        <van-tab title="客户动态">
+          <view class="sub-order-step">
+            <text class="sub-order-no">2022年</text>
+            <ct-step stepList="{{stepList}}"></ct-step>
+            <!-- <ct-step stepList="{{stepList}}"></ct-step> -->
+          </view>
+        </van-tab>
+        <van-tab title="跟进记录">
+          <view class="date-picker">
+            <picker mode="date" value="{{currentDate}}" end="{{endDate}}" bindchange="bindDateChange">
+              <view class="pick">
+                {{date.handleDate(currentDate)}}
+              </view>
+            </picker>
+          </view>
+          <!-- 日期 -->
+          <rewords step-list="{{stepList}}" bind:success="getTagValue"></rewords>
+        </van-tab>
+      </van-tabs>
     </view>
   </view>
+  <van-popup show="{{ isFollow }}" bind:close="onClose">
+    <view class="select-list">
+      <view class="mask-title">
+        <text class="btn cancel" bindtap="onClose">取消</text>
+        <text>分派教练</text>
+        <text class="btn confrim">确定</text>
+      </view>
+      <scroll-view class="scroll-y" scroll-y>
+        <view class="scroll-item" wx:for="{{coachList}}">
+          <view class="text">{{item.name}}</view>
+          <view class="select-icon" data-index="{{index}}" bindtap="selelctCoach">
+            <image wx:if="{{item.selected}}" src="/assets/images/selected.png"></image>
+            <text class="gray-circle" wx:else></text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </van-popup>
 </view>
+<wxs module="date">
+  function handleDate(date) {
+    if (date) {
+      return date.replace(getRegExp('-', 'g'), '.')
+    } else {
+      return date;
+    }
+  }
+  module.exports.handleDate = handleDate;
+</wxs>

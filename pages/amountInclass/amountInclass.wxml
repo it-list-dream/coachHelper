@@ -1,0 +1,53 @@
+<view class="incomeContainer">
+  <view class="top">
+    <view class="top-blue">
+      <view>
+        <view>9600</view>
+        <view>总金额</view>
+      </view>
+      <view>
+        <view>54</view>
+        <view>总节数</view>
+      </view>
+    </view>
+  </view>
+  <view class="income-date">
+    <picker mode="date" value="{{startTime}}" end="{{endTime}}" bindchange="bindDateChange">
+      <view class="picker">
+        {{startTime}}  
+        <image class="blue-icon" src="/assets/images/blue_arrow.png"></image>
+      </view>
+    </picker>
+    <view class="kong"></view>
+    <!--结束时间 -->
+    
+    <picker mode="date" value="{{endTime}}" start="{{startTime}}" end="{{distime}}" bindchange="bindDateChange2">
+      <view class="picker">
+        {{endTime}}  
+        <image class="blue-icon" src="/assets/images/blue_arrow.png"></image>
+      </view>
+    </picker>
+  </view>
+  <view class="income-source">
+    <van-search value="{{ value }}" placeholder="请输入会员姓名、手机号" />
+    <view class="memberlist">
+      <view class="member-item" wx:for="{{8}}" wx:key="index">
+        <view class="left-box">
+          <view class="wrapper">
+            <image wx:if="{{false}}" src="/assets/images/header.png"></image>
+            <text wx:else>周</text>
+          </view>
+          <view class="member-info">
+            <text>星轻灿</text>
+            <text>常规课</text>
+          </view>
+        </view>
+        <view class="right-box">
+            <text>3500</text>
+            <text>×7</text>
+        </view>
+      </view>
+      <view class="botEnd">抱歉，没有更多会员了!</view>
+    </view>
+  </view>
+</view>

@@ -1,5 +1,5 @@
 <view class="stadiumContainer">
-  <view class="stadium-item">
+  <navigator hover-class="none" class="stadium-item" url="/pages/venueIntroduce/venueIntroduce">
     <view class="sta-introduce">
       <view class="sta-title">场馆介绍</view>
       <view class="sta-content">良好的健身服务和完善的设施</view>
@@ -8,8 +8,8 @@
     <view class="img-box">
       <image src="/assets/images/stadium/stadium.png"></image>
     </view>
-  </view>
-  <view class="stadium-item">
+  </navigator>
+  <navigator hover-class="none" url="/pages/coachMien/coachMien" class="stadium-item">
     <view class="sta-introduce">
       <view class="sta-title">教练风采</view>
       <view class="sta-content">专业性，目的性，训练分析</view>
@@ -18,8 +18,8 @@
     <view class="img-box">
       <image src="/assets/images/stadium/coach_mien.png"></image>
     </view>
-  </view>
-  <view class="stadium-item">
+  </navigator>
+  <navigator url="/pages/classType/classType" hover-class="none" class="stadium-item">
     <view class="sta-introduce">
       <view class="sta-title">私教课程</view>
       <view class="sta-content">深入教授会员正确地掌握每个动作</view>
@@ -28,7 +28,7 @@
     <view class="img-box">
       <image src="/assets/images/stadium/per_class.png"></image>
     </view>
-  </view>
+  </navigator>
   <view class="stadium-item">
     <view class="sta-introduce">
       <view class="sta-title">团体课程</view>

@@ -7,7 +7,7 @@ Page({
   data: {
     cateItems: [{
         cate_id: 1,
-        cate_name: "护肤",
+        cate_name: "热身",
         ishaveChild: true,
         children: [{
             child_id: 1,
@@ -33,7 +33,7 @@ Page({
       },
       {
         cate_id: 2,
-        cate_name: "彩妆",
+        cate_name: "正式",
         ishaveChild: true,
         children: [{
             child_id: 1,
@@ -79,7 +79,7 @@ Page({
       },
       {
         cate_id: 3,
-        cate_name: "香水/香氛",
+        cate_name: "放松",
         ishaveChild: true,
         children: [{
             child_id: 1,
@@ -105,7 +105,7 @@ Page({
       },
       {
         cate_id: 4,
-        cate_name: "个人护理",
+        cate_name: "常用",
         ishaveChild: false,
         children: []
       }

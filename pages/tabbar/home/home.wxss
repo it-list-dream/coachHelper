@@ -1,7 +1,288 @@
 /* pages/tabbar/home/home.wxss */
-.indexContainer{
+page {
+  background-color: #F6F6FF;
+}
+
+.indexContainer {
+  padding-bottom: 140rpx;
+}
+
+.index-head {
+  background: #FFFFFF;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 510rpx;
+}
+
+.store-info {
+  position: absolute;
+}
+
+.store-info text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.store-info>image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 14rpx;
+  transform: rotate(90deg);
+}
+
+.banner>image {
+  width: 100%;
+  height: 100%;
+}
+
+/*  */
+.grid {
+  display: flex;
+}
+
+.grid-item {
+  margin-top: 38rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 25%;
+}
+
+.grid-item image {
+  width: 102rpx;
+  height: 102rpx;
+}
+
+.grid-item text {
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #222222;
+}
+
+.plan-box {
+  margin-top: 34rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx;
+}
+
+.plan-box .course-plan {
+  position: relative;
+  width: 276rpx;
+  height: 296rpx;
+}
+
+.plan-box .course-plan image {
+  width: 100%;
+  height: 100%;
+}
+
+.plan-box .course-plan .course-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.course-item text {
+  display: block;
+  text-align: center;
+}
+
+.course-item .blue-text {
+  margin-top: 24rpx;
+  font-size: 36rpx;
+  color: #004DCF;
+}
+
+.course-item .gray-text {
+  margin-top: 16rpx;
+  font-size: 23rpx;
+  color: #B6BCCA;
+}
+
+.case-plan {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-bottom: 140rpx;
+  justify-content: space-between;
+}
+
+.case-plan .case {
+  position: relative;
+  width: 397rpx;
+  height: 140rpx;
+}
+
+.case-plan .case image {
+  width: 100%;
+  height: 100%;
+}
+
+.case .case-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 24rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.case .case-item text {
+  display: block;
+}
+
+.case .case-item .orange-text {
+  font-size: 36rpx;
+  color: #F09300;
+}
+
+.case .case-item .gary-text {
+  margin-top: 14rpx;
+  font-size: 23rpx;
+  color: #B6BCCA;
+}
+
+/* 上课专区 */
+.attend-class {
+  margin-top: 20rpx;
+  height: 280rpx;
+  background: #FFFFFF;
+  padding: 28rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.attend-title {
+  margin-bottom: 28rpx;
+  position: relative;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #222222;
+}
+
+.attend-title::before {
+  margin-right: 8rpx;
+  content: '';
+  display: inline-block;
+  width: 8rpx;
+  height: 26rpx;
+  background: #2564F6;
+  border-radius: 4rpx;
+}
+
+.attend {
+  display: flex;
+  justify-content: space-between;
+}
+
+.attend .attend-item {
+  position: relative;
+  width: 335rpx;
+  height: 156rpx;
+}
+
+.attend .attend-item image {
+  width: 100%;
+  height: 100%;
+}
+
+.attend .attend-item .attend-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  font-size: 50rpx;
+  font-family: YouSheBiaoTiHei;
+  color: #FFFFFF;
+}
+
+.course-introduce {
+  margin-top: 20rpx;
+}
+
+/*  课程介绍*/
+.course-introduce {
+  background: #FFFFFF;
+  padding: 0 30rpx 30rpx;
+}
+
+/* .course-introduce .course-title {
+  position: relative;
+  padding-top: 24rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #222222;
+} */
+.course-introduce .course-title {
+  padding-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.course-title .introduce {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #222222;
+  white-space: nowrap;
+}
+
+.course-title .more-text {
+  flex: 1;
+  text-align: right;
+  font-size: 30rpx;
+  color: #666666;
+}
+
+.course-introduce .introduce-item {
+  display: flex;
+  margin-top: 50rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 0.5px solid #E9E9E9;
+}
+
+.introduce-item .pic-box {
+  width: 230rpx;
+  height: 154rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+.introduce-item .pic-box image {
+  width: 100%;
+  height: 100%;
+}
+
+.course-detail {
+  flex: 1;
+  margin-left: 22rpx;
+}
+
+.course-detail .course-tips {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-detail .course-tips text {
+  font-size: 34rpx;
+  /* font-family: Adobe Heiti Std; */
+  color: #333333;
+}
+
+.course-detail .course-tips image {
+  width: 16rpx;
+  height: 16rpx;
+}
+
+.course-detail .duration {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #666666;
 }

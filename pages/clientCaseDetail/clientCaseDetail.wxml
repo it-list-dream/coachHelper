@@ -8,7 +8,7 @@
     </view>
   </view>
   <view class="achievenment-content" wx:for="{{4}}">
-    <view class="achievenment-item">
+    <view class="achievenment-item" bindtap="achievement">
       <view class="bodychange">
         <image src="/assets/images/header.png"></image>
         <text class="body-name">娜娜</text>
@@ -17,7 +17,7 @@
       </view>
       <view class="achieve-picture">
         <image src="/assets/images/case.png"></image>
-        <view class="date">2022.02.16</view>
+        <view class="date">2022.01.16-2022.02.16</view>
       </view>
       <view class="arrow-box">
         <image class="gray" src="/assets/images/gay.png"></image>

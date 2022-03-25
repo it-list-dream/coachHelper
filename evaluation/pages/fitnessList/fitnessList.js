@@ -5,7 +5,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-     isComparison:false
+    isComparison: false,
+    btnType: "对比",
+    testList: [{
+        testName: "王教练",
+        testTime: "2021-10-01",
+        selected: false
+      },
+      {
+        testName: "李教练",
+        testTime: "2021-10-03",
+        selected: false
+      },
+      {
+        testName: "张教练",
+        testTime: "2021-10-09",
+        selected: false
+      }
+    ],
+    test: []
   },
 
   /**
@@ -19,20 +37,77 @@ Page({
       url: '/pages/addAppointment/addAppointment?type=1',
     })
   },
-  handleComparison(){
+  handleComparison() {
+    let contrastText = this.data.btnType,
+      isFlag = this.data.isComparison,
+      testList = this.data.testList;
+    if (testList.length < 2) {
+      return;
+    }
+    isFlag = !isFlag;
+    contrastText = isFlag ? '取消' : "对比";
     this.setData({
-      isComparison:true
+      isComparison: isFlag,
+      btnType: contrastText
     })
   },
-  test(){
-    wx.navigateTo({
-      url: '/evaluation/pages/physicalReport/physicalReport',
+  test() {
+    if (!this.data.isComparison) {
+      wx.navigateTo({
+        url: '/evaluation/pages/physicalReport/physicalReport',
+      })
+    }
+  },
+  chooseMultip(e) {
+    var that = this,
+      index = e.currentTarget.dataset.index,
+      value = e.currentTarget.dataset.value,
+      testList = that.data.testList,
+      test = that.data.test,
+      val = testList[index].selected, //点击前的值
+      limitNum = 2,
+      curNum = 0;
+    //已选择数量
+    for (var i in testList) {
+      if (testList[i].selected) {
+        curNum += 1;
+      }
+    }
+    if (!val) {
+      if (curNum == limitNum) {
+        wx.showToast({
+          title: '只能选择两组数据进行比较',
+          icon:"none"
+        })
+        return;
+      }
+      test.push(value);
+    } else {
+      for (var j in test) {
+        if (test[j] == value) {
+          test.splice(j, 1);
+        }
+      }
+    }
+    testList[index].selected = !val;
+    that.setData({
+      testList: testList,
+      test: test
     })
   },
-  toCompeletDetail(){
-   wx.navigateTo({
-     url: '/evaluation/pages/fitnessContrastReport/fitnessContrastReport',
-   })
+  toCompeletDetail() {
+    if(this.data.test.length == 2){
+      wx.navigateTo({
+        url: '/evaluation/pages/fitnessContrastReport/fitnessContrastReport',
+      })
+      return;
+    }else{
+      wx.showToast({
+        title: '只能选择两组数据进行比较',
+        icon:"none"
+      })
+    }
+   
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -4,8 +4,8 @@
     <image class="add" src="/assets/images/add2.png" bindtap="addPeople"></image>
   </view>
   <view class="tabs-list">
-    <slideTab tList="{{tabsList}}" bind:changeCurrent="swichNav" currentTab="{{currentActive}}">
-      <view class="tab-item" wx:if="{{currentActive ==0}}">
+    <slideTab tList="{{tabsList}}" bind:changeCurrent="swichNav" bind:scrollHeight="getTabHeight" currentTab="{{currentActive}}">
+      <scroll-view class="tab-item" style="height:calc(100vh - {{searchHeight}}px - {{tabsHeight}}px)" wx:if="{{currentActive ==0}}" scroll-y>
         <view class="custom-list" wx:for="{{memberList}}" wx:key="index">
           <image src="/assets/images/photo.png" class="header" wx:if="{{item.img.indexOf('http') ==-1}}"></image>
           <view class="h1" wx:else>{{item.firstName}}</view>
@@ -14,10 +14,11 @@
             <view>{{item.phone}}</view>
           </view>
         </view>
-      </view>
+      </scroll-view>
       <view class="tab-item" wx:if="{{currentActive ==1}}">
         <view class="custom-list">
-          <image src="/assets/images/photo.png" class="header"></image>
+          <image src="/assets/images/photo.png" class="header" wx:if="{{item.img.indexOf('http') ==-1}}"></image>
+          <view class="h1" wx:else>宁</view>
           <view class="custom-info">
             <view>纪灏</view>
             <view>18163451113</view>

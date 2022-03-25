@@ -10,19 +10,26 @@
         <image src="./images/appointment.png"></image>
         <text>预约下次体侧</text>
       </view>
-      <view class="comparisonbtn" bindtap="handleComparison">对比</view>
+      <view class="comparisonbtn" bindtap="handleComparison">{{btnType}}</view>
     </view>
   </view>
   <view class="fitness-content">
-    <view class="fitness-item" wx:for="{{2}}" bindtap="test">
+    <view class="fitness-item" wx:for="{{testList}}" bindtap="test">
       <image src="./images/bg.png" class="icon-bg"></image>
       <view class="f-box">
         <view class="test-report">
           <view class="report-info">
             <text>测试报告</text>
-            <text>王教练 2022.02.11</text>
+            <text>{{item.testName}} {{item.testTime}}</text>
           </view>
-          <image src="/assets/images/right_arrow.png" class="m36"></image>
+          <view class="icon-box" bindtap="chooseMultip"
+           data-index="{{index}}"
+           data-value="{{item.testName}}"
+           data-test="{{item}}" wx:if="{{isComparison}}">
+            <image wx:if="{{item.selected}}" src="/assets/images/selected.png"></image>
+            <text class="icon-border" wx:else></text>
+          </view>
+          <image wx:else src="/assets/images/right_arrow.png" class="m36"></image>
         </view>
         <view class="test-report-data">
           <view class="test-report-item">

@@ -1,7 +1,6 @@
 {
   "usingComponents": {
-    "van-popup": "@vant/weapp/popup/index",
-    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
+     "template-popup":"./children/template-popup/template-popup"
   },
   "navigationBarBackgroundColor":"#2564F6",
   "navigationBarTextStyle":"white",

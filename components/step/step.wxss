@@ -7,7 +7,7 @@
 .r-wrap .r-wrap-title {
   position: absolute;
   top: 20rpx;
-  left: 16rpx;
+  left: 0px;
   font-size: 26rpx;
   color: #333333;
 }
@@ -44,7 +44,7 @@
   color: #333333;
 }
 
-.r-item-text .time1 {
+.r-item-text>text:first-child {
   margin-right: 20rpx;
 }
 
@@ -78,12 +78,47 @@
 
 /* 右容器 */
 .r-item-right {
+  display: flex;
+  flex-direction: column;
   flex: 10;
   font-size: 30rpx;
-  padding: 20rpx 30rpx;
+  padding: 20rpx 0px 30rpx 20rpx;
 }
 
 .r-item-right .r-item-right-time {
   font-size: 26rpx;
   color: #B4B4B4;
+}
+
+/*  */
+.edit-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 166rpx;
+  border: 1px dotted #A7A7A7;
+}
+
+.edit-content .edit-item {
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.edit-icon {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edit-icon .icon-box {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #2564F6;
+  padding: 0 24rpx;
+}
+
+.edit-icon .icon-box .icon {
+  width: 28rpx;
+  height: 28rpx;
 }

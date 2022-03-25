@@ -133,6 +133,7 @@ page {
 .instrument-table-tr .right-td {
   display: flex;
   height: 100%;
+  flex: 1;
   justify-content: space-between;
   align-items: center;
   margin-left: 20rpx;

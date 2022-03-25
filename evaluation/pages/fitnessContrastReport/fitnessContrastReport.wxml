@@ -1,6 +1,6 @@
 <view class="fitnessContrastIndex">
   <view class="addcase-box">
-    <view class="addcase-btn" bindtap="addexmple">+添加为案例</view>
+    <view class="addcase-btn" bindtap="addexmple">{{exampleText}}</view>
     <view class="addcase-info">
       <image src="/assets/images/header.png" class="headportrait"></image>
       <text>娜娜</text>
@@ -8,20 +8,20 @@
     </view>
   </view>
   <van-popup show="{{  addExmple }}" bind:close="onClose">
-      <view class="poupon_list">
-        <view class="poupon_list_title">添加案例标签</view>
-        <view class="poupon-content">
-          <block wx:for="{{exmpleList}}" wx:for-index="j" wx:key="j">
-            <view class="poupon_item {{item.checked?'active-item':''}}" bindtap="trainTag" data-index="{{j}}">
-              {{item.name}}</view>
-          </block>
-        </view>
-        <view class="poupon_button">
-          <button class="cancel button" bindtap="onClose">取消</button>
-          <button class="confrim button" bindtap="onConfrim">确定</button>
-        </view>
+    <view class="poupon_list">
+      <view class="poupon_list_title">添加案例标签</view>
+      <view class="poupon-content">
+        <block wx:for="{{exmpleList}}" wx:for-index="j" wx:key="j">
+          <view class="poupon_item {{item.checked?'active-item':''}}" bindtap="trainTag" data-index="{{j}}">
+            {{item.name}}</view>
+        </block>
       </view>
-    </van-popup>
+      <view class="poupon_button">
+        <button class="cancel button" bindtap="onClose">取消</button>
+        <button class="confrim button" bindtap="onConfrim">确定</button>
+      </view>
+    </view>
+  </van-popup>
   <!-- 变化数据 -->
   <view class="physical-change">
     <view class="physical-change-title">变化数据</view>
@@ -179,19 +179,16 @@
   <view class="physicaldata-box">
     <view class="physicaldata-title">身体数据</view>
     <view class="physicaldata-content">
-      <table-view headers="{{physical.tableHeader}}"
-       data="{{ physical.row }}" stripe="{{ physical.stripe }}"
-        border="{{ physical.border }}" 
-        no-data-msg="{{ msg }}" />
+      <table-view headers="{{physical.tableHeader}}" data="{{ physical.row }}" stripe="{{ physical.stripe }}"
+        border="{{ physical.border }}" no-data-msg="{{ msg }}" />
     </view>
   </view>
   <!-- 成分数据 -->
   <view class="ingredientdata-list">
     <view class="ingredientdata-list-title">成分数据</view>
     <view class="ingredientdata-content">
-      <table-view headers="{{bodyIngredient.tableHeader}}" data="{{ bodyIngredient.row }}" stripe="{{ bodyIngredient.stripe }}"
-        border="{{ bodyIngredient.border }}"
-        no-data-msg="{{ msg }}" />
+      <table-view headers="{{bodyIngredient.tableHeader}}" data="{{ bodyIngredient.row }}"
+        stripe="{{ bodyIngredient.stripe }}" border="{{ bodyIngredient.border }}" no-data-msg="{{ msg }}" />
     </view>
     <button class="constract-poster">生成对比海报</button>
   </view>

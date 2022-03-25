@@ -96,7 +96,7 @@ Page({
   },
   startClass(){
      wx.navigateTo({
-       url: '/pages/trainConfrim/trainConfrim',
+       url: '/pages/startClass/startClass',
      })
   },
   /**

@@ -1,13 +1,89 @@
-<!--pages/tabbar/home/home.wxml-->
 <view class="indexContainer">
-  <van-grid>
-    <van-grid-item icon="photo-o" text="调查问卷" url="/questionnaire/pages/questionList/questionList"/>
-    <van-grid-item icon="photo-o" text="测试评估" url="/evaluation/pages/testEvaluation/testEvaluation"/>
-    <van-grid-item icon="photo-o" text="训练方案" url="/pages/trainning/trainning" />
-    <van-grid-item icon="photo-o" text="课程规划" url="/pages/coursePlanning/coursePlanning"/>
-    <van-grid-item icon="photo-o" text="训练计划" url="/pages/trainPlan/trainPlan"/>
-    <van-grid-item icon="photo-o" text="体验课" url="/pages/trialClass/trialClass"/>
-    <van-grid-item icon="photo-o" text="课程介绍" url="/pages/classType/classType"/>
-  </van-grid>
+  <view class="index-head">
+    <view class="banner">
+      <view class="store-info" bindtap="chooseStore" style="left:{{menuRight}}px;top:{{navTop}}px">
+        <text>请选择您所在的门店</text>
+        <image src="/assets/images/white-arrow.png"></image>
+      </view>
+      <image src="/assets/images/home/banner.jpg"></image>
+    </view>
+    <view class="grid">
+      <navigator class="grid-item" url="/questionnaire/pages/questionList/questionList" hover-class="none">
+        <image src="/assets/images/home/question.png"></image>
+        <text>调查问卷</text>
+      </navigator>
+      <navigator class="grid-item" url="/evaluation/pages/testEvaluation/testEvaluation" hover-class="none">
+        <image src="/assets/images/home/fitness.png"></image>
+        <text>测试评估</text>
+      </navigator>
+      <navigator class="grid-item" url="/pages/trainning/trainning" hover-class="none">
+        <image src="/assets/images/home/train.png"></image>
+        <text>训练方案</text>
+      </navigator>
+      <navigator class="grid-item" url="/pages/notification/notification" hover-class="none">
+        <image src="/assets/images/home/messageAlarm.png"></image>
+        <text>消息通知</text>
+      </navigator>
+    </view>
+    <!--  -->
+    <view class="plan-box">
+      <navigator class="course-plan" url="/pages/coursePlanning/coursePlanning" hover-class="none">
+        <image src="/assets/images/home/course_plan.png"></image>
+        <view class="course-item">
+          <text class="blue-text">课程规划</text>
+          <text class="gray-text">专业的教练专业的规划</text>
+        </view>
+      </navigator>
+      <view class="case-plan">
+        <navigator class="case" url="/pages/stadiumData/stadiumData" hover-class="none">
+          <image src="/assets/images/home/stadium.png"></image>
+          <view class="case-item">
+            <text class="orange-text">场馆资料</text>
+            <text class="gary-text">舒适的环境</text>
+          </view>
+        </navigator>
+        <navigator class="case" url="/pages/clientCase/clientCase" hover-class="none">
+          <image src="/assets/images/home/case.png"></image>
+          <view class="case-item">
+            <text class="orange-text">客户案例</text>
+            <text class="gary-text">努力总会有成果</text>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <!-- 上课专区 -->
+  <view class="attend-class">
+    <view class="attend-title">上课专区</view>
+    <view class="attend">
+      <navigator class="attend-item" url="/pages/trainPlan/trainPlan" hover-class="none">
+        <image src="/assets/images/home/tran_plan.png"></image>
+        <view class="attend-text">训练计划</view>
+      </navigator>
+      <navigator class="attend-item" url="/pages/trialClass/trialClass">
+        <image src="/assets/images/home/trial_class.png"></image>
+        <view class="attend-text">体验课</view>
+      </navigator>
+    </view>
+  </view>
+  <!-- 课程介绍 -->
+  <view class="course-introduce">
+    <view class="course-title">
+       <view class="introduce">课程介绍</view>
+       <view class="more-text" bindtap="moreText">更多</view>
+    </view>
+    <view class="introduce-item" wx:for="{{4}}" wx:key="index" bindtap="courseIntroduce">
+      <view class="pic-box">
+        <image src="/assets/images/home/course_bg.png"></image>
+      </view>
+      <view class="course-detail">
+        <vew class="course-tips">
+          <text>女性塑性课程</text>
+          <image src="/assets/images/right.png"></image>
+        </vew>
+        <view class="duration">45分钟</view>
+      </view>
+    </view>
+  </view>
 </view>
 <tabbar tabbar="{{tabbar}}"></tabbar>

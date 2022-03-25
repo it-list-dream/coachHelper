@@ -88,6 +88,11 @@ Page({
   onLoad: function (options) {
 
   },
+  onChange(e){
+    this.setData({
+      active: e.detail.index
+    })
+  },
   nextstep() {
     if (this.data.active == 0) {
       this.setData({

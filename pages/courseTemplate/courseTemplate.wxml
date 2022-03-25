@@ -1,31 +1,31 @@
-<view class="courseTemplateContainer">
-   <view class="group-checkbox">
-      <view class="checkbox" wx:for="{{templateList}}" wx:key="index">
-         <view class="left-checkbox">
-            <text class="order">{{index+1}}</text>
-            <text class="template-name">{{item.templateName}}</text>
-         </view>
-         <view class="right-checkbox" bindtap="chooseTemplate" data-template="{{item}}">
-            <view class="no-choose" hidden="{{item.selected}}"></view>
-            <image src="/assets/images/selected.png" hidden="{{!item.selected}}" class="success"></image>
-         </view>
+<view class="saveContainer" wx:if="{{templateType=='选择课程存为模板'}}">
+   <view class="checkbox" wx:for="{{templateList}}" wx:key="index">
+      <view class="left-checkbox">
+         <text class="order">{{index+1}}</text>
+         <text class="template-name">{{item.templateName}}</text>
+      </view>
+      <view class="right-checkbox" bindtap="chooseTemplate" data-template="{{item}}">
+         <view class="no-choose" hidden="{{item.selected}}"></view>
+         <image src="/assets/images/selected.png" hidden="{{!item.selected}}" class="success"></image>
+      </view>
+   </view>
+   <template-popup is-open="{{isOpen}}" bind:confrim="success" bind:cancel="closePopup"></template-popup>
+   <view class="template-btn">
+      <button class="template-confrim" bindtap="templateConfrim">确定</button>
+   </view>
+</view>
+<view class="exportContainer" wx:elif="{{templateType=='选择导入模板'}}">
+   <view class="checkbox" wx:for="{{exportList}}" wx:key="index">
+      <view class="left-checkbox">
+         <text class="order">{{index+1}}</text>
+         <text class="template-name">{{item.templateName}}</text>
+      </view>
+      <view class="right-checkbox" bindtap="exportTemplate" data-template="{{item}}">
+         <view class="no-choose" hidden="{{item.selected}}"></view>
+         <image src="/assets/images/selected.png" hidden="{{!item.selected}}" class="success"></image>
       </view>
    </view>
    <view class="template-btn">
-      <button class="template-confrim" bindtap="templateconfrim">确定</button>
+      <button class="template-confrim" bindtap="exportConfrim">确定</button>
    </view>
-   <van-popup show="{{ isShow }}" bind:close="onClose">
-      <view class="savetemplate">
-         <view class="savetitle">存为模板</view>
-         <view class="save-content">
-            <view class="template-name">模板名称</view>
-            <input type="text" value="{{templateValue}}" placeholder="请输入模板名称" placeholder-style="color: #999999;"
-               bindinput="getTemplateName" />
-         </view>
-         <view class="btnlist">
-            <button class="cancel btn" bindtap="onCancel">取消</button>
-            <button class="save btn" bindtap="save">保存</button>
-         </view>
-      </view>
-   </van-popup>
 </view>

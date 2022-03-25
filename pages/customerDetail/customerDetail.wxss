@@ -10,11 +10,8 @@ page {
 .customdetail-header {
   position: relative;
   width: 100%;
-  height: 650rpx;
-  background-color: #3872F7;
-  padding: 0 30rpx;
-  box-sizing: border-box;
-  overflow: hidden;
+  height: 520rpx;
+  background-color: #2564F6;
 }
 
 .customdetail-header .edit-icon {
@@ -23,21 +20,42 @@ page {
   right: 30rpx;
   width: 44rpx;
   height: 44rpx;
+  z-index: 100;
 }
 
 .customdetail-header .header-info {
-  margin-top: 100rpx;
+  position: relative;
+  padding-top: 96rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
 }
 
-.customdetail-header .header-info .custom-remark {
-  margin-top: 84rpx;
+.hobby-tags {
+  position: absolute;
+  width: 72rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  text-align: center;
+  border: 1px solid #FFE3BC;
+  border-radius: 50%;
+  font-size: 22rpx;
+  color: #FFFFFF;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.header-info .custom-remark {
+  padding: 0 30rpx;
+  margin-top: 32rpx;
   align-self: flex-start;
   font-size: 24rpx;
   color: #E8EFFF;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /*  */
@@ -54,64 +72,78 @@ page {
 .custom-des>image {
   width: 150rpx;
   height: 150rpx;
+  border-radius: 50%;
 }
 
 .coach-info {
-  width: 100%;
+  margin-top: 16rpx;
   display: flex;
-  margin: 20rpx 0 12rpx 0;
-  justify-content: space-evenly;
+  font-size: 36rpx;
+  color: #FFFFFF;
+}
+
+.coach-info>text:first-child {
+  margin-right: 80rpx;
+}
+
+.custom-des .phonenumber {
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  color: #FFFFFF;
 }
 
 /*  */
-.customer-tips {
-  position: absolute;
-  left: 30rpx;
-  display: flex;
-  align-items: center;
-  width: 690rpx;
-  height: 187rpx;
-  background: #FFFFFF;
-  border-radius: 12rpx;
-  margin: 0 auto;
+.custom-content {
+  position: relative;
+  padding-top: 130rpx;
 }
 
-.grid-box {
+.custom-content .custom-grid {
+  position: absolute;
+  top: -80rpx;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
+  width: 690rpx;
+  height: 188rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+}
+
+.custom-content .custom-grid .grid-item {
+  display: flex;
+  height: 188rpx;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   flex: 1;
 }
 
-.grid-box image {
+.grid-item image {
   width: 50rpx;
   height: 50rpx;
 }
 
-.grid-box text {
+.grid-item text {
   margin-top: 15rpx;
   font-size: 27rpx;
   color: #333333;
+  font-weight: 500;
 }
 
 /*  */
-.service-coach {
-  padding: 30rpx 0;
-  margin-top: 170rpx;
+.custom-content .service-coach {
+  width: 750rpx;
   height: 300rpx;
   background: #FFFFFF;
-  box-sizing: border-box;
 }
 
 .service-coach .service {
-  padding: 0 30rpx;
+  padding: 30rpx;
   display: flex;
   justify-content: space-between;
 }
 
-.service-coach .scroll-x {
-  margin-top: 40rpx;
-}
 
 .service-coach .service-title {
   font-size: 36rpx;
@@ -129,62 +161,162 @@ page {
   border-radius: 20rpx;
 }
 
-.choose-coach {
+.service-coach .scroll-x {
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 150rpx;
+  margin-top: 16rpx;
 }
 
-.choose-coach image {
+.select-coach {
+  padding: 0 20rpx;
+  margin: 0 20rpx;
+}
+
+.select-coach text {
+  display: block;
+}
+
+.select-coach text:first-child {
   width: 100rpx;
   height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #ffffff;
+  border-radius: 50%;
+  background: #2564F6;
 }
 
-.choose-coach>text {
-  margin-top: 10rpx;
+.select-coach text:last-child {
+  margin-top: 22rpx;
   font-size: 26rpx;
   color: #333333;
+  text-align: center;
 }
 
 /*  */
-.dynamic-box {
-  overflow: hidden;
+.custom-record {
   margin-top: 20rpx;
-  background-color: #FFFFFF;
   padding: 0 30rpx;
-  box-sizing: border-box;
-  min-height: 500rpx;
+  background-color: #ffffff;
 }
 
-.dynamic-tabslist {
-  margin-top: 20rpx;
-  display: flex;
-  justify-content: space-evenly;
-  /* align-items: center; */
-  height: 86rpx;
-  border-bottom: 1px solid #EDEDED;
-  box-sizing: border-box;
+.van-ellipsis {
+  font-size: 36rpx !important;
 }
 
-.tabs-item {
-  position: relative;
+.sub-order-step {
+  margin-top: 30rpx;
+}
+
+.sub-order-step .sub-order-no {
   font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.date-picker {
+  padding: 30rpx 0;
+}
+
+.date-picker .pick {
+  position: relative;
+  display: inline-block;
+  font-size: 36rpx;
+  color: #2C67E9;
+}
+
+.date-picker .pick::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -30rpx;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12rpx solid transparent;
+  border-right: 12rpx solid transparent;
+  border-top: 16rpx solid #2665F6;
+}
+
+/*  */
+.select-list {
+  width: 630rpx;
+  height: 895rpx;
+  background: #FFFFFF;
+  border-radius: 8rpx;
+}
+
+.select-list .mask-title {
+  display: flex;
+  justify-content: space-between;
+  width: 630rpx;
+  height: 110rpx;
+  line-height: 110rpx;
+  text-align: center;
+  background: #F5F5FF;
+  border-radius: 8rpx;
+}
+
+.mask-title .btn {
+  padding: 0 50rpx;
+  font-size: 26rpx;
+}
+
+.mask-title text:nth-child(2) {
+  font-size: 36rpx;
+  color: #333333;
+}
+
+.mask-title .cancel {
   color: #999999;
 }
 
-.tab-active::after {
-  position: absolute;
-  bottom: 8rpx;
-  left: 50%;
-  transform: translateX(-50%);
-  content: "";
-  width: 100rpx;
-  height: 7rpx;
-  background-color: #2564F6;
-  border-radius: 4rpx 4rpx 0 0;
+.mask-title .confrim {
+  color: #2564F6;
 }
 
-.tab-content {
-  margin-top: 30rpx;
+.select-list .scroll-y {
+  height: 786rpx;
+}
+
+.scroll-y .scroll-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 90rpx;
+}
+
+.scroll-y .scroll-item .text {
+  font-size: 30rpx;
+  color: #333333;
+  margin-right: 196rpx;
+}
+
+.scroll-item .select-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.scroll-item .select-icon .gray-circle {
+  width: 36rpx;
+  height: 36rpx;
+  border: 1px solid #B5B5B5;
+  border-radius: 50%;
+}
+
+.scroll-item .select-icon image {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+/*  */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 }

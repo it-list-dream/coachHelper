@@ -44,7 +44,7 @@ App({
   },
   globalData: {
     systemInfo: null, //客户端设备信息
-    userInfo: null,
+    // userInfo: null,
     tabBar: {
       "backgroundColor": "#ffffff",
       "color": "#222222",
@@ -80,6 +80,9 @@ App({
           "selectedIconPath": "/assets/images/tabbar/profile_active.png"
         }
       ]
-    }
+    },
+    //是否是案例
+    isCase:false,
+    isExportTemplate:false
   }
 })

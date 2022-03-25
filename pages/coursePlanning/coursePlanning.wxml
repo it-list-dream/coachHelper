@@ -6,7 +6,7 @@
           {{item}}</view>
       </block>
       <view class="btn-list">
-        <button class="addPlain" bindtap="addPlus">+</button>
+        <view class="addPlain"bindtap="addPlus">+</view>
       </view>
     </scroll-view>
   </view>

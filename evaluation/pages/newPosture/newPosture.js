@@ -1,17 +1,21 @@
 // pagese/newPosture/newPosture.js
 const util = require('../../../utils/util.js');
+const body = require('../../../utils/body.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    postureActive: 0,
-    date:"2021-01-26",
-    endDate:"",
-    frontbody:{
-    
-    }
+    active: 0,
+    date: "2021-01-26",
+    endDate: "",
+    //前侧
+    frontSide:[],
+    //左侧
+    leftSide:[],
+    //右侧
+    rightSide:[]
   },
 
   /**
@@ -19,15 +23,16 @@ Page({
    */
   onLoad: function (options) {
     //  let nowtime = 
-    let nowtime = util.format(new Date(),'yyyy-mm-dd')
+    let nowtime = util.format(new Date(), 'yyyy-mm-dd')
     this.setData({
-      endDate:nowtime
+      endDate: nowtime,
+      frontSide:body.frontSideList,
+      leftSide:body.leftSideList,
+      rightSide:body.rightSideList
     })
   },
-  postureChange(e){
- 
-  },
-  bindDateChange: function(e) {
+
+  bindDateChange: function (e) {
     //console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
@@ -39,7 +44,24 @@ Page({
   onReady: function () {
 
   },
-
+  onChange(e) {
+    console.log(e);
+    this.setData({
+      active: e.detail.index
+    })
+  },
+  handleNext(e) {
+    console.log(e.detail)
+    if (e.detail.active <= 2) {
+      this.setData({
+        active: e.detail.active
+      })
+    } else {
+      wx.redirectTo({
+        url: '/evaluation/pages/postureDetail/postureDetail',
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面显示
    */
