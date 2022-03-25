@@ -1,0 +1,59 @@
+<!-- <view class="poster">
+  <image class="poster-bg" src="../../images/bg.png"></image>
+  <view class="poster-item">
+    <view class="poster-title">3天效果对比</view>
+    <view class="achievement-pic">
+      <view class="pic-box">
+        <image src="../../../assets/images/case.png"></image>
+      </view>
+      <view class="pic-box">
+        <image src="../../../assets/images/case.png"></image>
+      </view>
+      <view class="pic-box">
+        <image src="../../../assets/images/case.png"></image>
+      </view>
+      <view class="pic-box">
+        <image src="../../../assets/images/case.png"></image>
+      </view>
+      <view class="pic-box">
+        <image src="../../../assets/images/case.png"></image>
+      </view>
+      <view class="pic-box">
+        <image src="../../../assets/images/case.png"></image>
+      </view>
+      <view class="pic-box">
+        <image src="../../../assets/images/case.png"></image>
+      </view>
+      <view class="pic-box">
+        <image src="../../../assets/images/case.png"></image>
+      </view>
+    </view>
+    <view class="poster-data">
+      <view class="poster-tr">
+        <view class="poster-td">体重</view>
+        <view class="poster-td">0.0kg</view>
+      </view>
+      <view class="poster-tr">
+        <view class="poster-td">体脂率</view>
+        <view class="poster-td">-25.4%</view>
+      </view>
+      <view class="poster-tr">
+        <view class="poster-td">脂肪量</view>
+        <view class="poster-td">-33.0kg</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="icon-list">
+  <view class="icon">
+    <image src="../../images/share/share.png"></image>
+    <text>朋友圈</text>
+  </view>
+  <view class="icon save-box">
+    <image src="../../images/share/save.png"></image>
+    <text>保存海报</text>
+  </view>
+</view> -->
+<!-- width: 750px;height: 1125px;  zoom:0.6; -->
+
+<canvas class="hideCanvas"  canvas-id="shareCanvas" style="width:{{canvasWidth}}px;height: 1160px;"></canvas>

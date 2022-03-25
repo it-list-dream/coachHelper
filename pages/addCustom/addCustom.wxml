@@ -44,7 +44,7 @@
         <image src="/assets/images/set.png" class="set"></image>
       </view>
     </view>
-    <van-popup show="{{ showTag }}" position="bottom" custom-style="height: 900rpx;" bind:close="onClose">
+    <van-popup catchtouchmove="true" show="{{ showTag }}" position="bottom" custom-style="height: 900rpx;" bind:close="onClose">
       <view class="pouponWrapper">
         <view class="popupTag">
           <text class="cancel1">取消</text>
@@ -55,9 +55,9 @@
           <view class="fitnesss-action" wx:for="{{targetList}}" wx:for-index="idx" wx:key="idx">{{item.value}}</view>
           <view class="new-tags" bindtap="newCreateTag">+新建标签</view>
         </scroll-view>
-        <van-popup show="{{ showTag1 }}" position="bottom" custom-style="height: 400rpx;" bind:close="onClose1">
+        <van-popup catchtouchmove="true" show="{{ showTag1 }}" position="bottom" custom-style="height: 400rpx;" bind:close="onClose1">
           <view class="popupTag">
-            <text class="cancel1">取消</text>
+            <text class="cancel1" bindtap="onClose1">取消</text>
             <text class="setTag">设置标签</text>
             <text class="confrim1" bindtap="onConfrim1">确定</text>
           </view>

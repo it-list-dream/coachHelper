@@ -72,7 +72,8 @@
         "pages/postureDetail/postureDetail",
         "pages/postureContrast/postureContrast",
         "pages/postureAssessment/postureAssessment",
-        "pages/newPosture/newPosture"
+        "pages/newPosture/newPosture",
+        "pages/poster/poster"
       ]
     }
   ],

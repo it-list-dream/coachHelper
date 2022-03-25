@@ -51,7 +51,7 @@ Page({
     //新建标签
     newTagValue: "",
     //备注
-    remark:""
+    remark: ""
   },
   /**
    * 生命周期函数--监听页面加载
@@ -70,22 +70,21 @@ Page({
       [updateName]: e.detail.value
     })
   },
-  choosePhoto() {
-    console.log('选择照片')
-    var that = this;
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success(res) {
-        // tempFilePath可以作为img标签的src属性显示图片
-        const tempFilePaths = res.tempFilePaths
-        that.setData({
-          pictures: tempFilePaths
-        })
-      }
-    })
-  },
+  // choosePhoto() {
+  //   console.log('选择照片')
+  //   var that = this;
+  //   wx.chooseImage({
+  //     count: 1,
+  //     sizeType: ['original', 'compressed'],
+  //     sourceType: ['album', 'camera'],
+  //     success(res) {
+  //       const tempFilePaths = res.tempFilePaths
+  //       that.setData({
+  //         pictures: tempFilePaths
+  //       })
+  //     }
+  //   })
+  // },
   chooseSex(event) {
     let index = event.currentTarget.dataset.index;
     let updateSex = "customInfo.sex"
@@ -152,7 +151,8 @@ Page({
   },
   onClose1() {
     this.setData({
-      showTag1: false
+      showTag1: false,
+      newTagValue:""
     });
   },
   newCreateTag() {
@@ -164,23 +164,30 @@ Page({
   onConfrim1() {
     let newTag = this.data.newTagValue;
     let targetList = this.data.targetList;
-    targetList.push({
-      id: Number(targetList[targetList.length-1].id) + 1,
-      value: newTag,
-      checked:false
-    })
-    this.setData({
-      showTag1: false,
-      targetList:targetList,
-      newTagValue:""
-    })
+    if (newTag.trim().length > 0) {
+      targetList.push({
+        id: Number(targetList[targetList.length - 1].id) + 1,
+        value: newTag,
+        checked: false
+      })
+      this.setData({
+        showTag1: false,
+        targetList: targetList,
+        newTagValue: ""
+      })
+    }else{
+      wx.showToast({
+        title: '内容不能为空',
+        icon:"none"
+      })
+    }
   },
   changeTextarea(e) {
     this.setData({
       newTagValue: e.detail.value
     })
   },
-  onRemark(e){
+  onRemark(e) {
     this.setData({
       remark: e.detail.value
     })

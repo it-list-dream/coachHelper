@@ -34,7 +34,7 @@
   <view class="achievement-item">
     <view class="left-box">
       <text>3.6</text>
-      <text>征服重量（吨）</text>
+      <text>征服重量（kg）</text>
     </view>
     <view class="picture-box">
       <image src="/assets/images/service/weight.png"></image>

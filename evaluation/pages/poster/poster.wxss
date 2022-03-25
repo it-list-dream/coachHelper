@@ -1,0 +1,111 @@
+.poster {
+  position: relative;
+  margin-top: 40rpx;
+  overflow: hidden;
+  height: 2082rpx;
+}
+
+.poster .poster-bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 632rpx;
+  height: 2082rpx;
+  transform: translateX(-50%);
+}
+
+.poster .poster-item {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 632rpx;
+  transform: translateX(-50%);
+}
+
+.poster-title {
+  font-size: 32rpx;
+  color: #2564F6;
+  text-align: center;
+  padding: 36rpx 0;
+}
+
+.achievement-pic {
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 20rpx;
+}
+
+.achievement-pic::after {
+  content: "";
+  width: 284rpx;
+}
+
+.achievement-pic .pic-box {
+  width: 284rpx;
+  height: 356rpx;
+  border-radius: 14rpx;
+  overflow: hidden;
+  margin-bottom: 40rpx;
+}
+
+.achievement-pic .pic-box image {
+  width: 100%;
+  height: 356rpx;
+}
+
+.poster-data {
+  margin-top: 80rpx;
+}
+
+.poster-data .poster-tr {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50rpx;
+}
+
+.poster-data .poster-tr .poster-td {
+  padding: 20rpx 0;
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  color: #2564F6;
+}
+
+.icon-list {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 90rpx 30rpx;
+  margin-top: 38rpx;
+}
+
+.icon-list .icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.icon-list .save-box{
+  margin-left: 140rpx;
+}
+.icon-list .icon image {
+  width: 66rpx;
+  height: 66rpx;
+}
+
+.icon-list .icon text {
+  margin-top: 15rpx;
+  font-size: 28rpx;
+  color: #222222;
+}
+/* 海报 */
+
+/* .hideCanvas {
+  display: block;
+  position: fixed;
+  left: -1000px;
+  top: -1000px;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+} */

@@ -197,6 +197,24 @@
           "pathName": "evaluation/pages/newPosture/newPosture",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "海报",
+          "pathName": "evaluation/pages/poster/poster",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "教练风采",
+          "pathName": "pages/coachMien/coachMien",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "添加客户",
+          "pathName": "pages/addCustom/addCustom",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -130,37 +130,54 @@ input {
 }
 
 .tag-content {
-  padding: 0 40rpx;
+  /* padding: 0 40rpx; */
   height: 800rpx;
+  width: 100%;
+  white-space: nowrap;
 }
 
 .tag-content .fitnesss-action {
+  position: relative;
   height: 110rpx;
   box-sizing: border-box;
   line-height: 110rpx;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-bottom: 1px solid #DFDFDF;
   font-size: 36rpx;
   color: #222222;
+  padding: 0 40rpx;
+  box-sizing: border-box;
 }
 
+
 .tag-content .new-tags {
+  position: relative;
   font-size: 36rpx;
   color: #999999;
   height: 110rpx;
   line-height: 110rpx;
-  border-bottom: 1px solid #DFDFDF;
   margin-bottom: 30rpx;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+}
+.tag-content .fitnesss-action::after,.tag-content .new-tags::after{
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 672rpx;
+  height: 1px;
+  background: #DFDFDF;
 }
 
 .content {
+  margin-top: 40rpx;
   padding: 0 40rpx;
 }
 
 .textarea {
-  margin-top: 40rpx;
   width: 100%;
   min-height: 120rpx;
   height: auto;
@@ -228,4 +245,10 @@ input {
   font-size: 32rpx;
   color: #FFFFFF;
   font-weight: 500;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: #ffffff;
 }

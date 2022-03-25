@@ -59,7 +59,6 @@
           <view class="sub-order-step">
             <text class="sub-order-no">2022年</text>
             <ct-step stepList="{{stepList}}"></ct-step>
-            <!-- <ct-step stepList="{{stepList}}"></ct-step> -->
           </view>
         </van-tab>
         <van-tab title="跟进记录">
@@ -76,7 +75,7 @@
       </van-tabs>
     </view>
   </view>
-  <van-popup show="{{ isFollow }}" bind:close="onClose">
+  <van-popup catchtouchmove="true" show="{{ isFollow }}" bind:close="onClose">
     <view class="select-list">
       <view class="mask-title">
         <text class="btn cancel" bindtap="onClose">取消</text>

@@ -9,7 +9,7 @@ Component({
   properties: {
     // 弹窗取消按钮文字
     isShow:{            // 属性名
-      type: Boolean,     // 类型（必填），目前接受的类型包括：String, Number, Boolean, 
+      type: Boolean,     // 类型（必填），目前接受的类型包括：String, Number, 
       value: false     // 属性初始值（可选），如果未指定则会根据类型选择一个
     },
   },
@@ -41,6 +41,9 @@ Component({
      */
     _cancelEvent() {
       //触发取消回调
+      this.setData({
+        tagValue:""
+      })
       this.triggerEvent("cancelEvent")
     },
     _confirmEvent() {
