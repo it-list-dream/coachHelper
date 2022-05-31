@@ -1,30 +1,35 @@
 <view class="chooseCustomContainer">
   <view class="serach-box">
-    <van-search value="{{ value }}" placeholder="请输入会员姓名、手机号" />
+    <van-search value="{{ value }}" placeholder="请输入会员姓名、手机号" bind:change="seachChange" bind:cancel="seachCancel" />
     <image class="add" src="/assets/images/add2.png" bindtap="addPeople"></image>
   </view>
-  <view class="tabs-list">
-    <slideTab tList="{{tabsList}}" bind:changeCurrent="swichNav" bind:scrollHeight="getTabHeight" currentTab="{{currentActive}}">
-      <scroll-view class="tab-item" style="height:calc(100vh - {{searchHeight}}px - {{tabsHeight}}px)" wx:if="{{currentActive ==0}}" scroll-y>
-        <view class="custom-list" wx:for="{{memberList}}" wx:key="index">
+  <!-- tabs -->
+  <slideTab tList="{{tabsList}}" bind:changeCurrent="swichNav" bind:scrollHeight="getTabHeight"
+    currentTab="{{currentActive}}">
+    <scroll-view class="tab-item" style="height:calc(100vh - {{searchHeight}}px - {{tabsHeight}}px)" scroll-y bindscrolltolower="loadMore">
+      <block wx:if="{{currentActive ==0}}">
+        <view class="custom-list" bindtap="selectCustom" data-member="{{item}}" wx:for="{{recentlyList}}"
+          wx:key="index">
           <image src="/assets/images/photo.png" class="header" wx:if="{{item.img.indexOf('http') ==-1}}"></image>
           <view class="h1" wx:else>{{item.firstName}}</view>
           <view class="custom-info">
-            <view>{{item.name}}</view>
-            <view>{{item.phone}}</view>
+            <view>{{item.UI_Name}}</view>
+            <view>{{item.UI_Phone}}</view>
           </view>
         </view>
-      </scroll-view>
-      <view class="tab-item" wx:if="{{currentActive ==1}}">
-        <view class="custom-list">
+        <view class="no-custom" hidden="{{!recentlyList}}">暂无最近联系</view>
+      </block>
+      <block wx:else>
+        <view class="custom-list" bindtap="selectCustom" wx:for="{{allmemberList}}" data-member="{{item}}"
+          wx:key="index">
           <image src="/assets/images/photo.png" class="header" wx:if="{{item.img.indexOf('http') ==-1}}"></image>
-          <view class="h1" wx:else>宁</view>
+          <view class="h1" wx:else>{{item.firstName}}</view>
           <view class="custom-info">
-            <view>纪灏</view>
-            <view>18163451113</view>
+            <view>{{item.UI_Name}}</view>
+            <view>{{item.UI_Phone}}</view>
           </view>
         </view>
-      </view>
-    </slideTab>
-  </view>
+      </block>
+    </scroll-view>
+  </slideTab>
 </view>

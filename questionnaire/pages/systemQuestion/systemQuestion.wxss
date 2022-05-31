@@ -71,13 +71,19 @@
   padding-bottom: 30rpx;
 }
 
-.sign-handle>image {
+/* .sign-handle>image {
   width: 100%;
   height: 468rpx;
   background: #FFFFFF;
   border-radius: 12rpx;
+} */
+.sign-handle .sign-image{
+  width: 100%;
 }
 
+.sign-handle .sign-image image{
+  width: 100%;
+}
 .sign-handle .success {
   margin-top: 30rpx;
   width: 100%;

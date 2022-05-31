@@ -230,7 +230,7 @@ page {
   content: "";
   position: absolute;
   top: 50%;
-  right: -30rpx;
+  right: -40rpx;
   transform: translateY(-50%);
   width: 0;
   height: 0;

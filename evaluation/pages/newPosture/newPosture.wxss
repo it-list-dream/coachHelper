@@ -31,3 +31,21 @@
 }
 
 /*  */
+
+.savelist {
+  margin-top: 100rpx;
+  width: 100%;
+  height: 86rpx;
+  padding-bottom: 30rpx;
+}
+
+.savelist .savebtn {
+  width: 620rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  text-align: center;
+  background: #2564F6;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  color: #FFFFFF;
+}

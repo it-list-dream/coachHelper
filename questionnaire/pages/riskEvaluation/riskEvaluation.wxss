@@ -1,11 +1,11 @@
-@import '/assets/css/form.wxss';
+@import '../../../template/form/form.wxss';
+page{
+  height: 100%;
+}
 .riskEvaliation {
   position: relative;
   width: 100%;
-  height: 100%;
-}
-.risk-content {
-  width: 100%;
+  min-height: 100%;
   height: auto;
   background: linear-gradient(0deg, #597AF5 0%, #5D3DCA 100%);
   background-repeat: no-repeat;
@@ -38,8 +38,8 @@
 .question-list {
   margin: 60rpx 0;
 }
-
-.question-list .question-item {
+/*  */
+.radio-list {
   margin: 0 auto;
   width: 690rpx;
   /* height: 430rpx; */
@@ -50,92 +50,30 @@
   box-sizing: border-box;
 }
 
-.question-list .question-item .question-topic {
-  padding: 50rpx 0 40rpx;
-  border-bottom: 1px solid #EDEDED;
-  line-height: 1.6;
+.hide {
+  display: none;
 }
 
-/* 单选 */
-.radio-group .weui-cell {
-  margin-top: 40rpx;
-  display: flex;
-  font-size: 32rpx;
-  color: #333333;
+.checkbox-list {
+  margin: 0 auto;
+  width: 690rpx;
+  min-height: 430rpx;
+  padding: 0 36rpx;
+  background: linear-gradient(0deg, #E5E6FF 0%, #FFFFFF 100%);
+  border-radius: 12rpx;
+  box-sizing: border-box;
 }
 
-.radio-group .weui-cell .weui-cell__value {
-  padding-left: 24rpx;
+.textarea-wrapper {
+  margin: 0 auto;
+  width: 690rpx;
+  min-height: 410rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  overflow: hidden;
+  padding-bottom: 60rpx;
 }
-
-/* 多选 */
-.checkbox-group {
-  padding: 80rpx 0 100rpx 0;
-  height: 100%;
-}
-
-.checkbox-group .c-group {
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 30rpx;
-  color: #333333;
-}
-
-.checkbox-group .weui-cell-checkbox {
-  display: flex;
-  flex-shrink: 0;
-  margin: 0 48rpx 42rpx 40rpx;
-  /* margin-bottom: 42rpx; */
-}
-
-.checkbox-value {
-  padding-left: 16rpx;
-}
-
-.multiple {
-  padding: 0 !important;
-}
-
-.self-defaine {
-  font-size: 29rpx;
-  color: #C5C5C5;
-  padding: 0 40rpx;
-}
-
 /*  */
-.multiple-radio {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.multiple-cell {
-  margin: 0 24rpx;
-}
-
-.df {
-  align-self: flex-end;
-}
-
-/* 文本框 */
-.tt {
-  padding: 0 36rpx 50rpx !important;
-}
-
-.idea-textare {
-  width: 100%;
-  height: 270rpx;
-  border: 1px dotted #D7D4ED;
-  box-sizing: border-box;
-}
-
-.idea-textare .textarea {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  padding: 30rpx 20rpx;
-  font-size: 26rpx;
-}
-
 .question-tips {
   display: flex;
   /* justify-content: space-between; */
@@ -146,7 +84,7 @@
 }
 
 /* 补充内容 */
-.repenish {
+/* .repenish {
   width: 690rpx;
   height: 760rpx;
   margin: 0 auto;
@@ -178,8 +116,10 @@
   padding: 20rpx 30rpx;
   box-sizing: border-box;
   font-size: 26rpx;
+} */
+.riskHide{
+  display: none;
 }
-
 /*  */
 .fitness-tips {
   margin-top: 50rpx;

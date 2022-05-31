@@ -1,10 +1,11 @@
-<view class='wx_dialog_container' wx:if="{{isShow}}" catchtouchmove="true">
+<view class='wx_dialog_container custom-class' wx:if="{{isShow}}" catchtouchmove="true">
   <view class='wx-mask' catchtap='_cancelEvent'></view>
   <view class='wx-dialog'>
-    <view class='wx-dialog-title'>添加跟进记录</view>
+    <!-- 添加跟进记录 -->
+    <view class='wx-dialog-title'>{{dialogTitle}}</view>
     <view class='wx-dialog-content'>
-     <textarea value="{{tagValue}}" class="textarea" 	placeholder-style="color:#999999;" placeholder="请输入内容" bindinput="getTagContent"></textarea>
-     <view class="count">{{tagValue.length}}/140</view>
+     <textarea value="{{tagValue}}" maxlength="{{limit}}" class="textarea" 	placeholder-style="color:#999999;" placeholder="请输入内容" bindinput="_getTagContent"></textarea>
+     <view class="count">{{tagValue.length}}/{{limit}}</view>
     </view>
     <view class='wx-dialog-footer'>
       <view class='wx-dialog-btn' catchtap='_cancelEvent'>取消</view>

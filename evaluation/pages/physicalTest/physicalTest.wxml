@@ -43,7 +43,7 @@
               <text class="rows-title">脂肪量</text>
             </view>
             <view class="apparatus-input-box">
-              <input type="number" value="" />
+              <input type="number" value="{{bodyCompsition.fatMass}}" bindblur="getbodyCom" data-key="fatMass"/>
               <text class="unit">kg</text>
             </view>
           </view>
@@ -53,7 +53,7 @@
               <text class="rows-title">水分</text>
             </view>
             <view class="apparatus-input-box">
-              <input type="number" value="" />
+              <input type="number" value="{{bodyCompsition.water}}" bindblur="getbodyCom" data-key="water"/>
               <text class="unit">kg</text>
             </view>
           </view>
@@ -63,7 +63,7 @@
               <text class="rows-title">骨骼肌</text>
             </view>
             <view class="apparatus-input-box">
-              <input type="number" value="1" />
+              <input type="number" value="{{bodyCompsition.skeletal}}" bindblur="getbodyCom" data-key="skeletal"/>
               <text class="unit">kg</text>
             </view>
           </view>
@@ -73,17 +73,18 @@
               <text class="rows-title">肌肉量</text>
             </view>
             <view class="apparatus-input-box">
-              <input type="number" value="1" />
+              <input type="number" value="{{bodyCompsition.muscle}}" bindblur="getbodyCom" data-key="muscle"/>
               <text class="unit">kg</text>
             </view>
           </view>
           <view class="apparatus-rows">
+            <!--  腰臀比 0-2之间-->
             <view class="apparatus-rows-item">
               <image src="./images/waist.png"></image>
               <text class="rows-title">腰臀比</text>
             </view>
             <view class="apparatus-input-box">
-              <input type="digit" value="1" />
+              <input type="digit" value="{{bodyCompsition.whr}}" bindblur="getbodyCom" data-key="whr"/>
               <text class="unit"></text>
             </view>
           </view>
@@ -112,14 +113,24 @@
           </view>
         </view>
         <view class="apparatus-form">
-          <view class="apparatus-rows" wx:for="{{bodyComposition.physicalStateList}}" wx:key="physicalName">
+          <view class="apparatus-rows" wx:for="{{physicalStateList}}" wx:key="physicalName">
             <view class="apparatus-rows-item">
               <image src="{{item.physicalImage}}"></image>
               <text class="rows-title">{{item.physicalName}}</text>
             </view>
-            <view class="apparatus-input-box">
+            <view class="apparatus-input-box" wx:if="{{item.physicalName !== '血压'}}">
               <input type="number" value="{{item.value}}" />
               <text class="unit">{{item.unit}}</text>
+            </view>
+            <view class="blood-pressure" wx:else>
+              <picker mode="multiSelector" bindchange="bindMultiPickerChange"
+                bindcolumnchange="bindBloodChange" value="{{multiIndex}}" range="{{multiArray}}"
+               >
+                <view class='pick-content'>
+                  <text>{{item.value}}</text>
+                  mmHg
+                </view>
+              </picker>
             </view>
           </view>
         </view>

@@ -2,17 +2,28 @@ Component({
   options: {
     multipleSlots: true // 在组件定义时的选项中启用多slot支持
   },
+  externalClasses: ['custom-class'],
   /**
    * 组件的属性列表
+   * 
    * 用于组件自定义设置
    */
   properties: {
     // 弹窗取消按钮文字
     isShow:{            // 属性名
-      type: Boolean,     // 类型（必填），目前接受的类型包括：String, Number, 
-      value: false     // 属性初始值（可选），如果未指定则会根据类型选择一个
+      type: Boolean,     
+      value: false 
     },
+    dialogTitle: {
+      type: String,
+      value:""
+    },
+    limit: {
+      type: Number,
+      value:0
+    }
   },
+  
   /**
    * 私有数据,组件的初始数据
    * 可用于模版渲染
@@ -30,7 +41,7 @@ Component({
     /*
      * 公有方法
      */
-    getTagContent(e) {
+    _getTagContent(e) {
       this.setData({
         tagValue: e.detail.value
       })

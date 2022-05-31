@@ -8,7 +8,7 @@
       <image src="/assets/images/home/banner.jpg"></image>
     </view>
     <view class="grid">
-      <navigator class="grid-item" url="/questionnaire/pages/questionList/questionList" hover-class="none">
+      <navigator class="grid-item" url="/pages/chooseCustom/chooseCustom?type=0" hover-class="none">
         <image src="/assets/images/home/question.png"></image>
         <text>调查问卷</text>
       </navigator>
@@ -16,7 +16,8 @@
         <image src="/assets/images/home/fitness.png"></image>
         <text>测试评估</text>
       </navigator>
-      <navigator class="grid-item" url="/pages/trainning/trainning" hover-class="none">
+      <!-- 训练方案 -->
+      <navigator class="grid-item" url="/pages/chooseCustom/chooseCustom?type=3" hover-class="none">
         <image src="/assets/images/home/train.png"></image>
         <text>训练方案</text>
       </navigator>
@@ -27,7 +28,7 @@
     </view>
     <!--  -->
     <view class="plan-box">
-      <navigator class="course-plan" url="/pages/coursePlanning/coursePlanning" hover-class="none">
+      <navigator class="course-plan" url="/pages/chooseCustom/chooseCustom?type=4" hover-class="none">
         <image src="/assets/images/home/course_plan.png"></image>
         <view class="course-item">
           <text class="blue-text">课程规划</text>
@@ -72,16 +73,16 @@
        <view class="introduce">课程介绍</view>
        <view class="more-text" bindtap="moreText">更多</view>
     </view>
-    <view class="introduce-item" wx:for="{{4}}" wx:key="index" bindtap="courseIntroduce">
+    <view class="introduce-item" wx:for="{{classList}}" wx:key="index" bindtap="courseIntroduce" data-course="{{item}}">
       <view class="pic-box">
-        <image src="/assets/images/home/course_bg.png"></image>
+        <image src="{{item.CP_Logo?item.CP_Logo:'/assets/images/home/course_bg.png'}}"></image>
       </view>
       <view class="course-detail">
         <vew class="course-tips">
-          <text>女性塑性课程</text>
+          <text>{{item.CP_Name}}</text>
           <image src="/assets/images/right.png"></image>
         </vew>
-        <view class="duration">45分钟</view>
+        <view class="duration">{{item.ClassTime}}分钟</view>
       </view>
     </view>
   </view>

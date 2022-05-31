@@ -1,11 +1,14 @@
 // pages/allocationCustom/allocationCustom.js
+var api = require('../../utils/request.js')
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    tabsList:['未分配','已分配'],
+    tabsList:['私教会员','普通会员','意向会员','公海池'],
     tabIndex:0,
+    filterIndex:0,
+    filterList:['未为配','已分配'],
     tabsHeight:0,
     searchHeight:0,
     customList:[
@@ -61,6 +64,7 @@ Page({
       tabIndex:e.detail.currentNum
     })
   },
+  //分配
   allocation(e){
     let member = e.currentTarget.dataset.custom,
      customList = this.data.customList;
@@ -74,9 +78,17 @@ Page({
     })
   },
   allocationCoach(){
-     wx.navigateTo({
-       url: '/pages/selectCoach/selectCoach',
-     })
+    //弹窗
+    //  wx.navigateTo({
+    //    url: '/pages/selectCoach/selectCoach',
+    //  })
+  },
+  //分配
+  filterTab(e){
+      let index = e.currentTarget.dataset.index;
+      this.setData({
+        filterIndex:index
+      })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -104,34 +116,6 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

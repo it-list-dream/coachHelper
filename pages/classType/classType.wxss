@@ -10,34 +10,41 @@
   border-bottom: 1px solid #E9E9E9;
 }
 
-.coursetype .course-picture {
+.coursetype .class-pic {
   width: 230rpx;
   height: 154rpx;
   flex-shrink: 0;
   border-radius: 12rpx;
 }
-
-.course-list {
+.coursetype .class-pic image{
   width: 100%;
+  height: 154rpx;
+}
+.course-list {
+  flex: 1;
   margin-left: 24rpx;
+  overflow: hidden;
 }
 
 .course-list .course-name {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 34rpx;
-  color: #333333;
 }
 
 .course-list .course-name .arrow {
   width: 20rpx;
   height: 20rpx;
+  flex-shrink: 0;
 }
 
-.course-list .course-name .flex {
-  display: flex;
-  align-items: center;
+.course-list .course-name .class-title {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 34rpx;
+  color: #333333;
 }
 
 .course-list .course-time {
@@ -45,32 +52,8 @@
   font-size: 28rpx;
   color: #666666;
 }
-
-.course-name .flex text:first-child {
-  font-size: 34rpx;
-  color: #333333;
-}
-
-.course-name .flex text:last-child {
-  margin-left: 30rpx;
-  width: 90rpx;
-  height: 30rpx;
-  line-height: 30rpx;
-  text-align: center;
-  background: linear-gradient(0deg, #FB8923 0%, #FFBA7B 100%);
-  font-size: 22rpx;
-  color: #FFFFFF;
-  border-radius: 4rpx;
-}
-
-/* .course-text {
-  display: flex;
-  justify-content: space-between;
-  font-size: 28rpx;
-  color: #666666
-} */
-
 .course-price {
+  text-align: right;
   font-size: 26rpx;
   font-weight: bold;
   color: #F25E53;

@@ -1,0 +1,39 @@
+<template name="radio">
+  <view class="question-topic">{{orderSort}}、{{questions}}?</view>
+  <view class="radio-item">
+    <radio-group data-id="{{orderSort}}" bindchange="radioChange" class="radio-group"
+      style="flex-direction:{{optionList.length>2?'rows':'column'}}">
+      <label wx:for="{{optionList}}" wx:key="index" wx:for-item="radio">
+        <view class="weui-cell" style="margin-right:{{optionList.length>2?'80rpx':'0px'}};">
+          <radio value="{{radio.Answer}}" checked="{{radio.checked}}" />
+          <view class="weui-cell__value">{{radio.Answer}}</view>
+        </view>
+      </label>
+    </radio-group>
+    <view class="self-defined" bindtap="defined" wx:if="{{isOtherOption == 1}}">+自定义</view>
+  </view>
+</template>
+
+<template name="checkbox">
+  <view class="question-topic">{{orderSort}}、{{questions}}?</view>
+  <view class="checkbox-group">
+    <checkbox-group class="c-group" bindchange="checkboxChange" data-id="{{orderSort}}">
+      <block wx:for="{{optionList}}" wx:key="idx" wx:key="idx" wx:for-item="checkbox">
+        <label>
+          <view class="weui-cell-checkbox">
+            <checkbox value="{{checkbox.Answer}}" checked="{{checkbox.checked}}" />
+            <view class="checkbox-value">{{checkbox.Answer}}</view>
+          </view>
+        </label>
+      </block>
+    </checkbox-group>
+    <view class="self-defined" bindtap="defined" wx:if="{{isOtherOption == 1}}">+自定义</view>
+  </view>
+</template>
+
+<template name="textarea">
+   <view class="textarea-topic">{{orderSort}}、{{questions}}？</view>
+   <view class="textarea-box">
+      <textarea maxlength="200" data-id="{{questionsId}}" bindinput="changeInputText" value="{{optionText}}" placeholder-style="填写（限200字）" class="my-textarea" placeholder-style="color:#D7D4ED;"></textarea>
+   </view>
+</template>

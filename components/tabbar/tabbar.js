@@ -64,19 +64,5 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    switchTab(e) {
-      // const data = e.currentTarget.dataset;
-      // const url = data.path;
-      // const phone = wx.getStorageSync('phone');
-      // if (url === '/pages/tabbar/sport/sport' && !phone && phone == '') {
-      //   wx.navigateTo({
-      //     url: '/page2/login/login' //可以带参数，在登录页面接收
-      //   })
-      //   return;
-      // }
-      // wx.switchTab({
-      //   url
-      // })
-    }
   }
 })

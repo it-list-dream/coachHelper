@@ -1,4 +1,4 @@
-.detail {
+.postureDetail {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -15,7 +15,8 @@
 }
 
 .picturelist {
-  width: 326rpx;
+  width: 60%;
+  overflow: hidden;
 }
 
 
@@ -27,11 +28,11 @@
 }
 
 .picture {
-  width: 326rpx;
+   text-align: center;
 }
 
 .picture image {
-  width: 100%;
+  width: 326rpx;
   vertical-align: bottom;
 }
 
@@ -56,9 +57,10 @@
 
 .remark {
   margin-top: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
   font-size: 24rpx;
   color: #999999;
-  line-height: 40rpx;
 }
 
 .success {

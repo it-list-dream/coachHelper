@@ -23,6 +23,7 @@ const yesterday = date => {
   const day = '01'
   return [year, month, day].map(formatNumber).join('-')
 }
+
 function format(date, fmt) {
   let d = new Date(date)
   var o = {
@@ -48,9 +49,45 @@ function format(date, fmt) {
   return fmt;
 }
 
+/*函数节流*/
+function throttle(fn, interval) {
+  var last;
+  var timer;
+  var interval = interval || 300;
+  return function () {
+    var th = this;
+    var args = arguments;
+    var now = +new Date();
+    if (last && now - last < interval) {
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        last = now;
+        fn.apply(th, args);
+      }, interval);
+    } else {
+      last = now;
+      fn.apply(th, args);
+    }
+  }
+}
+const filterFn = (array, img, id) => {
+  var newArr = [],
+    assementArr = "";
+  for (var f in array) {
+    if (f != id && f != "SD_ID" && f != "Remarks" && f != img && f != "Createdate" && f != "imgurl") {
+      assementArr = array[f].split(',');
+      if (assementArr.toString().length > 0) {
+        newArr.push(...assementArr);
+      }
+    }
+  }
+  return newArr;
+}
 module.exports = {
   format,
   formatTime,
   subTen,
-  yesterday
+  yesterday,
+  throttle,
+  filterFn
 }

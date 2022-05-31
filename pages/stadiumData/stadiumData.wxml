@@ -29,7 +29,7 @@
       <image src="/assets/images/stadium/per_class.png"></image>
     </view>
   </navigator>
-  <view class="stadium-item">
+  <navigator url="/pages/leagueLecture/leagueLecture" hover-class="none" class="stadium-item">
     <view class="sta-introduce">
       <view class="sta-title">团体课程</view>
       <view class="sta-content">适用面广，形式多样</view>
@@ -38,5 +38,5 @@
     <view class="img-box">
       <image src="/assets/images/stadium/league_class.png"></image>
     </view>
-  </view>
+  </navigator>
 </view>

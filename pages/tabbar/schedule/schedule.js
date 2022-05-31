@@ -1,5 +1,6 @@
 // pages/schedule/schedule.js
 const app = getApp();
+const util = require('../../../utils/util')
 Page({
 
   /**
@@ -8,7 +9,7 @@ Page({
   data: {
     dateString: "",
     spot: [],
-    nowTime: "2022-02-09",
+    nowTime: "",
     tabIndex: 0,
     // tabList: ['私教', '自定义'],
     tabbar: {},
@@ -33,6 +34,9 @@ Page({
    */
   onLoad: function (options) {
     app.editTabbar();
+    this.setData({
+      nowTime:util.format(new Date(),'yyyy-mm-dd')
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

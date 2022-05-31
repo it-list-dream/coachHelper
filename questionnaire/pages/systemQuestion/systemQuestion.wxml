@@ -1,22 +1,26 @@
 <view class="pageContainer" wx:if="{{type ==1}}">
-  <view class="basequestion" wx:for="{{12}}">
+  <view class="basequestion" wx:for="{{questionDetail.questList}}" wx:key="qr_id">
     <view class="question-item">
-      {{index+1}}.您之前有没有参加过健身？
+      {{item.orderSort}}.{{item.questions}}？
     </view>
     <view class="qustion-answer">
-      <text>有</text>
+      <block  wx:for="{{item.optionList}}" wx:for-item="answer" wx:key="index">
+        <text>{{answer.Answer}}</text>
+      </block>
     </view>
   </view>
 </view>
 <!-- 风险 -->
-<view class="pageContainer" wx:if="{{type ==2}}">
+<view class="pageContainer" wx:elif="{{type ==2}}">
   <view class="assessment">
-    <view class="basequestion" wx:for="{{12}}">
+    <view class="basequestion" wx:for="{{questionDetail.questList}}" wx:key="idx" wx-for-index="idx">
       <view class="question-item">
-        {{index+1}}.医生曾否说过你的心脏有问题并只可以进行医生建议 的体能活动？
+        {{item.orderSort}}.{{item.questions}}？
       </view>
       <view class="qustion-answer">
-        <text>有</text>
+        <block wx:for="{{item.optionList}}" wx:for-item="answer" wx:key="index">
+          <text>{{answer.Answer}}</text>
+        </block>
       </view>
     </view>
   </view>
@@ -36,9 +40,10 @@
     <!-- canvas -->
     <view class="sign-handle">
       <view class="sign-title">我已经阅读、理解并完成了这份问卷，对于我的所有疑问都得到了令我满意的回答。</view>
-      <image src="https://img0.baidu.com/it/u=3698738501,3481126800&fm=253&fmt=auto&app=138&f=JPEG?w=499&h=339">
-      </image>
-      <button class="success">完成</button>
+       <view class="sign-image">
+           <image mode="widthFix" src="{{questionDetail.userSign}}"></image>
+       </view>
+      <button class="success" bindtap="successAll">完成</button>
     </view>
   </view>
 </view>

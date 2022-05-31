@@ -1,20 +1,15 @@
 <view class="couserTypeContainer">
-  <view class="coursetype" wx:for="{{6}}" bindtap="selectedClass">
-    <image class="course-picture" src="https://img1.baidu.com/it/u=2359934224,2405398804&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=333"></image>
+  <view class="coursetype" wx:for="{{typeList}}" bindtap="selectedClass" data-classes="{{item}}">
+    <view class="class-pic">
+      <image src="/assets/images/home/course_bg.png" ></image>
+    </view>
     <view class="course-list">
       <view class="course-name">
-        <view class="flex">
-          <text>健身入门课程</text>
-          <text>体验课</text>
-        </view>
+        <view class="class-title">{{item.CP_Name}}</view>
         <image src="./images/bottom_arrow.png" class="arrow"></image>
       </view>
-      <view class="course-time">时长：45分钟</view>
-      <view class="course-price">￥300.0</view>
-      <!-- <view class="course-text">
-        <text>消耗卡路里：245kcal</text>
-        <text class="course-price">￥300.0</text>
-      </view> -->
+      <view class="course-time">时长：{{item.ClassTime}}分钟</view>
+      <view class="course-price">￥{{item.SaleCount}}</view>
     </view>
   </view>
 </view>

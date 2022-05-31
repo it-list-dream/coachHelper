@@ -3,7 +3,7 @@ import SignaturePad from '../../utils/signature_pad.js'
 let signaturePad = {};
 let pix = 7;
 let penColor = 'black';
-let lineWidth = 0.6;
+let lineWidth = 1.4;
 Page({
 
   /**

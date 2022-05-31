@@ -1,22 +1,33 @@
 // pages/trainReport/trainReport.js
+var service = require('../../utils/request.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    stageList: [{
-      stageTitle: "适应期",
-      trainpointList: ['力量', '有氧', '柔韧性'],
-      trainprojectList: ['被动牵引', '自由重量', '自重训练', '有氧训练', '私教团课'],
-    }]
+    fitTargetList:[],
+    allTrain:[]
   },
-
+  getReportDetail(rd_id) {
+    service.post('/TrainProgrammeReport', {
+      user_token: wx.getStorageSync('token'),
+      rd_Id:rd_id,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+       let targetList = res.data.data.Answer.split(',');
+        this.setData({
+          fitTargetList:targetList,
+          allTrain:res.data.data.traindata
+        })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+     this.getReportDetail(options.rd_id);
   },
 
   /**

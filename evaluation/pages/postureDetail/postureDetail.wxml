@@ -1,47 +1,45 @@
+<wxs module="dateUtil" src="../../../utils/timeUtil.wxs"></wxs>
 <view class="postureDetail">
-  <view class="detail">
-    <view class="angle-title">正面</view>
-    <view class="picturelist">
-        <view class="picture-date">2022.01.01</view>
-        <view class="picture">
-          <image src="https://img0.baidu.com/it/u=1463147281,167950081&fm=253&fmt=auto&app=138&f=PNG?w=365&h=370"
-            mode="widthFix"></image>
-        </view>
-        <view class="describe">
-          <text>头部：向右扭转</text>
-          <text>肩部：右侧耸肩</text>
-        </view>
-        <view class="remark"></view>
-      </view>
+  <view class="angle-title">正面</view>
+  <view class="picturelist">
+    <view class="picture-date">{{dateUtil.dateFormat(postureDetail.front.Createdate)}}</view>
+    <view class="picture">
+      <image wx:if="{{postureDetail.front.imgurl}}" src="{{postureDetail.front.imgurl}}"
+        mode="widthFix"></image>
+    </view>
+    <view class="describe">
+      <text wx:for="{{frontTags}}" wx:key="index">{{item}}</text>
+    </view>
+    <view class="remark">{{postureDetail.front.Remarks}}</view>
   </view>
-  <view class="detail">
-    <view class="angle-title">左侧</view>
-    <view class="picturelist">
-        <view class="picture-date">2022.01.01</view>
-        <view class="picture">
-          <image src="https://img0.baidu.com/it/u=1463147281,167950081&fm=253&fmt=auto&app=138&f=PNG?w=365&h=370"
-            mode="widthFix"></image>
-        </view>
-        <view class="describe">
-          <text>头部：向右扭转</text>
-          <text>肩部：右侧耸肩</text>
-        </view>
-        <view class="remark"></view>
-      </view>
+</view>
+<view class="postureDetail">
+  <view class="angle-title">左侧</view>
+  <view class="picturelist">
+    <view class="picture-date">{{dateUtil.dateFormat(postureDetail.left.Createdate)}}</view>
+    <view class="picture">
+      <image wx:if="{{postureDetail.left.imgurl}}" src="{{postureDetail.left.imgurl}}"
+        mode="widthFix"></image>
+    </view>
+    <view class="describe">
+      <text wx:for="{{leftTags}}" wx:key="i" WX:for-index="i">{{item}}</text>
+    </view>
+    <view class="remark">{{postureDetail.left.Remarks}}</view>
   </view>
-  <view class="detail">
-    <view class="angle-title">右侧</view>
-    <view class="picturelist">
-        <view class="picture-date">2022.01.01</view>
-        <view class="picture">
-          <image src="https://img0.baidu.com/it/u=1463147281,167950081&fm=253&fmt=auto&app=138&f=PNG?w=365&h=370"
-            mode="widthFix"></image>
-        </view>
-        <view class="describe">
-          <text>头部：向右扭转</text>
-          <text>肩部：右侧耸肩</text>
-        </view>
-        <view class="remark"></view>
-      </view>
+</view>
+<view class="postureDetail">
+  <view class="angle-title">右侧</view>
+  <view class="picturelist">
+    <view class="picture-date">{{dateUtil.dateFormat(postureDetail.right.Createdate)}}</view>
+    <view class="picture">
+      <image wx:if="{{postureDetail.right.imgurl}}" src="{{postureDetail.right.imgurl}}"
+        mode="widthFix"></image>
+    </view>
+    <view class="describe">
+      <text wx:for="{{rightTags}}" wx:key="j" WX:for-index="j">{{item}}</text>
+      <!-- <text>头部：向右扭转</text>
+      <text>肩部：右侧耸肩</text> -->
+    </view>
+    <view class="remark">{{postureDetail.right.Remarks}}</view>
   </view>
 </view>

@@ -14,7 +14,16 @@ Page({
   onLoad: function (options) {
 
   },
-
+  testFitness() {
+    wx.navigateTo({
+      url: '/evaluation/pages/fitnessList/fitnessList',
+    })
+  },
+  posture() {
+    wx.navigateTo({
+      url: '/pages/chooseCustom/chooseCustom?type=2',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,19 +1,48 @@
 /* components/tabs-list/tabs-list.wxss */
 .tab-list .scroll-view-x{
-  background-color: #fff;
+  background-color: #ffffff;
   white-space: nowrap;
-  padding: 0 10rpx;
+  padding: 0 16rpx;
   box-sizing: border-box;
 }
+
 .scroll-view-x .scroll-view-item{
   display:inline-block;
   margin:0 24rpx;
   color: #222222;
   font-size: 28rpx;
   line-height: 34px;
-  /* cursor: pointer; */
 }
+.tabs2{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.tabs2 .icon{
+  margin-left: 7rpx;
+  width: 0;
+  height: 0;
+  border-left: 12rpx solid transparent;
+  border-right: 12rpx solid transparent;
+  border-bottom: 16rpx solid #2C2C2C;
+}
+
+.tabs2 .triangle-up{
+   transform: rotate(180deg);
+   border-bottom-color: #3F77FA;
+}
+
 .on{
-  border-bottom: 2px solid #3F77FA;
+  /* border-bottom: 2px solid #3F77FA; */
   color: #3F77FA;
+}
+.on::after{
+  content: "";
+  position: absolute;
+  left: 1px;
+  bottom: 0;
+  width: 110rpx;
+  height: 2px;
+  background: #3F77FA;
 }

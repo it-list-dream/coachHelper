@@ -1,18 +1,29 @@
 // pages/coachMien/coachMien.js
+var service = require('../../utils/request.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      
+    coachList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    service.post('/CoachStyleList', {
+      gi_id: 23
+    }).then(res => {
+      var list = res.data.data;
+      list.forEach((item, index) => {
+        item.AI_GoodAt = item.AI_GoodAt.replace(/\,/g, '、');
+      })
+      this.setData({
+        coachList: list
+      })
+    })
   },
 
   /**

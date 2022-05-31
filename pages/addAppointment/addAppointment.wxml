@@ -20,7 +20,7 @@
             <view>上课时间</view>
             <view class="date">
                 <!-- <picker class="" mode="time" bindchange="" bindcancel="">2022-02-14 14:00</picker> -->
-                <datetimepicker id="date-time-picker" bind:bindMultiPickerChange="bindMultiPickerChange" bind:bindCancel="bindCancel"></datetimepicker>
+                <datetimepicker id="date-time-picker" is-half="{{true}}" bind:bindMultiPickerChange="bindMultiPickerChange" bind:bindCancel="bindCancel"></datetimepicker>
                 <image src="/assets/images/right_arrow.png" />
             </view>
         </view>

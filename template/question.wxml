@@ -4,12 +4,12 @@
       <image src="/assets/images/doubt.png"></image>
       <view class="right-box">
         <view class="top">
-          <text>基础问卷</text>
+          <text>{{QuestType}}</text>
           <image src="/assets/images/right.png"></image>
         </view>
         <view class="bottom">
-          王教练
-          <text>2022.02.16</text>
+         {{AI_Name}}
+          <text>{{Createdate}}</text>
         </view>
       </view>
     </view>

@@ -1,17 +1,24 @@
-<van-popup catchtouchmove="true" show="{{isShow}}" position="bottom" custom-style="height:{{pouponHeight}};" bind:close="onClose"
-  data-index="0">
+<van-popup catchtouchmove="true" show="{{isShow}}" position="bottom" custom-style="height:{{height}};" bind:close="onClose" data-index="0">
   <view class="pouponList">
     <view class="class-header">
       <text class="class-cancel cl" bindtap="onClose" data-index="1">取消</text>
       <text class="class-title">请选择课程类型</text>
       <text class="class-confrim cl" bindtap="classConfrim">确定</text>
     </view>
-    <scroll-view class="class-content" scroll-y style="height:calc({{pouponHeight}} - 100rpx)">
-      <block wx:for="{{ list}}" wx:for-index="idx" wx:for-item="type">
+    <scroll-view class="class-content" scroll-y style="height:calc({{height}} - 100rpx)">
+      <block wx:if="{{multichoice}}" wx:for="{{ courseList}}" wx:for-index="idx" wx:for-item="type" wx:key="idx">
         <view class="scroll-box" bindtap="selectedType" data-type="{{type}}">
           <view class="typeitem">
-            <text> {{type.name}}</text>
+            <text>{{type.cp_name}}</text>
             <image src="/assets/images/hook.png" wx:if="{{type.checked}}"></image>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{!multichoice}}" wx:for="{{ courseList}}" wx:key="index">
+        <view class="scroll-box" bindtap="selectedType" data-type="{{type}}">
+          <view class="typeitem">
+            <text>{{type.cp_name}}</text>
+            <image src="/assets/images/hook.png" wx:if="{{selected == index}}"></image>
           </view>
         </view>
       </block>

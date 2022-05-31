@@ -1,32 +1,31 @@
 // pages/courseType/courseType.js
+var service = require('../../utils/request.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    typeList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-  selectedClass(){
-      wx.navigateTo({
-        url: '/pages/classDetail/classDetail',
-        events: {
-          classes(){
-            
-          }
-        },
-        success: function(res) {
-          // 通过eventChannel向被打开页面传送数据
-          res.eventChannel.emit('classes', { data: 'test' })
-        }
+    service.post('/CoachClassList', {
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      this.setData({
+        typeList: res.data.data
       })
+    })
+  },
+  selectedClass(e) {
+    let classes = e.currentTarget.dataset.classes;
+    wx.navigateTo({
+      url: `/pages/classDetail/classDetail?cp_name=${classes.CP_Name}&cp_content=${classes.CP_Content}&classtime=${classes.ClassTime}&cp_logo=${classes.CP_Logo}&saleCount=${classes.SaleCount}`,
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

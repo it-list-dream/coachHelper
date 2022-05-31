@@ -1,4 +1,6 @@
-// questionnaire/pages/questionList/questionList.js
+var service = require('../../../utils/request.js');
+const util = require('../../../utils/util.js');
+const app = getApp();
 Page({
 
   /**
@@ -6,13 +8,12 @@ Page({
    */
   data: {
     active: 0,
-    params: {
-      q: "/questionnaire/pages/systemQuestion/systemQuestion?type=1"
-    },
-    params2: {
-      q: "/questionnaire/pages/systemQuestion/systemQuestion?type=2"
-    },
-    scrollHeight:0
+    scrollHeight: 0,
+    //问卷
+    questionList: [],
+    //风险评估
+    riskAssessList: [],
+    custom: {}
   },
 
   /**
@@ -25,7 +26,46 @@ Page({
       },
     })
   },
+  getQuestList(ui_id) {
+    service.post('/QuestListByUser', {
+      UI_ID: ui_id,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      let qList = res.data.data;
+      qList.forEach(item => {
+        item.q = '/questionnaire/pages/systemQuestion/systemQuestion?type=1&qr_id=' + item.QR_ID;
+        item.Createdate = util.format(item.Createdate, 'yyyy.mm.dd');
+      })
+      this.setData({
+        questionList: qList
+      })
+    })
+  },
+  getRiskAssessment(ui_id) {
+    service.post('/RiskAssessmentByUser', {
+      UI_ID: ui_id,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      let qList = res.data.data;
+      qList.forEach(item => {
+        item.q = '/questionnaire/pages/systemQuestion/systemQuestion?type=2&qr_id=' + item.QR_ID;
+        item.Createdate = util.format(item.Createdate, 'yyyy.mm.dd');
+      })
+      this.setData({
+        riskAssessList: qList
+      })
+    })
+  },
   onChange(e) {
+    let activeIndex = e.detail.name;
+    if(this.data.active == activeIndex){
+        return;
+    }
+    if(activeIndex == 0){
+      this.getQuestList(app.globalData.custom.UI_ID);
+    }else{
+      this.getRiskAssessment(app.globalData.custom.UI_ID);
+    }
     this.setData({
       active: e.detail.name
     })
@@ -37,7 +77,8 @@ Page({
     query.exec((res) => {
       scrollHeight = height - res[0].height - 170;
       this.setData({
-        scrollHeight: scrollHeight
+        scrollHeight: scrollHeight,
+        custom: app.globalData.custom
       })
     })
   },
@@ -56,7 +97,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    //问卷列表
+    this.getQuestList(app.globalData.custom.UI_ID);
   },
 
   /**

@@ -1,4 +1,5 @@
 // pages/login/login.js
+var service = require('../../utils/request.js')
 Page({
 
   /**
@@ -11,13 +12,51 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.login({
+      success: function (res) {}
+    })
   },
   getPhoneNumber: function (e) {
     if (e.detail.errMsg == 'getPhoneNumber:ok') {
       //登录
-      console.log('登录成功')
-    }else if(e.detail.errMsg == 'getPhoneNumber:fail user deny'){
+      const {
+        encryptedData,
+        iv
+      } = e.detail;
+      //console.log(encryptedData, iv)
+      wx.login({
+        success(res) {
+          if (res.code) {
+            //发起网络请求
+            service.post('/WxUserLogin', {
+              code: res.code,
+              key: 'BD687B66ECDBED4E12C4320B0ABB3BB111'
+            }).then(res => {
+              service.post('/userPhoneBind', {
+                user_token: res.data.user_token,
+                encryptedDataStr: encryptedData,
+                iv: iv
+              }).then(res => {
+                const {
+                  phone,
+                  user_token
+                } = res.data;
+                wx.setStorageSync('token', user_token);
+                wx.setStorage({
+                  data: phone,
+                  key: 'phone',
+                })
+                wx.redirectTo({
+                  url: '/pages/selectStore/selectStore',
+                })
+              })
+            })
+          } else {
+            console.log('登录失败！' + res.errMsg)
+          }
+        }
+      })
+    } else if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
       //返回上一个页面
       console.log('登录失败')
     }

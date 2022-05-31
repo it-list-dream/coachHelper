@@ -1,18 +1,26 @@
 // pages/venueIntroduce/venueIntroduce.js
+var service = require('../../utils/request.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+   venueList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    service.post('/VenueIntroduce',{
+      gi_id:23
+    }).then(res=>{
+      console.log(res)
+      this.setData({
+        venueList:res.data.data
+      })
+    })
   },
 
   /**

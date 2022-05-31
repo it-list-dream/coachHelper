@@ -1,8 +1,8 @@
 <view class="mienContainer">
-    <view class="mien-item" wx:for="{{6}}">
-       <image src="../../assets/images/header.png"></image>
-       <text class="coach-name">欧阳燕燕</text>
-       <text class="having-class">累计上课162节</text>
-       <text class="goodat">健身、减脂、拉伸</text>
+    <view class="mien-item" wx:for="{{coachList}}" wx:key="index" wx:for-item="coach">
+       <image src="{{coach.AI_Face?coach.AI_Face:'../../assets/images/header.png'}}"></image>
+       <text class="coach-name">{{coach.AI_Name}}</text>
+       <text class="having-class">累计上课 {{coach.CS_Num}} 节</text>
+       <text class="goodat">{{coach.AI_GoodAt}}</text>
     </view>
 </view>

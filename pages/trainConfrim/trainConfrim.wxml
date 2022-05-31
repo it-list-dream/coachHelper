@@ -102,7 +102,7 @@
           rows="10"></textarea>
       </view>
       <view class="custom-sign">
-        <view class="sign-title">客户签字</view>
+        <view class="sign-title" bindtap="customSign">客户签字</view>
         <!-- <image src=""></image> -->
       </view>
       <view class="customconfrim">

@@ -11,23 +11,23 @@
    </view>
    <view class="posture-content">
       <view class="test-report" bindtap="testReport"
-         wx:for="{{testList}}" wx:key="index">
+         wx:for="{{testList}}" data-sid="{{item.SD_ID}}" wx:key="index">
          <view class="reportdetail">
             <view class="test-image">
                <image src="/assets/images/reporttips.png"></image>
             </view>
-            <view class="test-info">
+            <view class="test-info" bindtap="changeCheck" data-index="{{index}}" data-sid="{{item.SD_ID}}">
                <view class="top-box">
                   <text>体态评估</text>
                   <image wx:if="{{!isAssess}}" class="left-arrow" src="/assets/images/right2.png"></image>
-                  <view wx:else class="circle-box" bindtap="changeCheck" data-index="{{index}}" data-value="{{item.testName}}">
+                  <view wx:else class="circle-box">
                      <image src="/assets/images/selected.png" wx:if="{{item.selected}}"></image>
                      <text class="double-icon" wx:else></text>
                   </view>
                </view>
                <view class="bottom-box">
-                  <text>王教练</text>
-                  <text>2022.02.16</text>
+                  <text>{{item.AI_Name}}</text>
+                  <text>{{item.RecordDate}}</text>
                </view>
             </view>
          </view>

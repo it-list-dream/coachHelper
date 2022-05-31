@@ -1,5 +1,6 @@
 // pages/tabbar/home/home.js
 const app = getApp();
+var service = require('../../../utils/request.js')
 Page({
 
   /**
@@ -7,6 +8,7 @@ Page({
    */
   data: {
     tabbar: {},
+    classList: []
   },
   /**
    * 生命周期函数--监听页面加载
@@ -19,20 +21,21 @@ Page({
       navTop: app.globalData.navTop
     })
   },
-  courseIntroduce(){
+  courseIntroduce(e) {
+    let classes = e.currentTarget.dataset.course;
     wx.navigateTo({
-      url: '/pages/classDetail/classDetail',
+      url: `/pages/classDetail/classDetail?cp_name=${classes.CP_Name}&cp_content=${classes.CP_Content}&classtime=${classes.ClassTime}&cp_logo=${classes.CP_Logo}&saleCount=${classes.SaleCount}`,
     })
   },
-  moreText(){
-     wx.navigateTo({
-       url: '/pages/classType/classType',
-     })
+  moreText() {
+    wx.navigateTo({
+      url: '/pages/classType/classType',
+    })
   },
-  chooseStore(){
-     wx.navigateTo({
-       url: '/pages/selectStore/selectStore',
-     })
+  chooseStore() {
+    wx.navigateTo({
+      url: '/pages/selectStore/selectStore',
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -40,12 +43,19 @@ Page({
   onReady: function () {
 
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var gi_id = wx.getStorageSync('gi_id')
+    service.post('/CoachClassList', {
+      gi_id: gi_id 
+    }).then(res => {
+      console.log(res)
+      this.setData({
+        classList: res.data.data.slice(0, 4)
+      })
+    })
   },
 
   /**

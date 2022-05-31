@@ -1,5 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "van-cell": "@vant/weapp/cell/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index"
+  },
   "navigationBarBackgroundColor":"#2564F6",
   "navigationBarTextStyle":"white",
   "navigationBarTitleText":"训练方案"

@@ -1,6 +1,7 @@
 /* pages/haveClass/haveClass.wxss */
 page {
   background-color: #F5F5FF;
+  height: 100%;
 }
 
 .haveClassContainer .class-list {
@@ -48,7 +49,7 @@ page {
 .train-list {
   margin-top: 10rpx;
   background-color: #FFFFFF;
-  padding: 0 30rpx;
+  padding: 0 30rpx 60rpx;
 }
 
 .train-target .target-title {

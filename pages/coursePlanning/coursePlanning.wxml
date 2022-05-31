@@ -1,3 +1,4 @@
+<wxs module="utils" src="../../utils/timeUtil.wxs"></wxs>
 <view class="classPlainContainer">
   <view class='tab-wrapper'>
     <scroll-view class="tab-scroll-view" scroll-x="{{true}}" enable-flex>
@@ -15,20 +16,20 @@
     <!-- 滚动面板 -->
     <block>
       <scroll-view class="scroll-y" style="height:calc({{windowHeight}}px - 470rpx)" scroll-y>
-        <view class="class-item" wx:for="{{4}}">
+        <view class="class-item" wx:for="{{selectedClass[tabsActive].cList}}" wx:key="cp_id">
           <view class="class-tips">
             <view class="class-picture">
               <image src="/assets/images/fitness_img.png"></image>
             </view>
             <view class="class-info">
-              <view class="class-name">女性塑形课程</view>
-              <view class="class-price">￥300.0</view>
+              <view class="class-name">{{item.cp_name}}</view>
+              <view class="class-price">￥{{utils.filterUnitPrice(isPos,item.priceList,item.courseNum)}}</view>
             </view>
           </view>
           <view class="number-box">
-            <van-stepper value="{{ class_number }}" bind:change="changePrice" integer />
+            <van-stepper data-index="{{index}}" value="{{item.courseNum}}" bind:change="changePrice" integer />
           </view>
-          <view class="close">
+          <view class="close" data-index="{{index}}" bindtap="deleteClass">
             <image src="/assets/images/close1.png"></image>
           </view>
         </view>
@@ -36,9 +37,9 @@
       </scroll-view>
     </block>
   </view>
-  <addClass type-list="{{typeList}}" poupon-height="80vh" isChecked="{{false}}" is-show="{{showClass}}" bind:cancel="onCancel" bind:confrim="onConfrim"></addClass>
+  <addClass wx:if="{{showClass}}" selectList="{{utils.filterClass(selectedClass[tabsActive].cList)}}" classes="{{classList}}" height="80vh" multichoice="{{true}}" is-show="{{showClass}}" bind:cancel="onCancel" bind:confrim="onConfrim"></addClass>
   <view class="class-bottom-plain">
-    <view class="totalPrice">合计：￥6000</view>
+    <view class="totalPrice">合计：￥{{allPrice}}</view>
     <button class="price-confrim" bindtap="payMoney">确定</button>
   </view>
 </view>

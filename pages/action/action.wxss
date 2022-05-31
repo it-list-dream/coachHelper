@@ -3,8 +3,11 @@ page {
 }
 
 .action-header {
+  position: relative;
   height: 284rpx;
   background-color: #ffffff;
+  margin-bottom: 20rpx;
+  z-index: 100;
 }
 
 .search-box {
@@ -68,7 +71,6 @@ page {
 
 /*总体主盒子*/
 .actionContainer {
-  margin-top: 20rpx;
   position: relative;
   width: 100%;
   height: auto;
@@ -78,9 +80,9 @@ page {
 /*左侧栏主盒子*/
 .nav_left {
   /*设置行内块级元素（没使用定位）*/
-  display: inline-block;
+  float: left;
   width: 25%;
-  height: 100%;
+  height: calc(100vh - 284rpx - 220rpx);
   background: #f5f5f5;
   text-align: center;
 }
@@ -117,29 +119,23 @@ page {
 
 /*右侧栏主盒子*/
 .nav_right {
-  /*右侧盒子使用了绝对定位*/
-  position: absolute;
-  top: 0;
-  right: 0;
-  flex: 1;
+  float: right;
   /*宽度75%，高度占满，并使用百分比布局*/
   width: 75%;
-  height: 60vh;
-  padding: 0 30rpx;
-  box-sizing: border-box;
+  height: calc(100vh - 284rpx - 220rpx);
   background: #fff;
+  overflow: hidden;
 }
 
-.right_scroll,
-.left_scroll {
-  height: 60vh;
+.nav_right .nav_list {
+  padding: 0 30rpx;
 }
 
 /*右侧栏list的item*/
 .nav_right .nav_right_items {
   display: flex;
   align-items: center;
-  height: 177rpx;
+  height: 176rpx;
   border-bottom: 1px solid #F7F7F5;
   overflow: hidden;
 }
@@ -182,7 +178,7 @@ page {
   width: 60rpx;
   flex-shrink: 0;
   box-sizing: border-box;
-  margin-bottom: 30rpx;
+  padding-bottom: 30rpx;
 }
 
 .right_items_right image {
@@ -191,19 +187,20 @@ page {
 }
 
 .nodata_text {
+  padding-top: 60rpx;
   color: black;
   font-size: 14px;
   text-align: center;
 }
 
 .action-bottom {
-  height: 200rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   background: #FFFFFF;
 }
 
-/* .action-bottom .none-box {
-  height: 124rpx;
-} */
 
 .action-bottom .action-details {
   display: flex;
@@ -213,6 +210,7 @@ page {
   height: 200rpx;
   background: #FFFFFF;
   box-shadow: 0px 0px 20rpx 0px rgba(16, 7, 82, 0.06);
+  box-sizing: border-box;
 }
 
 .details image {
@@ -248,9 +246,11 @@ page {
   font-size: 30rpx;
   color: #A8A8A8;
 }
-.mask-title .clear text{
+
+.mask-title .clear text {
   vertical-align: middle;
 }
+
 .mask-title .clear image {
   width: 32rpx;
   height: 32rpx;
@@ -282,4 +282,55 @@ page {
   background: #FFFFFF;
   box-shadow: 0px 0px 20rpx 0px rgba(16, 7, 82, 0.06);
   box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.animat{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+.animat .icon{
+  width: 50rpx;
+  height: 50rpx;
+}
+/* 动画 */
+@keyframes runTop {
+  0% {
+    top: var(--startTop);
+    opacity: 1;
+  }
+
+  3% {
+    top: var(--startTop);
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: var(--endTop);
+    opacity: 0;
+  }
+}
+
+@keyframes runLeft {
+  0% {
+    left: var(--startLeft);
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    left: var(--endLeft);
+    opacity: 0;
+  }
 }

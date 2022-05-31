@@ -12,7 +12,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      console.log(options)
+      this.ui_id = options.ui_id;
   },
 
   /**
@@ -23,12 +24,12 @@ Page({
   },
   toQuestionnaire(){
       wx.navigateTo({
-        url: '/questionnaire/pages/question/question',
+        url: '/questionnaire/pages/question/question?ui_id='+this.ui_id,
       })
   },
   toRisk(){
     wx.navigateTo({
-      url: '/questionnaire/pages/riskEvaluation/riskEvaluation',
+      url: '/questionnaire/pages/riskEvaluation/riskEvaluation?ui_id='+this.ui_id,
     })
   },
   /**

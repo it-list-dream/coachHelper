@@ -22,6 +22,10 @@ Component({
     isBorder: {
       type: Boolean,
       value: false
+    },
+    icon: {
+      type: Boolean,
+      value:false
     }
   },
   lifetimes: {

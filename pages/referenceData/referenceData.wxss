@@ -108,12 +108,13 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 
 .van-radio-group {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 0 30rpx;
 }
 
 .van-radio {
   margin-bottom: 40rpx;
+  margin-right: 50rpx !important;
 }
 
 .van-radio__label {

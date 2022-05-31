@@ -85,9 +85,11 @@
   justify-content: center;
   align-items: center;
 }
-.icon-list .save-box{
+
+.icon-list .save-box {
   margin-left: 140rpx;
 }
+
 .icon-list .icon image {
   width: 66rpx;
   height: 66rpx;
@@ -98,9 +100,9 @@
   font-size: 28rpx;
   color: #222222;
 }
-/* 海报 */
 
-/* .hideCanvas {
+/* 海报 */
+.hideCanvas {
   display: block;
   position: fixed;
   left: -1000px;
@@ -108,4 +110,4 @@
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-} */
+}

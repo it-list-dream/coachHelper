@@ -1,0 +1,5 @@
+<view class="leagueContainer">
+  <view class="league" wx:for="{{togetherList}}" wx:key="index">
+     <image src="https://img2.baidu.com/it/u=3782104061,3786866779&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500"></image>
+  </view>
+</view>

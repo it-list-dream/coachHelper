@@ -14,14 +14,15 @@ Page({
       },
       {
         testName: "李教练",
-        testTime: "2021-10-03",
+        testTime: "2021-12-01",
         selected: false
       },
       {
-        testName: "张教练",
-        testTime: "2021-10-09",
+        testName: "唐教练",
+        testTime: "2022-1-01",
         selected: false
       }
+     
     ],
     test: []
   },
@@ -41,14 +42,18 @@ Page({
     let contrastText = this.data.btnType,
       isFlag = this.data.isComparison,
       testList = this.data.testList;
-    if (testList.length < 2) {
-      return;
-    }
     isFlag = !isFlag;
     contrastText = isFlag ? '取消' : "对比";
+    if(contrastText == '取消'){
+      testList.forEach((item,index)=>{
+          item.selected = false
+      })
+    }
     this.setData({
+      testList:testList,
       isComparison: isFlag,
-      btnType: contrastText
+      btnType: contrastText,
+      test:[]
     })
   },
   test() {
@@ -83,8 +88,8 @@ Page({
       }
       test.push(value);
     } else {
-      for (var j in test) {
-        if (test[j] == value) {
+      for (var j of test) {
+        if (j == value) {
           test.splice(j, 1);
         }
       }

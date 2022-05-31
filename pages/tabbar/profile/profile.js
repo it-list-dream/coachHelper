@@ -1,22 +1,19 @@
 // pages/tabbar/profile/profile.js
 const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    tabbar: {}
+    tabbar: {},
+    isLogin: false,
+    roleName: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  doLogin(){
-      wx.navigateTo({
-        url: '/pages/login/login',
-      })
-  },
+
   onLoad: function (options) {
     this.setData({
       menuRight: app.globalData.menuRight,
@@ -24,6 +21,11 @@ Page({
       navTop: app.globalData.navTop,
     })
     app.editTabbar();
+  },
+  doLogin() {
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
   },
   toChooseStore() {
     wx.navigateTo({
@@ -36,11 +38,11 @@ Page({
     })
   },
   turnClass() {
-     wx.navigateTo({
-       url: '/pages/memberTurnClass/memberTurnClass',
-     })
+    wx.navigateTo({
+      url: '/pages/memberTurnClass/memberTurnClass',
+    })
   },
-  turnCoach(){
+  turnCoach() {
     wx.navigateTo({
       url: '/pages/turnCoach/turnCoach',
     })
@@ -56,9 +58,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const {RoleName} = wx.getStorageSync('coach');
+    if (app.globalData.phoneNumber || wx.getStorageInfoSync('phone')) {
+      this.setData({
+        isLogin: true,
+        RoleName:RoleName
+      })
+    }
   },
-
+  editProfile() {
+    wx.navigateTo({
+      url: '/pages/personalSet/personalSet',
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

@@ -1,57 +1,50 @@
 // pages/selectStore/selectStore.js
+var service = require('../../utils/request.js');
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-       brandList:[
-         {
-          brandName:'如渔科技',
-          brandCount:2,
-          gymList:[
-            {
-              gymName:"徐汇店",
-              gymAddress:"上海市徐汇区永升大厦4层",
-              isSelf:false
-            },
-            {
-              gymName:"银都店",
-              gymAddress:"上海市闵行区IF如果B栋402",
-              isSelf:false
-            }
-          ]
-       },
-       {
-        brandName:'帕姆猫健身',
-        brandCount:3,
-        gymList:[
-          {
-            gymName:"徐帕姆猫健身(嘉里不夜城店)",
-            gymAddress:"上海市静安区梅园路277号102-1(201-203室)",
-            isSelf:true
-          },
-          {
-            gymName:"帕姆猫健身游泳(徐汇天然居)",
-            gymAddress:"上海市徐汇区百色路206号",
-            isSelf:false
-          },
-          {
-            gymName:"帕姆猫健身(普陀区长风大悦城店)",
-            gymAddress:"上海市普陀区大渡河路长风大悦城4楼",
-            isSelf:false
-          }
-        ]
-     }]
+    allBrand: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var brand = {},
+      allList = [];
+    service.post('/searchGymListByPhone').then(res => {
+      allList = res.data.data;
+      allList.forEach(item => {
+        brand.BrandName = item.BrandName;
+        item.checked = false;
+      })
+      brand.brandCount = allList.length;
+      brand.list = allList;
+      this.setData({
+        allBrand: brand
+      })
+    })
   },
-
+  switchStore(e) {
+    var brand = e.currentTarget.dataset.store,
+      storeList = this.data.allBrand.list;
+    for (var i = 0; i < storeList.length; i++) {
+       if(storeList[i].FK_GB_ID == brand.FK_GB_ID){
+        storeList[i].checked = true;
+       }else{
+        storeList[i].checked = false;
+       }
+    }
+    wx.setStorageSync("gi_id", brand.GI_ID);
+    wx.setStorageSync('coach', brand);
+    wx.navigateBack({
+      delta: 1,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

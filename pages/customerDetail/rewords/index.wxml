@@ -43,9 +43,10 @@
             </view>
             <view class="r-info">王教练</view>
           </view>
+          <!--  <ct-dialog is-show="{{isClose}}" limit="140" dialog-title="编辑跟进记录" bind:cancelEvent="cancel" bind:confirmEvent="confrim"></ct-dialog> -->
         </view>
       </view>
     </view>
   </view>
-  <ct-dialog is-show="{{isClose}}" bind:cancelEvent="cancel" bind:confirmEvent="confrim"></ct-dialog>
+  <ct-dialog is-show="{{isClose}}" limit="140" dialog-title="添加跟进记录" bind:cancelEvent="cancel" bind:confirmEvent="confrim"></ct-dialog>
 </view>

@@ -1,22 +1,11 @@
 // app.js
 App({
   onLaunch() {
-    // 展示本地存储能力
-    let menuButtonObject = wx.getMenuButtonBoundingClientRect();
-    wx.getSystemInfo({
-      success: res => {
-        let statusBarHeight = res.statusBarHeight,
-          navTop = menuButtonObject.top, //胶囊按钮与顶部的距离
-          navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2; //导航高度
-        this.globalData.menuRight = res.screenWidth - menuButtonObject.right;
-        this.globalData.navHeight = navHeight;
-        this.globalData.navTop = navTop;
-        this.globalData.windowHeight = res.windowHeight;
-      },
-      fail(err) {
-        console.log(err);
-      }
-    })
+    var phone = wx.getStorageSync('phone');
+    if (phone) {
+      this.globalData.phoneNumber = phone;
+    }
+    this.getMenuInfo();
     //获取设备信息
     this.getSystemInfo();
   },
@@ -34,6 +23,23 @@ App({
       tabbar: tabbar
     });
   },
+  getMenuInfo() {
+    let menuButtonObject = wx.getMenuButtonBoundingClientRect();
+    wx.getSystemInfo({
+      success: res => {
+        let statusBarHeight = res.statusBarHeight,
+          navTop = menuButtonObject.top, //胶囊按钮与顶部的距离
+          navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2; //导航高度
+        this.globalData.menuRight = res.screenWidth - menuButtonObject.right;
+        this.globalData.navHeight = navHeight;
+        this.globalData.navTop = navTop;
+        this.globalData.windowHeight = res.windowHeight;
+      },
+      fail(err) {
+        console.log(err);
+      }
+    })
+  },
   getSystemInfo: function () {
     var that = this;
     wx.getSystemInfo({
@@ -44,7 +50,6 @@ App({
   },
   globalData: {
     systemInfo: null, //客户端设备信息
-    // userInfo: null,
     tabBar: {
       "backgroundColor": "#ffffff",
       "color": "#222222",
@@ -82,7 +87,11 @@ App({
       ]
     },
     //是否是案例
-    isCase:false,
-    isExportTemplate:false
+    isCase: false,
+    //是否是导出的模板
+    isExportTemplate: false,
+    //是否登录
+    phoneNumber: null,
+    custom:{}
   }
 })

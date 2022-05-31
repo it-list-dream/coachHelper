@@ -28,6 +28,7 @@ page {
 .mien-item image {
   width: 80rpx;
   height: 80rpx;
+  border-radius: 50%;
 }
 .mien-item .coach-name{
   margin-top: 22rpx;

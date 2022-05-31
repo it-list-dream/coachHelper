@@ -58,6 +58,7 @@
 /*  */
 .posture-content {
   margin-top: 30rpx;
+  padding-bottom: 86rpx;
 }
 
 .test-report {
@@ -138,6 +139,9 @@
 .test-info .bottom-box {
   font-size: 26rpx;
   color: #333333;
+}
+.test-info .bottom-box>text:last-child{
+  margin-left: 20rpx;
 }
 
 /*  */

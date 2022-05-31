@@ -1,0 +1,17 @@
+/* pages/leagueLecture/leagueLecture.wxss */
+.leagueContainer {
+  padding: 40rpx;
+}
+
+.leagueContainer .league {
+  display: flex;
+  justify-content: space-between;
+  width: 322rpx;
+  height: 224rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.leagueContainer .league image{
+  width: 100%;
+  height: 224rpx;
+}

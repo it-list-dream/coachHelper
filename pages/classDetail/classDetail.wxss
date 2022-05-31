@@ -1,11 +1,9 @@
 /* pages/classDettail/classDetail.wxss */
-page {
-  background-color: #F5F3FF;
-}
 
 .classes_header {
   min-height: 655rpx;
   background-color: #ffffff;
+  border-bottom: 10rpx solid #F5F3FF;
 }
 
 .classes-bg {
@@ -68,8 +66,9 @@ page {
   width: 100%;
   padding: 30rpx;
   background-color: #ffffff;
-  min-height: 540rpx;
   box-sizing: border-box;
+  /* min-height: 540rpx;
+   */
 }
 
 .classes_content .classes-title {

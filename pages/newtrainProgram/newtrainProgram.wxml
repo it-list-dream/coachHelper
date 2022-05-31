@@ -1,4 +1,3 @@
-<!--pages/newtrainProgram/newtrainProgram.wxml-->
 <view class="newTrainContainer">
   <view class="newTrainIndex">
     <navigator url="/pages/referenceData/referenceData" hover-class="none" class="setTrainBox">
@@ -7,24 +6,24 @@
     <view class="body-data">
       <view class="body-weight">
         <view>身体数据</view>
-        <view class="weight-num">50</view>
+        <view class="weight-num">{{bodyInfo.UserWeight?bodyInfo.UserWeight:'---'}}</view>
         <view>体重（kg）</view>
       </view>
       <view class="body-others">
         <view class="body-others-grid">
-          <text>180</text>
+          <text>{{bodyInfo.UserHeight?bodyInfo.UserHeight:'---'}}</text>
           <text>身高（cm）</text>
         </view>
         <view class="body-others-grid">
-          <text>22.6</text>
+          <text>{{bodyInfo.BMI?bodyInfo.BMI:'---'}}</text>
           <text>BMI</text>
         </view>
         <view class="body-others-grid">
-          <text>19.9</text>
+          <text>{{bodyInfo.BodyFatRatio?bodyInfo.BodyFatRatio:'---'}}</text>
           <text>体脂率</text>
         </view>
         <view class="body-others-grid">
-          <text>28.1</text>
+          <text>{{bodyInfo.MuscleMass?bodyInfo.MuscleMass:'---'}}</text>
           <text>肌肉量（kg）</text>
         </view>
       </view>
@@ -33,27 +32,114 @@
   <view class="fitness-target">
     <view class="fitness-title">健身目标</view>
     <view class="fitness-content">
-      <view class="fitness-tg">增肌</view>
-      <view class="fitness-tg">瘦身</view>
+      <view class="fitness-tg" wx:for="{{bodyInfo.fitnessGoals}}" wx:for-index="idx" wx:key="idx">{{item}}</view>
     </view>
   </view>
   <!--  -->
   <view class="runCount">
     <view class="run-item">
       <image src="/assets/images/train/runCount.png"></image>
-      <text>健身频率3次/周</text>
+      <text>健身频率 {{bodyInfo.frequency?bodyInfo.frequency+'次/周':'---'}}</text>
     </view>
     <view class="run-item">
       <image src="/assets/images/train/period.png"></image>
-      <text>健身总周期3个月</text>
+      <text>健身总周期 {{bodyInfo.period?bodyInfo.period:'---'}}</text>
     </view>
   </view>
   <!-- 时期 -->
   <view class="period-list">
-    <block wx:for="{{periodList}}" wx:for-index="idx" wx:key="idx">
-      <stage-list activeName="{{['step'+idx]}}"  periodTitle="{{item}}"></stage-list>
-    </block>
+    <van-collapse value="{{ activeNames }}" bind:change="onChange">
+      <block wx:for="{{periodList}}" wx:for-index="idx" wx:key="idx">
+        <van-collapse-item custom-class="collapse1" title="{{item.collapseTitle}}" name="{{collapseList[idx]}}">
+          <view class="collaspe-rows-title">训练重点</view>
+          <view class="train-period-item">
+            <view wx:if="{{item.pointList.length>0}}" class="tbox">
+              <view class="period-item-left">
+                <text wx:for="{{item.pointList}}" wx:for-index="i" wx:key="i">{{item}}</text>
+              </view>
+              <!-- 编辑 -->
+              <view class="period-item-right" bindtap="editTrain" data-index="{{idx}}" data-type="0">
+                <image src="/assets/images/train/editTrain.png"></image>
+              </view>
+            </view>
+            <!--  -->
+            <view wx:else class="train-add" bindtap="editTrain" data-index="{{idx}}" data-type="0">+添加项目</view>
+          </view>
+          <train-model wx:if="{{item.trainModel}}" checked-list="{{item.pointList}}" model-list="{{trainPointList}}" model-title="添加训练重点" show-model="{{item.trainModel}}"
+            bind:off="close" bind:trainConfrim="onConfrim" bind:addTrain="addVlaue" data-index="{{idx}}"></train-model>
+          <view class="collaspe-rows-title">训练项目</view>
+          <view class="train-period-item">
+            <view wx:if="{{item.projectList.length>0}}" class="tbox">
+              <view class="period-item-left">
+                <text wx:for="{{ item.projectList}}" wx:for-index="j" wx:key="j">{{item}}</text>
+              </view>
+              <view class="period-item-right" bindtap="editTrain" data-type="1" data-index="{{idx}}">
+                <image src="/assets/images/train/editTrain.png"></image>
+              </view>
+            </view>
+            <view wx:else class="train-add" bindtap="editTrain" data-type="1" data-index="{{idx}}">+添加项目</view>
+          </view>
+          <train-model wx:if="{{item.projectModel}}" checked-list="{{item.projectList}}"  model-list="{{ trainProjectList}}" model-title="添加训练项目" show-model="{{item.projectModel}}"
+            bind:off="close2" bind:trainConfrim="onConfrim2" bind:addTrain="addVlaue" data-index="{{idx}}"></train-model>
+          <!-- 训练目标  -->
+          <view class="collaspe-rows-title">训练目标</view>
+          <view class="train-period-item jieduan">
+            <text>体重记录</text>
+            <picker mode="multiSelector" class="weight-picker" header-text="体重记录(kg)" range="{{weightList}}"
+              bindchange="bindWeightChange" bindcolumnchange="weightColumnChange" value="{{item.weightArr}}"
+              data-id="{{idx}}">
+              {{item.weight}}
+              <text>kg</text>
+            </picker>
+          </view>
+          <view class="train-period-item jieduan">
+            <text>体脂变化</text>
+            <picker mode="multiSelector" class="weight-picker" header-text="体脂变化（%）" range="{{fatList}}"
+              bindchange="bindFatChange" bindcolumnchange="fatColumnChange" value="{{item.fatArr}}" data-id="{{idx}}">
+              {{item.fat}}
+              <text>%</text>
+            </picker>
+          </view>
+          <view class="train-period-item jieduan">
+            <text>肌肉变化</text>
+            <picker mode="multiSelector" class="weight-picker" header-text="肌肉变化(kg)" range="{{muscleList}}"
+              bindchange="bindMucleChange" data-id="{{idx}}" bindcolumnchange="mucleColumnChange"
+              value="{{item.muscleArr}}">
+              {{item.muscle}}
+              <text>kg</text>
+            </picker>
+          </view>
+          <view class="train-period-item jieduan">
+            <text>阶段周期</text>
+            <picker mode="multiSelector" class="stageTime" header-text="阶段周期" range="{{phaseCycleList}}"
+              bindchange="bindTimesChange" bindcolumnchange='timesColumnChange' value="{{item.phaseArr}}"
+              data-id="{{idx}}">
+              <!-- 周或者月 -->
+              <text>{{item.period}}{{item.period.length>0?'':'周'}}</text>
+            </picker>
+          </view>
+          <!-- 一共多少周除以 7，得到每天 -->
+          <view class="train-period-item jieduan">
+            <text>阶段频率</text>
+            <picker mode="selector" class="pCount" header-text="阶段评率" range="{{frequencyList}}"
+              bindchange="bindCountChange" value="{{item.frequencyIndex}}" id="{{idx}}">
+              {{item.frequency}}
+              <text>次/周</text>
+            </picker>
+          </view>
+          <view class="train-period-item jieduan">
+            <text>阶段次数</text>
+            <text>{{item.stage_num}}次</text>
+          </view>
+          <!-- 备注 -->
+          <view class="train-reamrk">
+            <textarea value="{{item.remarks}}" bindinput="getRemarks" data-index="{{idx}}" placeholder="备注" class="train-remark-text"></textarea>
+            <view class="limitCharacter">{{item.remarks.length}}/200</view>
+          </view>
+        </van-collapse-item>
+      </block>
+    </van-collapse>
     <view class="addMyStage" bindtap="addperiod">+ 添加阶段</view>
-    <button size="mini" class="createBtn">创建训练方案</button>
+    <button size="mini" class="createBtn" bindtap="StageDataSave">创建训练方案</button>
   </view>
 </view>

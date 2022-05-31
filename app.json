@@ -1,11 +1,12 @@
 {
   "pages": [
     "pages/tabbar/home/home",
+    "pages/leagueLecture/leagueLecture",
     "pages/coachMien/coachMien",
     "pages/venueIntroduce/venueIntroduce",
     "pages/signature/signature",
     "pages/tabbar/profile/profile",
-    "pages/selectCoach/selectCoach",
+    "pages/selectMember/selectMember",
     "pages/amountInclass/amountInclass",
     "pages/personalSet/personalSet",
     "pages/allocationCustom/allocationCustom",
@@ -60,7 +61,8 @@
         "pages/riskEvaluation/riskEvaluation",
         "pages/systemQuestion/systemQuestion",
         "pages/systemList/systemList"
-      ]
+      ],
+      "independent": true
     },{
       "root": "evaluation",
       "pages": [
@@ -77,6 +79,15 @@
       ]
     }
   ],
+  "preloadRule": {
+    "pages/tabbar/home/home": {
+      "network": "all",
+      "packages": ["evaluation"]
+    },
+    "pages/chooseCustom/chooseCustom": {
+      "packages": ["questionnaire"]
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

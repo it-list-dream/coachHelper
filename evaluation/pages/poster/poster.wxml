@@ -1,4 +1,4 @@
-<!-- <view class="poster">
+<view class="poster">
   <image class="poster-bg" src="../../images/bg.png"></image>
   <view class="poster-item">
     <view class="poster-title">3天效果对比</view>
@@ -49,11 +49,10 @@
     <image src="../../images/share/share.png"></image>
     <text>朋友圈</text>
   </view>
-  <view class="icon save-box">
+  <view class="icon save-box" bindtap="drawCanvas">
     <image src="../../images/share/save.png"></image>
     <text>保存海报</text>
   </view>
-</view> -->
+</view>
 <!-- width: 750px;height: 1125px;  zoom:0.6; -->
-
-<canvas class="hideCanvas"  canvas-id="shareCanvas" style="width:{{canvasWidth}}px;height: 1160px;"></canvas>
+<canvas class="hideCanvas"  canvas-id="shareCanvas" style="width:750px;height: 2100px;zoom:0.5;"></canvas>

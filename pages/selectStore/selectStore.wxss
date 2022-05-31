@@ -4,11 +4,9 @@ page {
 }
 
 .gym {
-  width: 100%;
   height: auto;
   padding: 0 30rpx;
   background-color: #ffffff;
-  box-sizing: border-box;
 }
 
 .gym:nth-child(n+2) {
@@ -32,9 +30,7 @@ page {
 .store-detail {
   position: relative;
   width: 100%;
-  height: 158rpx;
-  padding: 20rpx 0;
-  box-sizing: border-box;
+  padding: 40rpx 0;
   font-size: 30rpx;
   border-bottom: 1px solid #DEDEDE;
 }
@@ -44,28 +40,21 @@ page {
 }
 
 .store-detail>view:first-child {
-  margin-top: 16rpx;
   font-weight: bold;
   color: #000000;
 }
 
-.store-detail .gym-address{
+.store-detail .gym-address {
+  margin-top: 10rpx;
   color: #333333;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   overflow: hidden;
 }
 
-.selfStore {
+.icon-box {
   position: absolute;
-  top: 12rpx;
-  right: 0;
-  width: 147rpx;
-  height: 51rpx;
-  line-height: 51rpx;
-  text-align: center;
-  background: #FB8923;
-  border-radius: 9rpx;
-  font-size: 28rpx;
-  color: #FFFFFF;
+  right: 14rpx;
+  top: 14rpx;
 }

@@ -1,3 +1,0 @@
-<view class="textarea-wrapper">
-   <textarea class="textarea" placeholder-style="color:#9999999;" placeholder="{{placeholder}}" maxlength="{{maxlength}}" 	auto-focus="{{isFocus}}"></textarea>
-</view>

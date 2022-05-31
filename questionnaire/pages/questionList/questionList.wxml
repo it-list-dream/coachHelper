@@ -3,9 +3,9 @@
   <view class="questionList-head">
     <view class="member">
       <image src="/assets/images/header.png"></image>
-      <view class="member-name">娜娜</view>
+      <view class="member-name">{{custom.UI_Name}}</view>
     </view>
-    <navigator url="/questionnaire/pages/systemList/systemList" hover-class="none" class="addquestionBtn"> <text
+    <navigator url="/questionnaire/pages/systemList/systemList?ui_id={{custom.UI_ID}}" hover-class="none" class="addquestionBtn"><text
         style="font-size:36rpx;">+</text>添加</navigator>
   </view>
   <van-tabs active="{{ active }}" title-inactive-color="#222222" title-active-color="#2665F6" bind:change="onChange"
@@ -13,8 +13,8 @@
     <van-tab title="基础问卷">
       <scroll-view class="scroll-y" style="height:{{scrollHeight}}px;" scroll-y>
         <view class="scroll-content">
-          <block wx:for="{{10}}">
-            <template is="question-item" data="{{...params}}"></template>
+          <block wx:for="{{questionList}}" wx:key="j" wx:for-index="j">
+            <template is="question-item" data="{{...item}}"></template>
           </block>
         </view>
       </scroll-view>
@@ -22,8 +22,8 @@
     <van-tab title="风险评估">
       <scroll-view class="scroll-y" style="height:{{scrollHeight}}px;" scroll-y>
         <view class="scroll-content">
-          <block wx:for="{{10}}">
-            <template is="question-item" data="{{...params2}}"></template>
+          <block wx:for="{{riskAssessList}}" wx:key="index">
+            <template is="question-item" data="{{...item}}"></template>
           </block>
         </view>
       </scroll-view>

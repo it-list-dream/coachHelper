@@ -105,7 +105,8 @@
 }
 
 .fitness-content .fitness-tg {
-  width: 100rpx;
+  min-width: 100rpx;
+  padding:0 10rpx;
   height: 40rpx;
   line-height: 40rpx;
   text-align: center;
@@ -168,13 +169,10 @@
 }
 
 .period-list {
-  margin-top: 32rpx;
-  margin: 0 auto;
+  margin: 32rpx auto 0;
   width: 690rpx;
   height: auto;
   background: #FFFFFF;
-  box-shadow: 0px 0px 12rpx 0px rgba(0, 0, 0, 0.08);
-  border-radius: 12rpx 12rpx 0px 0px;
 }
 
 /*  */
@@ -188,6 +186,120 @@
   border: 2rpx dotted #DCDCDC;
 }
 
+/*  */
+
+.collapse1 {
+   margin-bottom: 20rpx !important;
+  box-shadow: 0px 0px 12rpx 0px rgba(0, 0, 0, 0.08) !important;
+  border-radius: 12rpx 12rpx 0px 0px !important;
+}
+
+
+.collaspe-rows-title {
+  padding-left: 30rpx;
+  position: relative;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.collaspe-rows-title::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 6rpx;
+  height: 26rpx;
+  background: #FF9500;
+}
+
+.train-period-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 630rpx;
+  height: 80rpx;
+  border: 1px solid #E9E9E9;
+  padding: 0 5rpx;
+  box-sizing: border-box;
+  margin: 15rpx 0;
+}
+
+.train-period-item>.tbox {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.train-add {
+  width: 100%;
+  height: 100%;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.train-period-item .period-item-left text {
+  margin: 0 20rpx;
+  display: inline-block;
+}
+
+.train-period-item .period-item-right image {
+  margin-right: 14rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.jieduan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 72rpx 0 28rpx;
+}
+
+.pCount{
+  flex: 1;
+  text-align: right;
+}
+
+.weight-picker {
+  text-align: right;
+  width: 300rpx;
+}
+
+.stageTime{
+  flex: 1;
+  text-align: right;
+}
+
+.train-reamrk {
+  margin: 0 auto;
+  margin-top: 30rpx;
+  width: 630rpx;
+  height: 280rpx;
+  border: 2rpx dotted #D7D7D7;
+}
+
+.train-reamrk .train-remark-text {
+  width: 100%;
+  box-sizing: border-box;
+  height: 220rpx;
+  padding: 24rpx;
+  font-size: 30rpx;
+  color: #222222;
+}
+
+.limitCharacter {
+  padding: 0 24rpx;
+  text-align: right;
+}
+
+/*  */
+
 .createBtn {
   margin: 0 auto;
   margin-top: 116rpx;
@@ -198,4 +310,3 @@
   color: #FFFFFF;
   border-radius: 12px;
 }
-

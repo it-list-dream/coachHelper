@@ -1,19 +1,45 @@
-// components/class-type/class-type.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    pouponHeight: {
+    height: {
       type: String,
       value: '60vh'
     },
-    typeList: {
+    classes: {
       type: Array,
-      value: []
+      value: {
+        type: []
+      },
+      observer: function (newList) {
+        var selectList = this.properties.selectList;
+        if (!this.properties.multichoice) {
+          this.setData({
+            selected: 0
+          })
+        }
+        for (let i = 0; i < newList.length; i++) {
+          for (let j = 0; j < selectList.length; j++) {
+            if (selectList[j] == i) {
+              newList[i].checked = true;
+            }
+          }
+        };
+        this.setData({
+          courseList: newList
+        })
+      }
+    },
+    //选中的数组
+    selectList: {
+      type: Array,
+      value: {
+        type: []
+      }
     },
     //是否默认选中一个
-    isChecked: {
+    multichoice: {
       type: Boolean,
       value: false
     },
@@ -23,30 +49,16 @@ Component({
     }
   },
   lifetimes: {
-    attached() {
-      this.setData({
-        list: this.properties.typeList
-      })
-    }
-  },
-  observers: {
-    'typeList': function (val) {
-      //console.log(this.properties.isChecked);
-      if (this.properties.isChecked) {
-        for (let i = 0; i < val.length; i++) {
-          if (!val[i].checked) {
-            val[0].checked = true;
-          }
-        }
-      }
-    }
+    attached() {}
   },
   /**
    * 组件的初始数据
    */
   data: {
     show: true,
-    list: []
+    courseList: [],
+    //单选
+    selected: -1,
   },
 
   /**
@@ -54,44 +66,25 @@ Component({
    */
   methods: {
     onClose(e) {
-      let index = e.currentTarget.dataset.index,
-        myList = this.data.list;
-      if (index > 0) {
-        for (let i = 0; i < myList.length; i++) {
-          if (myList[i].checked) {
-            myList.checked = false;
-          }
-        }
-      }
       this.triggerEvent('cancel')
     },
     classConfrim() {
-      console.log('确定按钮')
-      let typeList = this.data.list;
-      this.triggerEvent('confrim', typeList)
+      //console.log('确定按钮')
+      var typeList = this.data.courseList;
+      this.triggerEvent('confrim', typeList.filter(item=>item.checked))
     },
     selectedType(e) {
-      let type = e.currentTarget.dataset.type;
-      let allList = this.data.list;
-      if (this.properties.isChecked) {
-        //console.log('fsdf')
-        for (let j = 0; j < allList.length; j++) {
-          if (allList[j].name == type.name) {
-            allList[j].checked = true;
-          }else{
-            allList[j].checked = false;
-          }
-        }
-      } else {
-        for (let i = 0; i < allList.length; i++) {
-          if (allList[i].name == type.name) {
-            allList[i].checked = !allList[i].checked
-          }
+      let type = e.currentTarget.dataset.type,
+        courseList = this.data.courseList;
+      if (this.properties.multichoice) {
+        for (let i = 0; i < courseList.length; i++) {
+           if(courseList[i].cp_id == type.cp_id){
+            courseList[i].checked = !courseList[i].checked;
+           }
         }
       }
-      console.log(allList)
       this.setData({
-        list: allList
+        courseList:courseList
       })
     }
   }

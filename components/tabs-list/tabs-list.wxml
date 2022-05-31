@@ -2,10 +2,14 @@
 <view class="tab-list">
   <scroll-view scroll-x="true" class="scroll-view-x" style="border-bottom:{{isBorder?'1px solid #E6EAF1':''}}">
     <view class="scroll-view-item" wx:for="{{tList}}" wx:key="*this" hover-class="none">
-      <view class="{{currentTab==(index) ? 'on' : ''}}" bindtap="_swichNav" data-current="{{index}}" hover-class="none">{{ item }}</view>
+      <view class="tabs2 {{currentTab==(index) ? 'on' : ''}}" bindtap="_swichNav" data-current="{{index}}" hover-class="none">
+        <view> {{ item }}</view>
+        <!-- icon -->
+        <view class="icon {{currentTab == index?'triangle-up':''}}" wx:if="{{icon}}"></view>
+      </view>
     </view>
   </scroll-view>
   <!--内容列表-->
-  <slot>
-  </slot>
+  <slot name="nav-top"></slot>
+  <slot></slot>
 </view>

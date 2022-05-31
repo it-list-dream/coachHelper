@@ -1,5 +1,6 @@
 // pages/chooseCustom/chooseCustom.js
-const app = getApp()
+const app = getApp();
+let service = require('../../../utils/request.js')
 Page({
 
   /**
@@ -32,7 +33,11 @@ Page({
     ],
     tabbar: {},
     scrollHeight: 0,
-    filterIndex:0
+    filterIndex: 0,
+    searchText: "",
+    //分页
+    pageIndex:1,
+    pageSize:20
   },
   /**
    * 生命周期函数--监听页面加载
@@ -44,6 +49,23 @@ Page({
         //console.log(result)
         this.getNodeHeight(result.windowHeight);
       },
+    })
+    //公海池
+    this.getPublicWaters();
+  },
+  getPublicWaters() {
+    var jsonStr = {
+      gi_id: wx.getStorageSync('gi_id'),
+      searchText: this.data.searchText,
+      pageIndex: this.data.pageIndex,
+      pageSize: 20,
+      userType: 0
+    };
+    service.post('/PublicWaters', {
+      user_token: wx.getStorageSync('token'),
+      json:JSON.stringify(jsonStr)
+    }).then(res=>{
+      console.log(res)
     })
   },
   swichNav: function (event) {
@@ -77,14 +99,14 @@ Page({
     query.exec(function (res) {
       sHeight = height - res[0].height - Math.ceil(res[1].height) - 70;
       that.setData({
-        scrollHeight:sHeight
+        scrollHeight: sHeight
       })
     })
   },
-  filterMember(e){
-     this.setData({
-       filterIndex:e.currentTarget.dataset.index
-     })
+  filterMember(e) {
+    this.setData({
+      filterIndex: e.currentTarget.dataset.index
+    })
   },
   /**
    * 生命周期函数--监听页面显示

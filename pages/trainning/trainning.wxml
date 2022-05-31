@@ -1,29 +1,34 @@
-<!--pages/trainning/trainning.wxml-->
-<view class="trainningContainer">
-  <view class="train_header">
-    <view class="train_picture">
-      <view class="picture_box">
-        <image src="/assets/images/header.png"></image>
-      </view>
-      <view class="trainer_name">娜娜</view>
-      <navigator url="/pages/newtrainProgram/newtrainProgram" open-type="navigateTo" class="train_add_btn" hover-class="none"> +添加训练方案</navigator>
+<view class="train-head">
+  <view class="avatar-list">
+    <view class="pic_bg">
+      <image src="../../assets/images/header.png"></image>
     </view>
-  </view>
-  <view class="train-content">
-    <block wx:for="{{5}}" wx:key="index">
-      <view class="train-item" bindtap="trainDetail">
-        <image src="/assets/images/tag_flag.png"></image>
-        <view class="train-info">
-          <text>王教练</text>
-          <text>2022.02.11</text>
-        </view>
-        <view class="train-tag">减脂、增肌、塑形、增强体质、康复</view>
-        <view class="train-timer">
-          <text>频率4次/周</text>
-          <text>周期5月</text>
-          <text>次数86次</text>
-        </view>
-      </view>
-    </block>
+    <view class="custom">{{custom.UI_Name}}</view>
+    <button class="train-add" bindtap="addscheme"><span>+</span>添加训练方案</button>
   </view>
 </view>
+<scroll-view scroll-y class="scroll-content" style="height:calc(100vh - 340rpx)">
+  <block wx:for="{{trainProgramme}}" wx:key="index">
+    <van-swipe-cell id="swipe-cell{{index}}" class="sw_list" right-width="{{ 170 }}" async-close bind:open="onOpen">
+      <view class="train-detail" bindtap="trainDetail" data-id="{{item.rd_id}}" style="border-radius:{{hideRound?'12rpx 0px 0px 12rpx':'12rpx'}}">
+        <view class="icon-wrap">
+          <image src="../../assets/images/c_icon.png"></image>
+        </view>
+        <view class="train-info">
+          <view class="per-desc">
+            <span class="coach">{{item.AI_Name}}</span>
+            <view class="icon-list">
+              <image src="../../assets/images/e_cion.png"></image>
+              <span>{{item.Createdate}}</span>
+            </view>
+          </view>
+          <view class="fit-tag">{{item.Answer}}</view>
+        </view>
+      </view>
+      <view slot="right" class="van-swipe-cell__right">
+        <view class="cell-edit cell-rows" bindtap="editTrain" data-rdid="{{item.rd_id}}" data-id="{{index}}">编辑</view>
+        <view class="cell-delete cell-rows" bindtap="deleteTrain" data-rdid="{{item.rd_id}}" data-id="{{index}}">删除</view>
+      </view>
+    </van-swipe-cell>
+  </block>
+</scroll-view>

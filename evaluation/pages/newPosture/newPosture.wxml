@@ -1,6 +1,6 @@
 <view class="newPosture">
   <view class="posture-date">
-    <picker mode="date" value="{{date}}" start="2018-01-01" end="2017-09-01" bindchange="bindDateChange">
+    <picker mode="date" value="{{date}}" end="{{endDate}}" bindchange="bindDateChange">
       <view class="picker">
         <text>评估时间 {{date}}</text>
         <image src="./images/blue_arrow.png"></image>
@@ -10,13 +10,36 @@
   <van-tabs title-inactive-color="#A4ACBF" title-active-color="#2565F6" active="{{ active }}" sticky
     bind:change="onChange" color="#2565F6">
     <van-tab title="正面">
-      <body-part body-list="{{frontSide}}" active-index="1" body-title="请上传身体正面照" button-text="下一步" bind:next="handleNext"></body-part>
+      <body-part  body-list="{{frontSide}}" body-angle="正面" body-title="请上传身体正面照"
+       bind:remark="handleRemark" 
+       bind:imageSuccess="imageUpload"
+       bind:labChange="bodyStatusChange"
+       >
+        <view class="savelist" slot="footer">
+          <button class="savebtn" bindtap="nextStep" data-index="1">下一步</button>
+        </view>
+      </body-part>
     </van-tab>
     <van-tab title="左侧">
-      <body-part body-list="{{leftSide}}" active-index="2" body-title="请上传身体左侧照" button-text="下一步" bind:next="handleNext"></body-part>
+      <body-part body-list="{{leftSide}}" body-angle="左侧"  body-title="请上传身体左侧照"
+       bind:remark="handleRemark"
+       bind:imageSuccess="imageUpload"
+       bind:labChange="bodyStatusChange">
+        <view class="savelist" slot="footer">
+          <button class="savebtn" bindtap="nextStep" data-index="2">下一步</button>
+        </view>
+      </body-part>
     </van-tab>
     <van-tab title="右侧">
-      <body-part body-list="{{rightSide}}" active-index="3" body-title="请上传身体右侧照" button-text="保存" bind:next="handleNext"></body-part>
+      <body-part body-list="{{rightSide}}" body-angle="右侧"  body-title="请上传身体右侧照" 
+      bind:imageSuccess="imageUpload"
+       bind:remark="handleRemark"
+        bind:labChange="bodyStatusChange"
+       >
+        <view class="savelist" slot="footer">
+          <button class="savebtn" bindtap="nextStep" data-index="3">保存</button>
+        </view>
+      </body-part>
     </van-tab>
   </van-tabs>
 </view>

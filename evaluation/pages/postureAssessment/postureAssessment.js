@@ -1,4 +1,7 @@
 // pages/postureAssessment/postureAssessment.js
+var service = require('../../../utils/request.js');
+const app = getApp();
+const util = require('../../../utils/util.js')
 Page({
 
   /**
@@ -7,25 +10,7 @@ Page({
   data: {
     assessText: "对比",
     isAssess: false,
-    testList: [{
-        testName: "测试1",
-        coachName: "李教练",
-        date: "2022.02.01",
-        selected: false
-      },
-      {
-        testName: "测试2",
-        coachName: "王教练",
-        date: "2022.02.04",
-        selected: false
-      },
-      {
-        testName: "测试3",
-        coachName: "刘教练",
-        date: "2022.02.08",
-        selected: false
-      }
-    ],
+    testList: [],
     test: []
   },
 
@@ -37,21 +22,31 @@ Page({
   },
   comparison() {
     let isAssess = this.data.isAssess,
-      textValue = "";
-    textValue = isAssess ? "对比" : "取消"
+      textValue = "",
+      testList = this.data.testList;
+    textValue = isAssess ? "对比" : "取消";
+    if (textValue == '取消') {
+      testList.forEach((item, index) => {
+        item.selected = false
+      })
+    }
     this.setData({
+      testList: testList,
       isAssess: !isAssess,
-      assessText: textValue
+      assessText: textValue,
+      test: []
     })
   },
   changeCheck(e) {
     var that = this,
       index = e.currentTarget.dataset.index,
-      value = e.currentTarget.dataset.value,
+      sd_id = e.currentTarget.dataset.sid,
       testList = that.data.testList,
+      //存放选中数据
       test = that.data.test,
       val = testList[index].selected, //点击前的值
       limitNum = 2,
+      //当前选中数量
       curNum = 0;
     //已选择数量
     for (var i in testList) {
@@ -67,10 +62,10 @@ Page({
         })
         return;
       }
-      test.push(value);
+      test.push(sd_id);
     } else {
-      for (var j in test) {
-        if (test[j] == value) {
+      for (var j of test) {
+        if (j == sd_id) {
           test.splice(j, 1);
         }
       }
@@ -88,9 +83,10 @@ Page({
   },
   assessContrast(e) {
     let selectedList = this.data.test;
+    //console.log(selectedList)
     if (selectedList.length == 2) {
       wx.navigateTo({
-        url: '/evaluation/pages/postureContrast/postureContrast',
+        url: `/evaluation/pages/postureContrast/postureContrast?sd_id=${selectedList[0]}&sd_id2=${selectedList[1]}`,
       })
     } else {
       wx.showToast({
@@ -99,13 +95,14 @@ Page({
       })
     }
   },
-  testReport(){
-     let flag = this.data.isAssess;
-     if(!flag){
-        wx.navigateTo({
-          url: '/evaluation/pages/postureDetail/postureDetail',
-        })
-     }
+  testReport(e) {
+    let flag = this.data.isAssess,
+        sd_id = e.currentTarget.dataset.sid;
+    if (!flag) {
+      wx.navigateTo({
+        url: '/evaluation/pages/postureDetail/postureDetail?sd_id='+sd_id,
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -118,41 +115,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    service.post('/StatureDetermineByList', {
+      UI_ID: app.globalData.custom.UI_ID,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+     // console.log(res)
+     let assessmentList = res.data.data;
+     assessmentList.forEach(item=>{
+       item.RecordDate = util.format(item.RecordDate,'yyyy.mm.dd');
+     });
+      this.setData({
+        testList: assessmentList
+      })
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

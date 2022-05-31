@@ -15,83 +15,81 @@ Page({
     wx.getSystemInfo({
       success: res => {
         this.setData({
-          // unit: res.windowWidth / 750 * 0.8,
-          ratio: res.pixelRatio,
-          canvasWidth: res.windowWidth
+          canvasWidth: 750
         })
-        this.drawCanvas()
+        console.log(res.windowWidth, res.pixelRatio)
       }
     })
-
   },
   drawCanvas() {
     const ctx = wx.createCanvasContext('shareCanvas');
     var that = this,
-    ratio  = 2;
-    //http://47.111.150.151:8011/image/88/admin_face/2021/2021111019015007586.jpg
+      ratio = 2;
     wx.getImageInfo({
       src: "../../images/bg.png",
       success(res) {
         let bgW = res.width,
           bgH = res.height;
-        // 30 + 30 + 图片的高
-        //保存的图片将所有位置* ratio 即可
+        console.log(res.height)
         //375获取屏幕的宽度
-        ctx.rect(0, 0, that.data.canvasWidth * ratio, bgH + 60)
-        //ctx.rect(0, 0, that.data.canvasWidth, bgH  + 60)
         ctx.setFillStyle('#fff');
-        ctx.fill();
-        ctx.drawImage('/' + res.path, 24, 30, that.data.canvasWidth - 54, bgH * 0.6);
-        //  ctx.drawImage('/' + res.path, 24, 30, bgW, bgH )
+        // ctx.rect(0, 0, 750, bgH);
+        // ctx.fill();
+        ctx.fillRect(0, 0, 750, bgH + 60);
+        ctx.drawImage('/' + res.path, 45, 30, bgW, bgH);
         //设置文字的大小
-        ctx.setFontSize(16);
+        ctx.setFontSize(16 * ratio);
         ctx.setFillStyle('#1B00A5');
         ctx.setTextAlign('left');
-        ctx.fillText('3天', 46, 62);
+        ctx.fillText('3天', 42 * ratio, 40 * ratio);
         //设置文字的大小
-        ctx.setFontSize(18);
+        ctx.setFontSize(13 * ratio);
         // ctx.setFillStyle('#1B00A5');
         ctx.setTextAlign('center');
-        ctx.fillText('效 / 果 / 对 / 比', 188, 66);
-        ctx.setFontSize(11);
+        ctx.fillText('效 / 果 / 对 / 比', 188 * ratio, 46 * ratio);
+        ctx.setFontSize(10 * ratio);
         ctx.setTextAlign('center');
-        ctx.fillText('Effect comparison', 192, 84);
+        ctx.fillText('Effect comparison', 188 * ratio, 60 * ratio);
         // ctx.draw();
         //图片路径 裁剪的x坐标 裁剪的y坐标 裁剪的宽 裁剪的高 图片在画布中的x轴 图片画布中的y轴
         //图片在画布中的宽度 和高度  
-        ctx.drawImage('../../../assets/images/case.png', 40, 120, 142, 178);
-        ctx.drawImage('../../../assets/images/case.png', 200, 120, 142, 178);
-        ctx.drawImage('../../../assets/images/case.png', 40, 310, 142, 178);
-        ctx.drawImage('../../../assets/images/case.png', 200, 310, 142, 178);
-        ctx.drawImage('../../../assets/images/case.png', 40, 500, 142, 178);
-        ctx.drawImage('../../../assets/images/case.png', 200, 500, 142, 178);
-        ctx.drawImage('../../../assets/images/case.png', 40, 690, 142, 178);
-        ctx.drawImage('../../../assets/images/case.png', 200, 690, 142, 178);
-        ctx.setFontSize(16);
+        ctx.drawImage('../../../assets/images/case.png', 36 * ratio, 100 * ratio, 142 * ratio, 178 * ratio);
+        ctx.drawImage('../../../assets/images/case.png', 196 * ratio, 100 * ratio, 142 * ratio, 178 * ratio);
+        ctx.drawImage('../../../assets/images/case.png', 36 * ratio, 290 * ratio, 142 * ratio, 178 * ratio);
+        ctx.drawImage('../../../assets/images/case.png', 196 * ratio, 290 * ratio, 142 * ratio, 178 * ratio);
+        ctx.drawImage('../../../assets/images/case.png', 36 * ratio, 480 * ratio, 142 * ratio, 178 * ratio);
+        ctx.drawImage('../../../assets/images/case.png', 196 * ratio, 480 * ratio, 142 * ratio, 178 * ratio);
+        ctx.drawImage('../../../assets/images/case.png', 36 * ratio, 670 * ratio, 142 * ratio, 178 * ratio);
+        ctx.drawImage('../../../assets/images/case.png', 196 * ratio, 670 * ratio, 142 * ratio, 178 * ratio);
+        ctx.setFontSize(16 * ratio);
         ctx.setTextAlign('left');
-        ctx.fillText('体重', 40, 920);
-        ctx.fillText('体脂率', 40, 960);
+        ctx.fillText('体重', 44 * ratio, 916 * ratio);
+        ctx.fillText('体脂率', 44 * ratio, 956 * ratio);
         //脂肪量
-        ctx.fillText('脂肪量', 40, 1000);
+        ctx.fillText('脂肪量', 44 * ratio, 996 * ratio);
         ctx.setTextAlign('right');
-        ctx.fillText('0.0kg', 320, 920);
-        ctx.fillText('25.4%', 320, 960);
-        ctx.fillText('脂肪量', 320, 1000);
+        ctx.fillText('0.0kg', 320 * ratio, 920 * ratio);
+        ctx.fillText('25.4%', 320 * ratio, 956 * ratio);
+        ctx.fillText('脂肪量', 320 * ratio, 996 * ratio);
         ctx.draw(true, () => {
-          wx.canvasToTempFilePath({
-            x: 0,
-            y: 0,
-            canvasId: 'shareCanvas',
-            quality: 1.0,
-            fileType: 'jpg',
-            success(res) {
-              console.log('图片保存成功:', res)
-              that.setData({
-                tempFilePath: res.tempFilePath
-              })
-              that.saveImage();
-            }
-          });
+          setTimeout(() => {
+            wx.canvasToTempFilePath({
+              x: 0,
+              y: 0,
+              canvasId: 'shareCanvas',
+              quality: 1.0,
+              fileType: 'jpg',
+              success(res) {
+                console.log('图片保存成功:', res)
+                that.setData({
+                  tempFilePath: res.tempFilePath
+                })
+                // that.saveImage();
+                that.openSetting();
+              }
+            });
+          }, 500);
+
         });
       },
       fail(err) {
@@ -123,22 +121,48 @@ Page({
       }
     })
   },
-  //计算图片尺寸
-  calculateImg: function (src, cb) {
+  openSetting: function (e) {
     var that = this;
-    wx.getImageInfo({
-      src: src,
+    //获取相册受权
+    wx.getSetting({
       success(res) {
-        wx.getSystemInfo({
-          success(res2) {
-            var ratio = res.width / res.height;
-            var imgHeight = (res2.windowWidth * 0.85 / ratio) + 130;
-            that.setData({
-              imgHeight: imgHeight
-            })
-            cb(imgHeight - 130);
-          }
-        })
+        if (!res.authSetting['scope.writePhotosAlbum']) {
+          wx.authorize({
+            scope: 'scope.writePhotosAlbum',
+            success() { //这里是用户赞成受权后的回调
+              console.log('保存图片成功');
+              that.saveImage();
+            },
+            fail() { //这里是用户拒绝受权后的回调
+              wx.showModal({
+                title: '提示',
+                content: '若不打开受权，则没法将图片保存在相册中！',
+                showCancel: true,
+                cancelText: '暂不受权',
+                cancelColor: '#000000',
+                confirmText: '去受权',
+                confirmColor: '#3CC51F',
+                success: function (res) {
+                  if (res.confirm) {
+                    console.log('用户点击确定');
+                    wx.openSetting({
+                      success: function (result) {
+                        console.log(result)
+                        if (result.authSetting['scope.writePhotosAlbum']) {
+                          that.saveImage();
+                        }
+                      }
+                    })
+                  } else if (res.cancel) {
+                    console.log('用户点击取消')
+                  }
+                }
+              })
+            }
+          })
+        } else { //用户已经受权过了 
+          that.saveImage();
+        }
       }
     })
   },
@@ -148,14 +172,12 @@ Page({
   onReady: function () {
 
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
 
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -167,27 +189,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

@@ -21,6 +21,7 @@
 
 .picturelist .picture-item {
   width: 326rpx;
+  overflow: hidden;
 }
 
 .picture-date {
@@ -45,7 +46,9 @@
 }
 
 .describe {
-  display: inline-flex;
+  display: flex;
+  align-items: center;
+  width: 100%;
   flex-direction: column;
 }
 
@@ -67,6 +70,7 @@
   font-size: 24rpx;
   color: #999999;
   line-height: 40rpx;
+  text-align: center;
 }
 
 .success {

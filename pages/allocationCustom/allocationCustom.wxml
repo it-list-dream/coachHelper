@@ -1,25 +1,33 @@
 <view class="allocationContainer">
   <van-search class="search-box" value="{{ value }}" placeholder="请输入会员姓名、手机号" />
-  <tabs-list id="tabs" is-border="{{true}}" tList="{{tabsList}}" current-tab="{{tabIndex}}"
+  <tabs-list id="tabs" is-border="{{true}}" icon="{{true}}" tList="{{tabsList}}" current-tab="{{tabIndex}}"
     bind:changeCurrent="tabsChange" bind:scrollHeight="getHeight">
-    <scroll-view scroll-y class="scroll" style="height:calc(100vh - {{ searchHeight}}px - {{tabsHeight}}px - 120rpx)"
-      wx:if="{{tabIndex == 0}}" bindscrolltolower="loadMore">
-      <view class="scroll-y">
-        <view class="scroll-item" wx:for="{{customList}}" bindtap="allocation" data-custom="{{item}}" wx:key="*this">
-          <view class="select-icon">
-            <!-- /assets/images/gray-circle.png -->
-            <image src="{{item.selected?'/assets/images/blue-circle.png':'/assets/images/gray-circle.png'}}"></image>
-          </view>
-          <view class="head">
-            <image src="/assets/images/header.png"></image>
-            <!-- <view></view> -->
-          </view>
-          <view class="member-info">
-            <text>桃桃</text>
-            <text>ruyu909090</text>
+    <!-- nav-top -->
+    <view class="tabs-filter" slot="nav-top">
+      <block wx:for="{{filterList}}" wx:for-index="idx" wx:key="idx">
+        <text class="{{filterIndex==idx?'active':''}}" bindtap="filterTab" data-index="{{idx}}">{{item}}</text>
+      </block>
+    </view>
+    <!-- 默认插槽 -->
+    <scroll-view scroll-y class="scroll" style="height:calc(100vh - {{ searchHeight}}px - {{tabsHeight}}px - 220rpx)"
+      bindscrolltolower="loadMore">
+      <block wx:for="{{tabsList}}" wx:key="index">
+        <view class="tab-panel" hidden="{{tabIndex !== index}}">
+          <view class="tabpanel-item" bindtap="allocation" data-custom="{{item}}" wx:for="{{customList}}" wx:key="customName">
+            <view class="cricle-icon">
+              <image src="{{item.selected?'/assets/images/blue-circle.png':'/assets/images/gray-circle.png'}}">
+              </image>
+            </view>
+            <view class="custom-profile">
+              <image src="/assets/images/header.png" ></image>
+            </view>
+            <view class="custom-info">
+              <text>苹苹</text>
+              <text>6789050</text>
+            </view>
           </view>
         </view>
-      </view>
+      </block>
     </scroll-view>
   </tabs-list>
   <view class="allocation-btn">

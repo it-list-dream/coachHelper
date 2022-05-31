@@ -33,6 +33,7 @@
 
 .fitness-comparison .addbodytest,
 .addappoinment {
+  width: 230rpx;
   height: 60rpx;
   text-align: center;
   line-height: 60rpx;
@@ -40,13 +41,11 @@
   border-radius: 12rpx;
   font-size: 28rpx;
   color: #2664F6;
-  padding: 0 16rpx;
 }
 
 .addappoinment {
   margin-left: 20rpx;
 }
-
 .addappoinment image {
   width: 24rpx;
   height: 24rpx;
@@ -55,6 +54,7 @@
 
 .addappoinment text {
   vertical-align: middle;
+  margin-left: 4rpx;
 }
 
 .fitness-comparison .comparisonbtn {
@@ -73,6 +73,7 @@
 
 .fitness-content {
   margin-top: 30rpx;
+  padding-bottom: 86rpx;
 }
 
 .fitness-content .fitness-item {
@@ -191,12 +192,15 @@
 }
 
 .bottombtn {
-  display: flex;
-  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #FFFFFF;
 }
 
 .fitness-content .complete {
-  margin-top: 180rpx;
+  margin: 0 auto;
   width: 620rpx;
   height: 86rpx;
   text-align: center;

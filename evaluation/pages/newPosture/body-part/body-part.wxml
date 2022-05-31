@@ -23,10 +23,8 @@
   </view>
   <view class="coach-remarks">教练备注</view>
   <view class="remarks-textarea">
-    <textarea bindinput="getLimit" class="textarea" value="{{coachRemark}}" placeholder="备注" placeholder-style="color:#D2D2D2;" 	maxlength="200"></textarea>
+    <textarea bindinput="getLimit" class="textarea" value="{{coachRemark}}" placeholder="备注" placeholder-style="color:#A7A7A7;" 	maxlength="200"></textarea>
     <view class="limit">{{limit}}/200</view>
   </view>
-  <view class="savelist">
-    <button class="savebtn" bindtap="nextStep" data-index="{{activeIndex}}">{{buttonText}}</button>
-  </view>
+  <slot name="footer"></slot>
 </view>

@@ -27,10 +27,13 @@
 }
 
 .questionList-head .addquestionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 60rpx;
   width: 186rpx;
-  line-height: 60rpx;
-  text-align: center;
+  /* line-height: 60rpx;
+  text-align: center; */
   background: #FFFFFF;
   border-radius: 12rpx;
   color: #2664F6;

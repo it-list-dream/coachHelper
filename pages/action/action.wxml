@@ -1,62 +1,102 @@
-<view class="actionConatainer">
-  <view class="action-header">
-    <view class="search-box">
-      <van-search value="{{ serachText}}" placeholder="搜索动作" class="search" />
-    </view>
-    <!-- 动作 -->
-    <view class="action-classify">
-      <scroll-view class="classify-x" enable-flex scroll-x>
-        <block wx:for="{{actionIconList}}">
-          <view class="classify-item" bindtap="switchBodyPart" data-index="{{index}}">
-            <view class="wrapper  {{actionIndex == index?'active-action':''}}">
-              <image src="{{item.selected?item.activeActionPic:item.actionPic}}"></image>
-            </view>
-            <view class="body-item">{{item.actionName}}</view>
+<view class="action-header">
+  <view class="search-box">
+    <van-search value="{{ serachText}}" placeholder="搜索动作" class="search" />
+  </view>
+  <!-- 动作 -->
+  <view class="action-classify">
+    <scroll-view class="classify-x" enable-flex scroll-x>
+      <block wx:for="{{actionIconList}}">
+        <view class="classify-item" bindtap="switchBodyPart" data-index="{{index}}">
+          <view class="wrapper  {{actionIndex == index?'active-action':''}}">
+            <image src="{{item.selected?item.activeActionPic:item.actionPic}}"></image>
           </view>
-        </block>
-      </scroll-view>
-    </view>
-  </view>
-  <!--主盒子-->
-  <view class="actionContainer">
-    <!--左侧栏-->
-    <view class="nav_left">
-      <scroll-view scroll-y style="height:60vh;" class="left_scroll">
-        <block wx:for="{{cateItems}}">
-          <view class="nav_left_items {{curNav == item.cate_id ? 'active' : ''}}" bindtap="switchRightTab"
-            data-index="{{index}}" data-id="{{item.cate_id}}">{{item.cate_name}}</view>
-        </block>
-      </scroll-view>
-    </view>
-    <!--右侧栏-->
-    <view class="nav_right" style="height:60vh;">
-      <scroll-view scroll-y class="right_scroll">
-        <!--如果有数据，才遍历项-->
-        <view wx:if="{{cateItems[curIndex].ishaveChild}}">
-          <block wx:for="{{cateItems[curIndex].children}}">
-            <view class="nav_right_items">
-              <view class="right_items_left">
-                <image src="/assets/images/acion/c.png"></image>
-              </view>
-              <view class="right_items_center" bindtap="actionDetail">
-                <view>比目鱼肌腓肠肌</view>
-                <view>柔韧性 热身 放松</view>
-              </view>
-              <view class="right_items_right">
-                <image class="add-actions" src="/assets/images/acion/add3.png">+</image>
-              </view>
-            </view>
-          </block>
+          <view class="body-item">{{item.actionName}}</view>
         </view>
-        <!--如果无数据，则显示数据-->
-        <view class="nodata_text" wx:else>该分类暂无数据</view>
-      </scroll-view>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+<!-- 主盒子 -->
+<view class="actionContainer">
+  <!-- 左侧栏 -->
+  <scroll-view class="nav_left" scroll-y :show-scrollbar="{{false}}">
+    <block wx:for="{{cateItems}}">
+      <view class="nav_left_items {{curNav == item.cate_id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.cate_id}}">
+        {{item.cate_name}}
+      </view>
+    </block>
+  </scroll-view>
+  <!-- 右侧栏 -->
+  <scroll-view scroll-y class="nav_right" scroll-with-animation>
+    <!-- 如果有数据，才遍历项 -->
+    <view class="nav_list" wx:if="{{cateItems[curIndex].ishaveChild}}">
+      <block wx:for="{{cateItems[curIndex].children}}">
+        <view class="nav_right_items">
+          <view class="right_items_left">
+            <image src="/assets/images/acion/c.png"></image>
+          </view>
+          <view class="right_items_center" bindtap="actionDetail">
+            <view>比目鱼肌腓肠肌</view>
+            <view>柔韧性 热身 放松</view>
+          </view>
+          <view class="right_items_right" catchtap="selectGoods" data-index="{{index}}">
+            <image class="add-actions" src="/assets/images/acion/add3.png">+</image>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!-- 如果无数据，则显示数据 -->
+    <view class="nodata_text" wx:else>该分类暂无数据</view>
+  </scroll-view>
+</view>
+<view class="animat" style="{{style}}">
+  <image class="icon" src="/assets/images/acion/add3.png"></image>
+</view>
+<view class="action-bottom">
+  <view class="action-details">
+    <view class="action-num">
+      动作数量：
+      <text class="cart" style="color:#2564F6;">{{cartList.length}}</text>
+    </view>
+    <view class="details" bindtap="showDetail">
+      明细
+      <image src="/assets/images/acion/bottom.png" class="{{showActionDetail?'action-active':''}}"></image>
+    </view>
+    <view class="aciton-confrim">
+      <button bindtap="actionConfrim">确定</button>
     </view>
   </view>
-  <view class="action-bottom">
-    <!-- <view class="none-box"></view> -->
-    <view class="action-details">
-      <view class="action-num">动作数量：<text style="color:#2564F6;">3</text></view>
+</view>
+<van-popup show="{{ isShowDialog }}" position="bottom" custom-style="height: 65vh;" bind:close="onClose">
+  <view class="actionMask">
+    <view class="mask-title">
+      <text>已选动作</text>
+      <view class="clear" bindtap="clearAction">
+        <image src="/assets/images/acion/clear.png"></image>
+        <text>清空</text>
+      </view>
+    </view>
+    <view class="mask-content">
+      <scroll-view scroll-y class="action-scroll" style="height:calc(65vh - 320rpx);">
+        <view class="mask-action-item" wx:for="{{4}}">
+          <view class="right_items_left">
+            <image src="/assets/images/acion/c.png"></image>
+          </view>
+          <view class="right_items_center">
+            <view>比目鱼肌腓肠肌</view>
+            <view>柔韧性 热身 放松</view>
+          </view>
+          <view class="right_items_right" bindtap="deleteActions">
+            <image class="delete-actions" src="/assets/images/acion/delete.png"></image>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="bottom-mask">
+      <view class="action-num">
+        动作数量：
+        <text style="color:#2564F6;">3</text>
+      </view>
       <view class="details" bindtap="showDetail">
         明细
         <image src="/assets/images/acion/bottom.png" class="{{showActionDetail?'action-active':''}}"></image>
@@ -66,41 +106,4 @@
       </view>
     </view>
   </view>
-  <van-popup show="{{ isShowDialog }}" position="bottom" custom-style="height: 65vh;" bind:close="onClose">
-    <view class="actionMask">
-      <view class="mask-title">
-        <text>已选动作</text>
-        <view class="clear" bindtap="clearAction">
-          <image src="/assets/images/acion/clear.png"></image>
-          <text>清空</text>
-        </view>
-      </view>
-      <view class="mask-content">
-        <scroll-view scroll-y class="action-scroll" style="height:calc(65vh - 320rpx);">
-          <view class="mask-action-item" wx:for="{{4}}">
-            <view class="right_items_left">
-              <image src="/assets/images/acion/c.png"></image>
-            </view>
-            <view class="right_items_center">
-              <view>比目鱼肌腓肠肌</view>
-              <view>柔韧性 热身 放松</view>
-            </view>
-            <view class="right_items_right" bindtap="deleteActions">
-              <image class="delete-actions" src="/assets/images/acion/delete.png"></image>
-            </view>
-          </view>
-        </scroll-view>
-      </view>
-      <view class="bottom-mask">
-        <view class="action-num">动作数量：<text style="color:#2564F6;">3</text></view>
-        <view class="details" bindtap="showDetail">
-          明细
-          <image src="/assets/images/acion/bottom.png" class="{{showActionDetail?'action-active':''}}"></image>
-        </view>
-        <view class="aciton-confrim">
-          <button bindtap="actionConfrim">确定</button>
-        </view>
-      </view>
-    </view>
-  </van-popup>
-</view>
+</van-popup>

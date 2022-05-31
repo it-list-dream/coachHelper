@@ -1,0 +1,18 @@
+<van-popup show="{{ showModel }}" bind:close="onClose"  catch:touchstart="" >
+    <view class="p-container" hover-class="none">
+        <view class="poupon-title">{{modelTitle}}</view>
+        <view class="poupon-content">
+            <block wx:for="{{allList}}" wx:key="index">
+                <view class="poupon-item {{item.checked?'active-item':''}}" bindtap="trainTag" data-value="{{item.name}}">
+                    {{item.name}}
+                </view>
+            </block>
+            <view class="defined" bindtap="handleDefined">自定义</view>
+        </view>
+        <view class="poupon-button">
+            <button class="cancel button" bindtap="onClose">取消</button>
+            <button class="confrim button" bindtap="onConfrim">确定</button>
+        </view>
+    </view>
+</van-popup>
+<dialog is-show="{{showDefined}}" limit="8" bind:cancelEvent="handleClose" bind:confirmEvent="handleConfrim"  dialog-title="添加自定义内容"></dialog>

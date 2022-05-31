@@ -3,61 +3,87 @@
   color: #C2BCBC !important;
 }
 
-.scroll {
-  margin-top: 6rpx;
-  /* background-color: pink; */
-}
-.scroll-y{
-  padding: 0 48rpx;
-}
-.scroll-item {
+/* .scroll {
+  background-color: orange;
+} */
+
+.tabs-filter {
   display: flex;
-  align-items: center;
-  height: 140rpx;
+  width: 100%;
+  height: 100rpx;
+  padding: 0 10rpx;
+  border-bottom: 0.5px solid #E6EAF1;
+  background: #FFFFFF;
   box-sizing: border-box;
-  border-bottom: 0.5px solid  #E6EAF1;
 }
 
-.scroll-item .select-icon {
+ .tabs-filter>text {
+  position: relative;
+  padding: 0 14rpx;
+  margin: 0 20rpx;
+  font-size: 28rpx;
+  color: #222222;
+  height: 100rpx;
+  line-height: 100rpx;
+  box-sizing: border-box;
+}
+.tabs-filter text.active{
+  color: #2564F6;
+}
+.tabs-filter text.active::after{
+  content: "";
+  position: absolute;
+  width: 100rpx;
+  height: 2px;
+  bottom: 0;
+  left: 4px;
+  background: #2564F6;
+}
+
+ .tab-panel{
+  padding: 26rpx 48rpx 0;
+}
+
+.tab-panel .tabpanel-item{
+   display: flex;
+   align-items: center;
+   height: 140rpx;
+   border-bottom: 0.5px solid #E6EAF1;
+   box-sizing: border-box;
+}
+.tab-panel .tabpanel-item .cricle-icon{
+  width: 32rpx;
+  height: 32rpx;
+  padding: 0 30rpx 0 2rpx;
+}
+.cricle-icon image{
   width: 32rpx;
   height: 32rpx;
 }
 
-.scroll-item .select-icon image {
-  width: 100%;
-  height: 100%;
-}
-.scroll-item .head{
+.tab-panel .custom-profile{
   width: 80rpx;
   height: 80rpx;
-  overflow: hidden;
-  margin: 0 30rpx;
-}
-.scroll-item .head>view{
-  width: 100%;
-  height: 100%;
-  line-height: 80rpx;
-  text-align: center;
-  background: #4A81FF;
-  font-size: 36rpx;
-color: #FFFFFF;
-}
-.scroll-item .head image{
-  width: 100%;
-  height: 100%;
-}
-.scroll-item .member-info>text{
-  display: block;
 }
 
-.member-info text:first-child{
+.tab-panel .custom-profile image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.tab-panel .custom-info{
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-panel .custom-info text{
   font-size: 28rpx;
 color: #0D0E15;
 }
-.member-info text:last-child{
-  margin-top: 8rpx;
-  font-size: 28rpx;
-color: #666666;
+.tab-panel .custom-info text:last-child{
+  margin-top: 10rpx;
+  color: #666666;
 }
 .allocation-btn {
   position: fixed;

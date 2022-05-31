@@ -17,15 +17,13 @@
     <view class="fitness-item" wx:for="{{testList}}" bindtap="test">
       <image src="./images/bg.png" class="icon-bg"></image>
       <view class="f-box">
-        <view class="test-report">
+        <view class="test-report" bindtap="chooseMultip" data-index="{{index}}" data-value="{{item.testName}}"
+          data-test="{{item}}">
           <view class="report-info">
             <text>测试报告</text>
             <text>{{item.testName}} {{item.testTime}}</text>
           </view>
-          <view class="icon-box" bindtap="chooseMultip"
-           data-index="{{index}}"
-           data-value="{{item.testName}}"
-           data-test="{{item}}" wx:if="{{isComparison}}">
+          <view class="icon-box" wx:if="{{isComparison}}">
             <image wx:if="{{item.selected}}" src="/assets/images/selected.png"></image>
             <text class="icon-border" wx:else></text>
           </view>

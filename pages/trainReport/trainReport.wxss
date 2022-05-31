@@ -30,7 +30,6 @@ page {
   margin: 0 auto;
   margin-top: 44rpx;
   width: 690rpx;
-  height: 538rpx;
   background: #FFFFFF;
   box-shadow: 0px 0px 20rpx 0px rgba(0, 30, 101, 0.14);
   border-radius: 20rpx;
@@ -58,8 +57,9 @@ page {
 
 .member-info .member-target {
   width: 100%;
-  padding: 50rpx;
+  padding: 50rpx 50rpx 0;
   box-sizing: border-box;
+  margin-bottom: 64rpx;
 }
 
 .member-info .member-target .fitness-tip {
@@ -75,15 +75,15 @@ page {
 }
 
 .fitness-groupcheckbox .checkbox {
-  width: 90rpx;
-  height: 40rpx;
   min-width: 90rpx;
+  height: 40rpx;
   line-height: 40rpx;
   text-align: center;
   border: 1px solid #2565F6;
   border-radius: 20rpx;
   font-size: 26rpx;
   color: #2565F6;
+  padding: 0 10rpx;
 }
 
 .fitness-groupcheckbox .checkbox:nth-child(n+2) {

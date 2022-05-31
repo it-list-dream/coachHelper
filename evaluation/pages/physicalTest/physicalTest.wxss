@@ -135,19 +135,23 @@ page {
   font-size: 34rpx;
   color: #222222;
 }
-.apparatus-rows .apparatus-rows-item{
+
+.apparatus-rows .apparatus-rows-item {
   flex-shrink: 0;
 }
-.apparatus-rows .apparatus-input-box{
-   display: flex;
-   justify-content: flex-end;
-   align-items: center;
-   flex: 1;
+
+.apparatus-rows .apparatus-input-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
 }
-.apparatus-rows .apparatus-input-box input{
+
+.apparatus-rows .apparatus-input-box input {
   text-align: right;
   width: 40%;
 }
+
 .apparatus-rows .apparatus-input-box .unit {
   width: 94rpx;
   text-align: center;
@@ -155,6 +159,29 @@ page {
   font-size: 30rpx;
   color: #A7A7A7;
 }
+
+.blood-pressure {
+  flex: 1;
+}
+.blood-pressure picker{
+  width: 100%;
+  height: 120rpx;
+}
+.blood-pressure .pick-content {
+  display: flex;
+  height: 120rpx;
+  align-items: center;
+  justify-content: flex-end;
+  color: #A7A7A7;
+  font-size: 30rpx;
+}
+.blood-pressure .pick-content text {
+  color: #333333;
+  margin-right: 30rpx;
+
+}
+
+/*  */
 .apparatus-rows-item image {
   width: 36rpx;
   height: 36rpx;

@@ -13,22 +13,7 @@
       <view class="member-target">
         <view class="fitness-tip">健身目标</view>
         <view class="fitness-groupcheckbox">
-          <view class="checkbox">减脂</view>
-          <view class="checkbox">增肌</view>
-          <view class="checkbox">塑形</view>
-          <view class="checkbox">康复</view>
-        </view>
-        <view class="frequency fCount">
-          <text>健身频率</text>
-          <text>3次/周</text>
-        </view>
-        <view class="total-cycle fCount">
-          <text>健身总周期</text>
-          <text>6月</text>
-        </view>
-        <view class="total-degree fCount">
-          <text>健身总次数</text>
-          <text>77次</text>
+          <view class="checkbox" wx:for="{{fitTargetList}}" wx:key="item">{{item}}</view>
         </view>
       </view>
     </view>
@@ -36,8 +21,8 @@
   <!-- 时间段 -->
   <view class="stage-list">
     <import src="/template/periodical/periodical.wxml" />
-    <block wx:for="{{4}}" wx:key="index">
-      <template is="period" data="{{stageList}}"></template>
+    <block wx:for="{{allTrain}}" wx:for-item="cycle" wx:key="TP_ID">
+      <template is="period" data="{{cycle:cycle}}"></template>
     </block>
   </view>
 </view>

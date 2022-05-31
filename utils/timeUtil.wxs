@@ -1,0 +1,69 @@
+var formatNumber = function (n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+
+var dateFormat = function (date) {
+  var reg = getRegExp('-', 'g');
+  if (date) {
+    return date.replace(reg, '.');
+  }
+  return date
+}
+/**
+ * 参数1: 要截取的字符串
+ * 参数2: 开始截取的index
+ * 参数3: 结束截取的index
+ */
+
+var sub = function (val, start, end) {
+
+  if (val == undefined || val == '' || val == null) {
+    return;
+  }
+  if (val.length > end) {
+    return val.substring(start, end);
+  } else {
+    return val;
+  }
+}
+
+var filterString = function (str) {
+  if (str) {
+    return str.split(',').join('、')
+  } else {
+    return ""
+  }
+}
+
+var filterUnitPrice = function (isPos, stairPrice, courseNum) {
+  //isPos 是否是单天办卡， stairPrice 阶梯价格  courseNum 课程的数量
+  if (stairPrice.length > 0) {
+    for (var i = 0; i < stairPrice.length; i++) {
+      if (courseNum >= stairPrice[i].MinNum && courseNum <= stairPrice[i].MaxNum) {
+        if (isPos == 0) {
+          return stairPrice[i].SalePrice;
+        } else if (isPos == 1) {
+          return stairPrice[i].PosPrice;
+        }
+      }
+    }
+  }
+}
+
+var filterClass = function (allClass) {
+  var newList = [];
+  if (allClass.length > 0) {
+    for (var i = 0; i < allClass.length; i++) {
+      newList.push(i);
+    }
+  }
+  return newList;
+}
+module.exports = {
+  dateFormat: dateFormat,
+  sub: sub,
+  filterString: filterString,
+  filterUnitPrice: filterUnitPrice,
+  filterClass: filterClass
+};

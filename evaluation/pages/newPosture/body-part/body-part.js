@@ -1,24 +1,23 @@
-// evaluation/pages/newPosture/body-part/body-part.js
+var upLoad = require('../../../../utils/upload.js')
 Component({
   /**
    * 组件的属性列表
    */
+  options: {
+    multipleSlots: true
+  },
   properties: {
     bodyList: {
       type: Array,
       value: []
     },
-    bodyTitle: {
+    bodyAngle: {
       type: String,
       value: ""
     },
-    buttonText:{
-      type:String,
-      value:""
-    },
-    activeIndex:{
-      type:Number,
-      value:0
+    bodyTitle: {
+      type: String,
+      value: ""
     }
   },
 
@@ -28,8 +27,8 @@ Component({
   data: {
     //图片地址
     pictureUrl: "",
-    coachRemark:"",
-    limit:0
+    coachRemark: "",
+    limit: 0
   },
   /**
    * 组件的方法列表
@@ -39,17 +38,18 @@ Component({
     takePhone() {
       //拍摄照片
       var that = this;
-      wx.chooseImage({
-        count: 1,
-        sizeType: ['original', 'compressed'],
-        sourceType: ['album', 'camera'],
-        success(res) {
-          // tempFilePath可以作为img标签的src属性显示图片
-          const tempFilePaths = res.tempFilePaths
-          that.setData({
-            pictureUrl: tempFilePaths
-          })
-        }
+      upLoad.chooseImage().then(tempFilePaths => {
+        console.log(tempFilePaths[0]);
+        that.setData({
+          pictureUrl: tempFilePaths[0]
+        })
+        // this.triggerEvent('imageSuccess', { fiedsid: 51, bodyPostition: this.data.bodyAngle })
+        upLoad.uploadImage('/ReceiveFiles', tempFilePaths[0], 'front', {
+          gi_id: wx.getStorageSync('gi_id')
+        }).then(res => {
+          console.log(res)
+          this.triggerEvent('imageSuccess', { fiedsid: res.filesid, bodyPostition: this.data.bodyAngle })
+        })
       })
     },
     checkLabs(e) {
@@ -63,23 +63,22 @@ Component({
           bodyList[index].list[j].checked = !bodyList[index].list[j].checked;
         }
       }
-      //var str = "bodyList[" + index + "].list[" + part.id + "].checked";
+     this.triggerEvent('labChange',{
+      bodyPostition: this.data.bodyAngle,
+      bodyList:bodyList
+     });
       // this.setData({
-      //   [str]: !bodyList[index].list[part.id].checked
+      //   bodyList: bodyList
       // })
+    },
+    getLimit(e) {
       this.setData({
-        bodyList:bodyList
+        coachRemark: e.detail.value,
+        limit: e.detail.value.length
       })
-    },
-    getLimit(e){
-       this.setData({
-        coachRemark:e.detail.value,
-        limit:e.detail.value.length
-       })
-    },
-    nextStep(e){
-      this.triggerEvent('next', {
-        active:e.currentTarget.dataset.index
+      this.triggerEvent('remark', {
+        coachRemark: e.detail.value,
+        bodyPostition: this.data.bodyAngle
       })
     }
   }

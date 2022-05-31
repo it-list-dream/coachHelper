@@ -1,14 +1,18 @@
 <!--pages/selectStore/selectStore.wxml-->
 <view class="store-list">
-  <view class="gym" wx:for="{{brandList}}" wx:for-index="idx" wx:for-item="brand">
+  <view class="gym">
     <view class="brand">
-      <text class="brand-name">{{brand.brandName}}</text>
-      <text class="brand-count">共{{brand.brandCount}}家</text>
+      <text class="brand-name">{{allBrand.BrandName}}</text>
+      <text class="brand-count">共{{allBrand.brandCount}}家</text>
     </view>
-    <view class="store-detail" wx:for="{{brand.gymList}}" wx:for-index="index" wx:for-item="gym">
-      <view>{{gym.gymName}}</view>
-      <view class="gym-address">{{gym.gymAddress}}</view>
-      <view class="selfStore" wx:if="{{gym.isSelf}}">我的门店</view>
-    </view>
+    <block wx:for="{{allBrand.list}}" wx:for-index="idx" wx:for-item="brand">
+      <view class="store-detail" bindtap="switchStore" data-store="{{brand}}">
+        <view>{{brand.GymName}}</view>
+        <view class="gym-address">{{brand.GymAddress}}</view>
+        <view class="icon-box" wx:if="{{brand.checked}}">
+          <icon type="success" color="#2564F6"></icon>
+        </view>
+      </view>
+    </block>
   </view>
 </view>

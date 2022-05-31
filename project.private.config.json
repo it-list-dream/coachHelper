@@ -31,7 +31,7 @@
           "scene": null
         },
         {
-          "name": "pages/newtrainProgram/newtrainProgram",
+          "name": "创建训练方案",
           "pathName": "pages/newtrainProgram/newtrainProgram",
           "query": "",
           "scene": null
@@ -87,12 +87,6 @@
         {
           "name": "体适能对比报告",
           "pathName": "evaluation/pages/fitnessContrastReport/fitnessContrastReport",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "问卷调查列表",
-          "pathName": "questionnaire/pages/questionList/questionList",
           "query": "",
           "scene": null
         },
@@ -153,7 +147,7 @@
         {
           "name": "选择客户",
           "pathName": "pages/chooseCustom/chooseCustom",
-          "query": "",
+          "query": "type=1",
           "scene": null
         },
         {
@@ -213,6 +207,72 @@
         {
           "name": "添加客户",
           "pathName": "pages/addCustom/addCustom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "登录",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的",
+          "pathName": "pages/tabbar/profile/profile",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "体态详细",
+          "pathName": "evaluation/pages/postureDetail/postureDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "体态对比",
+          "pathName": "evaluation/pages/postureContrast/postureContrast",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "分配客户",
+          "pathName": "pages/allocationCustom/allocationCustom",
+          "query": "type=2",
+          "scene": null
+        },
+        {
+          "name": "添加动作",
+          "pathName": "pages/action/action",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "上课",
+          "pathName": "pages/startClass/startClass",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "分配客户",
+          "pathName": "pages/allocationCustom/allocationCustom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "训练方案报告",
+          "pathName": "pages/trainReport/trainReport",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "训练方案列表",
+          "pathName": "pages/trainning/trainning",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "课程规划",
+          "pathName": "pages/coursePlanning/coursePlanning",
           "query": "",
           "scene": null
         }
