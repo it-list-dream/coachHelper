@@ -81,6 +81,6 @@
     </view>
   </view>
   <view class="success">
-    <button class="successbtn">完成</button>
+    <button class="successbtn" bindtap="successful">完成</button>
   </view>
 </view>

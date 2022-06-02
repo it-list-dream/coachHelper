@@ -1,4 +1,3 @@
-/* questionnaire/pages/question/question.wxss */
 @import "../../../template/form/form.wxss";
 
 page {
@@ -45,8 +44,9 @@ page {
 .radio-list {
   margin: 0 auto;
   width: 690rpx;
-  /* height: 430rpx; */
-  min-height: 430rpx;
+  height: 430rpx;
+  overflow-y: auto;
+  /* min-height: 430rpx; */
   background: #FFFFFF;
   border-radius: 12rpx;
   padding: 0 36rpx;
@@ -60,7 +60,9 @@ page {
 .checkbox-list {
   margin: 0 auto;
   width: 690rpx;
-  min-height: 430rpx;
+  height: 430rpx;
+  overflow-y:auto;
+  /* min-height: 430rpx; */
   padding: 0 36rpx;
   background: linear-gradient(0deg, #E5E6FF 0%, #FFFFFF 100%);
   border-radius: 12rpx;
@@ -70,10 +72,11 @@ page {
 .textarea-wrapper {
   margin: 0 auto;
   width: 690rpx;
-  min-height: 410rpx;
+  height: 410rpx;
+  overflow-y: auto;
   background: #FFFFFF;
   border-radius: 12rpx;
-  overflow: hidden;
+  /* overflow: hidden; */
   padding-bottom: 60rpx;
 }
 

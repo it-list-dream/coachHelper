@@ -1,11 +1,11 @@
 // pages/allocationCustom/allocationCustom.js
-var api = require('../../utils/request.js')
+var service = require('../../utils/request.js')
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    tabsList:['私教会员','普通会员','意向会员','公海池'],
+    tabsList:['私教会员','普通会员','公海池'],
     tabIndex:0,
     filterIndex:0,
     filterList:['未为配','已分配'],
@@ -89,6 +89,10 @@ Page({
       this.setData({
         filterIndex:index
       })
+  },
+  //选择客户
+  getPublicWaters(){
+     
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -2,7 +2,7 @@
   <view class="index-head">
     <view class="banner">
       <view class="store-info" bindtap="chooseStore" style="left:{{menuRight}}px;top:{{navTop}}px">
-        <text>请选择您所在的门店</text>
+        <text>{{gym.length>0?gym:'请选择您所在的门店'}}</text>
         <image src="/assets/images/white-arrow.png"></image>
       </view>
       <image src="/assets/images/home/banner.jpg"></image>

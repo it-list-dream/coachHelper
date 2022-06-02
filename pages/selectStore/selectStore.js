@@ -8,6 +8,7 @@ Page({
    */
   data: {
     allBrand: [],
+    currentIndex: -1
   },
 
   /**
@@ -15,30 +16,29 @@ Page({
    */
   onLoad: function (options) {
     var brand = {},
-      allList = [];
+      allList = [],
+      index = -1;
+    var currentCoach = wx.getStorageSync('coach');
     service.post('/searchGymListByPhone').then(res => {
       allList = res.data.data;
       allList.forEach(item => {
         brand.BrandName = item.BrandName;
-        item.checked = false;
       })
       brand.brandCount = allList.length;
       brand.list = allList;
+      for (let i = 0; i < brand.list.length; i++) {
+        if (brand.list[i].FK_AI_ID == currentCoach.FK_AI_ID) {
+          index = i;
+        }
+      }
       this.setData({
-        allBrand: brand
-      })
+        allBrand: brand,
+        currentIndex:index
+      });
     })
   },
   switchStore(e) {
-    var brand = e.currentTarget.dataset.store,
-      storeList = this.data.allBrand.list;
-    for (var i = 0; i < storeList.length; i++) {
-       if(storeList[i].FK_GB_ID == brand.FK_GB_ID){
-        storeList[i].checked = true;
-       }else{
-        storeList[i].checked = false;
-       }
-    }
+    var brand = e.currentTarget.dataset.store;
     wx.setStorageSync("gi_id", brand.GI_ID);
     wx.setStorageSync('coach', brand);
     wx.navigateBack({

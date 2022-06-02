@@ -25,12 +25,6 @@ Component({
             "selectedIconPath": "/assets/images/tabbar/calendar_active.png"
           },
           {
-            "pagePath": "/pages/addCustom/addCustom",
-            "text": "",
-            "iconPath": "/assets/images/tabbar/addCustom.png",
-            "isSpecial": true
-          },
-          {
             "pagePath": "/pages/tabbar/clientele/clientele",
             "text": "客户",
             "iconPath": "/assets/images/tabbar/customer.png",

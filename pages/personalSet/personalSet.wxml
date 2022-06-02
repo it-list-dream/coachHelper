@@ -2,15 +2,15 @@
   <view class="form-cell">
     <view class="set-cell">
       <text>姓名</text>
-      <text>王刚</text>
+      <text>{{coachInfo.AI_Name}}</text>
     </view>
     <view class="set-cell">
       <text>性别</text>
-      <text>男</text>
+      <text>{{coachInfo.AI_Sex}}</text>
     </view>
     <view class="set-cell">
       <text>手机号</text>
-      <text>135478894325</text>
+      <text>{{coachInfo.AI_TEL}}</text>
     </view>
   </view>
   <view class="exit-box">

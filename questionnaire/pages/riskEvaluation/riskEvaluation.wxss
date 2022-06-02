@@ -42,12 +42,12 @@ page{
 .radio-list {
   margin: 0 auto;
   width: 690rpx;
-  /* height: 430rpx; */
-  min-height: 430rpx;
+  height: 430rpx;
   background: #FFFFFF;
   border-radius: 12rpx;
   padding: 0 36rpx;
   box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .hide {
@@ -57,7 +57,9 @@ page{
 .checkbox-list {
   margin: 0 auto;
   width: 690rpx;
-  min-height: 430rpx;
+  height: 430rpx;
+  overflow-y: auto;
+  /* min-height: 430rpx; */
   padding: 0 36rpx;
   background: linear-gradient(0deg, #E5E6FF 0%, #FFFFFF 100%);
   border-radius: 12rpx;
@@ -67,56 +69,21 @@ page{
 .textarea-wrapper {
   margin: 0 auto;
   width: 690rpx;
-  min-height: 410rpx;
+  height: 410rpx;
+  overflow-y: auto;
   background: #FFFFFF;
   border-radius: 12rpx;
-  overflow: hidden;
   padding-bottom: 60rpx;
 }
 /*  */
 .question-tips {
   display: flex;
-  /* justify-content: space-between; */
   padding:40rpx 50rpx 80rpx;
   font-size: 36rpx;
   line-height: 1.2;
   color: #FFBE53;
 }
 
-/* 补充内容 */
-/* .repenish {
-  width: 690rpx;
-  height: 760rpx;
-  margin: 0 auto;
-  margin-top: 60rpx;
-  background-color: #FFFFFF;
-  border-radius: 12rpx;
-  padding: 0 40rpx;
-  box-sizing: border-box;
-}
-
-.repenish .repenish-title {
-  padding: 50rpx 0 40rpx;
-  font-size: 30rpx;
-  color: #333333;
-  text-align: center;
-}
-
-.repenish .repenish-content {
-  margin: 0 auto;
-  width: 610rpx;
-  height: 322rpx;
-  border: 1px dotted #D7D4ED;
-  box-sizing: border-box;
-}
-
-.repenish .repenish-content .repenish-textarea {
-  width: 100%;
-  height: 100%;
-  padding: 20rpx 30rpx;
-  box-sizing: border-box;
-  font-size: 26rpx;
-} */
 .riskHide{
   display: none;
 }
@@ -198,4 +165,68 @@ page{
   margin-left: 18rpx;
   font-size: 30rpx;
   color: #000000;
+}
+/* */
+.question-mask {
+  width: 690rpx;
+  height: 534rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  box-sizing: border-box;
+}
+
+.question-mask .question-mask-title {
+  padding: 40rpx 0;
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.textarea-list {
+  padding: 30rpx;
+  width: 90%;
+  margin: 0 auto;
+  height: 200rpx;
+  box-sizing: border-box;
+  color: #999999;
+}
+
+.textarea-list .textarea2 {
+  width: 100%;
+  height: 100%;
+  padding: 0 28rpx;
+  box-sizing: border-box;
+  color: #333333;
+}
+
+.textarea-list .limitFont {
+  text-align: right;
+  color: #999999;
+}
+
+.marks-btn {
+  margin-top: 60rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+.marks-btn button {
+  width: 220rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  text-align: center;
+  border-radius: 33px;
+}
+
+.marks-btn .cancel {
+  border-color: #B3B3B3 !important;
+  font-size: 28rpx;
+  color: #B3B3B3;
+  outline: none;
+}
+
+.marks-btn .save {
+  background: #2564F6;
+  font-size: 28rpx;
+  color: #FFFFFF;
 }

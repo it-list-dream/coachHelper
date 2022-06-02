@@ -1,27 +1,27 @@
 <view class="contractContainer">
   <view class="contract-tips">
     <view>客户</view>
-    <view>迪迪 <text>15232882111</text></view>
+    <view>{{custom.UI_Name}} <text>{{custom.UI_Phone}}</text></view>
   </view>
   <!--  -->
   <view class="class-list">
-    <view class="class-type-row" wx:for="{{3}}">
-      <view class="class-title">女性塑形课程</view>
+    <view class="class-type-row" wx:for="{{orderList}}" wx:key="index">
+      <view class="class-title">{{item.cp_name}}</view>
       <view class="class-info">
-        ￥300.0
-        <text style="margin:0 30rpx;">x 10</text>
-        <text>￥3000.0</text>
+        ￥{{item.price}}
+        <text style="margin:0 30rpx;">x {{item.courseNum}}</text>
+        <text>￥{{item.amount}}</text>
       </view>
     </view>
 
     <view class="class-row">
-      共30节课，合计 <text class="classTotalPrice">￥ 9000.0</text>
+      共{{classAmount}}节课，合计 <text class="classTotalPrice">￥ {{allPrice}}</text>
     </view>
   </view>
 
   <view class="cell-group">
     <van-cell-group>
-      <van-cell title="销售日期" value="2022-01-13" class="sale-date" />
+      <van-cell title="销售日期" value="{{saleDate}}" class="sale-date" />
       <van-cell title="开始日期" is-link>
         <picker class="date-picker" mode="date" value="{{formStart}}" start="{{startDate}}" end="{{lastDate}}"
           bindchange="startDateChange">
@@ -31,7 +31,7 @@
         </picker>
       </van-cell>
       <van-cell title="结束日期" is-link>
-        <picker class="date-picker" mode="date" value="2022-02-18" start="{{formEnd}}" end="{{lastDate}}"
+        <picker class="date-picker" mode="date" value="2022-01-01" start="{{formEnd}}" end="{{lastDate}}"
           bindchange="endDateChange">
           <view style="color:{{formEnd.length>0?'#222222':'#A7A7A7'}}">
             {{formEnd.length>0?formEnd:'请选择'}}

@@ -1,8 +1,3 @@
-/* pages/selectStore/selectStore.wxss */
-page {
-  background-color: #F5F5FF;
-}
-
 .gym {
   height: auto;
   padding: 0 30rpx;

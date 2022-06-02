@@ -14,39 +14,7 @@ Page({
     showClass: false,
     selectedClass: [{
       classTitle: "方案",
-      cList: [{
-        "cp_name": "次卡",
-        "cp_id": "149",
-        "cp_time": "60",
-        "cp_logo": "file/584/Coach/2021/2021081118585206584.jpg",
-        "priceList": [{
-            "SaleLevel": 1,
-            "MinNum": 1,
-            "MaxNum": 20,
-            "SalePrice": 0,
-            "PosPrice": 10,
-            "CP_ID": 149
-          },
-          {
-            "SaleLevel": 2,
-            "MinNum": 21,
-            "MaxNum": 100,
-            "SalePrice": 300,
-            "PosPrice": 280,
-            "CP_ID": 149
-          },
-          {
-            "SaleLevel": 3,
-            "MinNum": 100,
-            "MaxNum": 200,
-            "SalePrice": 198,
-            "PosPrice": 188,
-            "CP_ID": 149
-          }
-        ],
-        "courseNum":1,
-        "checked": false
-      }]
+      cList: []
     }],
     //总价格
     allPrice: 0,
@@ -129,7 +97,7 @@ Page({
     let current = e.currentTarget.dataset.current;
     this.setData({
       tabsActive: current
-    })
+    });
     this.calculatePrice();
   },
   //确定 取消
@@ -141,10 +109,8 @@ Page({
   //确定
   onConfrim(e) {
     let classList = this.data.selectedClass[this.data.tabsActive].cList;
-    for (let i = 0; i < e.detail.length; i++) {
-      e.detail[i].courseNum = 1;
-    }
-    classList.push(...e.detail);
+    classList.push(...e.detail)
+    classList = this.unique(classList);
     var cStr = "selectedClass[" + this.data.tabsActive + "].cList";
     this.setData({
       [cStr]: classList,
@@ -152,14 +118,44 @@ Page({
     });
     this.calculatePrice();
   },
+  unique: function (arr) {
+    var obj = {};
+    arr = arr.reduce(function (item, next) {
+      obj[next.cp_id] ? '' : obj[next.cp_id] = true && item.push(next);
+      return item;
+    }, []);
+    return arr
+  },
   showMask() {
     this.setData({
       showClass: true
     });
   },
   payMoney() {
+    var that = this;
+    const orderData = that.data.selectedClass[that.data.tabsActive].cList;
+    if (orderData.length == 0) {
+      wx.showToast({
+        icon: "none",
+        title: '请选择要买的课程',
+      });
+      return
+    }
     wx.navigateTo({
       url: '/pages/courseContract/courseContract',
+      events: {
+        // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+        payOrder: function (data) {
+          console.log('监听另外一个页面中的数据:', data);
+        }
+      },
+      success: function (res) {
+        // 通过 eventChannel 向被打开页面传送数据
+        res.eventChannel.emit('payOrder', {
+          orderInfo: orderData,
+          isPos: that.data.isPos
+        });
+      }
     });
   },
   //删除
@@ -171,6 +167,7 @@ Page({
     this.setData({
       [deleteStr]: sList
     });
+    this.calculatePrice();
   },
   //计算价格
   calculatePrice() {

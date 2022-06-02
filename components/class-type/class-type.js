@@ -18,14 +18,15 @@ Component({
           this.setData({
             selected: 0
           })
-        }
-        for (let i = 0; i < newList.length; i++) {
-          for (let j = 0; j < selectList.length; j++) {
-            if (selectList[j] == i) {
-              newList[i].checked = true;
+        }else{
+          for (let i = 0; i < newList.length; i++) {
+            for (let j = 0; j < selectList.length; j++) {
+              if (selectList[j] == i) {
+                newList[i].checked = true;
+              }
             }
-          }
-        };
+          };
+        }
         this.setData({
           courseList: newList
         })
@@ -71,7 +72,10 @@ Component({
     classConfrim() {
       //console.log('确定按钮')
       var typeList = this.data.courseList;
-      this.triggerEvent('confrim', typeList.filter(item=>item.checked))
+      this.triggerEvent('confrim', typeList.filter(item=>{
+        item.courseNum = 1;
+        return item.checked
+      }))
     },
     selectedType(e) {
       let type = e.currentTarget.dataset.type,

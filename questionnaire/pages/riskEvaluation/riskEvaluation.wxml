@@ -28,7 +28,9 @@
          </block>
       </block>
    </view>
-   <view class="question-tips" style="justify-content:{{questionNum == 0 || questionNum == riskAssessment.questList.length-1?'center':'space-between'}}" wx:if="{{questionNum < riskAssessment.questList.length-1}}">
+   <view class="question-tips"
+      style="justify-content:{{questionNum == 0 || questionNum == riskAssessment.questList.length-1?'center':'space-between'}}"
+      wx:if="{{questionNum < riskAssessment.questList.length-1}}">
       <view class="perv" bindtap="perv" wx:if="{{questionNum > 0}}">
          <text decode='true'>&lt;</text>
          上一题
@@ -39,7 +41,7 @@
       </view>
    </view>
    <!-- 补充 -->
- <!-- 3 1<2 -->
+   <!-- 3 1<2 -->
    <view class="{{questionNum != riskAssessment.questList.length-1?'riskHide':''}}">
       <!-- <view class="repenish">
          hidden="{{questionNum < riskAssessment.questList.length-1}}"
@@ -64,7 +66,8 @@
       <view class="signature-box">
          <view class="signature-title">我已经阅读、理解并完成了这份问卷，对于我的所有疑问都得到了令我满意的回答。</view>
          <view class="paper">
-            <canvas class="handWriting" disable-scroll="true" bindtouchstart="touchstart" bindtouchmove="touchmove" canvas-id="handWriting1"></canvas>
+            <canvas class="handWriting" disable-scroll="true" bindtouchstart="touchstart" bindtouchmove="touchmove"
+               canvas-id="handWriting1"></canvas>
             <cover-view class="refresh" bindtap="reSign">
                <cover-image src="./images/reflesh.png"></cover-image>
                <cover-view class="resetWrite">重签</cover-view>
@@ -74,3 +77,18 @@
       </view>
    </view>
 </view>
+<!-- 弹出层 -->
+<van-popup show="{{   isShowRisk }}" bind:close="onClose">
+   <view class="question-mask">
+      <view class="question-mask-title">自定义</view>
+      <view class="textarea-list">
+         <textarea value="{{othersAnwer}}" maxlength="{{limitCount}}" placeholder-style="color:#999999"
+            class="textarea2" placeholder="请输入内容" bindinput="others"></textarea>
+         <view class="limitFont">{{othersAnwer.length}}/{{limitCount}}</view>
+      </view>
+      <view class="marks-btn">
+         <button class="cancel" type="default" plain bindtap="onClose" data-id="1">取消</button>
+         <button class="save" bindtap="onSave">保存</button>
+      </view>
+   </view>
+</van-popup>

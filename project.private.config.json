@@ -275,6 +275,12 @@
           "pathName": "pages/coursePlanning/coursePlanning",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "选择门店",
+          "pathName": "pages/selectStore/selectStore",
+          "query": "",
+          "scene": null
         }
       ]
     }

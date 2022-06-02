@@ -92,7 +92,9 @@
   font-size: 32rpx;
   color: #333333;
 }
-
+.scroll-item .delete-icon{
+  padding: 10rpx 6rpx;
+}
 .right-box .top image {
   width: 36rpx;
   height: 36rpx;

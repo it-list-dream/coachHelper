@@ -74,7 +74,7 @@ Page({
     that.setData({
       testList: testList,
       test: test
-    })
+    });
   },
   addAssement() {
     wx.navigateTo({
@@ -82,11 +82,10 @@ Page({
     })
   },
   assessContrast(e) {
-    let selectedList = this.data.test;
-    //console.log(selectedList)
+    let selectedList = this.data.testList.filter(item=>item.selected)
     if (selectedList.length == 2) {
       wx.navigateTo({
-        url: `/evaluation/pages/postureContrast/postureContrast?sd_id=${selectedList[0]}&sd_id2=${selectedList[1]}`,
+        url: `/evaluation/pages/postureContrast/postureContrast?sd_id=${selectedList[0].SD_ID}&sd_id2=${selectedList[1].SD_ID}`,
       })
     } else {
       wx.showToast({

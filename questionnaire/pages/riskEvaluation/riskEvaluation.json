@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "van-popup": "@vant/weapp/popup/index"
+  },
   "navigationBarBackgroundColor":"#5D3DCA",
   "navigationBarTextStyle":"white",
   "navigationBarTitleText":"风险评估（PAR-Q)"

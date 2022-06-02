@@ -44,7 +44,11 @@ Page({
         })
      })
   },
-
+  successful(){
+    wx.redirectTo({
+      url: '/evaluation/pages/postureAssessment/postureAssessment',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

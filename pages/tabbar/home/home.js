@@ -8,7 +8,8 @@ Page({
    */
   data: {
     tabbar: {},
-    classList: []
+    classList: [],
+    gym: ''
   },
   /**
    * 生命周期函数--监听页面加载
@@ -19,7 +20,7 @@ Page({
       menuRight: app.globalData.menuRight,
       navHeight: app.globalData.navHeight,
       navTop: app.globalData.navTop
-    })
+    });
   },
   courseIntroduce(e) {
     let classes = e.currentTarget.dataset.course;
@@ -47,13 +48,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var gi_id = wx.getStorageSync('gi_id')
+    var gi_id = wx.getStorageSync('gi_id');
+    const {GymName} = wx.getStorageSync('coach');
     service.post('/CoachClassList', {
-      gi_id: gi_id 
+      gi_id: gi_id
     }).then(res => {
-      console.log(res)
       this.setData({
-        classList: res.data.data.slice(0, 4)
+        classList: res.data.data.slice(0, 4),
+        gym:GymName
       })
     })
   },
@@ -83,13 +85,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

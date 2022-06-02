@@ -58,12 +58,12 @@ Page({
   },
   onChange(e) {
     let activeIndex = e.detail.name;
-    if(this.data.active == activeIndex){
-        return;
+    if (this.data.active == activeIndex) {
+      return;
     }
-    if(activeIndex == 0){
+    if (activeIndex == 0) {
       this.getQuestList(app.globalData.custom.UI_ID);
-    }else{
+    } else {
       this.getRiskAssessment(app.globalData.custom.UI_ID);
     }
     this.setData({
@@ -80,6 +80,34 @@ Page({
         scrollHeight: scrollHeight,
         custom: app.globalData.custom
       })
+    })
+  },
+  deleteQuestion(e) {
+    var that = this;
+    let qr_id = e.currentTarget.dataset.id,
+      questionList = this.data.questionList,
+      riskAssessList = this.data.riskAssessList;
+    wx.showModal({
+      title: '',
+      content: '确定要删除该基础问卷吗？',
+      success(res) {
+        if (res.confirm) {
+          // questionList.splice(questionList.findIndex(item => item.QR_ID == qr_id), 1);
+          if(that.data.active == 0){
+            questionList.splice(questionList.findIndex(item => item.QR_ID == qr_id), 1);
+            that.setData({
+              questionList:questionList 
+            })
+          }else if(that.data.active == 1){
+            riskAssessList.splice(questionList.findIndex(item => item.QR_ID == qr_id), 1);
+            that.setData({
+              riskAssessList:riskAssessList
+            })
+          }
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
   },
   /**
@@ -126,13 +154,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

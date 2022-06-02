@@ -5,14 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+   coachInfo:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      var coachInfo = wx.getStorageSync('coach');
+      //console.log(coachInfo)
+      this.setData({
+        coachInfo:coachInfo
+      })
   },
 
   /**

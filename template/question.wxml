@@ -5,7 +5,9 @@
       <view class="right-box">
         <view class="top">
           <text>{{QuestType}}</text>
-          <image src="/assets/images/right.png"></image>
+          <view class="delete-icon" data-id="{{QR_ID}}" catchtap="deleteQuestion">
+            <image src="/assets/images/close.png"></image>
+          </view>
         </view>
         <view class="bottom">
          {{AI_Name}}

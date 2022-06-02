@@ -1,13 +1,13 @@
 <view class='nav-wrap' style='height: {{navHeight}}px;'>
   <view class="navbar-action-wrap " style="top:{{navTop}}px;left: {{menuRight}}px;" bindtap="toChooseStore">
-    <text>请选择您所在门店</text>
+    <text>{{GymName.length>0?GymName:'请选择您所在的门店'}}</text>
     <image src="/assets/images/profile/white-arrow.png" class="arrow-icon"></image>
   </view>
 </view>
 <view class="profileContainer" style="margin-top:{{navHeight}}px;">
   <view class="profile-header">
       <view class="profile-info" bindtap="editProfile" wx:if="{{isLogin}}">
-        <view class="coach-name">{{RoleName}}</view>
+        <view class="coach-name">{{AI_Name}}</view>
         <view class="personalSet">个人设置</view>
         <view class="icon-arrow">
           <image src="../../../assets/images/white-arrow.png"></image>

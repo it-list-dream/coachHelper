@@ -9,7 +9,7 @@
       <view class="store-detail" bindtap="switchStore" data-store="{{brand}}">
         <view>{{brand.GymName}}</view>
         <view class="gym-address">{{brand.GymAddress}}</view>
-        <view class="icon-box" wx:if="{{brand.checked}}">
+        <view class="icon-box" hidden="{{currentIndex != idx}}">
           <icon type="success" color="#2564F6"></icon>
         </view>
       </view>

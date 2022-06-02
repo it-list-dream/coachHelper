@@ -7,14 +7,15 @@ const request = (url, options) => {
         // wx.showLoading({
         //     title: '加载中',
         // })
+        var gi_id = wx.getStorageSync('gi_id')
         if (url != "/WxUserLogin" && url != "/userPhoneBind") {
             var token = wx.getStorageSync('token');
             if (!token) {
                 wx.navigateTo({
-                  url: '/pages/login/login',
+                    url: '/pages/login/login',
                 })
                 return;
-            } else {
+            }else {
                 fixtion.user_token = token;
             }
         }

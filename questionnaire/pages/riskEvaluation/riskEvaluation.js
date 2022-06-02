@@ -14,7 +14,11 @@ Page({
     context1: null,
     hasDraw: false, //默认没有画
     src: null,
-    ideaText: ""
+    ideaText: "",
+    //其他
+    isShowRisk: false,
+    othersAnwer: "",
+    limitCount: 8
   },
 
   /**
@@ -153,7 +157,6 @@ Page({
         console.log('当前题目:', questList[i].optionList);
         // debugger;
         for (var j = 0; j < questList[i].optionList.length; j++) {
-          // console.log(questList[i].optionList[j])
           if (answer_value == questList[i].optionList[j].Answer) {
             questList[i].optionList[j].checked = true;
           } else {
@@ -235,7 +238,7 @@ Page({
     if (fileId) {
       riskAssessment.userSign = fileId;
     }
-    console.log(JSON.stringify(riskAssessment))
+    //console.log(JSON.stringify(riskAssessment))
     service.post('/QuestResultSave', {
       json: JSON.stringify(riskAssessment),
       gi_id: wx.getStorageSync('gi_id')
@@ -248,9 +251,38 @@ Page({
       })
     })
   },
-  //文本
-  changeInputText() {
-    //文本
+  //
+  others(e) {
+    console.log('others', e)
+    this.setData({
+      othersAnwer: e.detail.value
+    })
+  },
+  defined() {
+    this.setData({
+      isShowRisk: true
+    })
+  },
+  onClose() {
+    this.setData({
+      isShowRisk: false
+    })
+  },
+  onSave() {
+    console.log('保存');
+    var answerList = this.data.riskAssessment.questList[this.data.questionNum];
+    if (this.data.othersAnwer.length > 0) {
+      answerList.optionList.push({
+        Answer: this.data.othersAnwer,
+        checked: false
+      })
+    }
+    var oper = "riskAssessment.questList[" + this.data.questionNum + "]"
+    this.setData({
+      isShowRisk: false,
+      othersAnwer: "",
+      [oper]: answerList
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

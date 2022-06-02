@@ -10,7 +10,7 @@ Page({
     value: "",
     currentActive: 0,
     //tablist
-    tabsList: ['最近联系', '全部客户', '私教会员', '普通会员', '意向会员', '公海池'],
+    tabsList: ['最近联系', '全部客户', '私教会员', '普通会员', '公海池'],
     memberList: [{
         name: "宁康",
         phone: '1213131313',
@@ -36,8 +36,8 @@ Page({
     filterIndex: 0,
     searchText: "",
     //分页
-    pageIndex:1,
-    pageSize:20
+    pageIndex: 1,
+    pageSize: 20
   },
   /**
    * 生命周期函数--监听页面加载
@@ -46,12 +46,9 @@ Page({
     app.editTabbar();
     wx.getSystemInfo({
       success: (result) => {
-        //console.log(result)
         this.getNodeHeight(result.windowHeight);
       },
     })
-    //公海池
-    this.getPublicWaters();
   },
   getPublicWaters() {
     var jsonStr = {
@@ -63,16 +60,22 @@ Page({
     };
     service.post('/PublicWaters', {
       user_token: wx.getStorageSync('token'),
-      json:JSON.stringify(jsonStr)
-    }).then(res=>{
-      console.log(res)
+      json: JSON.stringify(jsonStr)
+    }).then(res => {
+      this.setData({
+        memberList: res.data.data
+      })
     })
   },
   swichNav: function (event) {
-    console.log(event);
-    this.setData({
-      currentActive: event.detail.index
-    })
+    if (this.data.currentActive != event.detail.index) {
+      this.setData({
+        currentActive: event.detail.index
+      })
+      if (this.data.tabsList[this.data.currentActive] == '公海池') {
+        this.getPublicWaters();
+      }
+    }
   },
   addPeople() {
     wx.navigateTo({
