@@ -14,7 +14,7 @@ Page({
    */
   onLoad: function (options) {
     service.post('/CoachStyleList', {
-      gi_id: 23
+      gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
       var list = res.data.data;
       list.forEach((item, index) => {

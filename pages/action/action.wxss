@@ -4,69 +4,63 @@ page {
 
 .action-header {
   position: relative;
-  height: 284rpx;
+  height: 216rpx;
   background-color: #ffffff;
   margin-bottom: 20rpx;
+  overflow: hidden;
   z-index: 100;
 }
 
 .search-box {
+  margin-left: 50rpx;
   display: flex;
-  justify-content: space-between;
-  padding: 16rpx 30rpx;
-  box-sizing: border-box;
-  box-sizing: border-box;
-  width: 100%;
+  align-items: center;
+  margin-top: 20rpx;
+  width: 610rpx;
+  height: 70rpx;
+  background: #F5F5FF;
+  border-radius: 2rpx;
 }
 
-/*  */
-.search {
-  width: 100%;
-  height: 70rpx !important;
+.search-box image {
+  margin-left: 56rpx;
+  width: 36rpx;
+  height: 36rpx;
 }
 
-.van-search {
-  padding: 0 !important;
+.search-box .search-text {
+  padding-left: 10rpx;
+  font-size: 26rpx;
+  color: #999999;
 }
 
 /*  */
 .action-classify .classify-x {
   display: flex;
-  height: 180rpx;
+  height: 126rpx;
+  line-height: 126rpx;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.action-classify .classify-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 18%;
-  flex-shrink: 0;
-  height: 100%;
-}
-
-.classify-x .body-item {
-  font-size: 24rpx;
+.classify-x .classify-item {
+  position: relative;
+  margin: 0 36rpx;
+  font-size: 28rpx;
   color: #909090;
 }
-
-.classify-item .wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80rpx;
-  height: 80rpx;
-  background: #E9EFFE;
-  border-radius: 50%;
+.classify-x .classify-item:first-child{
+  margin-left: 50rpx;
 }
-
-.classify-item .active-action {
-  background-color: #2564F6 !important;
-}
-
-.classify-item .wrapper image {
-  width: 36rpx;
-  height: 36rpx;
+.classify-x .active::after {
+  content: "";
+  position: absolute;
+  bottom: 20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 6rpx;
+  background: #2765F6;
 }
 
 /*总体主盒子*/
@@ -289,15 +283,18 @@ page {
   height: 0;
   color: transparent;
 }
-.animat{
+
+.animat {
   position: fixed;
   top: 0px;
   left: 0px;
 }
-.animat .icon{
+
+.animat .icon {
   width: 50rpx;
   height: 50rpx;
 }
+
 /* 动画 */
 @keyframes runTop {
   0% {

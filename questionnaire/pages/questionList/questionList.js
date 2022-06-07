@@ -92,22 +92,41 @@ Page({
       content: '确定要删除该基础问卷吗？',
       success(res) {
         if (res.confirm) {
-          // questionList.splice(questionList.findIndex(item => item.QR_ID == qr_id), 1);
-          if(that.data.active == 0){
-            questionList.splice(questionList.findIndex(item => item.QR_ID == qr_id), 1);
-            that.setData({
-              questionList:questionList 
-            })
-          }else if(that.data.active == 1){
-            riskAssessList.splice(questionList.findIndex(item => item.QR_ID == qr_id), 1);
-            that.setData({
-              riskAssessList:riskAssessList
-            })
+          if (that.data.active == 0) {
+            that.deleteQuestionOrRisk(qr_id, function () {
+              questionList.splice(questionList.findIndex(item => item.QR_ID == qr_id), 1);
+              that.setData({
+                questionList: questionList
+              });
+              wx.showToast({
+                icon:"none",
+                title: '删除成功',
+              });
+            });
+          } else if (that.data.active == 1) {
+            that.deleteQuestionOrRisk(qr_id,function(){
+              riskAssessList.splice(questionList.findIndex(item => item.QR_ID == qr_id), 1);
+              that.setData({
+                riskAssessList: riskAssessList
+              })
+              wx.showToast({
+                icon:"none",
+                title: '删除成功',
+              });
+            });
           }
         } else if (res.cancel) {
           console.log('用户点击取消')
         }
       }
+    })
+  },
+  deleteQuestionOrRisk(qr_id, callback) {
+    service.post('/QuestRiskAssessmentDel', {
+      qr_id: qr_id,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      callback && callback();
     })
   },
   /**

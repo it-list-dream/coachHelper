@@ -9,26 +9,29 @@
 </view>
 <scroll-view scroll-y class="scroll-content" style="height:calc(100vh - 340rpx)">
   <block wx:for="{{trainProgramme}}" wx:key="index">
-    <van-swipe-cell id="swipe-cell{{index}}" class="sw_list" right-width="{{ 170 }}" async-close bind:open="onOpen">
-      <view class="train-detail" bindtap="trainDetail" data-id="{{item.rd_id}}" style="border-radius:{{hideRound?'12rpx 0px 0px 12rpx':'12rpx'}}">
-        <view class="icon-wrap">
-          <image src="../../assets/images/c_icon.png"></image>
+    <view class="train-detail" bindtap="trainDetail" data-id="{{item.rd_id}}"
+      style="border-radius:{{hideRound?'12rpx 0px 0px 12rpx':'12rpx'}}">
+      <view class="icon-wrap">
+        <image src="../../assets/images/c_icon.png"></image>
+      </view>
+      <view class="oper-wrap">
+        <view class="i-box" data-rdid="{{item.rd_id}}" catchtap="trainEdit">
+          <image src="/assets/images/train/edit.png"></image>
         </view>
-        <view class="train-info">
-          <view class="per-desc">
-            <span class="coach">{{item.AI_Name}}</span>
-            <view class="icon-list">
-              <image src="../../assets/images/e_cion.png"></image>
-              <span>{{item.Createdate}}</span>
-            </view>
+        <view class="i-box" data-rdid="{{item.rd_id}}" catchtap="trainDelete">
+          <image src="/assets/images/train/close.png"></image>
+        </view>
+      </view>
+      <view class="train-info">
+        <view class="per-desc">
+          <span class="coach">{{item.AI_Name}}</span>
+          <view class="icon-list">
+            <image src="../../assets/images/e_cion.png"></image>
+            <span>{{item.Createdate}}</span>
           </view>
-          <view class="fit-tag">{{item.Answer}}</view>
         </view>
+        <view class="fit-tag">{{item.Answer}}</view>
       </view>
-      <view slot="right" class="van-swipe-cell__right">
-        <view class="cell-edit cell-rows" bindtap="editTrain" data-rdid="{{item.rd_id}}" data-id="{{index}}">编辑</view>
-        <view class="cell-delete cell-rows" bindtap="deleteTrain" data-rdid="{{item.rd_id}}" data-id="{{index}}">删除</view>
-      </view>
-    </van-swipe-cell>
+    </view>
   </block>
 </scroll-view>

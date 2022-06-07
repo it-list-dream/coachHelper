@@ -1,4 +1,4 @@
-// pages/action/action.js
+var service = require('../../utils/request.js')
 Page({
 
   /**
@@ -6,181 +6,121 @@ Page({
    */
   data: {
     cateItems: [{
-      cate_id: 1,
-      cate_name: "热身",
-      ishaveChild: true,
-      children: [{
-        child_id: 1,
-        name: '洁面皂',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+        cate_id: 1,
+        cate_name: "热身",
+        ishaveChild: true,
+        children: [{
+            child_id: 1,
+            name: '洁面皂',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          },
+          {
+            child_id: 2,
+            name: '卸妆',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          },
+          {
+            child_id: 3,
+            name: '洁面乳',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          },
+          {
+            child_id: 4,
+            name: '面部祛角质',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          }
+        ]
       },
       {
-        child_id: 2,
-        name: '卸妆',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+        cate_id: 2,
+        cate_name: "正式",
+        ishaveChild: true,
+        children: [{
+            child_id: 1,
+            name: '气垫bb',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          },
+          {
+            child_id: 2,
+            name: '修容/高光',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          },
+          {
+            child_id: 3,
+            name: '遮瑕',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          },
+          {
+            child_id: 4,
+            name: '腮红',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          },
+          {
+            child_id: 5,
+            name: '粉饼',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          },
+          {
+            child_id: 6,
+            name: '粉底',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          },
+          {
+            child_id: 7,
+            name: '蜜粉/散粉',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          },
+          {
+            child_id: 8,
+            name: '隔离霜',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          }
+        ]
       },
       {
-        child_id: 3,
-        name: '洁面乳',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+        cate_id: 3,
+        cate_name: "放松",
+        ishaveChild: true,
+        children: [{
+            child_id: 1,
+            name: '淡香水EDT',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          },
+          {
+            child_id: 2,
+            name: '浓香水EDP',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          },
+          {
+            child_id: 3,
+            name: '香体走珠',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          },
+          {
+            child_id: 4,
+            name: '古龙香水男士的最爱',
+            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+          }
+        ]
       },
       {
-        child_id: 4,
-        name: '面部祛角质',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+        cate_id: 4,
+        cate_name: "常用",
+        ishaveChild: false,
+        children: []
       }
-      ]
-    },
-    {
-      cate_id: 2,
-      cate_name: "正式",
-      ishaveChild: true,
-      children: [{
-        child_id: 1,
-        name: '气垫bb',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-      },
-      {
-        child_id: 2,
-        name: '修容/高光',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-      },
-      {
-        child_id: 3,
-        name: '遮瑕',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-      },
-      {
-        child_id: 4,
-        name: '腮红',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-      },
-      {
-        child_id: 5,
-        name: '粉饼',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-      },
-      {
-        child_id: 6,
-        name: '粉底',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-      },
-      {
-        child_id: 7,
-        name: '蜜粉/散粉',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-      },
-      {
-        child_id: 8,
-        name: '隔离霜',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-      }
-      ]
-    },
-    {
-      cate_id: 3,
-      cate_name: "放松",
-      ishaveChild: true,
-      children: [{
-        child_id: 1,
-        name: '淡香水EDT',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-      },
-      {
-        child_id: 2,
-        name: '浓香水EDP',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-      },
-      {
-        child_id: 3,
-        name: '香体走珠',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-      },
-      {
-        child_id: 4,
-        name: '古龙香水男士的最爱',
-        image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-      }
-      ]
-    },
-    {
-      cate_id: 4,
-      cate_name: "常用",
-      ishaveChild: false,
-      children: []
-    }
     ],
-    curNav: 1,
-    curIndex: 0,
+    //左侧
+    curNav: 0,
+    // curIndex: 0,
     //动作下标
     actionIndex: 0,
-    actionIconList: [{
-      actionName: "全部",
-      actionPic: "/assets/images/acion/all_active.png",
-      activeActionPic: "/assets/images/acion/all.png",
-      selected: true
-    },
-    {
-      actionName: "胸部",
-      actionPic: "/assets/images/acion/chest_active.png",
-      activeActionPic: "/assets/images/acion/chest.png",
-      selected: false
-    },
-    {
-      actionName: "背部",
-      actionPic: "/assets/images/acion/backside_active.png",
-      activeActionPic: "/assets/images/acion/backside.png",
-      selected: false
-    },
-    {
-      actionName: "肩部",
-      actionPic: "/assets/images/acion/shoulders_active.png",
-      activeActionPic: "/assets/images/acion/shoulders.png",
-      selected: false
-    }, {
-      actionName: "手臂",
-      actionPic: "/assets/images/acion/arm_active.png",
-      activeActionPic: "/assets/images/acion/arm.png",
-      selected: false
-    },
-    {
-      actionName: "颈部",
-      actionPic: "/assets/images/acion/neck_active.png",
-      activeActionPic: "/assets/images/acion/neck.png",
-      selected: false
-    },
-    {
-      actionName: "腹部",
-      actionPic: "/assets/images/acion/belly_active.png",
-      activeActionPic: "/assets/images/acion/belly.png",
-      selected: false
-    }, {
-      actionName: "腰部",
-      actionPic: "/assets/images/acion/waist_active.png",
-      activeActionPic: "/assets/images/acion/waist.png",
-      selected: false
-    }, {
-      actionName: "臀部",
-      actionPic: "/assets/images/acion/haunch_active.png",
-      activeActionPic: "/assets/images/acion/haunch.png",
-      selected: false
-    }, {
-      actionName: "腿部",
-      actionPic: "/assets/images/acion/leg_active.png",
-      activeActionPic: "/assets/images/acion/leg.png",
-      selected: false
-    }, {
-      actionName: "全身",
-      actionPic: "/assets/images/acion/whole_body_active.png",
-      activeActionPic: "/assets/images/acion/whole_body.png",
-      selected: false
-    }, {
-      actionName: "躯干",
-      actionPic: "/assets/images/acion/trunk_active.png",
-      activeActionPic: "/assets/images/acion/trunk.png",
-      selected: false
-    }
-    ],
+    //nav
+    actionCategory: [],
+    //左侧
+    leftCategory: [],
+    //右侧
+    rightCategory: [],
     serachText: "",
     isShowDialog: false,
     showActionDetail: false,
@@ -197,10 +137,11 @@ Page({
    */
   onLoad: function (options) {
     this.quertShoppingCarSize();
+    this.getCategoryList();
   },
   /**
- * 加入购物车
- */
+   * 加入购物车
+   */
   setDataAddShoppingCar(e) {
     let index = e.currentTarget.dataset.index,
       cart = this.data.cartList;
@@ -266,12 +207,12 @@ Page({
   switchRightTab: function (e) {
     // 获取item项的id，和数组的下标值  
     let id = e.target.dataset.id,
-      index = parseInt(e.target.dataset.index);
+      index = e.target.dataset.index;
     // 把点击到的某一项，设为当前index  
     this.setData({
-      curNav: id,
-      curIndex: index
-    })
+      curNav: index
+    });
+    this.getRightCateList(id);
   },
   onClose() {
     this.setData({
@@ -280,24 +221,64 @@ Page({
     })
   },
   switchBodyPart(e) {
-    let index = e.currentTarget.dataset.index,
-      actionIconList = this.data.actionIconList;
-    //console.log(index, actionIconList)
-    for (let i = 0; i < actionIconList.length; i++) {
-      if (actionIconList[index] == actionIconList[i]) {
-        actionIconList[i].selected = true
-      } else {
-        actionIconList[i].selected = false
-      }
-    }
+    let index = e.currentTarget.dataset.index;
+    // for (let i = 0; i < actionIconList.length; i++) {
+    //   if (actionIconList[index] == actionIconList[i]) {
+    //     actionIconList[i].selected = true
+    //   } else {
+    //     actionIconList[i].selected = false
+    //   }
+    // }
+    if (index == this.data.actionIndex) return
     this.setData({
-      actionIconList: actionIconList,
       actionIndex: index
-    })
+    });
+    var lev1 = this.data.actionIndex;
+    //二级类目的ID
+    this.getRightCateList(this.data.leftCategory[this.data.curNav].ST_ID);
   },
   actionDetail() {
     wx.navigateTo({
       url: '/pages/actionDetail/actionDetail',
+    })
+  },
+  getCategoryList() {
+    service.post('/ActLibraryList', {
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      var list = res.data.data,
+        navList = [];
+      for (var i = 0; i < list.length; i++) {
+        navList.push({
+          sl_id: list[i].sl_id,
+          sl_name: list[i].sl_name
+        });
+      }
+      this.setData({
+        leftCategory: list[0].data,
+        actionCategory: navList
+      });
+      this.cateList = res.data.data;
+      this.getRightCateList(list[0].data[0].ST_ID)
+    })
+  },
+  getRightCateList(st_id) {
+    service.post('/ActLibraryDetailsList', {
+      st_id: st_id,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      this.setData({
+        rightCategory: res.data.data
+      })
+    })
+  },
+  //动作详情
+  getActionDetail(st_id) {
+    service.post('/ActLibraryDetailsList', {
+      st_id: st_id,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      console.log(res)
     })
   },
   /**

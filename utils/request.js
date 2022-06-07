@@ -2,12 +2,11 @@ const app = getApp()
 var baseURL = 'https://user.360ruyu.cn/MobileCoachV2.asmx';
 let ajaxTimes = 0;
 var fixtion = {};
-const request = (url, options) => {
+const request = (url, options, isPay = 0) => {
     return new Promise((resolve, reject) => {
         // wx.showLoading({
         //     title: '加载中',
         // })
-        var gi_id = wx.getStorageSync('gi_id')
         if (url != "/WxUserLogin" && url != "/userPhoneBind") {
             var token = wx.getStorageSync('token');
             if (!token) {
@@ -15,9 +14,14 @@ const request = (url, options) => {
                     url: '/pages/login/login',
                 })
                 return;
-            }else {
+            } else {
                 fixtion.user_token = token;
             }
+        }
+        if(isPay == 1){
+           baseURL = "https://shop.360ruyu.cn/api/gym/gym.asmx";
+        }else{
+            baseURL = "https://user.360ruyu.cn/MobileCoachV2.asmx"
         }
         wx.request({
             url: baseURL + url || '',
@@ -62,11 +66,11 @@ const get = (url, options = {}) => {
 }
 
 //post参数
-const post = (url, options) => {
+const post = (url, options,isPay) => {
     return request(url, {
         method: 'POST',
         data: options
-    })
+    },isPay)
 }
 module.exports = {
     get,

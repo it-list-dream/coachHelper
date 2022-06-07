@@ -281,6 +281,18 @@
           "pathName": "pages/selectStore/selectStore",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/others/others",
+          "pathName": "pages/others/others",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "动作搜索",
+          "pathName": "pages/actionSearch/actionSearch",
+          "query": "",
+          "scene": null
         }
       ]
     }

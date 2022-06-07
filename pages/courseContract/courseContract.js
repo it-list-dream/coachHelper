@@ -1,6 +1,7 @@
 // pages/courseContract/courseContract.js
 const util = require('../../utils/util.js');
-var service = require('../../utils/request.js')
+var service = require('../../utils/request.js');
+var QRCode = require('../../utils/weapp-qrcode.js')
 const app = getApp();
 Page({
   /**
@@ -63,18 +64,13 @@ Page({
   // 支付方式
   payChange(e) {
     if (this.data.formStart && this.data.formEnd) {
-      this.setData({
-        showPay: true
-      })
+      this.getCoachOrderSave();
     } else {
       wx.showToast({
         icon: "none",
         title: '请选择开始日期或结束日期',
       })
-      return
     }
-    //轮询判断是否付款
-    this.getCoachOrderSave();
   },
   onClose() {
     this.setData({
@@ -104,12 +100,13 @@ Page({
       });
     })
     var jsonStr = {
-      UI_ID: this.data.custom.UI_ID,
+      UI_ID: this.data.custom.UI_ID || 3834,
       StartDate: this.data.formStart,
       EndDate: this.data.formEnd,
       SaleDate: this.data.saleDate,
       data: newList
     };
+    var body = orderList.map(item => item.cp_name).join(',')
     service.post('/CoachOrderSave', {
       user_token: wx.getStorageSync('token'),
       json: JSON.stringify(jsonStr),
@@ -121,23 +118,55 @@ Page({
         orderAmount,
         orderNo
       } = res.data;
-       // this.checkOrderStatus(orderNo)
+      this.onlinePayment(orderNo, body, orderAmount, busNo);
+
     });
   },
   checkOrderStatus(orderNo) {
-    if(operId && this.orderStatus == '已完成'){
-        clearInterval(operId);
-    }else{
-      var operId =  setInterval(function(){
-        service.post('/CoachOrderCheckStatus', {
-          orderNo: orderNo,
-          user_token: wx.getStorageSync('token'),
-          gi_id: wx.getStorageSync('gi_id')
-        }).then(res => {
-            this.orderStatus = res.data.OrderStatus;
-        })
-        },2000);
+    if (this.operId && this.orderStatus == '已付款') {
+      clearInterval(this.operId);
+      wx.navigateTo({
+        url: '/pages/others/others',
+      });
+      return;
     }
+    this.operId = setInterval(function () {
+      service.post('/CoachOrderCheckStatus', {
+        orderNo: orderNo,
+        user_token: wx.getStorageSync('token'),
+        gi_id: wx.getStorageSync('gi_id')
+      }).then(res => {
+        this.orderStatus = res.data.OrderStatus;
+      })
+    }, 2000);
+  },
+  //线上支付
+  onlinePayment(orderNo, body, orderAmount, merchantNo) {
+    service.post('/GetPayUrlV2', {
+      user_token: wx.getStorageSync('token'),
+      orderNo: orderNo,
+      productId: "1121311",
+      //商品信息
+      body: body,
+      gi_id: wx.getStorageSync('gi_id'),
+      sub_mch_id: merchantNo,
+      total_fee: orderAmount * 100
+    },1).then(res => {
+      console.log(res)
+      new QRCode('canvas', {
+        text: res.data.wxPayurl,
+        width: 170,
+        height: 170,
+        padding: 0,
+        colorDark: "black",
+        colorLight: "white",
+        correctLevel: QRCode.CorrectLevel.H,
+      });
+      this.setData({
+        showPay: true
+      });
+      this.checkOrderStatus(orderNo);
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -156,14 +185,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    clearInterval(this.operId);
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    clearInterval(this.operId);
   },
 
   /**

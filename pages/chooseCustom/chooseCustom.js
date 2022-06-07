@@ -8,7 +8,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    value: "",
     currentActive: 1,
     //tablist
     tabsList: ['最近联系', '全部客户'],

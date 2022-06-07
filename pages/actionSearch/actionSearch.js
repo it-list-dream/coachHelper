@@ -1,3 +1,4 @@
+// pages/actionSearch/actionSearch.js
 var service = require('../../utils/request.js')
 Page({
 
@@ -5,34 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-   togetherList:[]
+     searchText:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let gi_id = wx.getStorageSync('gi_id');
-    service.post('/CardTogetherList', {
-      gi_id: gi_id
-    }).then(res=>{
-      console.log(res);
-       this.setData({
-        togetherList:res.data.data
-       })
-    })
+
   },
-// 预览图片
-previewBigImage(e) {
-  let imgs = this.data.venueList.map(item=>item.imgurl);
-  let {index} = e.currentTarget.dataset;
-  wx.previewImage({
-    //当前显示图片
-    current: imgs[index],
-    //所有图片
-    urls: imgs
-  })
-},
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -72,6 +55,13 @@ previewBigImage(e) {
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
 
   }
 })

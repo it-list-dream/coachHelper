@@ -1,8 +1,8 @@
 {
   "usingComponents": {
-    "van-popup": "@vant/weapp/popup/index"
+    "van-search": "@vant/weapp/search/index"
   },
   "navigationBarBackgroundColor":"#2564F6",
   "navigationBarTextStyle":"white",
-  "navigationBarTitleText":"动作"
+  "navigationBarTitleText":"动作搜索"
 }

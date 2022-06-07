@@ -16,7 +16,7 @@
       <button wx:else class="loginBtn" bindtap="doLogin">登录</button>
   </view>
   <!-- 教练经理 -->
-  <view class="coach-skill">
+  <view class="coach-skill" wx:if="{{RoleName=='私教经理'}}">
     <view class="skill-item" bindtap="allotCustom">
       <image src="/assets/images/profile/role.png"></image>
       <text>分配客户</text>

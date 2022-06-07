@@ -1,16 +1,14 @@
 <view class="action-header">
   <view class="search-box">
-    <van-search value="{{ serachText}}" placeholder="搜索动作" class="search" />
+    <image src="/assets/images/search.png"></image>
+    <text class="search-text">搜索动作</text>
   </view>
   <!-- 动作 -->
   <view class="action-classify">
     <scroll-view class="classify-x" enable-flex scroll-x>
-      <block wx:for="{{actionIconList}}">
-        <view class="classify-item" bindtap="switchBodyPart" data-index="{{index}}">
-          <view class="wrapper  {{actionIndex == index?'active-action':''}}">
-            <image src="{{item.selected?item.activeActionPic:item.actionPic}}"></image>
-          </view>
-          <view class="body-item">{{item.actionName}}</view>
+      <block wx:for="{{actionCategory}}" wx:for-index="idx" wx:key="idx">
+        <view class="classify-item {{actionIndex == idx?'active':''}}" bindtap="switchBodyPart" data-index="{{idx}}">
+          {{item.sl_name}}
         </view>
       </block>
     </scroll-view>
@@ -20,17 +18,18 @@
 <view class="actionContainer">
   <!-- 左侧栏 -->
   <scroll-view class="nav_left" scroll-y :show-scrollbar="{{false}}">
-    <block wx:for="{{cateItems}}">
-      <view class="nav_left_items {{curNav == item.cate_id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.cate_id}}">
-        {{item.cate_name}}
+    <block wx:for="{{leftCategory}}" wx:for-index="i" wx:key="i">
+      <view class="nav_left_items {{curNav == i ? 'active' : ''}}" bindtap="switchRightTab"
+        data-index="{{i}}" data-id="{{item.ST_ID}}">
+        {{item.ST_Name}}
       </view>
     </block>
   </scroll-view>
   <!-- 右侧栏 -->
   <scroll-view scroll-y class="nav_right" scroll-with-animation>
     <!-- 如果有数据，才遍历项 -->
-    <view class="nav_list" wx:if="{{cateItems[curIndex].ishaveChild}}">
-      <block wx:for="{{cateItems[curIndex].children}}">
+    <view class="nav_list" wx:if="{{rightCategory.length>0}}">
+      <block wx:for="{{rightCategory}}" wx:key="index">
         <view class="nav_right_items">
           <view class="right_items_left">
             <image src="/assets/images/acion/c.png"></image>

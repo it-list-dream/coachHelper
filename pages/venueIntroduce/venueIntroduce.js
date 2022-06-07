@@ -14,15 +14,25 @@ Page({
    */
   onLoad: function (options) {
     service.post('/VenueIntroduce',{
-      gi_id:23
+      gi_id:wx.getStorageSync('gi_id')
     }).then(res=>{
-      console.log(res)
+     // console.log(res)
       this.setData({
         venueList:res.data.data
       })
     })
   },
-
+// 预览图片
+previewBigImage(e) {
+  let imgs = this.data.venueList.map(item=>item.imgurl);
+  let {index} = e.currentTarget.dataset;
+  wx.previewImage({
+    //当前显示图片
+    current: imgs[index],
+    //所有图片
+    urls: imgs
+  })
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

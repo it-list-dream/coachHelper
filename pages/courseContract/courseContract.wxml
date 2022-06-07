@@ -49,7 +49,7 @@
     <view class="pay-box">
       <view class="pay-title">线上支付</view>
       <view class="wechat-code">
-        <image src="/assets/images/code.png" class="wechat-icon"></image>
+        <canvas class="canvas" canvas-id="canvas"></canvas>
       </view>
       <view class="pay-bottom">
         <image src="/assets/images/wechat1.png" class="w-icon"></image>

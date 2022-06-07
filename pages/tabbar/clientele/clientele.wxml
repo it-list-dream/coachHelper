@@ -1,23 +1,26 @@
 <view class="chooseCustomContainer">
   <view class="serach-box">
-    <van-search value="{{ value }}" placeholder="请输入会员姓名、手机号" />
-    <image class="add" src="/assets/images/add2.png" bindtap="addPeople"></image>
+    <van-search bind:change="seachChange" value="{{  searchText }}" placeholder="请输入会员姓名、手机号" />
+    <!-- <image class="add" src="/assets/images/add2.png" bindtap="addPeople"></image> -->
   </view>
+  <!-- <tabs-list id="tabs" is-border="{{true}}" icon="{{true}}" tList="{{tabsList}}" current-tab="{{ currentActive}}"
+    bind:changeCurrent="tabsChange" bind:scrollHeight="getHeight">
+  </tabs-list> -->
   <van-tabs id="tabs" title-active-color="#2564F6" color="#2564F6" title-inactive-color="#222222" ellipsis="{{false}}"
     active="{{ currentActive }}" bind:change="swichNav">
     <van-tab title="{{item}}" wx:for="{{tabsList}}" wx:key="index">
-      <scroll-view class="scroll-y" scroll-y style="height:{{scrollHeight}}px">
+      <scroll-view  class="scroll-y" scroll-y style="height:{{scrollHeight}}px" bindscrolltolower="loadMore">
         <view class="screen" wx:if="{{currentActive == 2}}">
           <text style="color:{{filterIndex == 0?'#2564F6':''}}" bindtap="filterMember" data-index="0">全部私教会员</text>
           <text style="color:{{filterIndex == 1?'#2564F6':''}}" bindtap="filterMember" data-index="1">所属自己会员</text>
         </view>
         <view class="tab-item" wx:if="{{currentActive == index}}">
           <view class="custom-list" wx:for="{{memberList}}" wx:key="index" bindtap="memberDetail">
-            <image src="/assets/images/photo.png" class="header" wx:if="{{item.img.indexOf('http') ==-1}}"></image>
+            <image src="/assets/images/photo.png" class="header" wx:if="{{item.UI_Face.indexOf('http') ==-1}}"></image>
             <view class="h1" wx:else>{{item.firstName}}</view>
             <view class="custom-info">
-              <view>{{item.name}}</view>
-              <view>{{item.phone}}</view>
+              <view>{{item.UI_Name}}</view>
+              <view>{{item.UI_Phone}}</view>
             </view>
           </view>
         </view>

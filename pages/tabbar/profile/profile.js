@@ -58,12 +58,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    const {AI_Name,GymName} = wx.getStorageSync('coach');
+    const {
+      AI_Name,
+      GymName,
+      RoleName
+    } = wx.getStorageSync('coach');
     if (app.globalData.phoneNumber || wx.getStorageInfoSync('phone')) {
       this.setData({
         isLogin: true,
-        AI_Name:AI_Name,
-        GymName:GymName
+        AI_Name: AI_Name,
+        GymName: GymName,
+        RoleName: RoleName
+      })
+    } else {
+      this.setData({
+        isLogin: false
       })
     }
   },

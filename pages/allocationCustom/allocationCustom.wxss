@@ -3,10 +3,6 @@
   color: #C2BCBC !important;
 }
 
-/* .scroll {
-  background-color: orange;
-} */
-
 .tabs-filter {
   display: flex;
   width: 100%;

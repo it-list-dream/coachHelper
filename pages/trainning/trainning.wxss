@@ -47,36 +47,8 @@ page {
    font-size: 36rpx;
 }
 
-/*  */
-.scroll-content {
-   box-sizing: border-box;
-   padding: 0 30rpx;
-}
-
-.van-swipe-cell__right {
-   display: flex;
-}
-
-.van-swipe-cell__right .cell-rows {
-   width: 170rpx;
-   height: 186rpx;
-   line-height: 186rpx;
-   text-align: center;
-   color: #FFFFFF;
-   font-size: 36rpx;
-   box-shadow: 0px 0px 14rpx 0px rgba(0, 34, 112, 0.08);
-}
-
-.van-swipe-cell__right .cell-edit{
-   background: #D9D9D9;
-}
-
-.van-swipe-cell__right .cell-delete{
-   background: #F93030;
-   border-radius: 0px 12rpx 12rpx 0px;
-}
-
 .scroll-content .train-detail {
+   position: relative;
    display: flex;
    width: 690rpx;
    height: 186rpx;
@@ -85,11 +57,33 @@ page {
    box-sizing: border-box;
    padding: 48rpx 0;
    overflow: hidden;
-   margin-bottom: 30rpx;
+   margin: 0 auto 30rpx;
 }
-.scroll-content .train-detail:first-child{
+
+.oper-wrap {
+   display: flex;
+   position: absolute;
+   right: 6rpx;
+   top: 34rpx;
+}
+
+.oper-wrap .i-box {
+   display: flex;
+   width: 64rpx;
+   height: 64rpx;
+   align-items: center;
+   justify-content: center;
+}
+
+.oper-wrap .i-box image {
+   width: 32rpx;
+   height: 32rpx;
+}
+
+.scroll-content .train-detail:first-child {
    margin-top: 20rpx;
 }
+
 .train-detail .icon-wrap {
    margin: 0 30rpx 0 32rpx;
    width: 86rpx;
@@ -130,11 +124,13 @@ page {
    height: 24rpx;
    vertical-align: middle;
 }
-.per-desc .icon-list span{
+
+.per-desc .icon-list span {
    vertical-align: middle;
    margin-left: 4rpx;
 }
-.train-info .fit-tag{
+
+.train-info .fit-tag {
    font-size: 28rpx;
    color: #A2A2A2;
- }
+}

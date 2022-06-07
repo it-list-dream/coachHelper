@@ -1,6 +1,6 @@
 <view class="chooseCustomContainer">
   <view class="serach-box">
-    <van-search value="{{ value }}" placeholder="请输入会员姓名、手机号" bind:change="seachChange" bind:cancel="seachCancel" />
+    <van-search value="{{searchText}}" placeholder="请输入会员姓名、手机号" bind:change="seachChange" bind:cancel="seachCancel" />
     <image class="add" src="/assets/images/add2.png" bindtap="addPeople"></image>
   </view>
   <!-- tabs -->

@@ -3,7 +3,8 @@
     "van-search": "@vant/weapp/search/index",
     "tabbar":"/components/tabbar/tabbar",
     "van-tab": "@vant/weapp/tab/index",
-    "van-tabs": "@vant/weapp/tabs/index"
+    "van-tabs": "@vant/weapp/tabs/index",
+    "tabs-list":"/components/tabs-list/tabs-list"
   },
   "navigationBarBackgroundColor":"#2564F6",
   "navigationBarTextStyle":"white",

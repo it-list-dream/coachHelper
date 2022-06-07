@@ -43,7 +43,7 @@ Component({
    */
   data: {
     allList: [],
-    copyList: [],
+    // copyList: [],
     showDefined: false
   },
   /**
@@ -67,21 +67,10 @@ Component({
     },
     //确定
     onConfrim() {
-      let list = this.data.allList,
-        copyList = this.data.copyList;
-      for (var i = 0; i < copyList.length; i++) {
-        list.filter(item => item.checked).forEach(item => {
-          if (item.name == copyList[i].name) {
-            copyList[i].checked = true;
-          }
-        })
-      }
-      this.setData({
-        copyList: copyList
-      })
+      let list = this.data.allList;
       this.triggerEvent('trainConfrim', {
         trainList: list.filter(item => item.checked).map(item => item.name)
-      })
+      });
     },
     //自定义
     handleDefined() {
@@ -96,30 +85,51 @@ Component({
     },
     handleConfrim(e) {
       let title = this.properties.modelTitle,
+        modelList = this.properties.modelList,
         trainPoint = wx.getStorageSync('trainPoint') || [],
-        trainProject = wx.getStorageSync('trainProject') || [];
-      // console.log('allList:',this.data.allList);
-      // console.log('copyList:',this.data.copyList)
+        trainProject = wx.getStorageSync('trainProject') || [],
+        allList = this.data.allList;
       if (title == '添加训练重点' && e.detail) {
-        trainPoint.push({
-          name: e.detail,
-          checked: false
-        })
-        wx.setStorageSync('trainPoint', trainPoint)
+        if ([...modelList, ...trainPoint].map(item => item.name).indexOf(e.detail) == -1) {
+          trainPoint.push({
+            name: e.detail,
+            checked: false
+          });
+          wx.setStorageSync('trainPoint', trainPoint)
+        } else {
+          wx.showToast({
+            icon: "none",
+            title: '请勿重复添加',
+          });
+          return;
+        }
       } else if (title == '添加训练项目' && e.detail) {
-        trainProject.push({
-          name: e.detail,
-          checked: false
-        })
-        wx.setStorageSync('trainProject', trainProject)
+        if ([...modelList, ...trainProject].map(item => item.name).indexOf(e.detail) == -1) {
+          trainProject.push({
+            name: e.detail,
+            checked: false
+          });
+          wx.setStorageSync('trainProject', trainProject);
+        } else {
+          wx.showToast({
+            icon: "none",
+            title: '请勿重复添加',
+          });
+          return;
+        }
       }
-      this.setData({
-        showDefined: false
+      allList.push({
+        name: e.detail,
+        checked: false
       })
+      this.setData({
+        showDefined: false,
+        allList: allList
+      });
       this.triggerEvent('addTrain', {
         title: title,
         value: e.detail
-      })
+      });
     }
   }
 })

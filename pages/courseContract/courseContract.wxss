@@ -157,15 +157,15 @@ page {
 }
 
 .wechat-code {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   border-top: 1px solid #F0F0F0;
   overflow: hidden;
 }
-
-.wechat-code .wechat-icon {
-  padding-top: 30rpx;
+.wechat-code .canvas{
   width: 340rpx;
   height: 340rpx;
+  margin-top: 40rpx;
 }
 
 .pay-bottom {
@@ -181,5 +181,5 @@ page {
 }
 
 .pay-bottom text {
-  margin-left: 25rpx;
+  padding-left: 25rpx;
 }

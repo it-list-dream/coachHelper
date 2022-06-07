@@ -18,7 +18,24 @@ Page({
         coachInfo:coachInfo
       })
   },
-
+  //退出
+  exit(){
+    wx.showModal({
+      title: '',
+      content: '是否退出登录？',
+      success (res) {
+        if (res.confirm) {
+          wx.clearStorageSync();
+          wx.navigateBack({
+            delta: 1
+          });
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+    
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -44,27 +61,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

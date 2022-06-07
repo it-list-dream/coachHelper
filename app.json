@@ -50,7 +50,8 @@
     "pages/chooseCustom/chooseCustom",
     "pages/customerDetail/customerDetail",
     "pages/classType/classType",
-    "pages/classDetail/classDetail"
+    "pages/classDetail/classDetail",
+    "pages/actionSearch/actionSearch"
   ],
   "subpackages": [
     {
