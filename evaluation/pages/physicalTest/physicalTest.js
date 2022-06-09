@@ -21,74 +21,78 @@ Page({
     },
     //身体测量
     physicalStateList: [{
-      physicalName: "血压",
-      physicalImage: "./images/blood_pressure.png",
-      value: "",
-      unit: "mmHg"
-    },
-    {
-      physicalName: "心率",
-      physicalImage: "./images/heart_rate.png",
-      value: "",
-      unit: "bpm"
-    },
-    {
-      physicalName: "胸围",
-      physicalImage: "./images/breast.png",
-      value: "",
-      unit: "cm"
-    },
-    {
-      physicalName: "肩围",
-      physicalImage: "./images/headback.png",
-      value: "",
-      unit: "cm"
-    }, {
-      physicalName: "腰围",
-      physicalImage: "./images/waist.png",
-      value: "",
-      unit: "cm"
-    }, {
-      physicalName: "臀围",
-      physicalImage: "./images/hip.png",
-      value: "",
-      unit: "cm"
-    }, {
-      physicalName: "左上臂围",
-      physicalImage: "./images/left_arm.png",
-      value: "",
-      unit: "cm"
-    }, {
-      physicalName: "右上臂围",
-      physicalImage: "./images/right_arm.png",
-      value: "",
-      unit: "cm"
-    }, {
-      physicalName: "左大腿围",
-      physicalImage: "./images/left_leg.png",
-      value: "",
-      unit: "cm"
-    }, {
-      physicalName: "右大腿围",
-      physicalImage: "./images/right_leg.png",
-      value: "",
-      unit: "cm"
-    }, {
-      physicalName: "左小腿围",
-      physicalImage: "./images/left_shank.png",
-      value: "",
-      unit: "cm"
-    },
-    {
-      physicalName: "右小腿围",
-      physicalImage: "./images/right_shank.png",
-      value: "",
-      unit: "cm"
-    }
+        physicalName: "血压",
+        physicalImage: "./images/blood_pressure.png",
+        value: "",
+        unit: "mmHg"
+      },
+      {
+        physicalName: "心率",
+        physicalImage: "./images/heart_rate.png",
+        value: "",
+        unit: "bpm"
+      },
+      {
+        physicalName: "胸围",
+        physicalImage: "./images/breast.png",
+        value: "",
+        unit: "cm"
+      },
+      {
+        physicalName: "肩围",
+        physicalImage: "./images/headback.png",
+        value: "",
+        unit: "cm"
+      }, {
+        physicalName: "腰围",
+        physicalImage: "./images/waist.png",
+        value: "",
+        unit: "cm"
+      }, {
+        physicalName: "臀围",
+        physicalImage: "./images/hip.png",
+        value: "",
+        unit: "cm"
+      }, {
+        physicalName: "左上臂围",
+        physicalImage: "./images/left_arm.png",
+        value: "",
+        unit: "cm"
+      }, {
+        physicalName: "右上臂围",
+        physicalImage: "./images/right_arm.png",
+        value: "",
+        unit: "cm"
+      }, {
+        physicalName: "左大腿围",
+        physicalImage: "./images/left_leg.png",
+        value: "",
+        unit: "cm"
+      }, {
+        physicalName: "右大腿围",
+        physicalImage: "./images/right_leg.png",
+        value: "",
+        unit: "cm"
+      }, {
+        physicalName: "左小腿围",
+        physicalImage: "./images/left_shank.png",
+        value: "",
+        unit: "cm"
+      },
+      {
+        physicalName: "右小腿围",
+        physicalImage: "./images/right_shank.png",
+        value: "",
+        unit: "cm"
+      }
     ],
     //血压
     multiArray: [],
-    multiIndex: [104, 0, 74]
+    multiIndex: [104, 0, 74],
+    fileList1: [],
+    fileList2: [],
+    fileList3: [],
+    fileList4: []
   },
 
   /**
@@ -138,7 +142,7 @@ Page({
     }
     console.log(bodyCom)
     this.setData({
-      bodyCompsition:bodyCom
+      bodyCompsition: bodyCom
     })
   },
   /**
@@ -174,15 +178,88 @@ Page({
     let value = e.detail.value,
       bloodText,
       physicalList = this.data.physicalStateList;
-    bloodText = this.data.multiArray[0][value[0]]+'/'+this.data.multiArray[2][value[2]];    
+    bloodText = this.data.multiArray[0][value[0]] + '/' + this.data.multiArray[2][value[2]];
     physicalList.forEach(item => {
       if (item.physicalName == '血压') {
         item.value = bloodText
       }
     });
     this.setData({
-      physicalStateList:physicalList
+      physicalStateList: physicalList
     })
+  },
+  afterRead(e) {
+    let index = e.currentTarget.dataset.index;
+    var fileList1 = this.data.fileList1,
+      fileList2 = this.data.fileList2,
+      fileList3 = this.data.fileList3,
+      fileList4 = this.data.fileList4;
+    if (index == 0) {
+      fileList1.push({
+        name: "图片1",
+        url: e.detail.file.url
+      });
+      this.setData({
+        fileList1
+      });
+    } else if (index == 1) {
+      fileList2.push({
+        name: "图片2",
+        url: e.detail.file.url
+      });
+      this.setData({
+        fileList2
+      });
+    } else if (index == 2) {
+      fileList3.push({
+        name: "图片3",
+        url: e.detail.file.url
+      });
+      this.setData({
+        fileList3
+      });
+    } else if (index == 3) {
+      fileList4.push({
+        name: "图片4",
+        url: e.detail.file.url
+      });
+      this.setData({
+        fileList4
+      });
+    }
+  },
+  deletePicture(e) {
+    var fileList1 = this.data.fileList1,
+      fileList2 = this.data.fileList2,
+      fileList3 = this.data.fileList3,
+      fileList4 = this.data.fileList4;
+    let index = e.currentTarget.dataset.index;
+    switch (parseInt(index)) {
+      case 0:
+        fileList1.splice(index, 1);
+        this.setData({
+          fileList1
+        });
+        break;
+      case 1:
+        fileList2.splice(index, 1);
+        this.setData({
+          fileList2
+        });
+        break;
+      case 2:
+        fileList3.splice(index, 1);
+        this.setData({
+          fileList3
+        });
+        break;
+      case 3:
+        fileList4.splice(index, 1);
+        this.setData({
+          fileList4
+        });
+        break;
+    }
   },
   bindBloodChange(e) {},
   /**

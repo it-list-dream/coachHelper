@@ -12,10 +12,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-  editClass(){
-   
+    var that = this;
+    const eventChannel = this.getOpenerEventChannel()
+    eventChannel.on('actionDetail', function(res) {
+      that.setData({
+        warmUpList:res.warmUpList,
+        relaxList:res.relaxList,
+        officialList:res.officialList
+      })
+    })
   },
   gohaveClass(){
      wx.navigateTo({

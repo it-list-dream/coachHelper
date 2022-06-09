@@ -1,5 +1,5 @@
 <view class="action-header">
-  <view class="search-box">
+  <view class="search-box" bindtap="toSearch">
     <image src="/assets/images/search.png"></image>
     <text class="search-text">搜索动作</text>
   </view>
@@ -30,13 +30,13 @@
     <!-- 如果有数据，才遍历项 -->
     <view class="nav_list" wx:if="{{rightCategory.length>0}}">
       <block wx:for="{{rightCategory}}" wx:key="index">
-        <view class="nav_right_items">
+        <view class="nav_right_items" bindtap="actionDetail" data-action="{{item}}">
           <view class="right_items_left">
             <image src="/assets/images/acion/c.png"></image>
           </view>
-          <view class="right_items_center" bindtap="actionDetail">
-            <view>比目鱼肌腓肠肌</view>
-            <view>柔韧性 热身 放松</view>
+          <view class="right_items_center">
+            <view>{{item.SM_Name}}</view>
+            <view>{{item.SM_LableName}}</view>
           </view>
           <view class="right_items_right" catchtap="selectGoods" data-index="{{index}}">
             <image class="add-actions" src="/assets/images/acion/add3.png">+</image>
@@ -77,15 +77,15 @@
     </view>
     <view class="mask-content">
       <scroll-view scroll-y class="action-scroll" style="height:calc(65vh - 320rpx);">
-        <view class="mask-action-item" wx:for="{{4}}">
+        <view class="mask-action-item" wx:for="{{cartList}}" wx:key="id">
           <view class="right_items_left">
             <image src="/assets/images/acion/c.png"></image>
           </view>
           <view class="right_items_center">
-            <view>比目鱼肌腓肠肌</view>
-            <view>柔韧性 热身 放松</view>
+            <view>{{item.SM_Name}}</view>
+            <view>{{item.SM_LableName}}</view>
           </view>
-          <view class="right_items_right" bindtap="deleteActions">
+          <view class="right_items_right" bindtap="deleteActions" data-index="{{index}}">
             <image class="delete-actions" src="/assets/images/acion/delete.png"></image>
           </view>
         </view>
@@ -94,7 +94,7 @@
     <view class="bottom-mask">
       <view class="action-num">
         动作数量：
-        <text style="color:#2564F6;">3</text>
+        <text style="color:#2564F6;">{{cartList.length}}</text>
       </view>
       <view class="details" bindtap="showDetail">
         明细

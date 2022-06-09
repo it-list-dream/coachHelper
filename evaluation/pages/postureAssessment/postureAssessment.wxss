@@ -1,7 +1,7 @@
 /* pages/postureAssessment/postureAssessment.wxss */
 .header {
   height: 360rpx;
-  background: linear-gradient(90deg, #2664F6 0%, #6996FF 100%);
+  background: #2664F6;
 }
 
 .profile {

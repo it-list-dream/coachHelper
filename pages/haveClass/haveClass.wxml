@@ -2,33 +2,45 @@
   <view class="class-list">
     <view class="left">第一次课程</view>
     <view class="right">
-      <view class="edit btn" bindtap="editClass">编辑</view>
+      <navigator open-type="navigateBack" delta="1" class="edit btn">编辑</navigator>
       <view class="attend-class btn" bindtap="gohaveClass">去上课</view>
     </view>
   </view>
 
   <view class="train-list">
     <view class="train-target">
-      <view class="target-title verticalbar">训练目标</view>
-      <view class="train-action">扶墙俯卧撑：3组×10次 20kg·间休60s</view>
-      <view class="train-action">四足支撑：2组×20次 20kg·间休60s</view>
-      <view class="train-action">跪资俯卧撑：2组×15次 20kg·间休60s</view>
-      <view class="train-action">原地跑：2组×20次 20kg·间休60s</view>
+      <view class="target-title verticalbar">热身训练</view>
+      <view wx:if="{{warmUpList.length>0}}">
+        <block wx:for="{{warmUpList}}" wx:key="index" wx:for-item="warm">
+          <view class="train-action">{{warm.SM_Name}}：×{{warm.SM_Count+''+warm.SM_CountType}}
+            {{warm.SM_Resistance+''+warm.SM_ResistanceType}}·间休{{warm.SM_Rest+''+warm.SM_RestType}}</view>
+        </block>
+      </view>
+      <view wx:else class="no-action train-action">暂无动作</view>
     </view>
     <!-- 正式 -->
     <view class="official-train">
-      <view class="official-title verticalbar">训练目标</view>
-      <view class="train-action">箭步蹲：2组×15次</view>
-      <view class="train-action">四足支撑：2组×20次</view>
-      <view class="train-action">跪资俯卧撑：2组×15次</view>
-      <view class="train-action">原地跑：2组×20次</view>
-      <view class="train-action">滑雪跳：2组×20次</view>
-      <view class="train-action">转体收小腿泡：2组×20次</view>
+      <view class="official-title verticalbar">正式训练</view>
+      <view wx:if="{{officialList.length>0}}">
+        <block wx:for="{{officialList}}" wx:for-index="i" wx:key="i" wx:for-item="official">
+          <view class="train-action">{{official.SM_Name}}：×{{official.SM_Count+''+official.SM_CountType}}
+            {{official.SM_Resistance+''+official.SM_ResistanceType}}·间休{{official.SM_Rest+''+official.SM_RestType}}
+          </view>
+        </block>
+      </view>
+      <view wx:else class="no-action train-action">暂无动作</view>
     </view>
     <!-- 放松增理 -->
     <view class="relax-train">
-      <view class="relax-title verticalbar">训练目标</view>
-      <view class="no-action train-action">暂无动作</view>
+      <view class="relax-title verticalbar">放松整理</view>
+      <view wx:if="{{relaxList.length>0}}">
+        <block wx:for="{{relaxList}}" wx:for-index="j" wx:key="j" wx:for-item="relax">
+          <view class="train-action">{{relax.SM_Name}}：×{{relax.SM_Count+''+relax.SM_CountType}}
+            {{relax.SM_Resistance+''+relax.SM_ResistanceType}}·间休{{relax.SM_Rest+''+relax.SM_RestType}}
+          </view>
+        </block>
+      </view>
+      <view wx:else class="no-action train-action">暂无动作</view>
     </view>
   </view>
 </view>

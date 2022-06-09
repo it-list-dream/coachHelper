@@ -215,8 +215,13 @@ page {
   display: flex;
   justify-content: space-between;
 }
-
-.picture-list .body_pic {
+.van-uploader__preview{
+  margin: 0 !important;
+}
+.van-uploader__upload{
+  margin: 0 !important;
+}
+/* .picture-list .body_pic {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -235,7 +240,7 @@ page {
 .picture-list .body_pic image {
   width: 56rpx;
   height: 56rpx;
-}
+} */
 
 /*  */
 .generate-report {

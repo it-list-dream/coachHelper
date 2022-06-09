@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 100%;
   height: 354rpx;
-  background: linear-gradient(90deg, #2664F6 0%, #6996FF 100%);
+  background:  #2664F6;
 }
 
 .trainplan-header-box {

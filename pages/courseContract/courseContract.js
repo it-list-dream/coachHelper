@@ -89,6 +89,9 @@ Page({
     });
   },
   getCoachOrderSave() {
+    wx.showLoading({
+      title: '二维码生成中...',
+    })
     let newList = [],
       orderList = this.data.orderList;
     orderList.forEach(item => {
@@ -98,7 +101,7 @@ Page({
         CD_Num: item.courseNum,
         CD_Amount: item.amount
       });
-    })
+    });
     var jsonStr = {
       UI_ID: this.data.custom.UI_ID || 3834,
       StartDate: this.data.formStart,
@@ -152,12 +155,11 @@ Page({
       sub_mch_id: merchantNo,
       total_fee: orderAmount * 100
     },1).then(res => {
-      console.log(res)
+      wx.hideLoading();
       new QRCode('canvas', {
         text: res.data.wxPayurl,
-        width: 170,
-        height: 170,
-        padding: 0,
+        width: 160,
+        height: 160,
         colorDark: "black",
         colorLight: "white",
         correctLevel: QRCode.CorrectLevel.H,

@@ -43,7 +43,7 @@
               <text class="rows-title">脂肪量</text>
             </view>
             <view class="apparatus-input-box">
-              <input type="number" value="{{bodyCompsition.fatMass}}" bindblur="getbodyCom" data-key="fatMass"/>
+              <input type="number" value="{{bodyCompsition.fatMass}}" bindblur="getbodyCom" data-key="fatMass" />
               <text class="unit">kg</text>
             </view>
           </view>
@@ -53,7 +53,7 @@
               <text class="rows-title">水分</text>
             </view>
             <view class="apparatus-input-box">
-              <input type="number" value="{{bodyCompsition.water}}" bindblur="getbodyCom" data-key="water"/>
+              <input type="number" value="{{bodyCompsition.water}}" bindblur="getbodyCom" data-key="water" />
               <text class="unit">kg</text>
             </view>
           </view>
@@ -63,7 +63,7 @@
               <text class="rows-title">骨骼肌</text>
             </view>
             <view class="apparatus-input-box">
-              <input type="number" value="{{bodyCompsition.skeletal}}" bindblur="getbodyCom" data-key="skeletal"/>
+              <input type="number" value="{{bodyCompsition.skeletal}}" bindblur="getbodyCom" data-key="skeletal" />
               <text class="unit">kg</text>
             </view>
           </view>
@@ -73,7 +73,7 @@
               <text class="rows-title">肌肉量</text>
             </view>
             <view class="apparatus-input-box">
-              <input type="number" value="{{bodyCompsition.muscle}}" bindblur="getbodyCom" data-key="muscle"/>
+              <input type="number" value="{{bodyCompsition.muscle}}" bindblur="getbodyCom" data-key="muscle" />
               <text class="unit">kg</text>
             </view>
           </view>
@@ -84,7 +84,7 @@
               <text class="rows-title">腰臀比</text>
             </view>
             <view class="apparatus-input-box">
-              <input type="digit" value="{{bodyCompsition.whr}}" bindblur="getbodyCom" data-key="whr"/>
+              <input type="digit" value="{{bodyCompsition.whr}}" bindblur="getbodyCom" data-key="whr" />
               <text class="unit"></text>
             </view>
           </view>
@@ -95,23 +95,16 @@
       </van-tab>
       <van-tab title="身体测量">
         <view class="picture-list">
-          <view class="body_pic">
-            <image src="./images/takePhoto.png"></image>
-            <text>正面照片</text>
-          </view>
-          <view class="body_pic">
-            <image src="./images/takePhoto.png"></image>
-            <text>左侧面照片</text>
-          </view>
-          <view class="body_pic">
-            <image src="./images/takePhoto.png"></image>
-            <text>右侧面照片</text>
-          </view>
-          <view class="body_pic">
-            <image src="./images/takePhoto.png"></image>
-            <text>背面照片</text>
-          </view>
+          <van-uploader sizeType="original" image-fit="center" max-count="1" preview-size="72" file-list="{{fileList1}}"
+            data-index="0" bind:after-read="afterRead" bind:delete="deletePicture" />
+          <van-uploader sizeType="original" image-fit="center" max-count="1" preview-size="72" file-list="{{fileList2}}"
+            data-index="1" bind:after-read="afterRead" bind:delete="deletePicture" />
+          <van-uploader sizeType="original" image-fit="center" max-count="1" preview-size="72" file-list="{{fileList3}}"
+            data-index="2" bind:after-read="afterRead" bind:delete="deletePicture" />
+          <van-uploader sizeType="original" image-fit="center" max-count="1" preview-size="72" file-list="{{fileList4}}"
+            data-index="3" bind:after-read="afterRead" bind:delete="deletePicture" />
         </view>
+
         <view class="apparatus-form">
           <view class="apparatus-rows" wx:for="{{physicalStateList}}" wx:key="physicalName">
             <view class="apparatus-rows-item">
@@ -123,9 +116,8 @@
               <text class="unit">{{item.unit}}</text>
             </view>
             <view class="blood-pressure" wx:else>
-              <picker mode="multiSelector" bindchange="bindMultiPickerChange"
-                bindcolumnchange="bindBloodChange" value="{{multiIndex}}" range="{{multiArray}}"
-               >
+              <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindBloodChange"
+                value="{{multiIndex}}" range="{{multiArray}}">
                 <view class='pick-content'>
                   <text>{{item.value}}</text>
                   mmHg

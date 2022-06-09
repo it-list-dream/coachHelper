@@ -1,3 +1,4 @@
+@import '../../assets/css/flyAnimation.wxss';
 page {
   background-color: #F5F5FF;
 }
@@ -293,41 +294,4 @@ page {
 .animat .icon {
   width: 50rpx;
   height: 50rpx;
-}
-
-/* 动画 */
-@keyframes runTop {
-  0% {
-    top: var(--startTop);
-    opacity: 1;
-  }
-
-  3% {
-    top: var(--startTop);
-  }
-
-  90% {
-    opacity: 1;
-  }
-
-  100% {
-    top: var(--endTop);
-    opacity: 0;
-  }
-}
-
-@keyframes runLeft {
-  0% {
-    left: var(--startLeft);
-    opacity: 1;
-  }
-
-  90% {
-    opacity: 1;
-  }
-
-  100% {
-    left: var(--endLeft);
-    opacity: 0;
-  }
 }

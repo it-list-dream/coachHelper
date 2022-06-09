@@ -1,24 +1,27 @@
 <view class="search-list">
-  <van-search id="search" value="{{ searchText }}" placeholder="请输入动作名字" />
+  <van-search id="search" value="{{ searchText }}" placeholder="请输入动作名字" bind:change="search" />
   <scroll-view class="search-cont" scroll-y>
-    <view class="search-item">
+    <view class="search-item" wx:for="{{searchList}}" wx:key="index">
       <view class="left-action">
         <image src="/assets/images/acion/c.png"></image>
       </view>
       <view class="right-action">
-        <view>比目鱼肌腓肠肌</view>
-        <view>柔韧性 热身 放松</view>
+        <view>{{item.SM_Name}}</view>
+        <view>{{item.SM_LableName }}</view>
       </view>
-      <view class="add-wrap" catchtap="add">
+      <view class="add-wrap" catchtap="selectGoods" data-index="{{index}}">
         <image src="/assets/images/acion/add3.png"></image>
       </view>
     </view>
   </scroll-view>
+  <view class="animat" style="{{style}}">
+    <image class="icon" src="/assets/images/acion/add3.png"></image>
+  </view>
 </view>
 <view class="bottom-mask">
   <view class="action-num">
     动作数量：
-    <text style="color:#2564F6;">3</text>
+    <text  class="cart" style="color:#2564F6;">{{cartList.length}}</text>
   </view>
   <view class="details" bindtap="showDetail">
     明细

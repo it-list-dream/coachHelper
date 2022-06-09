@@ -1,23 +1,54 @@
-// pages/trainPlan/trainPlan.js
+var service = require('../../utils/request.js');
+var util = require('../../utils/util.js');
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    pageIndex: 0,
+    isEnd:false,
+    pageTotal:0,
+    classList:[],
+    custom:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+     this.getCustomClass();
+     this.setData({
+       custom:app.globalData.custom
+     })
+  },
+  getCustomClass() {
+    service.post('/UserCoachClassList', {
+      UI_ID: "3840",
+      pageIndex: this.data.pageIndex,
+      pageSize: 20,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res=>{
+      var list = res.data.data;
+      list.forEach(item=>{
+        item.Createdate = util.format(item.Createdate,'yyyy.mm.dd');
+        item.progress = 100 - parseInt(item.CO_Have / item.CO_Num * 100) 
+      });
+      this.setData({
+        classList:list
+      })
+    })
   },
   planDetail() {
     wx.navigateTo({
       url: '/pages/trainPlanDetail/trainPlanDetail',
     })
+  },
+  switchCustom(){
+     wx.navigateTo({
+       url: '/pages/chooseCustom/chooseCustom?type=5',
+     });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -58,13 +89,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

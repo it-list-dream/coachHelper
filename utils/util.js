@@ -83,11 +83,31 @@ const filterFn = (array, img, id) => {
   }
   return newArr;
 }
+
+var showModal = (params) => {
+  return new Promise((resolve, reject) => {
+    wx.showModal({
+      title: params.title || "",
+      content: params.content || "",
+      showCancel:params.showCancel || true,
+      cancelText:params.cancelText || "取消",
+      confirmText:params.confirmText || "确定",
+      success(res) {
+         resolve(res);
+      },
+      fail(err){
+        reject(err);
+      }
+    })
+  })
+
+}
 module.exports = {
   format,
   formatTime,
   subTen,
   yesterday,
   throttle,
-  filterFn
+  filterFn,
+  showModal
 }

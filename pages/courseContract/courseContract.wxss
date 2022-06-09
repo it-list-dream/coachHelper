@@ -160,16 +160,13 @@ page {
   display: flex;
   justify-content: center;
   border-top: 1px solid #F0F0F0;
-  overflow: hidden;
+  padding: 30rpx 0;
 }
 .wechat-code .canvas{
-  width: 340rpx;
-  height: 340rpx;
-  margin-top: 40rpx;
+  width: 340rpx !important;
+  height: 340rpx !important;
 }
-
 .pay-bottom {
-  margin-top: 20rpx;
   display: flex;
   justify-content: center;
   align-items: center;

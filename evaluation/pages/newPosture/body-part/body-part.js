@@ -26,7 +26,8 @@ Component({
    */
   data: {
     //图片地址
-    pictureUrl: "",
+    fileList: [],
+    // pictureUrl: "",
     coachRemark: "",
     limit: 0
   },
@@ -34,22 +35,30 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    //拍照
-    takePhone() {
-      //拍摄照片
-      var that = this;
-      upLoad.chooseImage().then(tempFilePaths => {
-        console.log(tempFilePaths[0]);
-        that.setData({
-          pictureUrl: tempFilePaths[0]
+    afterRead(event) {
+      var fileList = this.data.fileList;
+      fileList.push({
+        name: "图片1",
+        url: event.detail.file.url
+      });
+      this.setData({
+        fileList
+      });
+      upLoad.uploadImage('/ReceiveFiles', fileList[0].url, 'front', {
+        gi_id: wx.getStorageSync('gi_id')
+      }).then(res => {
+        this.triggerEvent('imageSuccess', {
+          fiedsid: res.filesid,
+          bodyPostition: this.data.bodyAngle
         })
-        // this.triggerEvent('imageSuccess', { fiedsid: 51, bodyPostition: this.data.bodyAngle })
-        upLoad.uploadImage('/ReceiveFiles', tempFilePaths[0], 'front', {
-          gi_id: wx.getStorageSync('gi_id')
-        }).then(res => {
-          console.log(res)
-          this.triggerEvent('imageSuccess', { fiedsid: res.filesid, bodyPostition: this.data.bodyAngle })
-        })
+      })
+    },
+    deletePicture(e) {
+      let index = e.detail.index,
+        fileList = this.data.fileList;
+      fileList.splice(index, 1);
+      this.setData({
+        fileList,
       })
     },
     checkLabs(e) {
@@ -63,13 +72,10 @@ Component({
           bodyList[index].list[j].checked = !bodyList[index].list[j].checked;
         }
       }
-     this.triggerEvent('labChange',{
-      bodyPostition: this.data.bodyAngle,
-      bodyList:bodyList
-     });
-      // this.setData({
-      //   bodyList: bodyList
-      // })
+      this.triggerEvent('labChange', {
+        bodyPostition: this.data.bodyAngle,
+        bodyList: bodyList
+      });
     },
     getLimit(e) {
       this.setData({

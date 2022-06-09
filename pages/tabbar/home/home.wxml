@@ -57,7 +57,7 @@
   <view class="attend-class">
     <view class="attend-title">上课专区</view>
     <view class="attend">
-      <navigator class="attend-item" url="/pages/trainPlan/trainPlan" hover-class="none">
+      <navigator class="attend-item" url="/pages/chooseCustom/chooseCustom?type=5" hover-class="none">
         <image src="/assets/images/home/tran_plan.png"></image>
         <view class="attend-text">训练计划</view>
       </navigator>

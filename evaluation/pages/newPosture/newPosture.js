@@ -105,7 +105,7 @@ Page({
         }
       }
        //将体态数据提交
-      console.log(JSON.stringify(jsonStr));
+     // console.log(JSON.stringify(jsonStr));
       service.post('/StatureDetermineSave', {
         gi_id: wx.getStorageSync('gi_id'),
         json: JSON.stringify(jsonStr)

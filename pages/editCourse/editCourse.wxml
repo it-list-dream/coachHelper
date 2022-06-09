@@ -1,42 +1,96 @@
 <view class="editCourseContainer">
     <view class="editClass">
-        <input type="text" class="edit-input" placeholder="请编辑您的课程名" placeholder-style="color:#A6A6A6;" />
+        <input type="text" class="edit-input" placeholder="请编辑您的课程名" placeholder-style="color:#A6A6A6;"
+            value="{{classTitle}}" bindblur="getClassName" />
     </view>
     <view class="editcontent">
         <view class="perparat-before-class">
             <view class="perparat-title">热身训练</view>
-            <!-- for perparat-item -->
-            <view class="perparat-item">
+            <view class="perparat-item" wx:for="{{warmUpList}}" wx:for-item="action" wx:for-index="i" wx:key="i">
                 <van-swipe-cell right-width="{{ 65 }}">
                     <view class="perparat-item-title">
-                        <text>扶墙俯卧撑：3组×10次 20kg·间休60s</text>
-                        <view class="arrow-box" bindtap="closeArrow">
-                            <image class="arrow {{warmUp?'tansition':''}}" src="/assets/images/top.png">
+                        <text>{{action.SM_Name}}：×{{action.SM_Count+''+action.SM_CountType}}    {{action.SM_Resistance+''+action.SM_ResistanceType}}·间休{{action.SM_Rest+''+action.SM_RestType}}</text>
+                        <view class="arrow-box" bindtap="closeArrow" data-index="{{i}}" data-identify="热身训练">
+                            <image class="arrow {{warmUpList[i].isOpen?'tansition':''}}"
+                                src="/assets/images/top.png">
                             </image>
                         </view>
                     </view>
-                    <view slot="right" class="delete-right" bindtap="deleteAction">删除</view>
+                    <view slot="right" class="delete-right" bindtap="delete" data-index="{{i}}" data-identify="热身训练" data-isall="1">删除</view>
                 </van-swipe-cell>
-                <view class="swipe-list" hidden="{{!warmUp}}">
-                    <view class="instrument" wx:for="{{4}}">
-                        <view class="instrument-row">10次（无器械）-- 间休60s</view>
-                        <view class="delete" bindtap="delete" data-index="{{index}}">
+                <view class="swipe-list" hidden="{{!warmUpList[i].isOpen}}">
+                    <view class="instrument" wx:for="{{action.SM_Num}}">
+                        <view class="dot"></view>
+                        <view class="instrument-row">
+                            {{action.SM_Count+''+action.SM_CountType}}（{{action.SM_Apparatus.length>0?action.SM_Apparatus:'无器械'}}）
+                            ---
+                            间休{{action.SM_Rest+''+action.SM_RestType}}</view>
+                        <view class="delete" bindtap="delete" data-index="{{i}}" data-identify="热身训练">
                             <image class="delete-icon" src="/assets/images/delete.png"></image>
                         </view>
                     </view>
-                    <view class="instrument-add">+增加</view>
+                    <view class="instrument-add" bindtap="addGroup" data-index="{{i}}" data-identify="热身训练">+增加</view>
                 </view>
             </view>
             <!--  -->
-            <view class="addaction" bindtap="addAction">+添加动作</view>
+            <view class="addaction" bindtap="addAction" data-flag="1">+添加动作</view>
         </view>
         <view class="perparat-before-class">
             <view class="perparat-title">正式训练</view>
-            <view class="addaction">+添加动作</view>
+            <view class="perparat-item" wx:for="{{officialList}}" wx:for-item="off" wx:for-index="j" wx:key="j">
+                <van-swipe-cell right-width="{{ 65 }}">
+                    <view class="perparat-item-title">
+                        <text>{{off.SM_Name}}：×{{off.SM_Count+''+off.SM_CountType}}    {{off.SM_Resistance+''+off.SM_ResistanceType}}·间休{{off.SM_Rest+''+off.SM_RestType}}</text>
+                        <view class="arrow-box" bindtap="closeArrow" data-index="{{j}}" data-identify="正式训练">
+                            <image class="arrow {{officialList[j].isOpen?'tansition':''}}" src="/assets/images/top.png">
+                            </image>
+                        </view>
+                    </view>
+                    <view slot="right" class="delete-right" bindtap="delete"  data-index="{{j}}" data-identify="正式训练" data-isall="1">删除</view>
+                </van-swipe-cell>
+                <view class="swipe-list" hidden="{{!officialList[j].isOpen}}">
+                    <view class="instrument" wx:for="{{off.SM_Num}}">
+                        <view class="dot"></view>
+                        <view class="instrument-row">
+                            {{off.SM_Count+''+off.SM_CountType}}（{{off.SM_Apparatus.length>0?off.SM_Apparatus:'无器械'}}）
+                            ---
+                            间休{{off.SM_Rest+''+off.SM_RestType}}</view>
+                        <view class="delete" bindtap="delete" data-index="{{j}}" data-identify="正式训练">
+                            <image class="delete-icon" src="/assets/images/delete.png"></image>
+                        </view>
+                    </view>
+                    <view class="instrument-add" bindtap="addGroup" data-index="{{j}}" data-identify="正式训练">+增加</view>
+                </view>
+            </view>
+            <view class="addaction" data-flag="2" bindtap="addAction">+添加动作</view>
         </view>
         <view class="perparat-before-class">
             <view class="perparat-title">放松整理</view>
-            <view class="addaction">+添加动作</view>
+            <view class="perparat-item" wx:for="{{relaxList}}" wx:for-item="relax" wx:for-index="k" wx:key="k">
+                <van-swipe-cell right-width="{{ 65 }}">
+                    <view class="perparat-item-title">
+                        <text>{{relax.SM_Name}}：×{{relax.SM_Count+''+relax.SM_CountType}}    {{relax.SM_Resistance+''+relax.SM_ResistanceType}}·间休{{relax.SM_Rest+''+relax.SM_RestType}}</text>
+                        <view class="arrow-box" bindtap="closeArrow" data-index="{{k}}" data-identify="放松整理">
+                            <image class="arrow {{relaxList[k].isOpen?'tansition':''}}" src="/assets/images/top.png">
+                            </image>
+                        </view>
+                    </view>
+                    <view slot="right" class="delete-right" bindtap="deleteAction" data-index="{{k}}" data-identify="放松整理" data-isall="1">删除</view>
+                </van-swipe-cell>
+                <view class="swipe-list" hidden="{{!relaxList[k].isOpen}}">
+                    <view class="instrument" wx:for="{{relax.SM_Num}}">
+                        <view class="dot"></view>
+                        <view class="instrument-row">{{relax.SM_Count+''+relax.SM_CountType}}
+                            （{{relax.SM_Apparatus.length>0?relax.SM_Apparatus:'无器械'}}） ---
+                            间休{{relax.SM_Rest+''+relax.SM_RestType}}</view>
+                        <view class="delete" bindtap="delete" data-index="{{k}}" data-identify="放松整理">
+                            <image class="delete-icon" src="/assets/images/delete.png"></image>
+                        </view>
+                    </view>
+                    <view class="instrument-add" bindtap="addGroup" data-index="{{k}}" data-identify="放松整理">+增加</view>
+                </view>
+            </view>
+            <view class="addaction" data-flag="3" bindtap="addAction">+添加动作</view>
         </view>
         <!--  -->
         <view class="edit-button">

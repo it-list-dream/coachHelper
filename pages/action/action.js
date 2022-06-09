@@ -5,114 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cateItems: [{
-        cate_id: 1,
-        cate_name: "热身",
-        ishaveChild: true,
-        children: [{
-            child_id: 1,
-            name: '洁面皂',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          },
-          {
-            child_id: 2,
-            name: '卸妆',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          },
-          {
-            child_id: 3,
-            name: '洁面乳',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          },
-          {
-            child_id: 4,
-            name: '面部祛角质',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          }
-        ]
-      },
-      {
-        cate_id: 2,
-        cate_name: "正式",
-        ishaveChild: true,
-        children: [{
-            child_id: 1,
-            name: '气垫bb',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          },
-          {
-            child_id: 2,
-            name: '修容/高光',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          },
-          {
-            child_id: 3,
-            name: '遮瑕',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          },
-          {
-            child_id: 4,
-            name: '腮红',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          },
-          {
-            child_id: 5,
-            name: '粉饼',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          },
-          {
-            child_id: 6,
-            name: '粉底',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          },
-          {
-            child_id: 7,
-            name: '蜜粉/散粉',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          },
-          {
-            child_id: 8,
-            name: '隔离霜',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          }
-        ]
-      },
-      {
-        cate_id: 3,
-        cate_name: "放松",
-        ishaveChild: true,
-        children: [{
-            child_id: 1,
-            name: '淡香水EDT',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          },
-          {
-            child_id: 2,
-            name: '浓香水EDP',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          },
-          {
-            child_id: 3,
-            name: '香体走珠',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          },
-          {
-            child_id: 4,
-            name: '古龙香水男士的最爱',
-            image: "https://img2.baidu.com/it/u=1000228727,1004721926&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-          }
-        ]
-      },
-      {
-        cate_id: 4,
-        cate_name: "常用",
-        ishaveChild: false,
-        children: []
-      }
-    ],
     //左侧
     curNav: 0,
-    // curIndex: 0,
     //动作下标
     actionIndex: 0,
     //nav
@@ -136,6 +30,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.flag = options.flag;
     this.quertShoppingCarSize();
     this.getCategoryList();
   },
@@ -144,14 +39,17 @@ Page({
    */
   setDataAddShoppingCar(e) {
     let index = e.currentTarget.dataset.index,
-      cart = this.data.cartList;
+      cart = this.data.cartList,
+      goods = this.data.rightCategory[index];
     cart.push({
-      id: index,
-      name: "哈哈哈"
-    })
+      id: cart.length + 1,
+      ...goods,
+      SL_Name: this.data.actionCategory[this.data.actionIndex].sl_name,
+      ST_Name: this.data.leftCategory[this.data.curNav].ST_Name
+    });
     this.setData({
       cartList: cart
-    })
+    });
   },
   // 加入购物车动画 start
   selectGoods(e) {
@@ -183,7 +81,7 @@ Page({
   quertShoppingCarSize() {
     let that = this;
     this.quertElementSize('cart', function (rect) {
-      console.log(rect)
+      // console.log(rect)
       that.setData({
         'shoppingCarSize.top': Math.floor(rect.top + (rect.height / 2)),
         'shoppingCarSize.left': Math.floor(rect.left + (rect.width / 2))
@@ -222,24 +120,22 @@ Page({
   },
   switchBodyPart(e) {
     let index = e.currentTarget.dataset.index;
-    // for (let i = 0; i < actionIconList.length; i++) {
-    //   if (actionIconList[index] == actionIconList[i]) {
-    //     actionIconList[i].selected = true
-    //   } else {
-    //     actionIconList[i].selected = false
-    //   }
-    // }
     if (index == this.data.actionIndex) return
-    this.setData({
-      actionIndex: index
-    });
-    var lev1 = this.data.actionIndex;
     //二级类目的ID
-    this.getRightCateList(this.data.leftCategory[this.data.curNav].ST_ID);
+    var leftList = this.cateList[index].data;
+    this.setData({
+      actionIndex: index,
+      leftCategory: leftList,
+      curNav: 0
+    });
+    this.getRightCateList(leftList[0].ST_ID);
   },
-  actionDetail() {
+  actionDetail(e) {
+    var action = e.currentTarget.dataset.action;
+    action.SL_Name = this.data.actionCategory[this.data.actionIndex].sl_name;
+    action = JSON.stringify(action)
     wx.navigateTo({
-      url: '/pages/actionDetail/actionDetail',
+      url: '/pages/actionDetail/actionDetail?action=' + action,
     })
   },
   getCategoryList() {
@@ -267,18 +163,82 @@ Page({
       st_id: st_id,
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
+      var list = res.data.data;
+      list.forEach(item => {
+        item.SM_LableName = item.SM_LableName.replaceAll(",", "  ")
+      });
       this.setData({
-        rightCategory: res.data.data
+        rightCategory: list
       })
     })
   },
-  //动作详情
-  getActionDetail(st_id) {
-    service.post('/ActLibraryDetailsList', {
-      st_id: st_id,
-      gi_id: wx.getStorageSync('gi_id')
-    }).then(res => {
-      console.log(res)
+  clearAction() {
+    this.setData({
+      cartList: []
+    })
+  },
+  //删除
+  deleteActions(e) {
+    var cartList = this.data.cartList,
+      index = e.currentTarget.dataset.index;
+    cartList.splice(index, 1)
+    this.setData({
+      cartList: cartList
+    })
+  },
+  toSearch() {
+    var that = this;
+    wx.navigateTo({
+      url: '/pages/actionSearch/actionSearch',
+      events: {
+        // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+        searchAction: function (res) {
+          that.setData({
+            cartList: res.cartList
+          })
+        }
+      },
+      success: function (res) {
+        // 通过 eventChannel 向被打开页面传送数据
+        res.eventChannel.emit('searchAction', {
+          cartList: that.data.cartList
+        });
+      }
+    })
+  },
+  actionConfrim() {
+    var pages = getCurrentPages(); //当前页面
+    var prevPage = pages[pages.length - 2]; //上一页面
+    if (this.flag == 1) {
+      var warmUpList = prevPage.data.warmUpList;
+      let list = [...warmUpList, ...this.data.cartList];
+      list.forEach(item => {
+        item.isOpen = false
+      })
+      prevPage.setData({
+        warmUpList: list
+      });
+    } else if (this.flag == 2) {
+      var officialList = prevPage.data.officialList;
+      let list = [...officialList, ...this.data.cartList];
+      list.forEach(item => {
+        item.isOpen = false
+      })
+      prevPage.setData({
+        officialList: list
+      })
+    } else if (this.flag == 3) {
+      var relaxList = prevPage.data.relaxList;
+      let list = [...relaxList, ...this.data.cartList];
+      list.forEach(item => {
+        item.isOpen = false
+      });
+      prevPage.setData({
+        relaxList: list
+      })
+    }
+    wx.navigateBack({
+      delta: 1,
     })
   },
   /**

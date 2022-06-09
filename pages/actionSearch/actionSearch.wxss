@@ -1,3 +1,4 @@
+@import '../../assets/css/flyAnimation.wxss';
 .search-list {
   padding-top: 8rpx;
 }
@@ -18,8 +19,8 @@
 }
 
 .search-cont {
-   padding: 0 50rpx;
-   box-sizing: border-box;
+  padding: 0 50rpx;
+  box-sizing: border-box;
 }
 
 .search-cont .search-item {
@@ -108,4 +109,15 @@
   width: 0;
   height: 0;
   color: transparent;
+}
+
+.animat {
+  position: fixed;
+  top: -60px;
+  left: -60px;
+}
+
+.animat .icon {
+  width: 60rpx;
+  height: 60rpx;
 }

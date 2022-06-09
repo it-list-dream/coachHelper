@@ -293,6 +293,12 @@
           "pathName": "pages/actionSearch/actionSearch",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "编辑课程",
+          "pathName": "/pages/trainPlanDetail/trainPlanDetail",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -1,6 +1,5 @@
 /* pages/haveClass/haveClass.wxss */
 page {
-  background-color: #F5F5FF;
   height: 100%;
 }
 
@@ -47,7 +46,7 @@ page {
 
 /*  */
 .train-list {
-  margin-top: 10rpx;
+  border-top: 10rpx solid #F5F3FF;
   background-color: #FFFFFF;
   padding: 0 30rpx 60rpx;
 }

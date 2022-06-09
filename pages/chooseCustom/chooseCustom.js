@@ -83,6 +83,11 @@ Page({
           url: '/pages/coursePlanning/coursePlanning',
         });
         break;
+      case 5:
+        wx.navigateTo({
+          url: '/pages/trainPlan/trainPlan',
+        });
+        break;
       default:
         console.log('其他')
     }

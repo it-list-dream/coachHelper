@@ -45,8 +45,8 @@ Page({
      })
   },
   successful(){
-    wx.redirectTo({
-      url: '/evaluation/pages/postureAssessment/postureAssessment',
+    wx.navigateBack({
+      delta: 1,
     })
   },
   /**
