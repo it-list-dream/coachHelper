@@ -1,11 +1,15 @@
-// pages/haveClass/haveClass.js
+var service = require('../../utils/request.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    appoinmentStatus: "去上课",
+    navTitle: "",
+    warmUpList: [],
+    relaxList: [],
+    officialList: []
   },
 
   /**
@@ -13,19 +17,64 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    const eventChannel = this.getOpenerEventChannel()
-    eventChannel.on('actionDetail', function(res) {
-      that.setData({
-        warmUpList:res.warmUpList,
-        relaxList:res.relaxList,
-        officialList:res.officialList
+    console.log(options)
+    if (options.cs_id == 0) {
+      this.setData({
+        appoinmentStatus: "去预约"
+      })
+    }
+    this.getActLibDetails(options.co_id, options.cs_id)
+  },
+  getActLibDetails(co_id, cs_id) {
+    var warmUpList = [],
+      relaxList = [],
+      officialList = [];
+    service.post('/CoachActLibDetails', {
+      co_id: co_id,
+      cs_id: cs_id,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      console.log(res.data.data, res.data.data[0].data);
+      var list = res.data.data[0].data;
+      list.forEach(item => {
+        if (item.CA_Type == 1) {
+          warmUpList.push(item)
+        } else if (item.CA_Type == 2) {
+          officialList.push(item)
+        } else if (item.CA_Type == 3) {
+          relaxList.push(item)
+        }
+      })
+      this.setData({
+        navTitle: res.data.data[0].CP_Name,
+        warmUpList,
+        officialList,
+        relaxList
+      });
+      this.CS_ID = res.data.data[0].CS_ID;
+      this.CO_ID = res.data.data[0].CO_ID;
+      wx.setNavigationBarTitle({
+        title: res.data.data[0].CP_Name
       })
     })
   },
-  gohaveClass(){
-     wx.navigateTo({
-       url: '/pages/preparationClass/preparationClass',
-     })
+  gohaveClass() {
+    wx.navigateTo({
+      url: '/pages/preparationClass/preparationClass',
+    })
+  },
+  editclasses() {
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];
+    if (prevPage.route == 'pages/editCourse/editCourse') {
+      wx.navigateBack({
+        delta: 1
+      });
+    }else{
+      wx.navigateTo({
+        url: `/pages/editCourse/editCourse?csID=${this.CS_ID}&coId=${this.CO_ID}`,
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -66,13 +115,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

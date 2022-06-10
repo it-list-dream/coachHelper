@@ -1,9 +1,9 @@
 <view class="haveClassContainer">
   <view class="class-list">
-    <view class="left">第一次课程</view>
+    <view class="left">{{navTitle}}</view>
     <view class="right">
-      <navigator open-type="navigateBack" delta="1" class="edit btn">编辑</navigator>
-      <view class="attend-class btn" bindtap="gohaveClass">去上课</view>
+      <view bindtap="editclasses" class="edit btn">编辑</view>
+      <view class="attend-class btn" bindtap="gohaveClass">{{appoinmentStatus}}</view>
     </view>
   </view>
 

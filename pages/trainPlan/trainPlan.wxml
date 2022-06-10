@@ -9,7 +9,7 @@
   </view>
 </view>
 <scroll-view class="scroll-y" scroll-y>
-  <view class="plan-item" wx:for="{{classList}}" wx:key="index" bindtap="planDetail">
+  <view class="plan-item" wx:for="{{classList}}" wx:key="index" bindtap="planDetail" data-coid="{{item.CO_ID}}">
     <image class="course-bg" src="/assets/images/course_bg.png"></image>
     <view class="plan-mask">
       <view class="course">

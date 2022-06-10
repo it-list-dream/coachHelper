@@ -236,25 +236,25 @@ Page({
     let index = e.currentTarget.dataset.index;
     switch (parseInt(index)) {
       case 0:
-        fileList1.splice(index, 1);
+        fileList1.splice(0, 1);
         this.setData({
           fileList1
         });
         break;
       case 1:
-        fileList2.splice(index, 1);
+        fileList2.splice(0, 1);
         this.setData({
           fileList2
         });
         break;
       case 2:
-        fileList3.splice(index, 1);
+        fileList3.splice(0, 1);
         this.setData({
           fileList3
         });
         break;
       case 3:
-        fileList4.splice(index, 1);
+        fileList4.splice(0, 1);
         this.setData({
           fileList4
         });

@@ -18,14 +18,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     this.getCustomClass();
      this.setData({
        custom:app.globalData.custom
-     })
+     });
+     this.getCustomClass();
   },
   getCustomClass() {
     service.post('/UserCoachClassList', {
-      UI_ID: "3840",
+      UI_ID:this.data.custom.UI_ID,
       pageIndex: this.data.pageIndex,
       pageSize: 20,
       gi_id: wx.getStorageSync('gi_id')
@@ -40,9 +40,10 @@ Page({
       })
     })
   },
-  planDetail() {
+  planDetail(e) {
+    var classId = e.currentTarget.dataset.coid;
     wx.navigateTo({
-      url: '/pages/trainPlanDetail/trainPlanDetail',
+      url: '/pages/trainPlanDetail/trainPlanDetail?co_id='+classId,
     })
   },
   switchCustom(){

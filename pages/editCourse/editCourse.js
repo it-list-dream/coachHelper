@@ -1,5 +1,7 @@
 // pages/editCourse/editCourse.js
-var util = require('../../utils/util.js')
+var util = require('../../utils/util.js');
+var service = require('../../utils/request.js');
+const app = getApp();
 Page({
 
   /**
@@ -16,7 +18,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.CS_ID = options.csID;
+    this.CA_ID = options.caId;
+    this.CO_ID = options.coId;
+    if(options.courseName){
+      this.setData({
+        classTitle: options.courseName
+      });
+    }
+    this.getClassDetail();
   },
   //关闭
   closeArrow(e) {
@@ -45,20 +56,52 @@ Page({
       });
     }
   },
+  saveEditClass(callback) {
+    var warmUpList = this.data.warmUpList,
+      officialList = this.data.officialList,
+      relaxList = this.data.relaxList;
+    warmUpList.forEach(item => {
+      item.CA_Type = 1
+    });
+    officialList.forEach(item => {
+      item.CA_Type = 2
+    });
+    relaxList.forEach(item => {
+      item.CA_Type = 3
+    });
+    if (this.data.classTitle.trim().length == 0) {
+      wx.showToast({
+        icon: "none",
+        title: '请编辑课程名',
+      });
+      return;
+    }
+    console.log('编辑',this.CO_ID,this.CS_ID)
+    var jsonStr = {
+      CA_ID: this.CA_ID == "undefined" ? 0 : this.CA_ID,
+      UI_ID: app.globalData.custom.UI_ID,
+      CO_ID: this.CO_ID,
+      CS_ID: this.CS_ID,
+      CP_Name: this.data.classTitle,
+      data: [...warmUpList, ...officialList, ...relaxList]
+    };
+    service.post('/CoachActLibSave', {
+      json: JSON.stringify(jsonStr),
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      callback && callback();
+    })
+  },
   editConfrim() {
     var that = this;
+    console.log(this.CS_ID,this.CO_ID)
+    return;
     if (this.data.warmUpList.length > 0 || this.data.officialList.length > 0 || this.data.relaxList.length > 0) {
-      wx.navigateTo({
-        url: '/pages/haveClass/haveClass',
-        success: function (res) {
-          // 通过 eventChannel 向被打开页面传送数据
-          res.eventChannel.emit('actionDetail', {
-            warmUpList: that.data.warmUpList,
-            officialList: that.data.officialList,
-            relaxList: that.data.relaxList
-          });
-        }
-      })
+      this.saveEditClass(function () {
+        wx.navigateTo({
+          url: `/pages/haveClass/haveClass?cs_id=${this.CS_ID}&co_id=${this.CO_ID}`
+        })
+      });
     } else {
       wx.showToast({
         icon: "none",
@@ -72,14 +115,40 @@ Page({
       url: '/pages/action/action?flag=' + flag,
     })
   },
-  actionDetail() {
-    wx.navigateTo({
-      url: '/pages/actionDetail/actionDetail',
-    })
-  },
   getClassName(e) {
     this.setData({
       classTitle: e.detail.value
+    });
+  },
+  getClassDetail() {
+    var warmUpList = [],
+      officialList = [],
+      relaxList = [];
+    service.post('/CoachActLibDetails', {
+      co_id: this.CO_ID,
+      cs_id: this.CS_ID,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      var list = res.data.data;
+      if (list.length > 0) {
+        console.log(list[0]);
+        list[0].data.forEach(item => {
+          if (item.CA_Type == 1) {
+            warmUpList.push(item)
+          } else if (item.CA_Type == 2) {
+            officialList.push(item)
+          } else if (item.CA_Type == 3) {
+            relaxList.push(item)
+          }
+        });
+        this.CA_ID = list[0].CA_ID;
+        this.setData({
+          warmUpList,
+          officialList,
+          relaxList,
+          classTitle: list[0].CP_Name
+        });
+      }
     })
   },
   /**

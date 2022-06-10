@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 100%;
   height: 354rpx;
-  background:  #2664F6;
+  background: #2664F6;
 }
 
 .trainplan-header-box {
@@ -49,9 +49,10 @@
 }
 
 /*  */
-.trainclass-list{
+.trainclass-list {
   margin-top: 60rpx;
 }
+
 .trainclass {
   display: flex;
   width: 100%;
@@ -60,20 +61,36 @@
   justify-content: space-between;
   box-sizing: border-box;
   border-bottom: 1px solid #EDEDED;
-  padding: 0 40rpx  0  58rpx;
+  padding: 0 40rpx 0 58rpx;
 }
 
 .trainclass .trainclass-name {
   position: relative;
+  display: flex;
+  justify-content: space-between;
   font-size: 30rpx;
-  color: #000000;
+  color:#939393;
+  flex: 1;
 }
-.trainclass .trainclass-name .serial{
+
+.trainclass .trainclass-name .serial {
   margin-right: 24rpx;
   font-weight: bold;
-    color: #000000;
+  color: #000000;
 }
-.trainclass image{
+
+.trainclass image {
   width: 36rpx;
   height: 36rpx;
 }
+
+.trainclass .st-box {
+  flex: 1;
+  margin: 0 50rpx;
+  text-align: right;
+  color:#2664F6;
+}
+.trainclass .st-box .time{
+  margin-left: 10rpx;
+}
+

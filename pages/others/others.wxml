@@ -1,4 +1,3 @@
-<!--pages/others/others.wxml-->
 <view class="othersContainer">
     <view class="other-icon">
        <image src="/assets/images/success.png"></image>
