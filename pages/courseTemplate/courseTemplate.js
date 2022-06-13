@@ -1,148 +1,274 @@
 // pages/courseTemplate/courseTemplate.js
 const app = getApp();
+var service = require('../../utils/request.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    templateList: [{
-      templateId: 1,
-      templateName: "女性塑形课程初级",
-      courseName: "塑形",
-      selected: false
-    }, {
-      templateId: 2,
-      templateName: "女性减脂课程初级",
-      courseName: "减脂",
-      selected: false
-    }, {
-      templateId: 3,
-      templateName: "增肌课程初级",
-      courseName: "增肌",
-      selected: false
-    }, {
-      templateId: 4,
-      templateName: "拳击课程初级",
-      courseName: "拳击",
-      selected: false
-    }],
-    isOpen: false,
-    templateValue: "",
-    //判断是导出还是导入
-    templateType: '',
-    exportList: [{
-      templateId: 1,
-      templateName: "女性塑形课程初级",
-      courseName: "塑形",
-      selected: false
-    }, {
-      templateId: 2,
-      templateName: "女性减脂课程初级",
-      courseName: "减脂",
-      selected: false
-    }, {
-      templateId: 3,
-      templateName: "增肌课程初级",
-      courseName: "增肌",
-      selected: false
-    }, {
-      templateId: 4,
-      templateName: "拳击课程初级",
-      courseName: "拳击",
-      selected: false
-    }]
+    pageIndex: 1,
+    //是否
+    isEnd: false,
+    allSaveList: [],
+    templateType: 0,
+    isShow: false,
+    exportList: []
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
   },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    //模板列表
+    this.getTemplateAction();
+    this.getTemplateList();
+    this.setData({
+      templateType: app.globalData.isExportTemplate
+    });
+    if (this.data.templateType == 2) {
+      this.selectList = [];
+    }
+    switch (parseInt(app.globalData.isExportTemplate)) {
+      case 1:
+        wx.setNavigationBarTitle({
+          title: "存为模板"
+        });
+        break;
+      case 2:
+        wx.setNavigationBarTitle({
+          title: "导入模板"
+        });
+        break;
+      case 3:
+        wx.setNavigationBarTitle({
+          title: "删除模板"
+        });
+    }
+  },
+  getTemplateList() {
+    service.post('/ActLibTemplateList', {
+      pageIndex: this.data.pageIndex,
+      pageSize: 10,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      var list = res.data.data;
+      list.forEach(item => {
+        item.selected = false
+      });
+      this.setData({
+        exportList: list
+      })
+    })
+  },
+  getTemplateAction() {
+    var list = app.globalData.temIdList,
+      co_id = app.globalData.coId;
+    for (let i = 0; i < list.length; i++) {
+      service.post('/CoachActLibDetails', {
+        co_id: co_id,
+        cs_id: list[i].CS_ID,
+        gi_id: wx.getStorageSync('gi_id')
+      }).then(res => {
+        if (res.data.data.length > 0) {
+          list[i].data = res.data.data[0].data;
+        } else {
+          list.splice(i, 1);
+        }
+        this.setData({
+          allSaveList: list
+        });
+      });
+    }
+  },
   chooseTemplate(e) {
-    let classes = e.currentTarget.dataset.template;
-    let templateList = this.data.templateList;
-    for (var i = 0; i < templateList.length; i++) {
-      if (classes.templateName == templateList[i].templateName) {
-        templateList[i].selected = true;
-      } else {
-        templateList[i].selected = false;
+    var index = e.currentTarget.dataset.index,
+      temList = this.data.allSaveList,
+      exportList = this.data.exportList,
+      myClass = app.globalData.temIdList,
+      at_id = e.currentTarget.dataset.atid;
+     var selectCount = 0,
+     currentValue = "";
+    if (app.globalData.isExportTemplate == 1) {
+      for (let i = 0; i < temList.length; i++) {
+        if (index == i) {
+          temList[i].selected = true;
+        } else {
+          temList[i].selected = false
+        }
+      }
+      this.setData({
+        allSaveList: temList
+      })
+    } else if (app.globalData.isExportTemplate == 2) {
+      if (myClass.length > 0) {
+        currentValue = exportList[index].selected;
+         exportList.forEach(item=>{
+           if(item.selected){
+            selectCount+=1;
+           }
+         })
+         if(!currentValue){
+              if(selectCount == myClass.length){
+                  return;
+              }
+              this.selectList.push(exportList[index])
+         }else{
+           for(let j=0;j<this.selectList.length;j++){
+                if(this.selectList[j].AT_ID == at_id){
+                  this.selectList[j].splice(j,1)
+                }
+           }
+         }
+         exportList[index].selected = !exportList[index].selected ;
+         this.setData({
+          exportList:exportList
+         })
+        // exportList[index].selected = !exportList[index].selected;
+        // for (let k = 0; k < this.selectList.length; k++) {
+        //   if (this.selectList[k].AT_ID != exportList[index].AT_ID) {
+        //     this.selectList.push(exportList[index]);
+        //   } else {
+        //     this.selectList.splice(k,index);
+        //   }
+        // }
+      }else{
+        wx.showToast({
+          icon:"none",
+          title: '你还未预约，请先预约',
+        })
+      }
+      this.setData({
+        exportList: exportList
+      });
+    } else {
+      exportList[index].selected = !exportList[index].selected;
+      this.setData({
+        exportList: exportList
+      });
+    }
+  },
+  temConfrim() {
+    let type = this.data.templateType,
+      slist = this.data.allSaveList;
+    var that = this;
+    slist = slist.filter(item => item.selected);
+    if (type == 1) {
+      if (slist.length.length == 0) {
+        wx.showToast({
+          icon: "none",
+          title: '请选择课程',
+        });
+        return
+      }
+      this.setData({
+        isShow: true
+      });
+    } else if (type == 2) {
+      this.saveAction()
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '是否删除此模板？',
+        success(res) {
+          if (res.confirm) {
+            that.deleteTemplate();
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }
+  },
+  deleteTemplate() {
+    var exportList = this.data.exportList;
+    var deleteArr = [];
+    for (let i = 0; i < exportList.length; i++) {
+      if (exportList[i].selected) {
+        console.log(i)
+        deleteArr.push(i);
+        service.post('/ActLibTemplateDel', {
+          at_id: exportList[i].AT_ID,
+          gi_id: wx.getStorageSync('gi_id')
+        }).then(res => {});
       }
     }
-    this.setData({
-      templateList: templateList
-    })
-  },
-  templateConfrim() {
-    this.setData({
-      isOpen: true
-    })
-  },
-  closePopup() {
-    this.setData({
-      isOpen: false
-    })
-  },
-  success(e) {
-    this.setData({
-      isOpen: false,
-      templateValue: e.detail.value
-    })
-    wx.showToast({
-      title: '保存成功',
-      icon: "success",
-      mask: true,
-      duration: 1500,
-      success: function (res) {
-        setTimeout(() => {
-          wx.navigateBack({
-            delta: 1,
-          })
-        }, 1500)
-      }
-    })
-  },
-  //导出
-  exportTemplate(e) {
-    console.log(e)
-    let template = e.currentTarget.dataset.template;
-    let exportList = this.data.exportList;
-    for (var j = 0; j < exportList.length; j++) {
-      if (template.templateName == exportList[j].templateName) {
-        exportList[j].selected = !exportList[j].selected;
-      }
+    for (let j = deleteArr.length - 1; j >= 0; j--) {
+      exportList.splice(deleteArr[j], 1);
     }
     this.setData({
       exportList: exportList
     })
   },
-  exportConfrim() {
-    wx.navigateBack({
-      delta: 1,
-    })
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  saveAction() {
+    var myClass = app.globalData.temIdList,
+      exportList = this.data.exportList;
+    exportList = exportList.filter(item => item.selected);
+    let jsonStr;
+    for (let j = 0; j < exportList.length; j++) {
+      jsonStr = {
+        CA_ID: 0,
+        UI_ID: app.globalData.custom.UI_ID,
+        CO_ID: app.globalData.coId,
+        CS_ID: myClass[j].CS_ID,
+        CP_Name: myClass[j].CP_Name,
+        data: exportList[j].data
+      };
+      service.post('/CoachActLibSave', {
+        json: JSON.stringify(jsonStr),
+        gi_id: wx.getStorageSync('gi_id')
+      }).then(res => {
+        wx.showToast({
+          icon: "none",
+          title: '导入成功',
+        });
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1,
+          }, 1500)
+        })
+      })
+    }
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    console.log(app.globalData.isExportTemplate)
-    let isExportTemplate = app.globalData.isExportTemplate;
-    let navigationBarTitle = isExportTemplate ? '选择导入模板' : '选择课程存为模板';
-    wx.setNavigationBarTitle({
-      title: navigationBarTitle
-    })
+  temCancel() {
     this.setData({
-      templateType: navigationBarTitle
+      isShow: false
     })
   },
-
+  handletemplate(e) {
+    let value = e.detail.value;
+    this.templateSave(value);
+    this.setData({
+      isShow: false
+    })
+  },
+  templateSave(tempalteName) {
+    var savelist = this.data.allSaveList;
+    var saveNew = {};
+    for (let i = 0; i < savelist.length; i++) {
+      if (savelist[i].selected) {
+        saveNew.TemplateName = tempalteName;
+        saveNew.AT_ID = 0;
+        saveNew.data = savelist[i].data;
+      }
+    }
+    service.post('/ActLibTemplateSave', {
+      json: JSON.stringify(saveNew),
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      wx.showToast({
+        icon: "success",
+        title: '保存成功',
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -161,13 +287,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
 
   }
 })

@@ -2,22 +2,27 @@
   <view class="trainplan-header">
     <view class="trainplan-header-box">
       <image src="/assets/images/header.png"></image>
-      <text>娜娜的女性塑型课</text>
+      <text>{{custom.UI_Name+'的'+classDetail[0].CP_Name}}</text>
     </view>
     <view class="train-templete">
-      <view class="savetemplete template-btn" bindtap="saveTemplate">
+      <view class="template-btn" bindtap="templateType" data-type="1">
         <image src="/assets/images/import.png" class="template-icon"></image>
         <text>存为模板</text>
       </view>
-      <view class="exporttemplete template-btn" bindtap="exportTemplate">
+      <view class="template-btn" bindtap="templateType" data-type="2">
         <image src="/assets/images/export.png" class="template-icon"></image>
-        <text>导出模板</text>
+        <text>导入模板</text>
+      </view>
+      <view class="template-btn" bindtap="templateType" data-type="3">
+        <image src="/assets/images/delete1.png" class="template-icon"></image>
+        <text>删除模板</text>
       </view>
     </view>
   </view>
   <!--  -->
   <view class="trainclass-list">
-    <view class="trainclass" wx:for="{{classDetail}}" wx:key="index" bindtap="newcurriculum" data-csid="{{item.CS_ID}}" data-caid="{{item.CA_ID}}" data-ctitle="{{item.CP_Name}}">
+    <view class="trainclass" wx:for="{{classDetail}}" wx:key="index" bindtap="newcurriculum" data-csid="{{item.CS_ID}}"
+      data-caid="{{item.CA_ID}}" data-ctitle="{{item.CP_Name}}">
       <view class="trainclass-name">
         <view>
           <text class="serial">{{index+1}}</text>

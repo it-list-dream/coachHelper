@@ -76,7 +76,6 @@ Page({
       });
       return;
     }
-    console.log('编辑',this.CO_ID,this.CS_ID)
     var jsonStr = {
       CA_ID: this.CA_ID == "undefined" ? 0 : this.CA_ID,
       UI_ID: app.globalData.custom.UI_ID,
@@ -90,30 +89,28 @@ Page({
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
       callback && callback();
-    })
+    });
   },
   editConfrim() {
     var that = this;
-    console.log(this.CS_ID,this.CO_ID)
-    return;
     if (this.data.warmUpList.length > 0 || this.data.officialList.length > 0 || this.data.relaxList.length > 0) {
       this.saveEditClass(function () {
         wx.navigateTo({
-          url: `/pages/haveClass/haveClass?cs_id=${this.CS_ID}&co_id=${this.CO_ID}`
+          url: `/pages/haveClass/haveClass?cs_id=${that.CS_ID}&co_id=${that.CO_ID}`
         })
       });
     } else {
       wx.showToast({
         icon: "none",
         title: '请先添加动作',
-      })
+      });
     }
   },
   addAction(e) {
     var flag = e.currentTarget.dataset.flag;
     wx.navigateTo({
       url: '/pages/action/action?flag=' + flag,
-    })
+    });
   },
   getClassName(e) {
     this.setData({

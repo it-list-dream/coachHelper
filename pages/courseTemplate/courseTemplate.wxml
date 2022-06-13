@@ -1,31 +1,22 @@
-<view class="saveContainer" wx:if="{{templateType=='选择课程存为模板'}}">
-   <view class="checkbox" wx:for="{{templateList}}" wx:key="index">
-      <view class="left-checkbox">
-         <text class="order">{{index+1}}</text>
-         <text class="template-name">{{item.templateName}}</text>
-      </view>
-      <view class="right-checkbox" bindtap="chooseTemplate" data-template="{{item}}">
-         <view class="no-choose" hidden="{{item.selected}}"></view>
-         <image src="/assets/images/selected.png" hidden="{{!item.selected}}" class="success"></image>
-      </view>
+<import src="../../template/action/action.wxml" />
+<view class="templateIndex">
+   <!--存入 -->
+   <view wx:if="{{templateType == 1}}">
+      <template wx:for="{{allSaveList}}" wx:key="index" wx:for-item="template" is="action-item"
+         data="{{template,index:index}}"></template>
    </view>
-   <template-popup is-open="{{isOpen}}" bind:confrim="success" bind:cancel="closePopup"></template-popup>
-   <view class="template-btn">
-      <button class="template-confrim" bindtap="templateConfrim">确定</button>
+   <!-- 导出 -->
+   <view wx:if="{{templateType == 2}}">
+      <template wx:for="{{ exportList}}" wx:key="index" wx:for-item="template" is="action-item"
+         data="{{template,index:index}}"></template>
    </view>
-</view>
-<view class="exportContainer" wx:elif="{{templateType=='选择导入模板'}}">
-   <view class="checkbox" wx:for="{{exportList}}" wx:key="index">
-      <view class="left-checkbox">
-         <text class="order">{{index+1}}</text>
-         <text class="template-name">{{item.templateName}}</text>
-      </view>
-      <view class="right-checkbox" bindtap="exportTemplate" data-template="{{item}}">
-         <view class="no-choose" hidden="{{item.selected}}"></view>
-         <image src="/assets/images/selected.png" hidden="{{!item.selected}}" class="success"></image>
-      </view>
+   <!-- 删除 -->
+   <view wx:if="{{templateType == 3}}">
+      <template wx:for="{{ exportList}}" wx:key="index" wx:for-item="template" is="action-item"
+         data="{{template,index:index}}"></template>
    </view>
-   <view class="template-btn">
-      <button class="template-confrim" bindtap="exportConfrim">确定</button>
+   <view class="tem-button">
+      <button style="background:{{templateType == 3?'#FF4642':''}}" class="butt" bindtap="temConfrim">确定</button>
    </view>
 </view>
+<template-popup is-open="{{isShow}}" bind:cancel="temCancel" bind:confrim="handletemplate"></template-popup>

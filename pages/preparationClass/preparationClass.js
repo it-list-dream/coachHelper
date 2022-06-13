@@ -1,4 +1,5 @@
-// pages/preparationClass/preparationClass.js
+var service = require('../../utils/request.js');
+const app = getApp()
 Page({
 
   /**
@@ -43,14 +44,16 @@ Page({
     activeShow: false,
     chooseMood: '',
     chooseActive: '',
-    currentStatus: -1
+    currentStatus: -1,
+    weight: "",
+    sleepTime: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(app.globalData)
   },
   handleclose() {
     this.setData({
@@ -94,10 +97,39 @@ Page({
       currentStatus: index
     })
   },
-  startClass(){
-     wx.navigateTo({
-       url: '/pages/startClass/startClass',
-     })
+  startClass() {
+    var state = "";
+    switch (this.data.currentStatus) {
+      case 0:
+        state = "不好";
+        break;
+      case 1:
+        state = "一般";
+        break;
+      case 2:
+        state = "好";
+        break;
+      case 3:
+        state = "非常高"
+        break;
+    }
+    var jsonStr = {
+      CustState: state,
+      CustWeight: this.data.weight,
+      SleepTime: this.data.sleepTime,
+      Appetite: this.data.chooseMood,
+      Vitality: this.data.chooseActive,
+      CO_ID: app.globalData.coId,
+      CS_ID: app.globalData.csId
+    };
+    service.post('/ReadyClassBeforeSave', {
+      json: JSON.stringify(jsonStr),
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      wx.navigateTo({
+        url: '/pages/startClass/startClass',
+      });
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -138,13 +170,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

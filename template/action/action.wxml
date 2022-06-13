@@ -1,0 +1,12 @@
+<template name="action-item">
+  <view class="tem-cell" bindtap="chooseTemplate" data-index="{{index}}" data-atid="template.AT_ID">
+    <view class="left-cell">
+      <text class="order">{{index+1}}</text>
+      <text class="template-name">{{template.CP_Name || template.TemplateName}}</text>
+    </view>
+    <view class="right-cell">
+      <image class="s-icon" src="{{template.selected?'/assets/images/selected.png':'/assets/images/no-selected.png'}}">
+      </image>
+    </view>
+  </view>
+</template>

@@ -15,22 +15,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.coachClassListAappoint(options.co_id);
+
     this.coId = options.co_id;
     this.caId = options.ca_id;
+    console.log(options.co_id)
+    this.setData({
+      custom: app.globalData.custom
+    });
   },
-  saveTemplate() {
-    app.globalData.isExportTemplate = false;
+  // 状态
+  templateType: function (e) {
+    var type = e.currentTarget.dataset.type;
+    app.globalData.isExportTemplate = type;
+    let myList = this.data.classDetail;
+    myList = myList.filter(item => {
+      item.selected = false;
+      return item.CS_ID > 0
+    });
+    app.globalData.temIdList = myList;
+    app.globalData.coId = this.coId;
     wx.navigateTo({
       url: '/pages/courseTemplate/courseTemplate'
-    })
+    });
   },
-  exportTemplate() {
-    app.globalData.isExportTemplate = true;
-    wx.navigateTo({
-      url: '/pages/courseTemplate/courseTemplate'
-    })
-  },
+  // 
   getClassStatus(cs_id, ca_id, className) {
     service.post('/CoachActLibDetails', {
       co_id: this.coId,
@@ -53,6 +61,7 @@ Page({
     let cs_id = e.currentTarget.dataset.csid,
       ca_id = e.currentTarget.dataset.ca_id,
       className = e.currentTarget.dataset.ctitle;
+    app.globalData.csId = cs_id;
     //根据ca_id区分到那个页面
     this.getClassStatus(cs_id, ca_id, className);
   },
@@ -83,7 +92,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.coachClassListAappoint(this.coId);
   },
 
   /**

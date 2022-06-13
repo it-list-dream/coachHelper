@@ -82,8 +82,11 @@ App({
     },
     //是否是案例
     isCase: false,
-    //是否是导出的模板
-    isExportTemplate: false,
+    //模板类型
+    isExportTemplate: 0,
+    temIdList:[],
+    coId:0,
+    csId:0,
     //是否登录
     phoneNumber: null,
     custom:{}

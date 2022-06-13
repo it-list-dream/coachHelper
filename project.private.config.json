@@ -147,7 +147,7 @@
         {
           "name": "选择客户",
           "pathName": "pages/chooseCustom/chooseCustom",
-          "query": "type=1",
+          "query": "type=5",
           "scene": null
         },
         {
@@ -297,6 +297,12 @@
         {
           "name": "编辑课程",
           "pathName": "/pages/trainPlanDetail/trainPlanDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "课前准备",
+          "pathName": "pages/preparationClass/preparationClass",
           "query": "",
           "scene": null
         }

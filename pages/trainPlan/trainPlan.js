@@ -25,7 +25,7 @@ Page({
   },
   getCustomClass() {
     service.post('/UserCoachClassList', {
-      UI_ID:this.data.custom.UI_ID,
+      UI_ID:this.data.custom.UI_ID || "3840",
       pageIndex: this.data.pageIndex,
       pageSize: 20,
       gi_id: wx.getStorageSync('gi_id')
@@ -37,11 +37,12 @@ Page({
       });
       this.setData({
         classList:list
-      })
+      });
     })
   },
   planDetail(e) {
     var classId = e.currentTarget.dataset.coid;
+    app.globalData.coId = classId;
     wx.navigateTo({
       url: '/pages/trainPlanDetail/trainPlanDetail?co_id='+classId,
     })
