@@ -26,12 +26,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //模板列表
-    this.getTemplateAction();
-    this.getTemplateList();
     this.setData({
       templateType: app.globalData.isExportTemplate
     });
+    //模板列表
+    this.getTemplateList();
+    if (this.data.templateType == 1) {
+      this.getTemplateAction();
+    }
     if (this.data.templateType == 2) {
       this.selectList = [];
     }
@@ -91,10 +93,10 @@ Page({
     var index = e.currentTarget.dataset.index,
       temList = this.data.allSaveList,
       exportList = this.data.exportList,
-      myClass = app.globalData.temIdList,
-      at_id = e.currentTarget.dataset.atid;
-     var selectCount = 0,
-     currentValue = "";
+      at_id = e.currentTarget.dataset.atid,
+      selectCount = 0,
+      currentValue = "";
+    let myClass = app.globalData.temIdList;
     if (app.globalData.isExportTemplate == 1) {
       for (let i = 0; i < temList.length; i++) {
         if (index == i) {
@@ -109,27 +111,27 @@ Page({
     } else if (app.globalData.isExportTemplate == 2) {
       if (myClass.length > 0) {
         currentValue = exportList[index].selected;
-         exportList.forEach(item=>{
-           if(item.selected){
-            selectCount+=1;
-           }
-         })
-         if(!currentValue){
-              if(selectCount == myClass.length){
-                  return;
-              }
-              this.selectList.push(exportList[index])
-         }else{
-           for(let j=0;j<this.selectList.length;j++){
-                if(this.selectList[j].AT_ID == at_id){
-                  this.selectList[j].splice(j,1)
-                }
-           }
-         }
-         exportList[index].selected = !exportList[index].selected ;
-         this.setData({
-          exportList:exportList
-         })
+        exportList.forEach(item => {
+          if (item.selected) {
+            selectCount += 1;
+          }
+        })
+        if (!currentValue) {
+          if (selectCount == myClass.length) {
+            return;
+          }
+          this.selectList.push(exportList[index])
+        } else {
+          for (let j = 0; j < this.selectList.length; j++) {
+            if (this.selectList[j].AT_ID == at_id) {
+              this.selectList[j].splice(j, 1)
+            }
+          }
+        }
+        exportList[index].selected = !exportList[index].selected;
+        this.setData({
+          exportList: exportList
+        })
         // exportList[index].selected = !exportList[index].selected;
         // for (let k = 0; k < this.selectList.length; k++) {
         //   if (this.selectList[k].AT_ID != exportList[index].AT_ID) {
@@ -138,9 +140,9 @@ Page({
         //     this.selectList.splice(k,index);
         //   }
         // }
-      }else{
+      } else {
         wx.showToast({
-          icon:"none",
+          icon: "none",
           title: '你还未预约，请先预约',
         })
       }

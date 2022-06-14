@@ -9,8 +9,14 @@ Page({
    */
   data: {
     currentActive: 1,
-    //tablist
     tabsList: ['最近联系', '全部客户'],
+    tabsList:[{
+      name:"最近联系",
+      flag:false
+    },{
+      name:"全部客户",
+      flag:false
+    }],
     allmemberList: [],
     recentlyList: [],
     tabsHeight: 0,

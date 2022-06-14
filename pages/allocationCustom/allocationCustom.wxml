@@ -1,6 +1,6 @@
 <view class="allocationContainer">
   <van-search class="search-box" value="{{ value }}" placeholder="请输入会员姓名、手机号" />
-  <tabs-list id="tabs" is-border="{{true}}" icon="{{true}}" tList="{{tabsList}}" current-tab="{{tabIndex}}"
+  <tabs-list id="tabs" is-border="{{true}}" tList="{{tabsList}}" current-tab="{{tabIndex}}"
     bind:changeCurrent="tabsChange" bind:scrollHeight="getHeight">
     <!-- nav-top -->
     <view class="tabs-filter" slot="nav-top">

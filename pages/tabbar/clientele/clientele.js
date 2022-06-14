@@ -9,9 +9,25 @@ Page({
    */
   data: {
     currentActive: 0,
-    tabsList: ['最近联系', '全部客户', '私教会员', '普通会员', '公海池'],
+    tabsList: [{
+      name: "最近联系",
+      flag: false
+    }, {
+      name: "全部客户",
+      flag: false
+    }, {
+      name: "私教会员",
+      flag: false
+    }, {
+      name: "普通会员",
+      flag: false
+    }, {
+      name: "公海池",
+      flag: false
+    }],
     memberList: [],
     tabbar: {},
+    searchHeight: 0,
     scrollHeight: 0,
     filterIndex: 0,
     searchText: "",
@@ -20,21 +36,39 @@ Page({
     pageSize: 20,
     //总页数
     totalPage: 0,
-    isEnd: false
+    isEnd: false,
+    jurisdiction: 0,
+    isMy: 0
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     app.editTabbar();
-    wx.getSystemInfo({
-      success: (result) => {
-        this.getNodeHeight(result.windowHeight);
-      },
-    })
+    let query = wx.createSelectorQuery(),
+      tabsList = this.data.tabsList;
+    query.select('#search2').boundingClientRect();
+    query.exec(function (res) {
+      that.setData({
+        searchHeight: res[0].height
+      });
+    });
+    var coach = wx.getStorageSync('coach');
+    if (coach && coach.RoleName == "私教经理") {
+      tabsList.forEach(item => {
+        if (item.name == '私教会员') {
+          item.flag = true;
+        }
+      })
+      this.setData({
+        jurisdiction: 1,
+        tabsList: tabsList
+      });
+    }
   },
   //公海池
-  getPublicWaters(isSearch=0) {
+  getPublicWaters(isSearch = 0) {
     var jsonStr = {
       gi_id: wx.getStorageSync('gi_id'),
       searchText: this.data.searchText,
@@ -101,15 +135,63 @@ Page({
       })
     }
   },
-  swichNav: function (event) {
-    if (this.data.currentActive != event.detail.index) {
+  addPeople() {
+    wx.navigateTo({
+      url: '/pages/addCustom/addCustom',
+    });
+  },
+  memberDetail() {
+    wx.navigateTo({
+      url: '/pages/customerDetail/customerDetail',
+    });
+  },
+  //
+  seachChange: util.throttle(function (e) {
+    this.setData({
+      searchText: e.detail
+    });
+    switch (this.data.currentActive) {
+      case 0:
+        this.getCustomType(0, 0, 1)
+        break;
+      case 1:
+        this.getCustomType(2, 0, 1)
+        break;
+      case 2:
+        this.getCustomType(2, 0, 1)
+        break;
+      case 3:
+        this.getCustomType(1, 0);
+        break;
+      case 4:
+        this.getPublicWaters(1);
+        break;
+    }
+    // this.getCustomSeach();
+  }, 500),
+  getHeight(e) {
+    this.setData({
+      scrollHeight: e.detail.height
+    })
+  },
+  ismyMember(e) {
+    //
+    let index = e.currentTarget.dataset.index;
+    this.setData({
+      isMy: index,
+      memberList: []
+    });
+    this.getCustomType(2, index, 0);
+  },
+  tabsChange(e) {
+    if (this.data.currentActive != e.detail.currentNum) {
       this.setData({
-        currentActive: event.detail.index,
+        currentActive: e.detail.currentNum,
         pageIndex: 1,
         memberList: [],
         isEnd: false
       });
-      switch (event.detail.index) {
+      switch (e.detail.currentNum) {
         case 0:
           this.setData({
             memberList: []
@@ -129,64 +211,6 @@ Page({
           break;
       }
     }
-  },
-  addPeople() {
-    wx.navigateTo({
-      url: '/pages/addCustom/addCustom',
-    });
-  },
-  memberDetail() {
-    wx.navigateTo({
-      url: '/pages/customerDetail/customerDetail',
-    });
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-  //
-  seachChange: util.throttle(function (e) {
-    this.setData({
-      searchText: e.detail
-    });
-    switch (this.data.currentActive) {
-      case 0:
-        this.getCustomType(0, 0,1)
-        break;
-      case 1:
-        this.getCustomType(2, 0,1)
-        break;
-      case 2:
-        this.getCustomType(2, 0,1)
-        break;
-      case 3:
-        this.getCustomType(1, 0);
-        break;
-      case 4:
-        this.getPublicWaters(1);
-        break;
-    }
-    // this.getCustomSeach();
-  }, 500),
-  getNodeHeight(height) {
-    var that = this,
-      sHeight = 0;
-    const query = wx.createSelectorQuery();
-    query.select('.serach-box').boundingClientRect();
-    query.select('#tabs').boundingClientRect();
-    query.exec(function (res) {
-      sHeight = height - res[0].height - Math.ceil(res[1].height) - 70;
-      that.setData({
-        scrollHeight: sHeight
-      })
-    })
-  },
-  filterMember(e) {
-    this.setData({
-      filterIndex: e.currentTarget.dataset.index
-    });
   },
   loadMore() {
     if (this.data.pageIndex < this.data.totalPage) {
@@ -221,21 +245,6 @@ Page({
   onShow: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */

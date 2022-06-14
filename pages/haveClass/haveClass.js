@@ -59,9 +59,15 @@ Page({
     })
   },
   gohaveClass() {
-    wx.navigateTo({
-      url: '/pages/preparationClass/preparationClass',
-    })
+    if(this.data.appoinmentStatus=="去上课"){
+      wx.navigateTo({
+        url: '/pages/preparationClass/preparationClass',
+      })       
+    }else{
+      wx.redirectTo({
+        url: '/pages/addAppointment/addAppointment?type=0',
+      });
+    }
   },
   editclasses() {
     let pages = getCurrentPages();

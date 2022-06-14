@@ -52,9 +52,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    console.log(app.globalData)
-  },
+  onLoad: function (options) {},
   handleclose() {
     this.setData({
       moodShow: false
@@ -99,7 +97,7 @@ Page({
   },
   startClass() {
     var state = "";
-    switch (this.data.currentStatus) {
+    switch (parseInt(this.data.currentStatus)) {
       case 0:
         state = "不好";
         break;
@@ -120,16 +118,34 @@ Page({
       Appetite: this.data.chooseMood,
       Vitality: this.data.chooseActive,
       CO_ID: app.globalData.coId,
-      CS_ID: app.globalData.csId
+      CS_ID: app.globalData.csId,
+      RB_ID:0
     };
-    service.post('/ReadyClassBeforeSave', {
-      json: JSON.stringify(jsonStr),
-      gi_id: wx.getStorageSync('gi_id')
-    }).then(res => {
-      wx.navigateTo({
-        url: '/pages/startClass/startClass',
+    if (this.data.chooseMood != "" && this.data.chooseActive.length != "" && this.data.weight != "" && this.data.sleepTime != "" && this.data.currentStatus >= 0) {
+      service.post('/ReadyClassBeforeSave', {
+        json: JSON.stringify(jsonStr),
+        gi_id: wx.getStorageSync('gi_id')
+      }).then(res => {
+        wx.navigateTo({
+          url: '/pages/startClass/startClass',
+        });
+      })
+    } else {
+      wx.showToast({
+        icon: "none",
+        title: '请先完成课前准备',
       });
+    }
+  },
+  changeSleep(e) {
+    this.setData({
+      sleepTime: e.detail.value
     })
+  },
+  changeWeight(e) {
+    this.setData({
+      weight: e.detail.value
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

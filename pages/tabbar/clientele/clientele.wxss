@@ -1,20 +1,11 @@
-/* pages/chooseCustom/chooseCustom.wxss */
-.chooseCustomContainer {
-  padding-bottom: 140rpx;
-}
-
-.serach-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 30rpx;
-  box-sizing: border-box;
-  height: 135rpx;
+.clienteleIndex {
+  padding-bottom: 100rpx;
 }
 
 .van-search {
-  width: 554rpx !important;
-  padding: 30rpx 0 !important;
+  margin-left: 44rpx;
+  width: 560rpx !important;
+  padding: 30rpx 0 16rpx !important;
 }
 
 .van-icon {
@@ -29,10 +20,26 @@
 /*  */
 .scroll-y {
   background: #ffffff;
+}
+
+.scroll-y .power {
+  height: 100rpx;
+}
+
+.scroll-y .power text {
+  line-height: 100rpx;
+  padding: 0 30rpx;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.tab-item {
+  height: 100%;
+  padding: 0 48rpx;
   box-sizing: border-box;
 }
 
-.scroll-y .screen {
+.scroll-y .power {
   display: flex;
   align-items: center;
   height: 100rpx;
@@ -41,39 +48,12 @@
   box-sizing: border-box;
 }
 
-.screen text {
-  margin: 0 30rpx;
-  font-size: 24rpx;
-  color: #999999;
-}
-
-#tabs .van-tab {
-  position: relative !important;
-}
-
-.van-tabs__nav .van-tab:nth-child(4)::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 0rpx;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-left: 10rpx solid transparent;
-  border-right: 10rpx solid transparent;
-  border-top: 14rpx solid #2665F6;
-}
-
-.tab-item {
-  /* margin-top: 30rpx; */
-  padding: 30rpx 48rpx 0;
-}
-
 .custom-list {
   display: flex;
   align-items: center;
   height: 160rpx;
-  border-bottom: 1px solid #E6EAF1;
+  border-bottom: 0.5px solid #E6EAF1;
+  box-sizing: border-box;
 }
 
 .custom-list .header {

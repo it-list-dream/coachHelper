@@ -1,7 +1,7 @@
-<view class="chooseCustomContainer">
+<view>
   <view class="serach-box">
     <van-search value="{{searchText}}" placeholder="请输入会员姓名、手机号" bind:change="seachChange" bind:cancel="seachCancel" />
-    <image class="add" src="/assets/images/add2.png" bindtap="addPeople"></image>
+    <!-- <image class="add" src="/assets/images/add2.png" bindtap="addPeople"></image> -->
   </view>
   <!-- tabs -->
   <slideTab tList="{{tabsList}}" bind:changeCurrent="swichNav" bind:scrollHeight="getTabHeight"

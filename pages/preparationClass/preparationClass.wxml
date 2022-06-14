@@ -15,12 +15,12 @@
       <view class="custom-info">
         <view class="custom-body">
           <text>客户体重</text>
-          <input type="digit" maxlength="4" value="{{weight}}" />
+          <input bindblur="changeWeight" type="digit" maxlength="4" value="{{weight}}" />
           <text>kg</text>
         </view>
         <view class="custom-body">
           <text>睡眠时长</text>
-          <input type="digit" maxlength="4"/>
+          <input bindblur="changeSleep" type="digit" maxlength="4" value="{{sleepTime}}"/>
           <text>h</text>
         </view>
         <view class="custom-body">

@@ -1,5 +1,5 @@
 .scheduleContainer {
-  padding-bottom: 140rpx;
+  padding-bottom: 100rpx;
 }
 
 .van-ellipsis {

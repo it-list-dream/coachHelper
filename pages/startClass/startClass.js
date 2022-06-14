@@ -1,4 +1,5 @@
-// pages/startClass/startClass.js
+var service = require('../../utils/request.js');
+const app = getApp();
 Page({
 
   /**
@@ -7,33 +8,30 @@ Page({
   data: {
     time: 45 * 60 * 1000,
     timeData: {},
-    actionList: [
-      {
+    actionList: [{
         actionName: "四足支撑",
-        groupList: [
-          {
-            actionCount: '20次',
-            instrumentWeight: "--",
-            restTime: '20s',
-            instrument: "--",
-            statusIndex: -1,
-            open: true
-          }, {
-            actionCount: '20次',
-            instrumentWeight: "--",
-            restTime: '20s',
-            instrument: "--",
-            statusIndex: -1,
-            open: true
-          }, {
-            actionCount: '20次',
-            instrumentWeight: "--",
-            restTime: '20s',
-            instrument: "--",
-            statusIndex: -1,
-            open: true
-          }
-        ]
+        groupList: [{
+          actionCount: '20次',
+          instrumentWeight: "--",
+          restTime: '20s',
+          instrument: "--",
+          statusIndex: -1,
+          open: true
+        }, {
+          actionCount: '20次',
+          instrumentWeight: "--",
+          restTime: '20s',
+          instrument: "--",
+          statusIndex: -1,
+          open: true
+        }, {
+          actionCount: '20次',
+          instrumentWeight: "--",
+          restTime: '20s',
+          instrument: "--",
+          statusIndex: -1,
+          open: true
+        }]
       },
       {
         actionName: "箭步蹲",
@@ -45,7 +43,8 @@ Page({
       }
     ],
     memeList: ['一般', '良好', '优秀'],
-    currentAction: 0
+    currentAction: 0,
+    startInfo: {}
   },
 
   onChange(e) {
@@ -70,7 +69,8 @@ Page({
     })
   },
   gameover() {
-    console.log('定时器结束了!')
+    console.log('定时器结束了!');
+
   },
   //查看所有
   lookallAction() {
@@ -96,13 +96,52 @@ Page({
       actionList: actionList
     })
   },
+  getStartClass() {
+    service.post('/StartClass', {
+      CS_ID: app.globalData.csId || "3245",
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      this.setData({
+        startInfo: res.data.data[0],
+        time: res.data.data[0].CP_Time * 60 * 1000
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getStartClass();
+    this.getAllAction();
   },
-
+  getAllAction() {
+    var actionList = [],
+      list = [];
+    let temObj = {};
+    service.post('/CoachActLibDetails', {
+      co_id: app.globalData.coId || "1769",
+      cs_id: app.globalData.csId || "3245",
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      wx.setNavigationBarTitle({
+        title: res.data.data[0].CP_Name,
+      })
+      list = res.data.data[0].data;
+      for (let i = 0; i < list.length; i++) {
+        temObj = {
+          actionName: list[i].SM_Name,
+          groupList:[]
+        };
+        for (let j = 0; j < list[i].SM_Count; j++) {
+          temObj.groupList.push({
+            SM_Name:list[i].SM_Name,
+            SM_LableName:list[i].SM_LableName,
+            SM_Num
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

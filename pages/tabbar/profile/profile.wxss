@@ -24,7 +24,7 @@
 }
 
 .profileContainer {
-  padding-bottom: 140rpx;
+  padding-bottom: 100rpx;
 }
 
 .profile-header {

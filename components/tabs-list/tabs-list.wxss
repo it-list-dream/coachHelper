@@ -1,6 +1,4 @@
-/* components/tabs-list/tabs-list.wxss */
 .tab-list .scroll-view-x{
-  background-color: #ffffff;
   white-space: nowrap;
   padding: 0 16rpx;
   box-sizing: border-box;
@@ -18,7 +16,6 @@
   display: flex;
   align-items: center;
 }
-
 .tabs2 .icon{
   margin-left: 7rpx;
   width: 0;

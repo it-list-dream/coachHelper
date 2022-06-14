@@ -3,6 +3,7 @@ Component({
   options: {
     multipleSlots: true
   },
+  externalClasses: ['custom-class'],
   properties: {
     //标题列表
     tList: {
@@ -22,10 +23,6 @@ Component({
     isBorder: {
       type: Boolean,
       value: false
-    },
-    icon: {
-      type: Boolean,
-      value:false
     }
   },
   lifetimes: {

@@ -5,43 +5,52 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabsList:['私教会员','普通会员','公海池'],
-    tabIndex:0,
-    filterIndex:0,
-    filterList:['未为配','已分配'],
-    tabsHeight:0,
-    searchHeight:0,
-    customList:[
-      {
-        customName:"张三",
-        customId:"fx001",
-        selected:false
+    // tabsList:['私教会员','普通会员','公海池'],
+    tabsList: [{
+      name: "私教会员",
+      flag: true
+    },{
+      name: "普通会员",
+      flag: true
+    },{
+      name: "公海池",
+      flag: true
+    }],
+    tabIndex: 0,
+    filterIndex: 0,
+    filterList: ['未为配', '已分配'],
+    tabsHeight: 0,
+    searchHeight: 0,
+    customList: [{
+        customName: "张三",
+        customId: "fx001",
+        selected: false
       },
       {
-        customName:"涛涛",
-        customId:"fx002",
-        selected:false
-      },{
-        customName:"丽丽",
-        customId:"fx003",
-        selected:false
+        customName: "涛涛",
+        customId: "fx002",
+        selected: false
+      }, {
+        customName: "丽丽",
+        customId: "fx003",
+        selected: false
       },
       {
-        customName:"小明",
-        customId:"fx004",
-        selected:false
-      },{
-        customName:"小红",
-        customId:"fx011",
-        selected:false
-      },{
-        customName:"黎民",
-        customId:"sg001",
-        selected:false
-      },{
-        customName:"王辉",
-        customId:"sg002",
-        selected:false
+        customName: "小明",
+        customId: "fx004",
+        selected: false
+      }, {
+        customName: "小红",
+        customId: "fx011",
+        selected: false
+      }, {
+        customName: "黎民",
+        customId: "sg001",
+        selected: false
+      }, {
+        customName: "王辉",
+        customId: "sg002",
+        selected: false
       }
     ]
   },
@@ -55,44 +64,44 @@ Page({
     query.select('.search-box').boundingClientRect()
     query.exec(function (res) {
       that.setData({
-        searchHeight:res[0].height
+        searchHeight: res[0].height
       })
     })
   },
-  tabsChange(e){
+  tabsChange(e) {
     this.setData({
-      tabIndex:e.detail.currentNum
+      tabIndex: e.detail.currentNum
     })
   },
   //分配
-  allocation(e){
+  allocation(e) {
     let member = e.currentTarget.dataset.custom,
-     customList = this.data.customList;
-     for(let i =0;i<customList.length;i++){
-       if(customList[i].customId == member.customId){
+      customList = this.data.customList;
+    for (let i = 0; i < customList.length; i++) {
+      if (customList[i].customId == member.customId) {
         customList[i].selected = !customList[i].selected;
-       }
-     }
+      }
+    }
     this.setData({
-      customList:customList
+      customList: customList
     })
   },
-  allocationCoach(){
+  allocationCoach() {
     //弹窗
     //  wx.navigateTo({
     //    url: '/pages/selectCoach/selectCoach',
     //  })
   },
   //分配
-  filterTab(e){
-      let index = e.currentTarget.dataset.index;
-      this.setData({
-        filterIndex:index
-      })
+  filterTab(e) {
+    let index = e.currentTarget.dataset.index;
+    this.setData({
+      filterIndex: index
+    })
   },
   //选择客户
-  getPublicWaters(){
-     
+  getPublicWaters() {
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -107,13 +116,13 @@ Page({
   onShow: function () {
 
   },
-  loadMore(){
+  loadMore() {
     console.log('加载更多')
   },
-  getHeight(e){
+  getHeight(e) {
     console.log(e.detail.height)
     this.setData({
-      tabsHeight:e.detail.height
+      tabsHeight: e.detail.height
     })
   },
   /**

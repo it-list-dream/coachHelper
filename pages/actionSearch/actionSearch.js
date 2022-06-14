@@ -13,7 +13,8 @@ Page({
     shoppingCarSize: {
       top: 0,
       left: 0
-    }
+    },
+    searchbar:0
   },
   /**
    * 生命周期函数--监听页面加载
@@ -25,8 +26,15 @@ Page({
       that.setData({
         cartList: res.cartList
       })
-    })
+    });
     this.quertShoppingCarSize();
+    var query = wx.createSelectorQuery();
+    query.select('#search').boundingClientRect();
+    query.exec(function (res) {
+      that.setData({
+        searchbar:res[0].height
+      })
+      })
   },
   search: util.throttle(function (e) {
     this.setData({

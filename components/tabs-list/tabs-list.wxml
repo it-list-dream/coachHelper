@@ -1,11 +1,11 @@
 <!--components/tabs-list/tabs-list.wxml-->
-<view class="tab-list">
+<view class="tab-list custom-class">
   <scroll-view scroll-x="true" class="scroll-view-x" style="border-bottom:{{isBorder?'1px solid #E6EAF1':''}}">
     <view class="scroll-view-item" wx:for="{{tList}}" wx:key="*this" hover-class="none">
       <view class="tabs2 {{currentTab==(index) ? 'on' : ''}}" bindtap="_swichNav" data-current="{{index}}" hover-class="none">
-        <view> {{ item }}</view>
+        <view> {{ item.name }}</view>
         <!-- icon -->
-        <view class="icon {{currentTab == index?'triangle-up':''}}" wx:if="{{icon}}"></view>
+        <view wx:if="{{item.flag}}" class="icon {{currentTab == index?'triangle-up':''}}"></view>
       </view>
     </view>
   </scroll-view>

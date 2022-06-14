@@ -28,11 +28,14 @@ Page({
     var type = e.currentTarget.dataset.type;
     app.globalData.isExportTemplate = type;
     let myList = this.data.classDetail;
-    myList = myList.filter(item => {
-      item.selected = false;
-      return item.CS_ID > 0
-    });
-    app.globalData.temIdList = myList;
+    var newList = [];
+    for (let i = 0; i < myList.length; i++) {
+      myList[i].selected = false;
+      if (myList[i].CS_ID > 0) {
+        newList.push(myList[i]);
+      }
+    }
+    app.globalData.temIdList = newList;
     app.globalData.coId = this.coId;
     wx.navigateTo({
       url: '/pages/courseTemplate/courseTemplate'
