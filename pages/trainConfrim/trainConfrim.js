@@ -1,4 +1,5 @@
-// pages/trainConfrim/trainConfrim.js
+var service = require('../../utils/request.js');
+const app = getApp();
 Page({
 
   /**
@@ -47,14 +48,47 @@ Page({
       sleeptime: 8,
       appetite: "一般",
       vitality: "好"
-    }
+    },
+    actionList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getRecordList();
+    this.setData({
+      phone:app.globalData.phone,
+      custom:app.globalData.custom
+    })
+  },
+  foldAction(e){
+      let index = e.currentTarget.dataset.index,
+      actionList = this.data.actionList;
+      actionList[index].isShow = !actionList[index].isShow 
+      this.setData({
+        actionList
+      })
+  },
+  estimate(e){
+    var express = e.currentTarget.dataset.express;
+    
+  },
+  //获取所有记录
+  getRecordList() {
+    let list = [];
+    service.post('/StartClassRecordList', {
+      CS_ID: app.globalData.csId || "3245",
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      list = res.data.data;
+      for (let i = 0; i < list.length; i++) {
+        list[i].isShow = false;
+      }
+      this.setData({
+        actionList:list
+      })
+    })
   },
   sliderChange(e) {
     console.log('滑块在移动', e)
@@ -75,11 +109,11 @@ Page({
   moodindex(e) {
     let custom = this.data.customInfo;
     if (e.detail.length > 0) {
-        custom.appetite = e.detail[0].moodtitle;
-        this.setData({
-          customInfo:custom,
-          moodShow:false
-        })
+      custom.appetite = e.detail[0].moodtitle;
+      this.setData({
+        customInfo: custom,
+        moodShow: false
+      })
     }
   },
   vitalindex(e) {
@@ -87,10 +121,10 @@ Page({
     if (e.detail.length > 0) {
       custom.vitality = e.detail[0].moodtitle;
       this.setData({
-        customInfo:custom,
-        activeShow:false
+        customInfo: custom,
+        activeShow: false
       })
-  }
+    }
   },
   appetite() {
     this.setData({
@@ -102,10 +136,10 @@ Page({
       activeShow: true
     })
   },
-  customSign(){
-     wx.navigateTo({
-       url: '/pages/signature/signature',
-     })
+  customSign() {
+    wx.navigateTo({
+      url: '/pages/signature/signature',
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

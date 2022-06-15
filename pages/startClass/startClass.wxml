@@ -10,16 +10,16 @@
     </view>
   </van-count-down>
   <view class="actionAll">
-    <view class="actionbtn" bindtap="lookallAction">全部动作</view>
+    <view class="actionbtn">全部动作</view>
     <view class="{{currentAction == idx ?'':'hidden'}}" wx:for="{{actionList}}" wx:for-index="idx" wx:key="idx">
       <view class="instrument">
-        <view class="triangle-box">
+        <view class="triangle-box" bindtap="swichAction" data-oper="perv">
           <image class="left" src="/assets/images/triangle.png"></image>
-          <text>箭步蹲</text>
+          <text>{{currentAction>=1?titleList[currentAction-1]:""}}</text>
         </view>
-        <view class="current-action">四足支撑</view>
-        <view class="triangle-box">
-          <text>跪资俯卧撑</text>
+        <view class="current-action">{{titleList[currentAction]}}</view>
+        <view class="triangle-box" bindtap="swichAction" data-oper="next">
+          <text>{{titleList.length>currentAction-1?titleList[currentAction+1]:""}}</text>
           <image class="right" src="/assets/images/triangle.png"></image>
         </view>
       </view>
@@ -32,25 +32,28 @@
           <text>器械</text>
         </view>
         <view class="instrument-table">
-          <view class="instrument-table-tr" wx:for="{{actionList[currentAction].groupList}}" wx:for-index="j" wx:key="j">
+          <view class="instrument-table-tr" wx:for="{{actionList[currentAction].groupList}}" wx:for-index="j"
+            wx:key="j">
             <view class="left-td">
-              <text>{{item.actionCount}}</text>
-              <text>{{item.instrumentWeight}}</text>
-              <text>{{item.restTime}}</text>
-              <text>{{item.instrument}}</text>
+              <text>{{item.SM_Num}}</text>
+              <text>{{item.SM_Resistance+''+item.SM_ResistanceType}}</text>
+              <text>{{item.SM_Rest+''+item.SM_RestType}}</text>
+              <text class="stru">{{item.SM_Apparatus}}</text>
             </view>
             <view class="right-td">
               <view class="right-td-item" wx:if="{{item.open}}">
                 <block wx:for="{{memeList}}" wx:key="index" wx:for-item="meme">
-                  <text style="color:{{item.statusIndex == index?'#2564F6':''}}" bindtap="estimate" data-current="{{j}}" data-index="{{index}}">
+                  <text style="color:{{item.statusIndex == index?'#2564F6':''}}" bindtap="estimate" data-current="{{j}}"
+                    data-index="{{index}}">
                     {{meme}}
                   </text>
                 </block>
               </view>
-              <view class="td-checked" data-current="{{j}}" bindtap="openMeme" wx:else>{{memeList[item.statusIndex]}}</view>
+              <view class="td-checked" data-current="{{j}}" bindtap="openMeme" wx:else>{{memeList[item.statusIndex]}}
+              </view>
             </view>
           </view>
-          <view class="ohter-tr">+添加组</view>
+          <view class="ohter-tr" bindtap="addactionGroup">+添加组</view>
         </view>
       </view>
     </view>

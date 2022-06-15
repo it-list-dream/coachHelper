@@ -10,28 +10,7 @@ Page({
     timeData: {},
     actionList: [{
         actionName: "四足支撑",
-        groupList: [{
-          actionCount: '20次',
-          instrumentWeight: "--",
-          restTime: '20s',
-          instrument: "--",
-          statusIndex: -1,
-          open: true
-        }, {
-          actionCount: '20次',
-          instrumentWeight: "--",
-          restTime: '20s',
-          instrument: "--",
-          statusIndex: -1,
-          open: true
-        }, {
-          actionCount: '20次',
-          instrumentWeight: "--",
-          restTime: '20s',
-          instrument: "--",
-          statusIndex: -1,
-          open: true
-        }]
+        groupList: []
       },
       {
         actionName: "箭步蹲",
@@ -46,7 +25,6 @@ Page({
     currentAction: 0,
     startInfo: {}
   },
-
   onChange(e) {
     this.setData({
       timeData: e.detail,
@@ -72,8 +50,16 @@ Page({
     console.log('定时器结束了!');
 
   },
-  //查看所有
-  lookallAction() {
+  addactionGroup(e) {
+    let index = this.data.currentAction,
+      actionList = this.data.actionList,
+      actionItem = Object.assign({}, actionList[index].groupList[0]);
+    actionItem.statusIndex = -1;
+    actionItem.open = true;
+    actionList[index].groupList.push(actionItem)
+    this.setData({
+      actionList
+    });
 
   },
   estimate(e) {
@@ -85,7 +71,8 @@ Page({
     actionList[actionIndex].groupList[currentIndex].open = false;
     this.setData({
       actionList: actionList
-    })
+    });
+    this.saveStartClass();
   },
   openMeme(e) {
     let currentIndex = e.currentTarget.dataset.current,
@@ -101,10 +88,38 @@ Page({
       CS_ID: app.globalData.csId || "3245",
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
+      //当前日期减去开始日期
       this.setData({
         startInfo: res.data.data[0],
         time: res.data.data[0].CP_Time * 60 * 1000
       })
+    })
+  },
+  //保存
+  saveStartClass() {
+    let allList = this.data.actionList,
+      newList = [],
+      list = [],
+      titleList = this.data.titleList;
+    var obj = {};
+    for (let i = 0; i < allList.length; i++) {
+      obj = allList[i].groupList[0];
+      obj.SM_Count = allList[i].groupList.length;
+      list = allList[i].groupList.map(item=>item.statusIndex);
+      obj.data = list;
+      newList.push(obj)
+    }
+    console.log(newList);
+    return;
+    var jsonStr = {
+      CS_ID: app.globalData.csId || "3245",
+      data: JSON.stringify(newList)
+    }
+    service.post('/SaveStartClassRecord', {
+      gi_id: wx.getStorageSync('gi_id'),
+      json: JSON.stringify(jsonStr)
+    }).then(res => {
+
     })
   },
   /**
@@ -116,7 +131,8 @@ Page({
   },
   getAllAction() {
     var actionList = [],
-      list = [];
+      list = [],
+      tList = [];
     let temObj = {};
     service.post('/CoachActLibDetails', {
       co_id: app.globalData.coId || "1769",
@@ -130,17 +146,54 @@ Page({
       for (let i = 0; i < list.length; i++) {
         temObj = {
           actionName: list[i].SM_Name,
-          groupList:[]
+          groupList: []
         };
-        for (let j = 0; j < list[i].SM_Count; j++) {
+        for (let j = 0; j < parseInt(list[i].SM_Count); j++) {
           temObj.groupList.push({
-            SM_Name:list[i].SM_Name,
-            SM_LableName:list[i].SM_LableName,
-            SM_Num
+            SM_Name: list[i].SM_Name,
+            SM_LableName: list[i].SM_LableName,
+            SM_Num: list[i].SM_Num,
+            SM_Count: parseInt(list[i].SM_Count),
+            SM_CountType: list[i].SM_CountType,
+            SM_Time: list[i].SM_Time,
+            SM_TimeType: list[i].SM_TimeType,
+            SM_Rest: list[i].SM_Rest,
+            SM_RestType: list[i].SM_RestType,
+            SM_Resistance: list[i].SM_Resistance,
+            SM_ResistanceType: list[i].SM_ResistanceType,
+            SM_Apparatus: list[i].SM_Apparatus,
+            FK_AL_ID: list[i].FK_AL_ID,
+            Remarks: list[i].Remarks,
+            CA_Type: list[i].CA_Type,
+            statusIndex: -1,
+            open: true
           })
         }
+        tList.push(list[i].SM_Name)
+        actionList.push(temObj);
       }
+      this.setData({
+        actionList,
+        titleList: tList
+      })
     })
+  },
+  swichAction: function (e) {
+    let currentIndex = this.data.currentAction,
+      oper = e.currentTarget.dataset.oper,
+      actionCount = this.data.titleList.length;
+    if (oper == "next") {
+      if (actionCount > 2 && currentIndex < actionCount - 1) {
+        currentIndex++;
+      }
+    } else if (oper == "perv") {
+      if (currentIndex > 0) {
+        currentIndex--;
+      }
+    }
+    this.setData({
+      currentAction: currentIndex
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

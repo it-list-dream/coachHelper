@@ -10,7 +10,7 @@
         <text>娜娜</text>
         <text>29岁</text>
       </view>
-      <view class="phone">15298131341</view>
+      <view class="phone">{{phone}}</view>
     </view>
   </view>
   <!-- 客户评价 -->
@@ -33,33 +33,33 @@
     <view class="coachConfrim">
       <view class="confrim-title">请教练确定</view>
       <view class="classes">课程内容</view>
-      <view class="action-table" wx:for="{{3}}">
+      <view class="action-table" wx:for="{{actionList}}" wx:for-index="j">
         <view class="action-th">
           <view class="action-td-left">
-            跪式俯卧撑<text>3/3组</text>
+            {{item.SM_Name}}<text>{{item.ActualCount}}/{{item.SM_Count}}组</text>
           </view>
           <view class="action-td-right">
-            <text class="emoticon">一般</text>
-            <text class="emoticon">良好</text>
-            <view class="switch emoticon">
-              <text>优秀</text>
+            <text class="emoticon" data-express="一般" catchtap="estimate">一般</text>
+            <text class="emoticon" data-express="良好" catchtap="estimate">良好</text>
+            <text class="emoticon" data-express="优秀" catchtap="estimate">优秀</text>
+            <view class="switch" bindtap="foldAction" data-index="{{j}}">
               <image src="/assets/images/bottom.png"></image>
             </view>
           </view>
         </view>
-        <!-- <view class="action-tr" wx:for="{{3}}">
+        <view hidden="{{!item.isShow}}" class="action-tr" wx:for="{{item.data}}" wx:for-item="action" wx:key="index">
           <view class="left-td">
-            <text>20次</text>
-            <text>--</text>
-            <text>0s</text>
-            <text>--</text>
+            <text>{{item.SM_Num}}</text>
+            <text>{{item.SM_Resistance+''+item.SM_ResistanceType}}</text>
+            <text>{{item.SM_Rest+''+item.SM_RestType}}</text>
+            <text class="stru">{{item.SM_Apparatus}}</text>
           </view>
           <view class="right-td">
-            <text bindtap="estimate">一般</text>
-            <text bindtap="estimate">良好</text>
-            <text bindtap="estimate">优秀</text>
+            <text bindtap="estimate" data-express="一般">一般</text>
+            <text bindtap="estimate" data-express="良好">良好</text>
+            <text bindtap="estimate" data-express="优秀">优秀</text>
           </view>
-        </view> -->
+        </view>
       </view>
     </view>
     <!-- 客户确定 -->
