@@ -7,8 +7,8 @@
         <image src="/assets/images/gril.png" class="sex"></image>
       </view>
       <view class="custom">
-        <text>娜娜</text>
-        <text>29岁</text>
+        <text>{{custom.UI_Name}}</text>
+        <text>{{custom.UserAge?custom.UserAge:'--'}}岁</text>
       </view>
       <view class="phone">{{phone}}</view>
     </view>
@@ -17,31 +17,39 @@
   <view class="train-content">
     <view class="customfeel">
       <view class="feel-item">
-        <text>非常好</text>
+        <text>{{customState.length>0?customState:'--'}}</text>
         <text>客户心情</text>
       </view>
       <view class="feel-item">
-        <text>00:14</text>
+        <text>{{duration}}</text>
         <text>课程时长/分</text>
       </view>
       <view class="feel-item sucessdate">
-        <text>01.18</text>
+        <text>{{finishiDate}}</text>
         <text>完成日期</text>
       </view>
     </view>
     <!-- 教练确定 -->
     <view class="coachConfrim">
-      <view class="confrim-title">请教练确定</view>
+      <view class="confrim-title">{{pageEdit?'请教练确定':'教练确认完成'}} </view>
       <view class="classes">课程内容</view>
-      <view class="action-table" wx:for="{{actionList}}" wx:for-index="j">
+      <view class="action-table" wx:for="{{actionList}}" wx:for-index="j" wx:key="j">
         <view class="action-th">
           <view class="action-td-left">
             {{item.SM_Name}}<text>{{item.ActualCount}}/{{item.SM_Count}}组</text>
           </view>
           <view class="action-td-right">
-            <text class="emoticon" data-express="一般" catchtap="estimate">一般</text>
-            <text class="emoticon" data-express="良好" catchtap="estimate">良好</text>
-            <text class="emoticon" data-express="优秀" catchtap="estimate">优秀</text>
+            <block wx:if="{{pageEdit}}">
+              <text class="emoticon {{item.all_state == '一般'?'act-active':''}}" data-express="一般"
+                catchtap="estimateGroup" data-index="{{j}}">一般</text>
+              <text class="emoticon {{item.all_state == '良好'?'act-active':''}}" data-express="良好"
+                catchtap="estimateGroup" data-index="{{j}}">良好</text>
+              <text class="emoticon {{item.all_state == '优秀'?'act-active':''}}" data-express="优秀"
+                catchtap="estimateGroup" data-index="{{j}}">优秀</text>
+            </block>
+            <block wx:else>
+              <text class="emoticon" style="color:#2564F6;">{{item.all_state}}</text>
+            </block>
             <view class="switch" bindtap="foldAction" data-index="{{j}}">
               <image src="/assets/images/bottom.png"></image>
             </view>
@@ -55,25 +63,33 @@
             <text class="stru">{{item.SM_Apparatus}}</text>
           </view>
           <view class="right-td">
-            <text bindtap="estimate" data-express="一般">一般</text>
-            <text bindtap="estimate" data-express="良好">良好</text>
-            <text bindtap="estimate" data-express="优秀">优秀</text>
+            <block wx:if="{{pageEdit}}">
+              <text class="{{action.SS_State == '一般'?'act-active':''}}" data-current="{{j}}" data-index="{{index}}"
+                bindtap="estimate" data-express="一般">一般</text>
+              <text class="{{action.SS_State == '良好'?'act-active':''}}" data-current="{{j}}" data-index="{{index}}"
+                bindtap="estimate" data-express="良好">良好</text>
+              <text class="{{action.SS_State == '优秀'?'act-active':''}}" data-current="{{j}}" data-index="{{index}}"
+                bindtap="estimate" data-express="优秀">优秀</text>
+            </block>
+            <block wx:else>
+              <text class="emoticon" style="color:#2564F6;">{{action.SS_State}}</text>
+            </block>
           </view>
         </view>
       </view>
     </view>
     <!-- 客户确定 -->
     <view class="customConfrim">
-      <view class="confrim-title">请客户确认</view>
+      <view class="confrim-title">{{pageEdit?'请客户确认':'客户确认完成'}} </view>
       <view class="custom-info">
         <view class="custom-body">
           <text>客户体重</text>
-          <input type="digit" maxlength="4" value="{{customInfo.weight}}" />
+          <input type="digit" maxlength="4" value="{{customInfo.weight}}" disabled="{{!pageEdit}}" bindblur="weightChange"/>
           <text>kg</text>
         </view>
         <view class="custom-body">
           <text>睡眠时长</text>
-          <input type="digit" maxlength="4" value="{{customInfo.sleeptime}}" />
+          <input type="digit" maxlength="4" value="{{customInfo.sleeptime}}" disabled="{{!pageEdit}}" bindblur="sleepChange"/>
           <text>h</text>
         </view>
         <view class="custom-body">
@@ -91,25 +107,28 @@
         <view class="icon2">稍轻松</view>
         <view class="emotion-icon2">
           <view>非常轻松</view>
-          <van-slider value="{{ sliderValue}}" bind:change="sliderChange" step="10" bar-height="10"
-            active-color="#2564F6" />
+          <van-slider disabled="{{!pageEdit}}" value="{{customFeel}}" bind:change="sliderChange" step="10"
+            bar-height="10" active-color="#2564F6" />
           <view>非常吃力</view>
         </view>
       </view>
       <!-- 训练感受 -->
       <view class="mytrainfeels">
-        <textarea class="textarea2" placeholder-style="color:#A7A7A7;" placeholder="说说你的训练感受" name="" id="" cols="30"
-          rows="10"></textarea>
+        <textarea class="textarea2" placeholder-style="color:#A7A7A7;" placeholder="说说你的训练感受" disabled="{{!pageEdit}}"
+          value="{{trainFeel}}" bindinput="handlefeel"></textarea>
       </view>
-      <view class="custom-sign">
-        <view class="sign-title" bindtap="customSign">客户签字</view>
-        <!-- <image src=""></image> -->
+      <view wx:if="{{!signImage && pageEdit}}" class="custom-sign" bindtap="customSign">
+        <view class="sign-title">客户签字</view>
+      </view>
+      <view class="sign-image" wx:if="{{signImage.length>0 || !pageEdit}}">
+        <image src="{{signImage}}"></image>
       </view>
       <view class="customconfrim">
-        <button class="cbtn">确定</button>
+        <button class="cbtn" bindtap="saveFinalClass">确定</button>
       </view>
     </view>
   </view>
+
 </view>
 <mood is-show="{{moodShow}}" status-title="胃口指数" status-list="{{moodList}}" bind:close="handleclose"
   bind:confrim="moodindex"></mood>

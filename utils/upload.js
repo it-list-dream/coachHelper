@@ -20,8 +20,11 @@ const chooseImage = (
     })
   });
 }
-const uploadImage = (url, fileUrl, imageName,formData = {}) => {
+const uploadImage = (url, fileUrl, imageName, formData = {}) => {
   return new Promise((resolve, reject) => {
+    wx.showLoading({
+      title: '图片上传中...',
+    })
     wx.uploadFile({
       url: baseURL + url,
       filePath: fileUrl,
@@ -38,6 +41,9 @@ const uploadImage = (url, fileUrl, imageName,formData = {}) => {
       },
       fail: function (error) {
         reject(error);
+      },
+      complete: function () {
+        wx.hideLoading();
       }
     })
   })

@@ -1,4 +1,4 @@
-<van-popup show="{{ isShow }}" position="bottom" custom-style="height: 45%;" bind:close="onClose">
+<van-popup show="{{ isShow }}" position="bottom" custom-style="height: 45%;" bind:close="onClose" catchtouchmove="moveHandle">
   <view class="popup-title">
     <text class="cancel" bindtap="cancle">取消</text>
     <text class="title">{{statusTitle}}</text>

@@ -118,6 +118,18 @@
   align-items: center;
 }
 
+.error{
+  width: 48rpx;
+  height: 100%;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.error image{
+  width: 28rpx;
+  height: 28rpx;
+}
+
 .instrument-table-tr .left-td text {
   border-right: 0.5px solid #DBDBDB;
 }
@@ -128,7 +140,8 @@
   font-size: 30rpx;
   color: #333333;
 }
-.stru{
+
+.stru {
   width: 44rpx;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -149,6 +162,7 @@
 .right-td-item text {
   color: #999999;
   margin-left: 30rpx;
+  line-height: 100rpx;
 }
 
 .right-td .td-checked {

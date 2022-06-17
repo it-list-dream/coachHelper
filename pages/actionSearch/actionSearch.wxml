@@ -25,10 +25,10 @@
     动作数量：
     <text class="cart" style="color:#2564F6;">{{cartList.length}}</text>
   </view>
-  <view class="details" bindtap="showDetail">
+  <!-- <view class="details" bindtap="showDetail">
     明细
     <image src="/assets/images/acion/bottom.png"></image>
-  </view>
+  </view> -->
   <view class="aciton-confrim">
     <button bindtap="actionConfrim" class="btn">确定</button>
   </view>

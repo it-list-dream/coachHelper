@@ -4,6 +4,7 @@ let signaturePad = {};
 let pix = 7;
 let penColor = 'black';
 let lineWidth = 1.4;
+var upLoad = require('../../utils/upload.js')
 Page({
 
   /**
@@ -22,7 +23,7 @@ Page({
       devicePixelRatio: pix,
     };
     signaturePad = new SignaturePad(ctx, data);
-   // console.info(ctx, SignaturePad);
+    // console.info(ctx, SignaturePad);
   },
   uploadScaleStart(e) {
     const item = {
@@ -61,16 +62,35 @@ Page({
   },
   //保存canvas图像
   subCanvas: function () {
+    var that = this;
     if (this.data.isEmpty) {
       return false
     }
+
     wx.canvasToTempFilePath({
       canvasId: 'handWriting',
       success: function (res) {
-        console.log(res.tempFilePath)
+        let pages = getCurrentPages();
+        //获取所需页面
+        let prevPage = pages[pages.length - 2]; //上一页
+        prevPage.setData({
+          signImage: res.tempFilePath,
+          signId: res.filesid
+        });
+        upLoad.uploadImage('/ReceiveFiles', res.tempFilePath, 'sign', {
+          gi_id: wx.getStorageSync('gi_id')
+        }).then(res => {
+          wx.navigateBack({
+            delta: 1,
+          });
+        });
       },
       fail: function (res) {
-        console.log(res)
+        // console.log(res)
+        wx.showToast({
+          icon: "none",
+          title: '图片保存失败'
+        })
       }
     })
   }

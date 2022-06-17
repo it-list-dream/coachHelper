@@ -1,5 +1,6 @@
 page {
   background-color: #F7F4FB;
+  height: 100%;
 }
 
 .editClass {

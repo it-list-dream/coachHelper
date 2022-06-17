@@ -1,9 +1,9 @@
 <view class="startclass">
-  <van-count-down class="control-count-down" use-slot time="{{ time }}" bind:change="onChange" bind:finish="gameover">
+  <van-count-down class="control-count-down" use-slot time="{{ time }}" bind:change="timeChange" bind:finish="gameover">
     <view class="count-down">
       <text class="item">{{ timeData.minutes }}:{{ timeData.seconds }}</text>
       /
-      <text class="item">{{ time/60/1000 }}:00</text>
+      <text class="item">{{ duration }}:00</text>
       <view class="finished" bindtap="finish">
         <text>结束</text>
       </view>
@@ -42,15 +42,15 @@
             </view>
             <view class="right-td">
               <view class="right-td-item" wx:if="{{item.open}}">
-                <block wx:for="{{memeList}}" wx:key="index" wx:for-item="meme">
-                  <text style="color:{{item.statusIndex == index?'#2564F6':''}}" bindtap="estimate" data-current="{{j}}"
-                    data-index="{{index}}">
-                    {{meme}}
-                  </text>
-                </block>
+                 <text style="color:{{item.status == '一般'?'#2564F6':''}}" bindtap="estimate" data-index="{{j}}" data-express="一般">一般</text>
+                 <text style="color:{{item.status == '良好'?'#2564F6':''}}" bindtap="estimate" data-index="{{j}}" data-express="良好">良好</text>
+                 <text style="color:{{item.status == '优秀'?'#2564F6':''}}" bindtap="estimate" data-index="{{j}}" data-express="优秀">优秀</text>
               </view>
-              <view class="td-checked" data-current="{{j}}" bindtap="openMeme" wx:else>{{memeList[item.statusIndex]}}
+              <view class="td-checked" data-current="{{j}}" bindtap="openMeme" wx:else>{{item.status}}
               </view>
+            </view>
+            <view class="error" bindtap="deleteact" data-index="{{j}}">
+                <image src="/assets/images/acion/delete.png"></image>
             </view>
           </view>
           <view class="ohter-tr" bindtap="addactionGroup">+添加组</view>

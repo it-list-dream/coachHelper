@@ -29,14 +29,19 @@ Page({
     app.globalData.isExportTemplate = type;
     let myList = this.data.classDetail;
     var newList = [];
-    for (let i = 0; i < myList.length; i++) {
-      myList[i].selected = false;
-      if (myList[i].CS_ID > 0) {
-        newList.push(myList[i]);
+    if (type == 1) {
+      for (let i = 0; i < myList.length; i++) {
+        myList[i].selected = false;
+        if (myList[i].CS_ID > 0) {
+          newList.push(myList[i]);
+        }
       }
+    } else if (type == 2) {
+      newList = myList.filter(item => item.CS_Stat == "预约中")
     }
     app.globalData.temIdList = newList;
     app.globalData.coId = this.coId;
+    console.log(newList)
     wx.navigateTo({
       url: '/pages/courseTemplate/courseTemplate'
     });
@@ -63,10 +68,18 @@ Page({
   newcurriculum(e) {
     let cs_id = e.currentTarget.dataset.csid,
       ca_id = e.currentTarget.dataset.ca_id,
-      className = e.currentTarget.dataset.ctitle;
+      className = e.currentTarget.dataset.ctitle,
+      cList = this.data.classDetail,
+      index = e.currentTarget.dataset.index;
     app.globalData.csId = cs_id;
-    //根据ca_id区分到那个页面
-    this.getClassStatus(cs_id, ca_id, className);
+    if (cList[index].CS_State == "已完成") {
+      wx.navigateTo({
+        url: '/pages/trainConfrim/trainConfrim',
+      })
+    } else {
+      //根据ca_id区分到那个页面
+      this.getClassStatus(cs_id, ca_id, className);
+    }
   },
   coachClassListAappoint(co_id) {
     service.post('/CoachClassListAappoint', {

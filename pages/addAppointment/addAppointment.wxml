@@ -24,7 +24,7 @@
                 <image src="/assets/images/right_arrow.png" />
             </view>
         </view>
-        <view class="from-col">
+        <!-- <view class="from-col">
             <view>是否重复</view>
             <view class="from-item" bindtap="repetition">
                 <text>{{repeatDate}}</text>
@@ -59,7 +59,7 @@
             <view class="confrim-box">
                 <button class="confrim-text" bindtap="handleConfrim">确定</button>
             </view>
-        </van-popup>
+        </van-popup> -->
         <view class="from-col last">
             <view>训练计划</view>
             <view class="from-item" bindtap="trianPlain1">

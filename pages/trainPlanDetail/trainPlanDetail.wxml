@@ -22,7 +22,7 @@
   <!--  -->
   <view class="trainclass-list">
     <view class="trainclass" wx:for="{{classDetail}}" wx:key="index" bindtap="newcurriculum" data-csid="{{item.CS_ID}}"
-      data-caid="{{item.CA_ID}}" data-ctitle="{{item.CP_Name}}">
+      data-caid="{{item.CA_ID}}" data-ctitle="{{item.CP_Name}}" data-index="{{index}}">
       <view class="trainclass-name">
         <view>
           <text class="serial">{{index+1}}</text>

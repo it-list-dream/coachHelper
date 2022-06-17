@@ -305,6 +305,12 @@
           "pathName": "pages/preparationClass/preparationClass",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "训练确定",
+          "pathName": "pages/trainConfrim/trainConfrim",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -60,6 +60,9 @@ Component({
       let list = this.data.list;
       let selectedList = list.filter(item => item.selected == true);
       this.triggerEvent('confrim',selectedList)
+    },
+    moveHandle(){
+      
     }
   }
 })
