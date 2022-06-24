@@ -9,10 +9,10 @@ Page({
    */
   data: {
     showPay: false,
+    saleDate: "",
     //日期
     startDate: "2018-01-01",
     lastDate: "2100-01-01",
-    saleDate: "",
     formStart: "",
     formEnd: "",
     //订单
@@ -30,7 +30,9 @@ Page({
     let nowtime = util.format(new Date(), 'yyyy-mm-dd')
     this.setData({
       saleDate: nowtime,
-      custom: app.globalData.custom
+      custom: app.globalData.custom,
+      formStart: app.globalData.custom.UI_FirstDate,
+      formEnd:app.globalData.custom.UI_LastDate
     });
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('payOrder', function (res) {
@@ -154,7 +156,7 @@ Page({
       gi_id: wx.getStorageSync('gi_id'),
       sub_mch_id: merchantNo,
       total_fee: orderAmount * 100
-    },1).then(res => {
+    }, 1).then(res => {
       wx.hideLoading();
       new QRCode('canvas', {
         text: res.data.wxPayurl,

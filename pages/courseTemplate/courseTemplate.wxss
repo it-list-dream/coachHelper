@@ -1,5 +1,6 @@
 .templateIndex{
   padding-top: 30rpx;
+  padding-bottom: 120rpx;
 }
 @import '../../template/action/action.wxss';
 .template-btn {
@@ -26,6 +27,7 @@
   left: 0;
   width: 100%;
   padding-bottom: 30rpx;
+  background-color: #FFFFFF;
 }
 
 .tem-button .butt {

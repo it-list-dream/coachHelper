@@ -1,17 +1,12 @@
-// pages/addCustom/addCustom.js
+const app = getApp();
+var service = require('../../utils/request.js');
+var util = require('../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    customInfo: {
-      name: '',
-      sex: '',
-      phoneNumber: '',
-      birthday: '',
-      membership: ''
-    },
     belongList: ['张三', '李四', '王五'],
     chooseIndex: -1,
     sexList: ["男", "女"],
@@ -59,9 +54,13 @@ Page({
   onLoad: function (options) {
     let date = new Date();
     let month = date.getMonth() + 1 < 10 ? '0' + date.getMonth() + 1 : date.getMonth() + 1;
-    let day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
+    let day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    let custom = app.globalData.custom;
+    custom.UI_Birthday = util.format(custom.UI_Birthday, 'yyyy-mm-dd');
     this.setData({
-      endDate: date.getFullYear() + '-' + month + '-' + day
+      endDate: date.getFullYear() + '-' + month + '-' + day,
+      custom: custom,
+      chooseIndex: app.globalData.custom.UI_Sex == '男' ? 0 : 1
     })
   },
   getCustomName(e) {
@@ -97,7 +96,7 @@ Page({
     })
   },
   bindDateChange(e) {
-    let updateDate = "customInfo.birthday";
+    let updateDate = "custom.UI_Birthday";
     this.setData({
       [updateDate]: e.detail.value
     })
@@ -152,11 +151,11 @@ Page({
   onClose1() {
     this.setData({
       showTag1: false,
-      newTagValue:""
+      newTagValue: ""
     });
   },
   newCreateTag() {
-    console.log('新建标签');
+    // console.log('新建标签');
     this.setData({
       showTag1: true
     })
@@ -175,10 +174,10 @@ Page({
         targetList: targetList,
         newTagValue: ""
       })
-    }else{
+    } else {
       wx.showToast({
         title: '内容不能为空',
-        icon:"none"
+        icon: "none"
       })
     }
   },
@@ -189,7 +188,23 @@ Page({
   },
   onRemark(e) {
     this.setData({
-      remark: e.detail.value
+      "custom.UI_Content": e.detail.value
+    })
+  },
+  saveCustom() {
+    var jsonStr = {
+      UI_ID: this.data.custom.UI_ID,
+      TrainTarget: "xx,xx,x,xx",
+      UI_Sex: this.data.custom.UI_Sex,
+      UI_Birthday: this.data.custom.UI_Birthday,
+      UI_Name: this.data.custom.UI_Name,
+      UI_Content: this.data.custom.UI_Content
+    };
+    service.post('/UpdateUserInfo', {
+      json: JSON.stringify(jsonStr),
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+       console.log(res)
     })
   },
   /**

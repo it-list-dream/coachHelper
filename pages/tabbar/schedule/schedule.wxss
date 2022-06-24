@@ -14,13 +14,16 @@
 .course-content {
   position: relative;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 690rpx;
   height: 180rpx;
   margin: 0 auto 30rpx;
   background: #FFFFFF;
   box-shadow: 0px 0px 20rpx 0px rgba(102, 102, 102, 0.1);
   border-radius: 9rpx;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .course-content::before {
@@ -34,9 +37,6 @@
   border-radius: 8rpx 0px 0px 8rpx;
 }
 
-.left-box {
-  font-family: PingFang SC;
-}
 
 .left-title {
   margin-top: 40rpx;
@@ -56,16 +56,15 @@
   margin-left: 18rpx;
 }
 
-.left-box .time {
+.time-wrapper .time {
   width: 32rpx;
   height: 32rpx;
   vertical-align: middle;
 }
 
-.right-box {
-  margin-top: 40rpx;
+.right-box{
+  margin-top: 30rpx;
 }
-
 .right-box .status {
   display: block;
   width: 120rpx;

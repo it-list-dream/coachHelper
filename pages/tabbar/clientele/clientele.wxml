@@ -11,7 +11,7 @@
       </view>
       <block wx:for="{{tabsList}}" wx:key="name">
         <view class="tab-item" hidden="{{currentActive != index}}">
-          <view class="custom-list" wx:for="{{memberList}}" wx:key="index" bindtap="memberDetail">
+          <view class="custom-list" wx:for="{{memberList}}" wx:key="index" bindtap="memberDetail" data-member="{{item}}">
             <image src="/assets/images/photo.png" class="header" wx:if="{{item.UI_Face.indexOf('http') ==-1}}"></image>
             <view class="h1" wx:else>{{item.firstName}}</view>
             <view class="custom-info">

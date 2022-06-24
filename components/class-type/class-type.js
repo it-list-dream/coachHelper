@@ -18,7 +18,7 @@ Component({
           this.setData({
             selected: 0
           })
-        }else{
+        } else {
           for (let i = 0; i < newList.length; i++) {
             for (let j = 0; j < selectList.length; j++) {
               if (selectList[j] == i) {
@@ -27,6 +27,7 @@ Component({
             }
           };
         }
+        console.log(newList)
         this.setData({
           courseList: newList
         })
@@ -39,7 +40,6 @@ Component({
         type: []
       }
     },
-    //是否默认选中一个
     multichoice: {
       type: Boolean,
       value: false
@@ -71,25 +71,40 @@ Component({
     },
     classConfrim() {
       //console.log('确定按钮')
-      var typeList = this.data.courseList;
-      this.triggerEvent('confrim', typeList.filter(item=>{
-        item.courseNum = 1;
-        return item.checked
-      }))
+      var typeList = this.data.courseList,
+        confrimList = [];
+      if (this.properties.multichoice) {
+        confrimList = typeList.filter(item => {
+          item.courseNum = 1;
+          return item.checked
+        });
+      } else {
+        confrimList = typeList[this.data.selected];
+      }
+      this.triggerEvent('confrim', confrimList)
+    },
+    prevent() {
+      return
     },
     selectedType(e) {
       let type = e.currentTarget.dataset.type,
-        courseList = this.data.courseList;
+        courseList = this.data.courseList,
+        index = e.currentTarget.dataset.index;
       if (this.properties.multichoice) {
         for (let i = 0; i < courseList.length; i++) {
-           if(courseList[i].cp_id == type.cp_id){
+          if (courseList[i].cp_id == type.cp_id) {
             courseList[i].checked = !courseList[i].checked;
-           }
+          }
         }
+        this.setData({
+          courseList: courseList
+        })
+      } else {
+        console.log('单选')
+        this.setData({
+          selected: index
+        })
       }
-      this.setData({
-        courseList:courseList
-      })
     }
   }
 })

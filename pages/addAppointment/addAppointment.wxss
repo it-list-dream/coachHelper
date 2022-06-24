@@ -285,3 +285,6 @@ page {
   font-size: 30rpx;
   color: #FFFFFF;
 }
+.active-text{
+  color: #222222 !important;
+}

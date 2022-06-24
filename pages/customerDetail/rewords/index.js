@@ -1,3 +1,5 @@
+var service = require('../../../utils/request.js');
+const app = getApp();
 Component({
   /**
    * 组件的属性列表
@@ -7,12 +9,9 @@ Component({
   },
   properties: {
     //步骤条数据
-    stepList: {
-      type: Array,
-      value: [{
-        name: "名称",
-        time: "2021-07-19：12:30:01"
-      }]
+    step: {
+      type: Object,
+      value: {}
     }
   },
 
@@ -20,7 +19,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    isClose: false
+    isClose: false,
+    chooseId: -1
   },
   /**
    * 组件的方法列表
@@ -37,18 +37,34 @@ Component({
       })
     },
     confrim(e) {
-      this.setData({
-        isClose: false
-      })
-      this.triggerEvent('success', e.detail)
+      let ud_id = this.properties.step.children[this.data.chooseId].UD_ID || 0;
+      if (e.detail.length > 0) {
+        service.post('/UserFollowUpDetailAdd', {
+          Remarks: e.detail,
+          UD_ID: ud_id,
+          UI_ID: app.globalData.custom.UI_ID,
+          gi_id: wx.getStorageSync('gi_id')
+        }).then(res => {
+          this.setData({
+            isClose: false
+          })
+          this.triggerEvent('success')
+        })
+      }
     },
-    editText(){
+    editText(e) {
+      let index = e.currentTarget.dataset.index;
       this.setData({
-        isClose: true
+        isClose: true,
+        chooseId: index
       })
     },
-    deleteText(){
-       
+    deleteText(e) {
+      let  ud_id = e.currentTarget.dataset.udid;
+      console.log(e);
+      this.triggerEvent('deleteText',{
+        ud_id:ud_id
+      })
     }
   }
 })

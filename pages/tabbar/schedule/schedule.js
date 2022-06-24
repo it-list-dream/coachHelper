@@ -1,6 +1,7 @@
 // pages/schedule/schedule.js
 const app = getApp();
-const util = require('../../../utils/util')
+const util = require('../../../utils/util.js')
+var service = require('../../../utils/request.js')
 Page({
 
   /**
@@ -16,17 +17,52 @@ Page({
   },
   dateChange(e) {
     console.log("选中日期变了,现在日期是", e.detail.dateString)
+    if (this.data.tabIndex == 0) {
+      this.getscheduleList(e.detail.dateString)
+    } else {
+      getOhterAppoinment(e.detail.dateString)
+    }
     this.setData({
       dateString: e.detail.dateString
     })
   },
   tabClick(event) {
     let index = event.detail.index;
-    if(index == this.data.tabIndex){
-         return
+    if (index == this.data.tabIndex) {
+      return
+    }
+    if (index == 0) {
+      this.getscheduleList(this.data.dateString)
+    } else {
+      this.getOhterAppoinment(this.data.dateString);
     }
     this.setData({
-      tabIndex:index
+      tabIndex: index
+    })
+  },
+  getOhterAppoinment(searchDate) {
+    service.post('/Coach_ScheduleMyList', {
+      SearchDate: searchDate,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      let list = res.data.data;
+      list.forEach(item => {
+        item.startTime = util.format(item.StartDate, 'yyyy-mm-dd hh:mm').substr(item.StartDate.length - 7);
+        item.endTime = util.format(item.EndDate, 'yyyy-mm-dd hh:mm').substr(item.EndDate.length - 7);
+      });
+      this.setData({
+        otherAppoinmentList: list
+      });
+    })
+  },
+  getscheduleList(searchDate) {
+    service.post('/Coach_AppointmentList', {
+      SearchDate: searchDate,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      this.setData({
+        appoinmentList: res.data.data
+      })
     })
   },
   /**
@@ -34,9 +70,6 @@ Page({
    */
   onLoad: function (options) {
     app.editTabbar();
-    this.setData({
-      nowTime:util.format(new Date(),'yyyy-mm-dd')
-    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -49,7 +82,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (this.data.tabIndex == 0) {
+      this.getscheduleList(this.data.dateString)
+    } else {
+      this.getOhterAppoinment(this.data.dateString)
+    }
   },
 
   /**
@@ -77,13 +114,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

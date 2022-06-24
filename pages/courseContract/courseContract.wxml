@@ -31,7 +31,7 @@
         </picker>
       </van-cell>
       <van-cell title="结束日期" is-link>
-          <picker mode="date" value="2022-02-12" start="{{formEnd}}" end="{{lastDate}}"
+          <picker mode="date" value="{{formEnd}}" start="{{startDate}}" end="{{lastDate}}"
           bindchange="endDateChange">
           <view style="color:{{formEnd.length>0?'#222222':'#A7A7A7'}}">
             {{formEnd.length>0?formEnd:'请选择'}}

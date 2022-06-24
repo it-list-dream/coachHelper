@@ -7,34 +7,38 @@
     </view> -->
     <view class="phonenumber flex">
       <text>手机号码</text>
-      <input type="number" maxlength="11" placeholder="请输入手机号码" placeholder-class="placeholder" bindblur="getCustomPhone" />
+      <input type="number" value="{{custom.UI_Phone}}" disabled maxlength="11" placeholder="请输入手机号码"
+        placeholder-class="placeholder" bindblur="getCustomPhone" />
     </view>
     <view class="custom-name flex">
       <text>姓名</text>
-      <input type="text" placeholder="请输入姓名" placeholder-class="placeholder" bindblur="getCustomName" />
+      <input type="text" value="{{custom.UI_Name}}" placeholder="请输入姓名" placeholder-class="placeholder"
+        bindblur="getCustomName" />
     </view>
     <view class="custom-sex flex">
       <view>性别</view>
       <view class="chooseSex">
-        <text wx:for="{{sexList}}" wx:key="index" class="sex {{chooseIndex == index?'sex-active':''}}" bindtap="chooseSex" data-index="{{index}}">{{item}}</text>
+        <text wx:for="{{sexList}}" wx:key="index" class="sex {{chooseIndex == index?'sex-active':''}}"
+          bindtap="chooseSex" data-index="{{index}}">{{item}}</text>
       </view>
     </view>
 
     <view class="birthday flex">
       <view class="section__title">生日</view>
-      <picker mode="date" value="{{customInfo.birthday}}" start="1970-01-01" end="{{endDate}}" bindchange="bindDateChange">
-        <view class="picker" style="color:{{ customInfo.birthday.length>0?'##333333':'#C3C3C3'}};">
-          {{customInfo.birthday.length>0?customInfo.birthday:'请选择生日'}}
+      <picker mode="date" value="{{custom.UI_Birthday}}" start="1970-01-01" end="{{endDate}}"
+        bindchange="bindDateChange">
+        <view class="picker" style="color:{{ custom.UI_Birthday.length>0?'##333333':'#C3C3C3'}};">
+          {{custom.UI_Birthday.length>0?custom.UI_Birthday:'请选择生日'}}
         </view>
       </picker>
     </view>
     <view class="belong-member flex">
       <view class="section__title">所属会籍</view>
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{belongList}}">
-        <view class="picker" style="color:{{ customInfo.membership.length>0?'##333333':'#C3C3C3'}};">
-          {{customInfo.membership.length>0?customInfo.membership:'请选择会籍'}}
-        </view>
-      </picker>
+      <!-- <picker bindchange="bindPickerChange" value="{{index}}" range="{{belongList}}"> -->
+      <view class="picker" style="color:#333333'">
+        {{custom.AdviserName}}
+      </view>
+      <!-- </picker> -->
     </view>
   </view>
   <view class="targetFitness">
@@ -44,7 +48,8 @@
         <image src="/assets/images/set.png" class="set"></image>
       </view>
     </view>
-    <van-popup catchtouchmove="true" show="{{ showTag }}" position="bottom" custom-style="height: 900rpx;" bind:close="onClose">
+    <van-popup catchtouchmove="true" show="{{ showTag }}" position="bottom" custom-style="height: 900rpx;"
+      bind:close="onClose">
       <view class="pouponWrapper">
         <view class="popupTag">
           <text class="cancel1">取消</text>
@@ -55,31 +60,34 @@
           <view class="fitnesss-action" wx:for="{{targetList}}" wx:for-index="idx" wx:key="idx">{{item.value}}</view>
           <view class="new-tags" bindtap="newCreateTag">+新建标签</view>
         </scroll-view>
-        <van-popup catchtouchmove="true" show="{{ showTag1 }}" position="bottom" custom-style="height: 400rpx;" bind:close="onClose1">
+        <van-popup catchtouchmove="true" show="{{ showTag1 }}" position="bottom" custom-style="height: 400rpx;"
+          bind:close="onClose1">
           <view class="popupTag">
             <text class="cancel1" bindtap="onClose1">取消</text>
             <text class="setTag">设置标签</text>
             <text class="confrim1" bindtap="onConfrim1">确定</text>
           </view>
           <view class="content">
-            <textarea placeholder="请输入内容" class="textarea" value="{{newTagValue}}" placeholder-style="color: #999999;" bindinput="changeTextarea" />
+            <textarea placeholder="请输入内容" class="textarea" value="{{newTagValue}}" placeholder-style="color: #999999;"
+              bindinput="changeTextarea" />
           </view>
         </van-popup>
       </view>
     </van-popup>
     <view class="fitness-type">
       <block wx:for="{{targetList}}" wx:key="index">
-        <view bindtap="checkLabs" data-index="{{index}}" data-value="{{item.value}}" class="fitnessTag {{item.checked?'fitness-active':''}}">{{item.value}}</view>
+        <view bindtap="checkLabs" data-index="{{index}}" data-value="{{item.value}}"
+          class="fitnessTag {{item.checked?'fitness-active':''}}">{{item.value}}</view>
       </block>
     </view>
     <view class="remark-box">
       <view class="remark-title">备注</view>
       <view class="remark-textarea">
-        <textarea name="" id="" cols="30" rows="10" value="" placeholder="请输入内容" bindinput="onRemark"></textarea>
+        <textarea value="{{custom.UI_Content}}" placeholder="请输入内容" bindinput="onRemark"></textarea>
       </view>
     </view>
     <view class="save">
-      <button class="saveBtn">保存</button>
+      <button class="saveBtn" bindtap="saveCustom">保存</button>
     </view>
   </view>
 </view>

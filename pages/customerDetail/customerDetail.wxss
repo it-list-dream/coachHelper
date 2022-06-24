@@ -5,6 +5,7 @@ page {
 
 .customDetailContainer {
   position: relative;
+  height: 100%;
 }
 
 .customdetail-header {
@@ -163,7 +164,9 @@ page {
 
 .service-coach .scroll-x {
   display: flex;
+  height: 180rpx;
   margin-top: 16rpx;
+  white-space: normal;
 }
 
 .select-coach {
@@ -216,7 +219,16 @@ page {
 }
 
 .date-picker {
+  display: flex;
+  align-items: center;
   padding: 30rpx 0;
+}
+
+.date-picker .line {
+  margin: 0 60rpx 0 100rpx;
+  width: 60rpx;
+  height: 1px;
+  background: #2C67E9;
 }
 
 .date-picker .pick {
@@ -237,6 +249,13 @@ page {
   border-left: 12rpx solid transparent;
   border-right: 12rpx solid transparent;
   border-top: 16rpx solid #2665F6;
+}
+
+.addRecordText {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  color: #523AFC;
+  padding: 16rpx 0;
 }
 
 /*  */
@@ -282,24 +301,22 @@ page {
 
 .scroll-y .scroll-item {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
   height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
 }
 
 .scroll-y .scroll-item .text {
   font-size: 30rpx;
   color: #333333;
-  margin-right: 196rpx;
+  text-align: center;
 }
 
 .scroll-item .select-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 72rpx;
-  height: 72rpx;
+  position: absolute;
+  top: 50%;
+  right: 48rpx;
+  transform: translateY(-50%);
 }
 
 .scroll-item .select-icon .gray-circle {

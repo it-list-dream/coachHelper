@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-     "template-popup":"./children/template-popup/template-popup"
+     "template-popup":"./children/template-popup/template-popup",
+     "van-empty": "@vant/weapp/empty/index"
   },
   "navigationBarBackgroundColor":"#2564F6",
   "navigationBarTextStyle":"white",

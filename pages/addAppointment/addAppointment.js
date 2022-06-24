@@ -1,4 +1,6 @@
-// pages/addAppointment/addAppointment.js
+const app = getApp();
+var service = require('../../utils/request.js');
+var util = require("../../utils/util.js")
 Page({
 
   /**
@@ -6,69 +8,14 @@ Page({
    */
   data: {
     showclass: false,
-    // clsstypeList: ["女性塑形课程", "廋身课程", "增肌课程", "健身入门课程", "运动康复课程", "产后修复课程", "私教体验课", "自主训练", "减脂课"],
-    clsstypeList: [{
-        name: "女性塑形课程",
-        checked: false
-      }, {
-        name: "瘦身课程",
-        checked: false
-      }, {
-        name: "增肌课程",
-        checked: false
-      }, {
-        name: "健身入门课程",
-        checked: false
-      },
-      {
-        name: "运动康复课程",
-        checked: false
-      }, {
-        name: "产后修复课程",
-        checked: false
-      }, {
-        name: "私教体验课",
-        checked: false
-      }, {
-        name: "自主训练",
-        checked: false
-      },
-      {
-        name: "减脂课",
-        checked: false
-      }
-    ],
-    //是否显示重复
-    showtips: false,
-    weekList: [{
-      value: "周一",
-      checked: false
-    }, {
-      value: "周二",
-      checked: false
-    }, {
-      value: "周三",
-      checked: false
-    }, {
-      value: "周四",
-      checked: false
-    }, {
-      value: "周五",
-      checked: false
-    }, {
-      value: "周六",
-      checked: false
-    }, {
-      value: "周日",
-      checked: false
-    }],
-    choose1: true,
-    choose2: false,
+    classtypeList: [],
+    selectedClass: null,
     //备注
     remarkText: "",
-    repeatDate: "无重复",
     //训练计划
     trianPlain: false,
+    trainPlanList: [],
+    selectedPlan: null,
     isOthers: 0,
     //是否弹出event
     isEvent: false,
@@ -84,93 +31,78 @@ Page({
       },
       {
         id: 3,
-        event_name: "休息",
-        checked: false
-      },
-      {
-        id: 4,
         event_name: "其他",
         checked: false
-      },
+      }
     ],
     endTime: '',
     eventTypeText: "",
-    //是否显示textarea
-    // isShowTextarea: true,
-    formData: {
-      classType: ""
-    }
+    pageIndex: 1
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //console.log(options.type == 0)
     this.setData({
-      isOthers: options.type
+      isOthers: options.type || 1
     })
   },
   chooseCustom() {
     wx.navigateTo({
-      url: '/pages/chooseCustom/chooseCustom',
-    })
-  },
-  onClose1() {
-    this.setData({
-      showtips: false
+      url: '/pages/chooseCustom/chooseCustom?type=6',
     })
   },
   chooseclasstype() {
-    this.setData({
-      showclass: true,
-    })
-  },
-  repetition() {
-    this.setData({
-      showtips: true,
-    })
-  },
-  // 当选
-  change1(e) {
-    let ch1 = this.data.choose1
-    this.setData({
-      choose1: !ch1,
-      choose2: ch1
-    })
-  },
-  change2(e) {
-    let ch2 = this.data.choose2
-    this.setData({
-      choose2: !ch2,
-      choose1: ch2
-    })
-  },
-  handleweek(e) {
-    let index = e.currentTarget.dataset.index;
-    let item = this.data.weekList[index];
-    let weekList = this.data.weekList;
-    if (!this.data.choose2) {
-      return
-    }
-    item.checked = !item.checked;
-    this.setData({
-      weekList: weekList,
-    });
-  },
-  handleConfrim() {
-    //判断是否选择时间
-    let weekList = this.data.weekList;
-    if (!weekList.some(item => item.checked)) {
+    if (!this.data.custom.UI_ID) {
       wx.showToast({
         icon: "none",
-        title: '请选择重复时间'
+        title: '请先选择会员',
       })
-      return
+      return;
     }
-    console.log(weekList.filter(item => item.checked).map(item => item.value).join('、'))
+    service.post('/TeachUserClass', {
+      UI_ID: this.data.custom.UI_ID,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      // console.log(res.data.data)
+      this.setData({
+        classtypeList: res.data.data,
+        showclass: true,
+      })
+    })
+  },
+  handleCancel() {
     this.setData({
-      showtips: false,
-      repeatDate: weekList.filter(item => item.checked).map(item => item.value).join('、')
+      showclass: false
+    })
+  },
+  trianPlain() {
+    if (!this.data.custom.UI_ID) {
+      wx.showToast({
+        icon: "none",
+        title: '请先选择会员',
+      })
+      return;
+    }
+    service.post('/ActLibTemplateList', {
+      pageIndex: this.data.pageIndex,
+      pageSize: 100,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      console.log(res)
+      this.setData({
+        trianPlain: true,
+        trainPlanList: res.data.data
+      })
+    })
+  },
+  // 选择训练计划
+  chooseClassPlan(e) {
+    let index = e.currentTarget.dataset.index,
+      trainPlanList = this.data.trainPlanList;
+    this.setData({
+      selectedPlan: trainPlanList[index],
+      trianPlain: false
     })
   },
   handleRemark(e) {
@@ -178,39 +110,55 @@ Page({
       remarkText: e.detail.value
     })
   },
-  //上课日期选择
-  bindMultiPickerChange: function (e) {
-    console.log(e.detail)
+  bindMultiPickerChange(e) {
+    //console.log(e)
+    this.date = e.detail;
   },
-  bindCancel() {
-    console.log('取消')
+  saveAppointment() {
+    let toastContent = "";
+    if (this.data.isOthers == 0) {
+      if (!this.data.custom.UI_ID) {
+        toastContent = "请选择客户";
+      } else if (!this.data.selectedClass) {
+        toastContent = "请选择课程类型";
+      } else if (!this.date) {
+        toastContent = "请选择上课时间";
+      }
+      if (toastContent.length > 0) {
+        wx.showToast({
+          icon: "none",
+          title: toastContent,
+        })
+        return;
+      }
+      this.saveSchedule()
+    } else {
+      if (this.data.eventTypeText.length == 0) {
+        toastContent = "请选择事件";
+      } else if (this.data.eventTypeText != "其他" && !this.data.custom.UI_ID) {
+        toastContent = "请选择客户";
+      } else if (!this.date && endTime.length == 0) {
+        toastContent = "请选择开始时间或结束时间";
+      }
+      if (toastContent.length > 0) {
+        wx.showToast({
+          icon: "none",
+          title: toastContent,
+        })
+        return;
+      }
+      this.saveOthersSchedule();
+    }
   },
   onClose2() {
     this.setData({
-      trianPlain: false,
+      trianPlain: false
     })
   },
-  trianPlain1() {
-    this.setData({
-      trianPlain: true,
-    })
-  },
-  addPlain() {
-     wx.navigateTo({
-       url: '/pages/addTrainPlan/addTrainPlan',
-     })
-  },
-  bindMultiPickerChange2() {
-
-  },
-  bindCancel2() {
-
-  },
+  //其他
   handleEvent(e) {
-    // console.log(e.currentTarget.dataset.index)
     let id = Number(e.currentTarget.dataset.index) + 1;
     let eventList = this.data.eventList;
-    let eventTypeText = '';
     eventList.forEach((item, index, arr) => {
       if (item.id == id) {
         arr[index].checked = true
@@ -218,20 +166,22 @@ Page({
         arr[index].checked = false
       }
     })
-    this.eventTypeText = eventList.filter(item => item.checked)[0].event_name
     this.setData({
       eventList: eventList
     })
   },
-  onCancel2() {
+  eventClose() {
     this.setData({
-      isEvent: false,
+      isEvent: false
     })
   },
-  onConfirm2() {
+  eventConfrim() {
+    let eventTypeText = "",
+      eventList = this.data.eventList;
+    eventTypeText = eventList.filter(item => item.checked)[0].event_name;
     this.setData({
-      isEvent: false,
-      eventTypeText: this.eventTypeText
+      eventTypeText,
+      isEvent: false
     })
   },
   eventPoupon() {
@@ -241,27 +191,64 @@ Page({
   },
   selectedTime(e) {
     this.setData({
-      selectedTime: e.detail.value
+      endTime: e.detail.value
     })
   },
   //弹窗
   bindConfrim(e) {
-    let classType = e.detail.filter(item => item.checked == true).map(item=>item.name);
     this.setData({
       showclass: false,
-      clsstypeList: e.detail,
-      "formData.classType": classType[0]
+      selectedClass: e.detail
+    });
+  },
+  saveSchedule() {
+    let spendDate = this.date[0] + '-' + this.date[1] + '-' + this.date[2],
+      s_hour = parseInt(this.date[3]),
+      s_minute = parseInt(this.date[4]),
+      e_hour,
+      e_minute,
+      cp_time = parseInt(this.data.selectedClass.CP_Time),
+      time = "";
+    if (s_minute + cp_time < 60) {
+      e_minute = s_minute + cp_time;
+      e_minute = s_hour;
+    } else {
+      e_hour = s_hour + parseInt((cp_time + s_minute) / 60);
+      e_minute = s_minute + cp_time - 60 * parseInt((cp_time + s_minute) / 60);
+    }
+    time = util.subTen(s_hour) + ":" + util.subTen(s_minute) + "-" + util.subTen(e_hour) + ":" + util.subTen(e_minute);
+    service.post('/Coach_SpendAddFromCoach', {
+      Content: this.data.remarkText,
+      templateId: this.data.selectedPlan ? this.data.selectedPlan.AT_ID : 0,
+      CO_ID: this.data.selectedClass.CO_ID,
+      UI_ID: this.data.custom.UI_ID,
+      FK_CP_ID: this.data.selectedClass.CP_ID,
+      SpendDate: spendDate,
+      Time: time,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      wx.navigateBack({
+        delta: 1,
+      })
     })
   },
-  handleCancel() {
-    this.setData({
-      showclass: false
-    })
-  },
-  // 选择训练计划
-  chooseClassPlan(){
-    this.setData({
-      trianPlain:false
+  saveOthersSchedule() {
+    console.log(this.date);
+    let s_date = this.date[0] + "-" + util.subTen(this.date[1]) + "-" + util.subTen(this.date[2]);
+    var jsonStr = {
+      UI_ID: this.data.custom.UI_ID?this.data.custom.UI_ID:0,
+      StartDate: s_date + " " + this.date[3] + ":" + this.date[4],
+      EndDate: s_date + " " + this.data.endTime,
+      Remarks: this.data.remarkText,
+      TypeName: this.data.eventTypeText
+    }
+    service.post('/Coach_ScheduleSave', {
+      json: JSON.stringify(jsonStr),
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      wx.navigateBack({
+        delta: 1,
+      })
     })
   },
   /**
@@ -270,28 +257,14 @@ Page({
   onReady: function () {
 
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      custom: app.globalData.custom
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -303,13 +276,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

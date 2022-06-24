@@ -1,3 +1,3 @@
 <picker mode="multiSelector" bindchange="_bindMultiPickerChange" bindcolumnchange="_bindMultiPickerColumnChange" bindcancel="_bindCancel" value="{{nowDate}}" range="{{multiArray}}" range-key="{{'title'}}" >
-    <view class="add-time">{{currentTime}}</view>
+    <view class="add-time" style="color:{{currentTime.length>0?'#222222':'#A7A7A7'}}">{{currentTime.length>0?currentTime:'请选择日期'}}</view>
 </picker>

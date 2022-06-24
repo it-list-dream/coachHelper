@@ -10,12 +10,12 @@ Page({
   data: {
     currentActive: 1,
     tabsList: ['最近联系', '全部客户'],
-    tabsList:[{
-      name:"最近联系",
-      flag:false
-    },{
-      name:"全部客户",
-      flag:false
+    tabsList: [{
+      name: "最近联系",
+      flag: false
+    }, {
+      name: "全部客户",
+      flag: false
     }],
     allmemberList: [],
     recentlyList: [],
@@ -92,6 +92,12 @@ Page({
       case 5:
         wx.navigateTo({
           url: '/pages/trainPlan/trainPlan',
+        });
+        break;
+        //预约
+      case 6:
+        wx.navigateBack({
+          delta: 1,
         });
         break;
       default:
@@ -193,7 +199,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let pages = getCurrentPages();
+    // 数组中索引最大的页面--当前页面
+    let currentPage = pages[pages.length - 1];
+    this.type = currentPage.options.type;
   },
 
   /**

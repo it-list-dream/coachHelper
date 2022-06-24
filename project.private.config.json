@@ -19,50 +19,8 @@
           "scene": null
         },
         {
-          "name": "pages/tabbar/clientele/clientele",
-          "pathName": "pages/tabbar/clientele/clientele",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/customerDetail/customerDetail",
-          "pathName": "pages/customerDetail/customerDetail",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "创建训练方案",
           "pathName": "pages/newtrainProgram/newtrainProgram",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/referenceData/referenceData",
-          "pathName": "pages/referenceData/referenceData",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/trainning/trainning",
-          "pathName": "pages/trainning/trainning",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "questionnaire/pages/riskEvaluation/riskEvaluation",
-          "pathName": "questionnaire/pages/riskEvaluation/riskEvaluation",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "questionnaire/pages/question/question",
-          "pathName": "questionnaire/pages/question/question",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "questionnaire/pages/systemQuestion/systemQuestion",
-          "pathName": "questionnaire/pages/systemQuestion/systemQuestion",
           "query": "",
           "scene": null
         },
@@ -97,20 +55,8 @@
           "scene": null
         },
         {
-          "name": "pages/trialClass/trialClass",
-          "pathName": "pages/trialClass/trialClass",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "编辑课程",
           "pathName": "pages/editCourse/editCourse",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/addTrainPlan/addTrainPlan",
-          "pathName": "pages/addTrainPlan/addTrainPlan",
           "query": "",
           "scene": null
         },
@@ -123,24 +69,6 @@
         {
           "name": "系统",
           "pathName": "questionnaire/pages/systemList/systemList",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "evaluation/pages/fitnessList/fitnessList",
-          "pathName": "evaluation/pages/fitnessList/fitnessList",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "evaluation/pages/fitnessList/fitnessList",
-          "pathName": "evaluation/pages/fitnessList/fitnessList",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/stadiumData/stadiumData",
-          "pathName": "pages/stadiumData/stadiumData",
           "query": "",
           "scene": null
         },
@@ -195,18 +123,6 @@
         {
           "name": "海报",
           "pathName": "evaluation/pages/poster/poster",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "教练风采",
-          "pathName": "pages/coachMien/coachMien",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "添加客户",
-          "pathName": "pages/addCustom/addCustom",
           "query": "",
           "scene": null
         },
@@ -309,6 +225,30 @@
         {
           "name": "训练确定",
           "pathName": "pages/trainConfrim/trainConfrim",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "预约",
+          "pathName": "pages/addAppointment/addAppointment",
+          "query": "type=0",
+          "scene": null
+        },
+        {
+          "name": "客户详情",
+          "pathName": "pages/customerDetail/customerDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "添加客户",
+          "pathName": "pages/addCustom/addCustom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "消息提醒",
+          "pathName": "pages/notification/notification",
           "query": "",
           "scene": null
         }

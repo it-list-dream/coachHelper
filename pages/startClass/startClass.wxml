@@ -32,21 +32,21 @@
           <text>器械</text>
         </view>
         <view class="instrument-table">
-          <view class="instrument-table-tr" wx:for="{{actionList[currentAction].groupList}}" wx:for-index="j"
+          <view class="instrument-table-tr" wx:for="{{actionList[currentAction].data}}" wx:for-index="j"
             wx:key="j">
             <view class="left-td">
-              <text>{{item.SM_Num}}</text>
-              <text>{{item.SM_Resistance+''+item.SM_ResistanceType}}</text>
-              <text>{{item.SM_Rest+''+item.SM_RestType}}</text>
-              <text class="stru">{{item.SM_Apparatus}}</text>
+              <text>{{actionList[currentAction].SM_Num}}</text>
+              <text>{{actionList[currentAction].SM_Resistance+''+actionList[currentAction].SM_ResistanceType}}</text>
+              <text>{{actionList[currentAction].SM_Rest+''+actionList[currentAction].SM_RestType}}</text>
+              <text class="stru">{{actionList[currentAction].SM_Apparatus}}</text>
             </view>
             <view class="right-td">
               <view class="right-td-item" wx:if="{{item.open}}">
-                 <text style="color:{{item.status == '一般'?'#2564F6':''}}" bindtap="estimate" data-index="{{j}}" data-express="一般">一般</text>
-                 <text style="color:{{item.status == '良好'?'#2564F6':''}}" bindtap="estimate" data-index="{{j}}" data-express="良好">良好</text>
-                 <text style="color:{{item.status == '优秀'?'#2564F6':''}}" bindtap="estimate" data-index="{{j}}" data-express="优秀">优秀</text>
+                 <text style="color:{{item.SS_State == '一般'?'#2564F6':''}}" bindtap="estimate" data-index="{{j}}" data-express="一般">一般</text>
+                 <text style="color:{{item.SS_State == '良好'?'#2564F6':''}}" bindtap="estimate" data-index="{{j}}" data-express="良好">良好</text>
+                 <text style="color:{{item.SS_State == '优秀'?'#2564F6':''}}" bindtap="estimate" data-index="{{j}}" data-express="优秀">优秀</text>
               </view>
-              <view class="td-checked" data-current="{{j}}" bindtap="openMeme" wx:else>{{item.status}}
+              <view class="td-checked" data-current="{{j}}" bindtap="openMeme" wx:else>{{item.SS_State}}
               </view>
             </view>
             <view class="error" bindtap="deleteact" data-index="{{j}}">

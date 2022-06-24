@@ -140,7 +140,9 @@ Page({
       url: '/pages/addCustom/addCustom',
     });
   },
-  memberDetail() {
+  memberDetail(e) {
+    let member = e.currentTarget.dataset.member;
+    app.globalData.custom = member;
     wx.navigateTo({
       url: '/pages/customerDetail/customerDetail',
     });

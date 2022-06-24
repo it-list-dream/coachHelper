@@ -13,7 +13,10 @@ Page({
     allSaveList: [],
     templateType: 0,
     isShow: false,
-    exportList: []
+    exportList: [],
+    totalPages: 0,
+    pageSize: 15,
+    isNone: false
   },
 
   /**
@@ -57,21 +60,34 @@ Page({
   getTemplateList() {
     service.post('/ActLibTemplateList', {
       pageIndex: this.data.pageIndex,
-      pageSize: 10,
+      pageSize: this.data.pageSize,
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
-      var list = res.data.data;
-      list.forEach(item => {
-        item.selected = false
-      });
-      this.setData({
-        exportList: list
-      })
+      if (res.data.data.length > 0) {
+        var list = [...res.data.data, ...this.data.exportList];
+        list.forEach(item => {
+          item.selected = false
+        });
+        let total = Math.floor((res.data.recordCount + this.data.pageSize - 1) / this.data.pageSize);
+        this.setData({
+          exportList: list,
+          totalPages: total
+        })
+      } else {
+        this.setData({
+          isNone: true
+        });
+      }
     })
   },
   getTemplateAction() {
     var list = app.globalData.temIdList,
-      co_id = app.globalData.coId;
+      co_id = app.globalData.coId,
+      isNone = false;
+      isNone = list.length==0?true:false;
+    this.setData({
+      isNone
+    })
     for (let i = 0; i < list.length; i++) {
       service.post('/CoachActLibDetails', {
         co_id: co_id,
@@ -97,6 +113,7 @@ Page({
       selectCount = 0,
       currentValue = "";
     let myClass = app.globalData.temIdList;
+    console.log(myClass)
     if (app.globalData.isExportTemplate == 1) {
       for (let i = 0; i < temList.length; i++) {
         if (index == i) {
@@ -290,5 +307,16 @@ Page({
    */
   onPullDownRefresh: function () {
 
+  },
+  onReachBottom: function () {
+    var currPage = this.data.pageIndex;
+    if (currPage < this.data.totalPages) {
+      currPage++;
+      this.getTemplateList();
+    } else {
+      this.setData({
+        isEnd: true
+      })
+    }
   }
 })

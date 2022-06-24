@@ -10,20 +10,29 @@ Component({
    */
   properties: {
     // 弹窗取消按钮文字
-    isShow:{            // 属性名
-      type: Boolean,     
-      value: false 
+    isShow: { // 属性名
+      type: Boolean,
+      value: false
     },
     dialogTitle: {
       type: String,
-      value:""
+      value: ""
+    },
+    dialogContent: {
+      type: String,
+      value: "",
+      observer:function(value){
+         this.setData({
+          tagValue:value
+         })
+      }
     },
     limit: {
       type: Number,
-      value:0
+      value: 0
     }
   },
-  
+
   /**
    * 私有数据,组件的初始数据
    * 可用于模版渲染
@@ -53,16 +62,16 @@ Component({
     _cancelEvent() {
       //触发取消回调
       this.setData({
-        tagValue:""
+        tagValue: ""
       })
       this.triggerEvent("cancelEvent")
     },
     _confirmEvent() {
       //触发成功回调
-      if(this.data.tagValue.length>0){
-        this.triggerEvent("confirmEvent",this.data.tagValue);
+      if (this.data.tagValue.length > 0) {
+        this.triggerEvent("confirmEvent", this.data.tagValue);
         this.setData({
-          tagValue:""
+          tagValue: ""
         })
       }
     }

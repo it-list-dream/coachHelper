@@ -1,13 +1,15 @@
-// pages/notification/notification.js
+var service = require('../../utils/request.js');
+var util = require('../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tabList: ['生日提醒', '进场提醒', '课程到期提醒', '系统提醒'],
+    tabList: ['生日提醒', '进场提醒', '课程到期提醒'],
     active: 0,
-    scrollHeight: 0
+    scrollHeight: 0,
+    birdthdayList: []
   },
 
   /**
@@ -18,7 +20,8 @@ Page({
       success: (result) => {
         this.queryMultipleNodes(result.windowHeight);
       },
-    })
+    });
+    this.getBirthdayTip();
   },
   queryMultipleNodes(height) {
     let scrollHeight = this.data.scrollHeight;
@@ -29,15 +32,59 @@ Page({
       console.log(height, res[0].height)
       scrollHeight = height - res[0].height - 15;
       this.setData({
-        scrollHeight:scrollHeight
+        scrollHeight: scrollHeight
+      })
+    })
+  },
+  getBirthdayTip() {
+    service.post('/UserBirthdayTip', {
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      this.setData({
+        birdthdayList: res.data.data
+      })
+    })
+  },
+  getUserCoachExpireTip() {
+    service.post('/UserCoachExpireTip', {
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      let list = res.data.data;
+      list.forEach(item=>{
+        item.CO_ActiveEnd = util.format( item.CO_ActiveEnd,'yyyy-mm-dd');
+      });
+      this.setData({
+        expireList: list
+      })
+    })
+  },
+  getUserChcekInTip() {
+    service.post('/UserChcekInTip', {
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      let list = res.data.data;
+      list.forEach(item=>{
+        item.time = util.format( item.Createdate,'yyyy-mm-dd hh:mm').substr(11);
+      });
+      this.setData({
+        checkInList: list
       })
     })
   },
   tabChange(e) {
-    console.log(e);
-    this.setData({
-      active: e.detail.name
-    })
+    let index = e.detail.index;
+    if(this.data.active != index){
+      if(index == 0){
+          this.getBirthdayTip();
+      }else if(index == 1){
+        this.getUserChcekInTip()
+      }else{
+        this.getUserCoachExpireTip();
+      }
+      this.setData({
+        active: e.detail.name
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

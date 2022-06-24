@@ -37,7 +37,7 @@ Page({
         }
       }
     } else if (type == 2) {
-      newList = myList.filter(item => item.CS_Stat == "预约中")
+      newList = myList.filter(item => item.CS_State == "预约中")
     }
     app.globalData.temIdList = newList;
     app.globalData.coId = this.coId;
@@ -72,10 +72,17 @@ Page({
       cList = this.data.classDetail,
       index = e.currentTarget.dataset.index;
     app.globalData.csId = cs_id;
+    if(cs_id==0){
+       wx.showToast({
+         icon:"none",
+         title: '你还未预约，请先去预约',
+       })
+       return;
+    }
     if (cList[index].CS_State == "已完成") {
       wx.navigateTo({
         url: '/pages/trainConfrim/trainConfrim',
-      })
+      });
     } else {
       //根据ca_id区分到那个页面
       this.getClassStatus(cs_id, ca_id, className);

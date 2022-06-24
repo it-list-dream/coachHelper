@@ -8,22 +8,11 @@ Page({
   data: {
     time: 45 * 60 * 1000,
     timeData: {},
-    actionList: [{
-        actionName: "四足支撑",
-        groupList: []
-      },
-      {
-        actionName: "箭步蹲",
-        groupList: []
-      },
-      {
-        actionName: "跪姿卧撑",
-        groupList: []
-      }
-    ],
+    actionList: [],
     //memeList: ['一般', '良好', '优秀'],
     currentAction: 0,
-    startInfo: {}
+    startInfo: {},
+    titleList: []
   },
   timeChange(e) {
     this.setData({
@@ -57,11 +46,14 @@ Page({
   },
   addactionGroup(e) {
     let index = this.data.currentAction,
-      actionList = this.data.actionList,
-      actionItem = Object.assign({}, actionList[index].groupList[0]);
-    actionItem.status = "";
-    actionItem.open = true;
-    actionList[index].groupList.push(actionItem)
+      actionList = this.data.actionList;
+    if (Array.isArray(actionList[index].data)) {
+      actionList[index].data.push({
+        SS_State: "",
+        open: true
+      });
+    }
+    actionList[index].SM_Count = parseInt(actionList[index].SM_Count) + 1;
     this.setData({
       actionList
     });
@@ -72,8 +64,8 @@ Page({
       actionList = this.data.actionList,
       express = e.currentTarget.dataset.express;
     console.log(index, express);
-    actionList[actionIndex].groupList[index].status = express;
-    actionList[actionIndex].groupList[index].open = false;
+    actionList[actionIndex].data[index].SS_State = express;
+    actionList[actionIndex].data[index].open = false;
     this.setData({
       actionList: actionList
     });
@@ -83,8 +75,8 @@ Page({
     let index = e.currentTarget.dataset.index,
       actionIndex = this.data.currentAction,
       actList = this.data.actionList;
-    if (actList[actionIndex].groupList.length > 1) {
-      actList[actionIndex].groupList.splice(index, 1);
+    if (actList[actionIndex].data.length > 1) {
+      actList[actionIndex].data.splice(index, 1);
     }
     this.setData({
       actionList: actList
@@ -95,7 +87,7 @@ Page({
     let currentIndex = e.currentTarget.dataset.current,
       actionIndex = this.data.currentAction,
       actionList = this.data.actionList;
-    actionList[actionIndex].groupList[currentIndex].open = true;
+    actionList[actionIndex].data[currentIndex].open = true;
     this.setData({
       actionList: actionList
     })
@@ -113,7 +105,7 @@ Page({
       if (time > cp_time) {
         time = cp_time * 60 * 1000
       } else {
-        time = time >cp_time?cp_time:time;
+        time = time > cp_time ? cp_time : time;
         time = (cp_time - time) * 60 * 1000;
       }
       this.setData({
@@ -125,30 +117,13 @@ Page({
   },
   //保存
   saveStartClass(callback) {
-    let allList = this.data.actionList,
-      newList = [],
-      list = [];
-    var obj = {},
-      count = 0;
-    for (let i = 0; i < allList.length; i++) {
-      obj = allList[i].groupList[0];
-      obj.SM_Count = allList[i].groupList.length;
-      list = allList[i].groupList.map(item => {
-        var obj = {};
-        obj.SS_State = item.status
-        if (item.status.length > 0) {
-          count++;
-        }
-        return obj
-      });
-      obj.ActualCount = count;
-      count = 0;
-      obj.data = list;
-      newList.push(obj);
+    let actList = this.data.actionList;
+    for (let i = 0; i < actList.length; i++) {
+      actList[i].ActualCount = actList[i].data.filter(item => item.SS_State.length > 0).length;
     }
     var jsonStr = {
       CS_ID: app.globalData.csId || "3245",
-      data: newList
+      data: actList
     }
     service.post('/SaveStartClassRecord', {
       gi_id: wx.getStorageSync('gi_id'),
@@ -163,53 +138,58 @@ Page({
   onLoad: function (options) {
     var that = this;
     this.getStartClass();
-    this.getAllAction();
+    this.getClassRecordList();
+
     wx.onAppHide(function () {
       that.saveStartClass();
     });
+    wx.setNavigationBarTitle({
+      title: app.globalData.navTitle || ""
+    })
+  },
+  getClassRecordList() {
+    var tList = [];
+    service.post('/StartClassRecordList', {
+      CS_ID: app.globalData.csId || "3245",
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      if (res.data.data.length > 0) {
+        var list = res.data.data;
+        for (let i = 0; i < list.length; i++) {
+          for (let j = 0; j < list[i].data.length; j++) {
+            list[i].data[j].open = true;
+          }
+          tList.push(list[i].SM_Name);
+        }
+        this.setData({
+          actionList: list,
+          titleList:tList
+        });
+      } else {
+        this.getAllAction();
+      }
+    })
   },
   getAllAction() {
     var actionList = [],
-      list = [],
       tList = [];
-    let temObj = {};
+    let list = [];
     service.post('/CoachActLibDetails', {
       co_id: app.globalData.coId || "1769",
       cs_id: app.globalData.csId || "3245",
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
-      wx.setNavigationBarTitle({
-        title: res.data.data[0].CP_Name,
-      })
-      list = res.data.data[0].data;
-      for (let i = 0; i < list.length; i++) {
-        temObj = {
-          actionName: list[i].SM_Name,
-          groupList: []
-        };
-        for (let j = 0; j < parseInt(list[i].SM_Count); j++) {
-          temObj.groupList.push({
-            SM_Name: list[i].SM_Name,
-            SM_LableName: list[i].SM_LableName,
-            SM_Num: list[i].SM_Num,
-            SM_Count: parseInt(list[i].SM_Count),
-            SM_CountType: list[i].SM_CountType,
-            SM_Time: list[i].SM_Time,
-            SM_TimeType: list[i].SM_TimeType,
-            SM_Rest: list[i].SM_Rest,
-            SM_RestType: list[i].SM_RestType,
-            SM_Resistance: list[i].SM_Resistance,
-            SM_ResistanceType: list[i].SM_ResistanceType,
-            SM_Apparatus: list[i].SM_Apparatus,
-            FK_AL_ID: list[i].FK_AL_ID,
-            Remarks: list[i].Remarks,
-            CA_Type: list[i].CA_Type,
-            status: "",
+      actionList = res.data.data[0].data;
+      for (let i = 0; i < actionList.length; i++) {
+        for (let j = 0; j < parseInt(actionList[i].SM_Count); j++) {
+          list.push({
+            SS_State: "",
             open: true
-          })
+          });
         }
-        tList.push(list[i].SM_Name)
-        actionList.push(temObj);
+        actionList[i].data = list;
+        list = [];
+        tList.push(actionList[i].SM_Name)
       }
       this.setData({
         actionList,

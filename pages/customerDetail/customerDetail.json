@@ -4,7 +4,8 @@
     "ct-step": "/components/step/step",
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
-    "rewords":"./rewords/index"
+    "rewords":"./rewords/index",
+    "ct-dialog": "/components/dialog/dialog"
   },
   "navigationBarBackgroundColor": "#2564F6",
   "navigationBarTextStyle": "white",

@@ -7,18 +7,9 @@ Component({
   },
   properties: {
     //步骤条数据
-    stepList:{
-      type:Array,
-      value:[
-        {
-          name:"名称",
-          time:"2021-07-19：12:30:01"
-        }
-      ]
-    },
-    isEdit:{
-      type:Boolean,
-      value:false
+    step:{
+      type:Object,
+      value:{}
     }
   },
 

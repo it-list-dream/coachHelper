@@ -1,4 +1,5 @@
-var service = require('../../utils/request.js')
+var service = require('../../utils/request.js');
+const app = getApp();
 Page({
 
   /**
@@ -34,7 +35,7 @@ Page({
       cs_id: cs_id,
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
-      console.log(res.data.data, res.data.data[0].data);
+     // console.log(res.data.data, res.data.data[0].data);
       var list = res.data.data[0].data;
       list.forEach(item => {
         if (item.CA_Type == 1) {
@@ -51,6 +52,8 @@ Page({
         officialList,
         relaxList
       });
+     
+      app.globalData.navTitle = res.data.data[0].CP_Name;
       this.CS_ID = res.data.data[0].CS_ID;
       this.CO_ID = res.data.data[0].CO_ID;
       wx.setNavigationBarTitle({

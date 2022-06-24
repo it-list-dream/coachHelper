@@ -3,47 +3,31 @@
     title-inactive-color="#333333" ellipsis="{{false}}" id="tabs">
     <block wx:for="{{tabList}}" wx:key="index">
       <van-tab title="{{item}}">
-        <scroll-view wx:if="{{active == 0}}" class="scroll-y" style="height:{{scrollHeight}}px;" scroll-y>
-          <view class="scroll-content">
-            <view class="scroll-item" wx:for="{{18}}">
+        <scroll-view class="scroll-y" style="height:{{scrollHeight}}px;" scroll-y>
+          <view class="scroll-content" wx:if="{{active == 0}}">
+            <view class="scroll-item" wx:for="{{ birdthdayList}}" wx:key="UI_No">
               <view class="scroll-info">
-                <text>娜娜</text>
-                <text>08:00</text>
+                <text>{{item.UI_Name}}</text>
               </view>
               <view class="lastrows">今天生日</view>
             </view>
           </view>
-        </scroll-view>
-        <scroll-view wx:if="{{active == 1}}" class="scroll-y" style="height:{{scrollHeight}}px;" scroll-y>
-          <view class="scroll-content">
-            <view class="scroll-item" wx:for="{{12}}">
+          <view class="scroll-content" wx:if="{{active == 1}}">
+            <view class="scroll-item" wx:for="{{ checkInList}}" wx:key="UI_No">
               <view class="scroll-info">
-                <text>刘静进场</text>
-                <text>10:01</text>
+                <text>{{item.UI_Name}}</text>
+                <text>{{item.time}}</text>
               </view>
-              <view class="lastrows">15288888888 <text class="card-text">一年卡</text></view>
+              <view class="lastrows">{{item.UI_Phone}} <text style="margin-left:30rpx;">{{item.SC_Name}}</text></view>
             </view>
           </view>
-        </scroll-view>
-        <scroll-view wx:if="{{active == 2}}" class="scroll-y" style="height:{{scrollHeight}}px;" scroll-y>
-          <view class="scroll-content">
-            <view class="scroll-item" wx:for="{{12}}">
+          <view class="scroll-content" wx:if="{{active == 2}}">
+            <view class="scroll-item" wx:for="{{ expireList}}" wx:key="UI_No">
               <view class="scroll-info">
-                <text>娜娜课程到期</text>
-                <text>10:01</text>
+                <text>{{item.UI_Name}}</text>
+                <text>{{item.CO_ActiveEnd}}</text>
               </view>
-              <view class="lastrows">减脂课 <text class="card-text">课时剩余2天</text></view>
-            </view>
-          </view>
-        </scroll-view>
-        <scroll-view wx:if="{{active == 3}}" class="scroll-y" style="height:{{scrollHeight}}px;" scroll-y>
-          <view class="scroll-content">
-            <view class="scroll-item" wx:for="{{12}}">
-              <view class="scroll-info">
-                <text>【版本升级】</text>
-                <text>10:01</text>
-              </view>
-              <view class="lastrows">教练助手2.2.1已经更新</view>
+              <view class="lastrows">{{item.CP_Name}} <text style="margin-left:30rpx;">课程剩余{{item.EndDays}}天</text></view>
             </view>
           </view>
         </scroll-view>

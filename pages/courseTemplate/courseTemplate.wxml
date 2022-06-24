@@ -4,17 +4,21 @@
    <view wx:if="{{templateType == 1}}">
       <template wx:for="{{allSaveList}}" wx:key="index" wx:for-item="template" is="action-item"
          data="{{template,index:index}}"></template>
+      <van-empty wx:if="{{allSaveList.length==0 && isNone}}" image="/assets/images/none.png" description="暂无模板" />
    </view>
    <!-- 导出 -->
    <view wx:if="{{templateType == 2}}">
       <template wx:for="{{ exportList}}" wx:key="index" wx:for-item="template" is="action-item"
          data="{{template,index:index}}"></template>
+         <van-empty wx:if="{{exportList.length==0 && isNone}}" image="/assets/images/none.png" description="暂无模板" />
    </view>
    <!-- 删除 -->
    <view wx:if="{{templateType == 3}}">
       <template wx:for="{{ exportList}}" wx:key="index" wx:for-item="template" is="action-item"
          data="{{template,index:index}}"></template>
+         <van-empty wx:if="{{exportList.length==0 && isNone}}" image="/assets/images/none.png" description="暂无模板" />
    </view>
+
    <view class="tem-button">
       <button style="background:{{templateType == 3?'#FF4642':''}}" class="butt" bindtap="temConfrim">确定</button>
    </view>
