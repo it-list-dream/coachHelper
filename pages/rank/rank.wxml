@@ -1,101 +1,169 @@
 <view class="rankContainer">
-  <view class="rank-date">
-    <view class="startdate">
-      <picker class="picker-box" mode="date" start="" end="{{endDate}}" value="">
-        <view class="picker-date">
-          2022-01-26
-          <image src="/assets/images/blue_arrow.png"></image>
+  <van-tabs active="{{tabIndex }}" bind:change="swichTab" color="#2564F6" title-active-color="#2564F6"
+    title-inactive-color="#333333" sticky>
+    <van-tab title="消课排行">
+      <view class="rank-date">
+        <view class="startdate">
+          <picker class="picker-box" mode="date" end="{{endDate}}" value="{{startDate}}" bindchange="changestartDate">
+            <view class="picker-date">
+              {{startDate}}
+              <image src="/assets/images/blue_arrow.png"></image>
+            </view>
+          </picker>
         </view>
-      </picker>
-    </view>
-    <view class="line"></view>
-    <view class="enddate">
-      <picker class="picker-box" mode="date" start="" end="{{endDate}}"  value="">
-        <view class="picker-date">
-          2022-01-26
-          <image src="/assets/images/blue_arrow.png"></image>
+        <view class="line"></view>
+        <view class="enddate">
+          <picker class="picker-box" mode="date"  end="{{disdate}}" value="{{endDate}}" bindchange="changeendDate">
+            <view class="picker-date">
+              {{endDate}}
+              <image src="/assets/images/blue_arrow.png"></image>
+            </view>
+          </picker>
         </view>
-      </picker>
-    </view>
-  </view>
-  <view class="rank-content">
-    <view class="frontThird">
-      <view class="rank-model model">
-        <view class="lump"></view>
-        <view class="rank-pic">
-          <image src="/assets/images/silver_medal.png"></image>
-        </view>
-        <view class="coach">张林</view>
-        <view class="price">3300</view>
-        <view class="addpeople">
-          <view class="addpeople-item">
-            <text>1</text>
-            <text>新增</text>
+      </view>
+      <view class="rank-content">
+        <view class="frontThird">
+          <view class="rank-model model">
+            <view class="lump"></view>
+            <view class="rank-pic">
+              <image src="/assets/images/silver_medal.png"></image>
+            </view>
+            <view class="coach">{{rankList[1].AI_Name}}</view>
+            <view class="price">{{rankList[1].CS_Num}}</view>
+            <view class="addpeople">
+              <view>{{rankList[1].CS_Num}}</view>
+              <view class="elimination">消课</view>
+            </view>
           </view>
-          <view class="addpeople-item">
-            <text>0</text>
-            <text>邀约</text>
+          <view class="rank-model bigbox">
+            <view class="lump"></view>
+            <view class="rank-pic">
+              <image src="/assets/images/gold.png"></image>
+            </view>
+            <view class="coach">{{rankList[0].AI_Name}}</view>
+            <view class="price">{{rankList[0].Amount}}</view>
+            <view class="addpeople">
+              <view class="addpeople-item">
+                <view>{{rankList[0].CS_Num}}</view>
+                <view class="elimination">消课</view>
+              </view>
+            </view>
+          </view>
+          <view class="rank-model model">
+            <view class="lump"></view>
+            <view class="rank-pic">
+              <image src="/assets/images/bronze_medal.png"></image>
+            </view>
+            <view class="coach">{{rankList[2].AI_Name}}</view>
+            <view class="price">{{rankList[2].Amount}}</view>
+            <view class="addpeople">
+              <view>{{rankList[2].CS_Num}}</view>
+              <view class="elimination">消课</view>
+            </view>
+          </view>
+        </view>
+        <!--  -->
+        <view class="rank-table">
+          <view class="rank-th">
+            <text>排名</text>
+            <text>姓名</text>
+            <text>业绩</text>
+          </view>
+          <view class="rank-tr" wx:for="{{rankList}}" wx:key="index">
+            <view class="sort rank-rows">
+              <image wx:if="{{index == 0}}" src="/assets/images/gold.png"></image>
+              <image wx:elif="{{index == 1}}" src="/assets/images/silver_medal.png"></image>
+              <image wx:elif="{{index == 2}}" src="/assets/images/bronze_medal.png"></image>
+              <text wx:else>{{index+1}}</text>
+            </view>
+            <text class="rank-rows">{{item.AI_Name}}</text>
+            <text class="rank-rows">{{item.Amount}}</text>
           </view>
         </view>
       </view>
-      <view class="rank-model bigbox">
-        <view class="lump"></view>
-        <view class="rank-pic">
-          <image src="/assets/images/silver_medal.png"></image>
+    </van-tab>
+    <van-tab title="授课排行">
+      <view class="rank-date">
+        <view class="startdate">
+          <picker class="picker-box" mode="date" start="" end="{{endDate}}" value="{{startDate}}" bindchange="changestartDate">
+            <view class="picker-date">
+              {{startDate}}
+              <image src="/assets/images/blue_arrow.png"></image>
+            </view>
+          </picker>
         </view>
-        <view class="coach">张林</view>
-        <view class="price">3300</view>
-        <view class="addpeople">
-          <view class="addpeople-item">
-            <text>1</text>
-            <text>新增</text>
+        <view class="line"></view>
+        <view class="enddate">
+          <picker class="picker-box" mode="date" start="" end="{{disdate}}" value="{{endDate}}" bindchange="changeendDate">
+            <view class="picker-date">
+              {{endDate}}
+              <image src="/assets/images/blue_arrow.png"></image>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="rank-content">
+        <view class="frontThird">
+          <view class="rank-model model">
+            <view class="lump"></view>
+            <view class="rank-pic">
+              <image src="/assets/images/silver_medal.png"></image>
+            </view>
+            <view class="coach">{{rankList[1].SaleCoachName}}</view>
+            <view class="price">{{rankList[1].HavePay}}</view>
+            <view class="addpeople">
+              <view>{{rankList[1].CS_Num}}</view>
+              <view class="elimination">消课</view>
+            </view>
           </view>
-          <view class="addpeople-item">
-            <text>0</text>
-            <text>邀约</text>
+          <view class="rank-model bigbox">
+            <view class="lump"></view>
+            <view class="rank-pic">
+              <image src="/assets/images/gold.png"></image>
+            </view>
+            <view class="coach">{{rankList[0].SaleCoachName}}</view>
+            <view class="price">{{rankList[0].HavePay}}</view>
+            <view class="addpeople">
+              <view class="addpeople-item">
+                <view>{{rankList[0].CS_Num}}</view>
+                <view class="elimination">消课</view>
+              </view>
+            </view>
+          </view>
+          <view class="rank-model model">
+            <view class="lump"></view>
+            <view class="rank-pic">
+              <image src="/assets/images/bronze_medal.png"></image>
+            </view>
+            <view class="coach">{{rankList[2].SaleCoachName}}</view>
+            <view class="price">{{rankList[2].HavePay}}</view>
+            <view class="addpeople">
+              <view>{{rankList[2].CS_Num}}</view>
+              <view class="elimination">消课</view>
+            </view>
+          </view>
+        </view>
+        <!--  -->
+        <view class="rank-table">
+          <view class="rank-th">
+            <text>排名</text>
+            <text>姓名</text>
+            <text>消课</text>
+            <text>业绩</text>
+          </view>
+          <view class="rank-tr" wx:for="{{rankList}}" wx:key="index">
+            <view class="sort rank-rows">
+              <image wx:if="{{index == 0}}" src="/assets/images/gold.png"></image>
+              <image wx:elif="{{index == 1}}" src="/assets/images/silver_medal.png"></image>
+              <image wx:elif="{{index == 2}}" src="/assets/images/bronze_medal.png"></image>
+              <text wx:else>{{index+1}}</text>
+            </view>
+            <text class="rank-rows">{{item.SaleCoachName}}</text>
+            <text class="rank-rows">{{item.CS_Num}}</text>
+            <text class="rank-rows">{{item.HavePay}}</text>
           </view>
         </view>
       </view>
-      <view class="rank-model model">
-        <view class="lump"></view>
-        <view class="rank-pic">
-          <image src="/assets/images/silver_medal.png"></image>
-        </view>
-        <view class="coach">张林</view>
-        <view class="price">3300</view>
-        <view class="addpeople">
-          <view class="addpeople-item">
-            <text>1</text>
-            <text>新增</text>
-          </view>
-          <view class="addpeople-item">
-            <text>0</text>
-            <text>邀约</text>
-          </view>
-        </view>
-      </view>
-    </view>
-    <!--  -->
-    <view class="rank-table">
-      <view class="rank-th">
-        <text>排名</text>
-        <text>姓名</text>
-        <text>新增</text>
-        <text>邀约</text>
-        <text>业绩</text>
-      </view>
-      <view class="rank-tr" wx:for="{{10}}" wx:key="index">
-        <view class="sort rank-rows">
-          <image wx:if="{{index == 0}}" src="/assets/images/gold.png"></image>
-          <image wx:elif="{{index == 1}}" src="/assets/images/silver_medal.png"></image>
-          <image wx:elif="{{index == 2}}" src="/assets/images/bronze_medal.png"></image>
-          <text wx:else>{{index+1}}</text>
-        </view>
-        <text class="rank-rows">张森</text>
-        <text class="rank-rows">23</text>
-        <text class="rank-rows">0</text>
-        <text class="rank-rows">9800</text>
-      </view>
-    </view>
-  </view>
+    </van-tab>
+  </van-tabs>
 </view>

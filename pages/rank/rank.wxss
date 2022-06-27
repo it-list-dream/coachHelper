@@ -1,4 +1,5 @@
-/* pages/rank/rank.wxss */
+
+
 .rank-date {
   display: flex;
   align-items: center;
@@ -53,7 +54,7 @@
   border-radius: 16rpx;
 }
 
-.bigbox  .coach {
+.bigbox .coach {
   margin-top: 72rpx;
   font-size: 24rpx;
   color: #333333;
@@ -117,7 +118,7 @@
   height: 60rpx;
 }
 
-.addpeople {
+/* .addpeople {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -130,6 +131,18 @@
   flex: 1;
   font-size: 24rpx;
   color: #5F697E;
+} */
+
+.addpeople  {
+  text-align: center;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #5F697E; 
+}
+
+.elimination{
+  margin-top: 12rpx;
 }
 
 .addpeople .addpeople-item text:last-child {

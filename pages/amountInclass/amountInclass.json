@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "van-search": "@vant/weapp/search/index"
+  },
   "navigationBarBackgroundColor":"#2564F6",
   "navigationBarTextStyle":"white",
   "navigationBarTitleText":"上课金额"

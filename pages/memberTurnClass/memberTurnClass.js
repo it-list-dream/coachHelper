@@ -1,30 +1,15 @@
-// pages/memberTurnClass/memberTurnClass.js
+var service = require('../../utils/request.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    memberList: [{
-        selected: false
-      },
-      {
-        selected: false
-      }, {
-        selected: false
-      }, {
-        selected: false
-      }, {
-        selected: false
-      }, {
-        selected: false
-      }, {
-        selected: false
-      }, {
-        selected: false
-      }
-    ],
-    searchHeight:0
+    memberList: [],
+    searchHeight: 0,
+    select: -1,
+    searchText: "",
+    pageIndex: 1
   },
 
   /**
@@ -36,29 +21,46 @@ Page({
     query.select('.search-box').boundingClientRect()
     query.exec(function (res) {
       that.setData({
-        searchHeight:res[0].height
+        searchHeight: res[0].height
       })
+    })
+    this.getUserList();
+  },
+  getUserList() {
+    service.post('/UserListByCoachTeach', {
+      searchText: this.data.searchText,
+      teachID: 0,
+      typeId: 0,
+      co_Have: 0,
+      pageSize: 20,
+      pageIndex: this.data.pageIndex,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      let list = res.data.data;
+      list.forEach(item => {
+        item.firstName = item.UI_Name.slice(0, 1)
+      });
+      this.setData({
+        memberList: list
+      });
     })
   },
   selectMember(e) {
     let index = e.currentTarget.dataset.index;
-    let memberList = this.data.memberList;
-    for (var i = 0; i < memberList.length; i++) {
-      if (index == i) {
-         memberList[i].selected = !memberList[i].selected;
-      }
-    }
-   this.setData({
-    memberList:memberList
-   })
+    this.setData({
+      select: index
+    })
   },
   loadMore() {
     console.log('是否还有更多')
   },
-  turnClass(){
-    wx.navigateTo({
-      url: '/pages/turnClasDeatil/turnClasDeatil',
-    })
+  turnClass() {
+    if (this.data.select > 0) {
+      let selectMemeber = this.data.memberList[this.data.select];
+      wx.navigateTo({
+        url: '/pages/turnClasDeatil/turnClasDeatil?member='+JSON.stringify(selectMemeber),
+      });
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

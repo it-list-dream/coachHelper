@@ -2,29 +2,29 @@
   <view class="top">
     <view class="top-blue">
       <view>
-        <view>9600</view>
+        <view>{{teachList[3].AllMoney}}</view>
         <view>总金额</view>
       </view>
       <view>
-        <view>54</view>
+        <view>{{teachList[3].AllNum}}</view>
         <view>总节数</view>
       </view>
     </view>
     <view class="income-head">
       <view class="income-item">
-        <text>94980</text>
+        <text>{{teachList[0].AllMoney}}</text>
         <text>POS成单</text>
-        <text>8单</text>
+        <text>{{teachList[0].AllNum}}单</text>
       </view>
       <view class="income-item">
-        <text>612830</text>
+        <text>{{teachList[1].AllMoney}}</text>
         <text>新会员买课</text>
-        <text>1656节</text>
+        <text>{{teachList[1].AllNum}}节</text>
       </view>
       <view class="income-item">
-        <text>142050</text>
+        <text>{{teachList[2].AllMoney}}</text>
         <text>老会员续课</text>
-        <text>394节</text>
+        <text>{{teachList[2].AllNum}}节</text>
       </view>
     </view>
   </view>
@@ -37,7 +37,6 @@
     </picker>
     <view class="kong"></view>
     <!--结束时间 -->
-    
     <picker mode="date" value="{{endTime}}" start="{{startTime}}" end="{{distime}}" bindchange="bindDateChange2">
       <view class="picker">
         {{endTime}}  
@@ -46,22 +45,22 @@
     </picker>
   </view>
   <view class="income-source">
-    <van-search value="{{ value }}" placeholder="请输入会员姓名、手机号" />
+    <van-search value="{{ searchText }}" placeholder="请输入会员姓名、手机号" bind:clear="onClear" bind:change="onChange"/>
     <view class="memberlist">
-      <view class="member-item" wx:for="{{8}}" wx:key="index">
+      <view class="member-item" wx:for="{{salesAmount}}" wx:key="rownum">
         <view class="left-box">
           <view class="wrapper">
-            <image wx:if="{{false}}" src="/assets/images/header.png"></image>
-            <text wx:else>周</text>
+            <image wx:if="{{item.UI_Face.length>0}}" src="{{item.UI_Face}}" />
+            <text wx:else>{{item.firstname}}</text>
           </view>
           <view class="member-info">
-            <text>星轻灿</text>
-            <text>常规课</text>
+            <text>{{item.UI_Name}}</text>
+            <text>{{item.CP_Name}}</text>
           </view>
         </view>
         <view class="right-box">
-            <text>3500</text>
-            <text>×7</text>
+            <text>{{item.Money}}</text>
+            <text>×{{item.CO_Num}}</text>
         </view>
       </view>
       <view class="botEnd">抱歉，没有更多会员了!</view>

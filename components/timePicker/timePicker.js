@@ -184,7 +184,7 @@ Component({
                 }
 
             }
-            if (changeTarget == 3) {
+            if (changeTarget == 3 && !this.properties.isHalf) {
                 let hour = this.data.multiArray[changeTarget][changeIndex].value;
                 let minutes = [];
                 if (!this.properties.isHalf) {
