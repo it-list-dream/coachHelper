@@ -55,10 +55,9 @@
   border: 1px solid #FFFFFF;
 }
 
-/*  */
-.posture-content {
-  margin-top: 30rpx;
-  padding-bottom: 86rpx;
+.scroll-y{
+  padding-top: 30rpx;
+  box-sizing: border-box;
 }
 
 .test-report {

@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "van-search": "@vant/weapp/search/index",
-    "tabs-list":"/components/tabs-list/tabs-list"
+    "tabs-list":"/components/tabs-list/tabs-list",
+    "van-popup": "@vant/weapp/popup/index"
   },
   "navigationBarBackgroundColor":"#2564F6",
   "navigationBarTextStyle":"white",

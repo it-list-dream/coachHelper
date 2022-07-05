@@ -1,21 +1,20 @@
 <view class="turnClass">
-  <van-search class="search-box" value="{{ value }}" placeholder="请输入会员姓名、手机号" />
+  <van-search class="search-box" value="{{ searchText }}" placeholder="请输入会员姓名、手机号" bindchange="onChange"/>
   <scroll-view  scroll-y bindscrolltolower="loadMore" style="height:calc(100vh - {{searchHeight}}px - 120rpx)">
     <view class="scroll-wrapper">
       <view class="turn-item" wx:for="{{memberList}}" wx:key="index" bindtap="selectMember" data-index="{{index}}">
         <view class="check-box">
-          <image src="{{item.selected?'/assets/images/blue-circle.png':'/assets/images/gray-circle.png'}}"></image>
+          <image src="{{item.checked?'/assets/images/blue-circle.png':'/assets/images/gray-circle.png'}}"></image>
         </view>
         <view class="avatar">
-          <!-- <image src="/assets/images/header.png"></image> -->
-          <view class="avatar-text">张</view>
+          <view class="avatar-text">{{item.firstName}}</view>
         </view>
         <view class="member-info">
           <view class="coach">
-            张万森
-            <text>（刘教练/8节）</text>
+            {{item.UI_Name}}
+            <text>（{{item.TeachName}}/{{item.CO_Have}}节）</text>
           </view>
-          <view class="coach-phone">123456789</view>
+          <view class="coach-phone">{{item.UI_No}}</view>
         </view>
       </view>
     </view>

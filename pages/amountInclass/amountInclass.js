@@ -40,7 +40,7 @@ Page({
     }).then(res => {
       let list = res.data.data,
         myList = this.data.amountList;
-      if (list.length>0) {
+      if (list.length > 0) {
         for (let i = 0; i < list.length; i++) {
           list[i].AllMoney = Math.floor(list[i].AllMoney)
           list[i].CS_Money = Math.floor(res.data.data[i].CS_Money)
@@ -52,37 +52,38 @@ Page({
           allMoney: list[0].AllMoney,
           allNum: list[0].AllNum
         });
-      }else{
+      } else {
         this.setData({
-          isEnd:true
+          isEnd: true
         })
       }
     })
   },
-  getspend(){
+  getspend(e) {
+    this.data.pageIndex = 1;
+    this.data.amountList = [];
+    this.data.isEnd = false;
     service.post('/CoachSpendList', {
       StartDate: this.data.startTime,
       EndDate: this.data.endTime,
       pageIndex: 1,
       pageSize: 20,
-      searchText: e.detail,
+      searchText: this.data.searchText,
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
-      for(var i=0;i<res.data.data.length;i++){
+      for (var i = 0; i < res.data.data.length; i++) {
         res.data.data[i].AllMoney = Math.floor(res.data.data[i].AllMoney)
         res.data.data[i].CS_Money = Math.floor(res.data.data[i].CS_Money)
-        res.data.data[i].firstname = res.data.data[i].UI_Name.slice(0,1)
+        res.data.data[i].firstname = res.data.data[i].UI_Name.slice(0, 1)
       }
       this.setData({
-        amountList:res.data.data
+        amountList: res.data.data
       });
     });
-   
   },
   onChange(e) {
     this.setData({
-      searchText: e.detail,
-      pageIndex:1
+      searchText: e.detail
     });
     this.getspend();
   },
@@ -95,11 +96,13 @@ Page({
     this.setData({
       startTime: e.detail.value
     });
+    this.getspend();
   },
   bindDateChange2: function (e) {
     this.setData({
       endTime: e.detail.value
     })
+    this.getspend();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -133,16 +136,15 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-   
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('加载中......')
     let pageIndex = this.data.pageIndex;
-    if(!this.data.isEnd){
+    if (!this.data.isEnd) {
       pageIndex++;
       this.setData({
         pageIndex: pageIndex

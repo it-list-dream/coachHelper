@@ -1,29 +1,31 @@
 <view class="allocationContainer">
-  <van-search class="search-box" value="{{ value }}" placeholder="请输入会员姓名、手机号" />
+  <van-search class="search-box" value="{{ searchText }}" placeholder="请输入会员姓名、手机号" bind:clear="onClear"
+    bind:change="onSearch" />
   <tabs-list id="tabs" is-border="{{true}}" tList="{{tabsList}}" current-tab="{{tabIndex}}"
     bind:changeCurrent="tabsChange" bind:scrollHeight="getHeight">
-    <!-- nav-top -->
-    <view class="tabs-filter" slot="nav-top">
-      <block wx:for="{{filterList}}" wx:for-index="idx" wx:key="idx">
-        <text class="{{filterIndex==idx?'active':''}}" bindtap="filterTab" data-index="{{idx}}">{{item}}</text>
-      </block>
-    </view>
     <!-- 默认插槽 -->
-    <scroll-view scroll-y class="scroll" style="height:calc(100vh - {{ searchHeight}}px - {{tabsHeight}}px - 220rpx)"
+    <scroll-view scroll-y class="scroll" style="height:calc(100vh - {{ searchHeight}}px - {{tabsHeight}}px - 120rpx)"
       bindscrolltolower="loadMore">
-      <block wx:for="{{tabsList}}" wx:key="index">
+      <view class="tabs-filter" style="top:calc({{searchHeight + tabsHeight}}px)">
+        <block wx:for="{{filterList}}" wx:for-index="idx" wx:key="idx">
+          <text class="{{filterIndex==idx?'active':''}}" bindtap="filterTab" data-index="{{idx}}">{{item}}</text>
+        </block>
+      </view>
+      <block wx:for="{{tabsList}}" wx:key="*this">
         <view class="tab-panel" hidden="{{tabIndex !== index}}">
-          <view class="tabpanel-item" bindtap="allocation" data-custom="{{item}}" wx:for="{{customList}}" wx:key="customName">
+          <view class="tabpanel-item" bindtap="allocation" data-index="{{index}}" wx:for="{{customList}}" wx:key="ROWID"
+            wx:for-item="custom">
             <view class="cricle-icon">
-              <image src="{{item.selected?'/assets/images/blue-circle.png':'/assets/images/gray-circle.png'}}">
+              <image src="{{index == select?'/assets/images/blue-circle.png':'/assets/images/gray-circle.png'}}">
               </image>
             </view>
             <view class="custom-profile">
-              <image src="/assets/images/header.png" ></image>
+              <image wx:if="{{custom.UI_Face}}" src="{{custom.UI_Face}}"></image>
+              <view wx:else>{{custom.firstName}}</view>
             </view>
             <view class="custom-info">
-              <text>苹苹</text>
-              <text>6789050</text>
+              <text>{{custom.UI_Name}}</text>
+              <text>{{custom.UI_Phone}}</text>
             </view>
           </view>
         </view>
@@ -34,3 +36,23 @@
     <button class="allBtn" bindtap="allocationCoach">确定</button>
   </view>
 </view>
+<van-popup catchtouchmove="true" show="{{ isFollow }}" bind:close="onClose">
+  <view class="select-list">
+    <view class="mask-title">
+      <text class="btn cancel" bindtap="onClose">取消</text>
+      <text>分派教练</text>
+      <text class="btn confrim" bindtap="onConfrim">确定</text>
+    </view>
+    <scroll-view class="scroll-y" scroll-y>
+      <block wx:for="{{ distributionList}}" wx:key="AI_ID">
+        <view class="scroll-item" bindtap="selelctCoach" data-index="{{index}}">
+          <view class="text">{{item.AI_Name}}</view>
+          <view class="select-icon" data-index="{{index}}">
+            <image wx:if="{{item.FSelChk == 1}}" src="/assets/images/selected.png"></image>
+            <view class="gray-circle" wx:else></view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</van-popup>

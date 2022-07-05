@@ -10,9 +10,6 @@ Page({
   data: {
     currentActive: 0,
     tabsList: [{
-      name: "最近联系",
-      flag: false
-    }, {
       name: "全部客户",
       flag: false
     }, {
@@ -99,7 +96,6 @@ Page({
         });
       })
     }
-
   },
   getCustomType(userType, isMy, isSearch = 0) {
     //userType(会员类型0全部1普通会员2私教会员),isMy(0全部会员1我的会员)
@@ -160,7 +156,7 @@ Page({
         this.getCustomType(2, 0, 1)
         break;
       case 2:
-        this.getCustomType(2, 0, 1)
+        this.getCustomType(2, this.data.isMy, 1)
         break;
       case 3:
         this.getCustomType(1, 0);
@@ -169,8 +165,7 @@ Page({
         this.getPublicWaters(1);
         break;
     }
-    // this.getCustomSeach();
-  }, 500),
+  }, 300),
   getHeight(e) {
     this.setData({
       scrollHeight: e.detail.height

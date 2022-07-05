@@ -1,4 +1,4 @@
-// pages/personalSet/personalSet.js
+
 Page({
 
   /**
@@ -13,7 +13,6 @@ Page({
    */
   onLoad: function (options) {
       var coachInfo = wx.getStorageSync('coach');
-      //console.log(coachInfo)
       this.setData({
         coachInfo:coachInfo
       })
@@ -26,6 +25,7 @@ Page({
       success (res) {
         if (res.confirm) {
           wx.clearStorageSync();
+
           wx.navigateBack({
             delta: 1
           });

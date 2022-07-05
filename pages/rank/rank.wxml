@@ -13,7 +13,7 @@
         </view>
         <view class="line"></view>
         <view class="enddate">
-          <picker class="picker-box" mode="date"  end="{{disdate}}" value="{{endDate}}" bindchange="changeendDate">
+          <picker class="picker-box" mode="date" end="{{disdate}}" value="{{endDate}}" bindchange="changeendDate">
             <view class="picker-date">
               {{endDate}}
               <image src="/assets/images/blue_arrow.png"></image>
@@ -28,10 +28,10 @@
             <view class="rank-pic">
               <image src="/assets/images/silver_medal.png"></image>
             </view>
-            <view class="coach">{{rankList[1].AI_Name}}</view>
-            <view class="price">{{rankList[1].CS_Num}}</view>
+            <view class="coach">{{rankList[1].AI_Name?rankList[1].AI_Name:'--'}}</view>
+            <view class="price">{{rankList[1].CS_Num?rankList[1].CS_Num:0}}</view>
             <view class="addpeople">
-              <view>{{rankList[1].CS_Num}}</view>
+              <view>{{rankList[1].CS_Num?rankList[1].CS_Num:0}}</view>
               <view class="elimination">消课</view>
             </view>
           </view>
@@ -40,11 +40,11 @@
             <view class="rank-pic">
               <image src="/assets/images/gold.png"></image>
             </view>
-            <view class="coach">{{rankList[0].AI_Name}}</view>
-            <view class="price">{{rankList[0].Amount}}</view>
+            <view class="coach">{{rankList[0].AI_Name?rankList[0].AI_Name:'--'}}</view>
+            <view class="price">{{rankList[0].Amount?rankList[0].Amount:0}}</view>
             <view class="addpeople">
               <view class="addpeople-item">
-                <view>{{rankList[0].CS_Num}}</view>
+                <view>{{rankList[0].CS_Num?rankList[0].CS_Num:0}}</view>
                 <view class="elimination">消课</view>
               </view>
             </view>
@@ -54,10 +54,10 @@
             <view class="rank-pic">
               <image src="/assets/images/bronze_medal.png"></image>
             </view>
-            <view class="coach">{{rankList[2].AI_Name}}</view>
-            <view class="price">{{rankList[2].Amount}}</view>
+            <view class="coach">{{rankList[2].AI_Name?rankList[2].AI_Name:'--'}}</view>
+            <view class="price">{{rankList[2].Amount?rankList[2].Amount:0}}</view>
             <view class="addpeople">
-              <view>{{rankList[2].CS_Num}}</view>
+              <view>{{rankList[2].CS_Num?rankList[2].CS_Num:0}}</view>
               <view class="elimination">消课</view>
             </view>
           </view>
@@ -79,13 +79,15 @@
             <text class="rank-rows">{{item.AI_Name}}</text>
             <text class="rank-rows">{{item.Amount}}</text>
           </view>
+          <van-empty image="/assets/images/none.png" description="暂无信息" />
         </view>
       </view>
     </van-tab>
     <van-tab title="授课排行">
       <view class="rank-date">
         <view class="startdate">
-          <picker class="picker-box" mode="date" start="" end="{{endDate}}" value="{{startDate}}" bindchange="changestartDate">
+          <picker class="picker-box" mode="date" start="" end="{{endDate}}" value="{{startDate}}"
+            bindchange="changestartDate">
             <view class="picker-date">
               {{startDate}}
               <image src="/assets/images/blue_arrow.png"></image>
@@ -94,7 +96,8 @@
         </view>
         <view class="line"></view>
         <view class="enddate">
-          <picker class="picker-box" mode="date" start="" end="{{disdate}}" value="{{endDate}}" bindchange="changeendDate">
+          <picker class="picker-box" mode="date" start="" end="{{disdate}}" value="{{endDate}}"
+            bindchange="changeendDate">
             <view class="picker-date">
               {{endDate}}
               <image src="/assets/images/blue_arrow.png"></image>
@@ -109,10 +112,10 @@
             <view class="rank-pic">
               <image src="/assets/images/silver_medal.png"></image>
             </view>
-            <view class="coach">{{rankList[1].SaleCoachName}}</view>
-            <view class="price">{{rankList[1].HavePay}}</view>
+            <view class="coach">{{rankList[1].SaleCoachName?rankList[1].SaleCoachName:'--'}}</view>
+            <view class="price">{{rankList[1].HavePay?rankList[1].HavePay:0}}</view>
             <view class="addpeople">
-              <view>{{rankList[1].CS_Num}}</view>
+              <view>{{rankList[1].CS_Num?rankList[1].CS_Num:0}}</view>
               <view class="elimination">消课</view>
             </view>
           </view>
@@ -121,11 +124,11 @@
             <view class="rank-pic">
               <image src="/assets/images/gold.png"></image>
             </view>
-            <view class="coach">{{rankList[0].SaleCoachName}}</view>
-            <view class="price">{{rankList[0].HavePay}}</view>
+            <view class="coach">{{rankList[0].SaleCoachName?rankList[0].SaleCoachName:'--'}}</view>
+            <view class="price">{{rankList[0].HavePay?rankList[0].HavePay:0}}</view>
             <view class="addpeople">
               <view class="addpeople-item">
-                <view>{{rankList[0].CS_Num}}</view>
+                <view>{{rankList[0].CS_Num?rankList[0].CS_Num:0}}</view>
                 <view class="elimination">消课</view>
               </view>
             </view>
@@ -135,10 +138,10 @@
             <view class="rank-pic">
               <image src="/assets/images/bronze_medal.png"></image>
             </view>
-            <view class="coach">{{rankList[2].SaleCoachName}}</view>
-            <view class="price">{{rankList[2].HavePay}}</view>
+            <view class="coach">{{rankList[2].SaleCoachName?rankList[2].SaleCoachName:'--'}}</view>
+            <view class="price">{{rankList[2].HavePay?rankList[2].HavePay:0}}</view>
             <view class="addpeople">
-              <view>{{rankList[2].CS_Num}}</view>
+              <view>{{rankList[2].CS_Num?rankList[2].CS_Num:0}}</view>
               <view class="elimination">消课</view>
             </view>
           </view>

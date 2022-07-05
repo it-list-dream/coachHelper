@@ -1,17 +1,25 @@
-<view class="select-box">
-  <van-search value="{{ value }}" placeholder="请输入教练姓名、手机号" />
-  <view class="select-content">
-     <view class="selelct-item" wx:for="{{12}}">
-        <view class="icon-box">
-          <image src="/assets/images/gray-circle.png"></image>
+<view class="turnClass">
+  <van-search class="search-box" value="{{ searchText }}" placeholder="请输入会员姓名、手机号" bindchange="onChange"/>
+  <scroll-view  scroll-y bindscrolltolower="loadMore" style="height:calc(100vh - {{searchHeight}}px - 120rpx)">
+    <view class="scroll-wrapper">
+      <view class="turn-item" wx:for="{{memberList}}" wx:key="index" bindtap="selectMember" data-index="{{index}}">
+        <view class="check-box">
+          <image src="{{select== index?'/assets/images/blue-circle.png':'/assets/images/gray-circle.png'}}"></image>
         </view>
-        <view class="coach-info">
-            <text>张三分</text>
-            <text>156124214124</text>
+        <view class="avatar">
+          <view class="avatar-text">{{item.firstName}}</view>
         </view>
-     </view>
-  </view>
-  <view class="select-btn">
-    <button class="blue-btn">确定</button>
+        <view class="member-info">
+          <view class="coach">
+            {{item.UI_Name}}
+            <text>（{{item.TeachName}}/{{item.CO_Have}}节）</text>
+          </view>
+          <view class="coach-phone">{{item.UI_No}}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="turnclass-btn">
+    <button class="turnBtn" bindtap="turnClass">确定</button>
   </view>
 </view>

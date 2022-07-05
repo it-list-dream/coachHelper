@@ -11,7 +11,8 @@ Page({
     endTime: '', //默认结束时间 
     pageIndex: 1,
     isEnd: false,
-    searchText: ""
+    searchText: "",
+    salesAmount:[]
   },
 
   /**
@@ -55,7 +56,7 @@ Page({
       })
       this.setData({
         teachList: list
-      })
+      });
     })
   },
   getSalesAmount() {
@@ -68,29 +69,34 @@ Page({
       name: this.data.searchText,
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
-      if (res.data.data.length > 0) {
-        let list = res.data.data;
+      let list = res.data.data,
+        mylist = this.data.salesAmount;
+      if (list.length > 0) {
         for (var i = 0; i < list.length; i++) {
           list[i].Money = Math.floor(list[i].Money)
           list[i].firstname = list[i].UI_Name.slice(0, 1)
           list[i].CreateDate = util.format(list[i].CreateDate, 'yyyy-mm-dd');
         }
+        mylist = mylist.concat(list)
         this.setData({
-          salesAmount: list
-        })
-      }else{
+          salesAmount: mylist
+        });
+      } else {
         this.setData({
-          isEnd:true
+          isEnd: true
         })
       }
-    })
+    });
   },
   onClear() {
     this.setData({
       searchText: ""
     })
   },
-  repSales(){
+  repSales() {
+    this.data.pageIndex = 1;
+    this.data.isEnd = false;
+    this.data.salesAmount = [];
     service.post('/RepSalesAmount', {
       StartDate: this.data.startTime,
       EndDate: this.data.endTime,
@@ -114,7 +120,7 @@ Page({
   onChange(e) {
     this.setData({
       searchText: e.detail,
-      pageIndex:1
+      pageIndex: 1
     });
     this.repSales();
   },

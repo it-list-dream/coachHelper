@@ -9,7 +9,9 @@ Page({
     searchHeight: 0,
     select: -1,
     searchText: "",
-    pageIndex: 1
+    pageIndex: 1,
+    pageSize: 20,
+    isEnd: false
   },
 
   /**
@@ -37,12 +39,19 @@ Page({
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
       let list = res.data.data;
-      list.forEach(item => {
-        item.firstName = item.UI_Name.slice(0, 1)
-      });
-      this.setData({
-        memberList: list
-      });
+      if (list.length > 0) {
+        list.forEach(item => {
+          item.firstName = item.UI_Name.slice(0, 1)
+        });
+        let allList = [...this.data.memberList, ...list];
+        this.setData({
+          memberList: allList
+        });
+      } else {
+        this.setData({
+          isEnd: true
+        });
+      }
     })
   },
   selectMember(e) {
@@ -51,14 +60,45 @@ Page({
       select: index
     })
   },
+  onChange(e){
+    this.setData({
+      searchText: e.detail,
+      pageIndex:1,
+      memberList: []
+    })
+    service.post('/UserListByCoachTeach', {
+      searchText: e.detail,
+      teachID: 0,
+      typeId: 0,
+      co_Have: 0,
+      pageSize: 20,
+      pageIndex: this.data.pageIndex,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      res.data.data.forEach(item => {
+        item.firstName = item.UI_Name.slice(0, 1);
+      });
+      this.setData({
+        memberList: res.data.data
+      });
+    })
+  },
   loadMore() {
-    console.log('是否还有更多')
+    //console.log('是否还有更多')
+    if (!this.data.isEnd) {
+      let curr_page = this.data.pageIndex;
+      curr_page++;
+      this.setData({
+        pageIndex: curr_page
+      });
+      this.getUserList();
+    }
   },
   turnClass() {
     if (this.data.select > 0) {
       let selectMemeber = this.data.memberList[this.data.select];
       wx.navigateTo({
-        url: '/pages/turnClasDeatil/turnClasDeatil?member='+JSON.stringify(selectMemeber),
+        url: '/pages/turnClasDeatil/turnClasDeatil?member=' + JSON.stringify(selectMemeber),
       });
     }
   },
@@ -101,13 +141,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

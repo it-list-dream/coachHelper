@@ -11,14 +11,17 @@ Page({
     assessText: "对比",
     isAssess: false,
     testList: [],
-    test: []
+    test: [],
+    custom:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+       this.setData({
+         custom:app.globalData.custom
+       })
   },
   comparison() {
     let isAssess = this.data.isAssess,
@@ -115,10 +118,9 @@ Page({
    */
   onShow: function () {
     service.post('/StatureDetermineByList', {
-      UI_ID: app.globalData.custom.UI_ID,
+      UI_ID: app.globalData.custom.UI_ID ||"4233",
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
-     // console.log(res)
      let assessmentList = res.data.data;
      assessmentList.forEach(item=>{
        item.RecordDate = util.format(item.RecordDate,'yyyy.mm.dd');

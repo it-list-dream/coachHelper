@@ -2,16 +2,15 @@
    <view class="header">
       <view class="profile">
          <image src="/assets/images/header.png"></image>
-         <text>娜娜</text>
+         <text>{{custom.UI_Name}}</text>
       </view>
       <view class="assessmentbtn">
          <view class="addassement" bindtap="addAssement"><text style="font-size:36rpx;">+</text>添加体态</view>
          <view class="comparison" bindtap="comparison">{{assessText}}</view>
       </view>
    </view>
-   <view class="posture-content">
-      <view class="test-report" bindtap="testReport"
-         wx:for="{{testList}}" data-sid="{{item.SD_ID}}" wx:key="index">
+   <scroll-view class="scroll-y" scroll-y style="height:calc(100vh - {{isAssess?'446rpx':'360rpx'}})">
+      <view class="test-report" bindtap="testReport" wx:for="{{testList}}" data-sid="{{item.SD_ID}}" wx:key="index">
          <view class="reportdetail">
             <view class="test-image">
                <image src="/assets/images/reporttips.png"></image>
@@ -33,8 +32,8 @@
          </view>
          <image class="circle" src="/assets/images/circle.png"></image>
       </view>
-      <view class="btnbox" wx:if="{{isAssess}}">
-         <button class="constractBtn" bindtap="assessContrast">对比</button>
-      </view>
+   </scroll-view>
+   <view class="btnbox" wx:if="{{isAssess}}">
+      <button class="constractBtn" bindtap="assessContrast">对比</button>
    </view>
 </view>

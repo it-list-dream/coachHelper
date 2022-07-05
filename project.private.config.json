@@ -275,6 +275,54 @@
           "pathName": "pages/memberTurnClass/memberTurnClass",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "分配客户",
+          "pathName": "pages/allocationCustom/allocationCustom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "转教练",
+          "pathName": "pages/turnCoach/turnCoach",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "体适能",
+          "pathName": "evaluation/pages/fitnessList/fitnessList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "体适能报告对比",
+          "pathName": "evaluation/pages/fitnessContrastReport/fitnessContrastReport",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "客户案例",
+          "pathName": "pages/clientCase/clientCase",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的",
+          "pathName": "pages/tabbar/profile/profile",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "教练服务成果",
+          "pathName": "pages/serviceAchievements/serviceAchievements",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "生日列表",
+          "pathName": "pages/birthdayList/birthdayList",
+          "query": "",
+          "scene": null
         }
       ]
     }

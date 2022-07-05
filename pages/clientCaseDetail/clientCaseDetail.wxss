@@ -45,6 +45,7 @@
 
 .achievenment-item {
   display: flex;
+  margin-bottom: 40rpx;
 }
 
 .achievenment-item>view:nth-child(-n+2) {

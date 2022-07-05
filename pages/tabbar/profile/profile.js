@@ -63,13 +63,13 @@ Page({
       GymName,
       RoleName
     } = wx.getStorageSync('coach');
-    if (app.globalData.phoneNumber || wx.getStorageInfoSync('phone')) {
+    if (wx.getStorageSync('phone')) {
       this.setData({
         isLogin: true,
         AI_Name: AI_Name,
         GymName: GymName,
         RoleName: RoleName
-      })
+      });
     } else {
       this.setData({
         isLogin: false

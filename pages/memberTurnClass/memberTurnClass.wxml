@@ -1,5 +1,5 @@
 <view class="turnClass">
-  <van-search class="search-box" value="{{ value }}" placeholder="请输入会员姓名、手机号" />
+  <van-search class="search-box" value="{{ searchText }}" placeholder="请输入会员姓名、手机号" bindchange="onChange"/>
   <scroll-view  scroll-y bindscrolltolower="loadMore" style="height:calc(100vh - {{searchHeight}}px - 120rpx)">
     <view class="scroll-wrapper">
       <view class="turn-item" wx:for="{{memberList}}" wx:key="index" bindtap="selectMember" data-index="{{index}}">

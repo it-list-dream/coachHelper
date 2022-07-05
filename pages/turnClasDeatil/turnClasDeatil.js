@@ -5,19 +5,55 @@ Page({
    * 页面的初始数据
    */
   data: {
-    memberList:['张三','李四'],
-    chooseIndex:-1
+    memberList: [],
+    turnClassMember: null,
+    turnNumber: 0,
+    giveMember: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let member = JSON.parse(options.member)
+    this.setData({
+      turnClassMember: member,
+      turnNumber: member.CO_Have
+    });
   },
-  bindPickerChange(e){
+
+  bindPickerChange(e) {
     this.setData({
       chooseIndex: e.detail.value
+    });
+  },
+  changeClassNum(e) {
+    this.setData({
+      turnNumber: e.detail.value
+    })
+  },
+  selectmember() {
+    wx.navigateTo({
+      url: '/pages/selectMember/selectMember',
+    });
+  },
+  turnCommit() {
+    service.post('/UserTransferClass', {
+      newUi_Id: this.data.giveMember.UI_ID,
+      co_Id: this.data.giveMember.co_ID,
+      oldUi_Id: this.data.turnClassMember.UI_ID,
+      co_Have: this.data.turnNumber,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      wx.showToast({
+        icon: "none",
+        title: '转课成功',
+      })
+      setTimeout(() => {
+        wx.navigateBack({
+          delta: 1,
+        })
+      }, 1500)
     })
   },
   /**

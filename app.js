@@ -1,10 +1,10 @@
 // app.js
 App({
   onLaunch() {
-    var phone = wx.getStorageSync('phone');
-    if (phone) {
-      this.globalData.phoneNumber = phone;
-    }
+    // var phone = wx.getStorageSync('phone');
+    // if (phone) {
+    //   this.globalData.phoneNumber = phone;
+    // }
     this.getMenuInfo();
     //获取设备信息
     this.getSystemInfo();

@@ -4,11 +4,12 @@
       <view class="picture_box">
         <image src="/assets/images/header.png"></image>
       </view>
-      <view class="trainer_name">娜娜</view>
-      <view  class="train_add_btn" hover-class="none" bindtap="addTrialClass"> +添加体验课</view>
+      <view class="trainer_name">{{custom.UI_Name}}</view>
+      <view class="train_add_btn" hover-class="none" bindtap="addTrialClass"> +添加体验课</view>
     </view>
   </view>
-  <view class="trial-content">
+  <van-empty image="/assets/images/none.png" description="敬请期待..." />
+  <!-- <view class="trial-content">
     <view class="trial-record" wx:for="{{3}}">
       <view class="left-record">
         <text class="serial">{{index + 1}}</text>
@@ -22,8 +23,8 @@
         <image class="right-icon" src="/assets/images/right_arrow.png"></image>
       </view>
     </view>
-  </view>
-  <van-popup show="{{ isshow }}" bind:close="onClose" position="bottom" custom-style="height: 40%">
+  </view> -->
+  <!-- <van-popup show="{{ isshow }}" bind:close="onClose" position="bottom" custom-style="height: 40%">
     <view class="trial-poupon">
       <view class="trial-header">
         <text class="text"></text>
@@ -37,5 +38,5 @@
         </view>
       </view>
     </view>
-  </van-popup>
+  </van-popup> -->
 </view>

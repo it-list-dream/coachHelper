@@ -9,11 +9,8 @@ Page({
    */
   data: {
     currentActive: 1,
-    tabsList: ['最近联系', '全部客户'],
+    //{name: "最近联系",flag: false},
     tabsList: [{
-      name: "最近联系",
-      flag: false
-    }, {
       name: "全部客户",
       flag: false
     }],
@@ -42,15 +39,14 @@ Page({
     })
     //全部
     this.getCustomList();
-    console.log(options)
   },
   swichNav: function (res) {
-    if (this.data.currentActive == res.detail.currentNum) return;
-    this.setData({
-      pageIndex: 1,
-      isEnd: false,
-      currentActive: res.detail.currentNum
-    })
+    // if (this.data.currentActive == res.detail.currentNum) return;
+    // this.setData({
+    //   pageIndex: 1,
+    //   isEnd: false,
+    //   currentActive: res.detail.currentNum
+    // })
   },
   addPeople() {
     wx.navigateTo({
@@ -72,7 +68,9 @@ Page({
         });
         break;
       case 1:
-        //体适能
+        wx.navigateTo({
+          url: '/evaluation/pages/fitnessList/fitnessList',
+        })
         break;
       case 2:
         wx.navigateTo({
@@ -100,6 +98,11 @@ Page({
           delta: 1,
         });
         break;
+      case 7:
+        wx.navigateTo({
+          url: '/pages/trialClass/trialClass',
+        });
+        break;
       default:
         console.log('其他')
     }
@@ -111,7 +114,7 @@ Page({
       searchText: e.detail
     })
     this.getCustomSeach();
-  }, 500),
+  }, 200),
   seachCancel() {
     this.setData({
       searchText: ""

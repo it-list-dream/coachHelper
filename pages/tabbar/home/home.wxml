@@ -61,7 +61,7 @@
         <image src="/assets/images/home/tran_plan.png"></image>
         <view class="attend-text">训练计划</view>
       </navigator>
-      <navigator class="attend-item" url="/pages/trialClass/trialClass">
+      <navigator class="attend-item" url="/pages/chooseCustom/chooseCustom?type=7">
         <image src="/assets/images/home/trial_class.png"></image>
         <view class="attend-text">体验课</view>
       </navigator>

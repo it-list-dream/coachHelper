@@ -3,19 +3,21 @@
     title-inactive-color="#333333" ellipsis="{{false}}" id="tabs">
     <block wx:for="{{tabList}}" wx:key="index">
       <van-tab title="{{item}}">
-        <scroll-view wx:if="{{active == 0}}" class="scroll-y" style="height:{{scrollHeight}}px;" scroll-y>
-          <view class="birthday-content">
-            <view class="birthday-item" wx:for="{{10}}">
-              <image src="/assets/images/header.png"></image>
-              <view class="birthday-info">
-                <view class="name">  
-                  娜娜
-                  <text>02月17日生日</text>
+        <scroll-view class="scroll-y" style="height:{{scrollHeight}}px;" scroll-y>
+          <block wx:for="{{birthdayList}}" wx:for-index="i" wx:key="i">
+            <view class="birthday-content">
+              <view class="birthday-item">
+                <image src="{{item.UI_Face?item.UI_Face:'/assets/images/header.png'}}"></image>
+                <view class="birthday-info">
+                  <view class="name">
+                    {{item.UI_Name}}
+                    <text>{{item.birthday}}生日</text>
+                  </view>
+                  <view class="phone">{{item.UI_Phone}}</view>
                 </view>
-                <view class="phone">18763451111</view>
               </view>
             </view>
-          </view>
+          </block>
         </scroll-view>
       </van-tab>
     </block>

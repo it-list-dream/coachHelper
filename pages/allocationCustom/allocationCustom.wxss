@@ -2,8 +2,12 @@
 .van-icon {
   color: #C2BCBC !important;
 }
-
+.scroll{
+  position: relative;
+}
 .tabs-filter {
+  position: fixed;
+  left: 0;
   display: flex;
   width: 100%;
   height: 100rpx;
@@ -37,7 +41,7 @@
 }
 
  .tab-panel{
-  padding: 26rpx 48rpx 0;
+  padding:100rpx 48rpx 0;
 }
 
 .tab-panel .tabpanel-item{
@@ -60,11 +64,21 @@
 .tab-panel .custom-profile{
   width: 80rpx;
   height: 80rpx;
-}
 
+}
 .tab-panel .custom-profile image{
-  width: 80rpx;
-  height: 80rpx;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+.tab-panel .custom-profile view{
+  width: 100%;
+  height: 100%;
+  line-height: 80rpx;
+  text-align: center;
+  background:#2564F6;
+  color: #FFFFFF;
+  border-radius: 50%;
 }
 
 .tab-panel .custom-info{
@@ -100,6 +114,80 @@ color: #0D0E15;
   color: #FFFFFF;
 }
 
+/*  */
+.select-list {
+  width: 630rpx;
+  height: 895rpx;
+  background: #FFFFFF;
+  border-radius: 8rpx;
+}
+
+.select-list .mask-title {
+  display: flex;
+  justify-content: space-between;
+  width: 630rpx;
+  height: 110rpx;
+  line-height: 110rpx;
+  text-align: center;
+  background: #F5F5FF;
+  border-radius: 8rpx;
+}
+
+.mask-title .btn {
+  padding: 0 50rpx;
+  font-size: 26rpx;
+}
+
+.mask-title text:nth-child(2) {
+  font-size: 36rpx;
+  color: #333333;
+}
+
+.mask-title .cancel {
+  color: #999999;
+}
+
+.mask-title .confrim {
+  color: #2564F6;
+}
+
+.select-list .scroll-y {
+  height: 786rpx;
+}
+
+.scroll-y .scroll-item {
+  position: relative;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+}
+
+.scroll-y .scroll-item .text {
+  font-size: 30rpx;
+  color: #333333;
+  text-align: center;
+}
+
+.scroll-item .select-icon {
+  position: absolute;
+  top: 50%;
+  right: 48rpx;
+  transform: translateY(-50%);
+}
+
+.scroll-item .select-icon .gray-circle {
+  width: 36rpx;
+  height: 36rpx;
+  border: 1px solid #B5B5B5;
+  border-radius: 50%;
+}
+
+.scroll-item .select-icon image {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+/*  */
 ::-webkit-scrollbar {
   width: 0;
   height: 0;

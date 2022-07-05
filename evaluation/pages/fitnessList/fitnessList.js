@@ -1,4 +1,6 @@
-// evaluation/pages/fitnessList/fitnessList.js
+var service = require('../../../utils/request.js');
+const app = getApp();
+var util = require('../../../utils/util.js')
 Page({
 
   /**
@@ -7,36 +9,27 @@ Page({
   data: {
     isComparison: false,
     btnType: "对比",
-    testList: [{
-        testName: "王教练",
-        testTime: "2021-10-01",
-        selected: false
-      },
-      {
-        testName: "李教练",
-        testTime: "2021-12-01",
-        selected: false
-      },
-      {
-        testName: "唐教练",
-        testTime: "2022-1-01",
-        selected: false
-      }
-     
-    ],
-    test: []
+    testList: [],
+    test: [],
+    firstDate: "2018-9",
+    lastDate: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      custom: app.globalData.custom,
+      endDate: util.format(new Date(), 'yyyy-mm-dd'),
+      lastDate: util.format(new Date(), 'yyyy-mm-dd').slice(0, 7)
+    });
+    this.getMyBodyTest();
   },
   appoinement() {
     wx.navigateTo({
       url: '/pages/addAppointment/addAppointment?type=1',
-    })
+    });
   },
   handleComparison() {
     let contrastText = this.data.btnType,
@@ -44,29 +37,42 @@ Page({
       testList = this.data.testList;
     isFlag = !isFlag;
     contrastText = isFlag ? '取消' : "对比";
-    if(contrastText == '取消'){
-      testList.forEach((item,index)=>{
-          item.selected = false
+    if (contrastText == '取消') {
+      testList.forEach((item, index) => {
+        item.selected = false
       })
     }
     this.setData({
-      testList:testList,
+      testList: testList,
       isComparison: isFlag,
       btnType: contrastText,
-      test:[]
+      test: []
     })
   },
-  test() {
+  bindDateChange(e) {
+    this.setData({
+      firstDate: e.detail.value
+    });
+    this.getMyBodyTest();
+  },
+  bindDateChange2(e) {
+    this.setData({
+      lastDate: e.detail.value
+    });
+    this.getMyBodyTest();
+  },
+  test(e) {
+    let rb_id = e.currentTarget.dataset.id;
     if (!this.data.isComparison) {
       wx.navigateTo({
-        url: '/evaluation/pages/physicalReport/physicalReport',
+        url: '/evaluation/pages/physicalReport/physicalReport?rb_id=' + rb_id,
       })
     }
   },
   chooseMultip(e) {
     var that = this,
       index = e.currentTarget.dataset.index,
-      value = e.currentTarget.dataset.value,
+      rb_id = e.currentTarget.dataset.id,
       testList = that.data.testList,
       test = that.data.test,
       val = testList[index].selected, //点击前的值
@@ -82,14 +88,14 @@ Page({
       if (curNum == limitNum) {
         wx.showToast({
           title: '只能选择两组数据进行比较',
-          icon:"none"
+          icon: "none"
         })
         return;
       }
-      test.push(value);
+      test.push(rb_id);
     } else {
       for (var j of test) {
-        if (j == value) {
+        if (j == rb_id) {
           test.splice(j, 1);
         }
       }
@@ -101,18 +107,34 @@ Page({
     })
   },
   toCompeletDetail() {
-    if(this.data.test.length == 2){
+    if (this.data.test.length == 2) {
       wx.navigateTo({
-        url: '/evaluation/pages/fitnessContrastReport/fitnessContrastReport',
+        url: `/evaluation/pages/fitnessContrastReport/fitnessContrastReport?id=${this.data.test[0]}&id2=${this.data.test[1]}`,
       })
       return;
-    }else{
+    } else {
       wx.showToast({
         title: '只能选择两组数据进行比较',
-        icon:"none"
+        icon: "none"
       })
     }
-   
+
+  },
+  getMyBodyTest() {
+    service.post('/MyBodyTestList', {
+      phone: this.data.custom.UI_Phone || '15575380983',
+      dateFrom: this.data.firstDate,
+      dateTo: this.data.lastDate,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      let list = res.data.data;
+      list.forEach(item => {
+        item.StartDate = util.format(item.StartDate, 'yyyy-mm-dd').substr(5)
+      });
+      this.setData({
+        testList: list
+      });
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -153,13 +175,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

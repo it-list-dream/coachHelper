@@ -56,3 +56,6 @@
   color: #2664F6;
   box-sizing: border-box;
 }
+.add-clientcase text{
+  font-size: 60rpx;
+}

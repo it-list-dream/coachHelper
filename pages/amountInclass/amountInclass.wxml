@@ -2,11 +2,11 @@
   <view class="top">
     <view class="top-blue">
       <view>
-        <view>{{allMoney}}</view>
+        <view>{{allMoney?allMoney:0}}</view>
         <view>总金额</view>
       </view>
       <view>
-        <view>{{allNum}}</view>
+        <view>{{allNum?allNum:0}}</view>
         <view>总节数</view>
       </view>
     </view>
@@ -47,7 +47,7 @@
             <text>×{{item.CS_Num}}</text>
         </view>
       </view>
-      <view class="botEnd">抱歉，没有更多会员了!</view>
+      <view class="botEnd" wx:if="{{isEnd}}">抱歉，没有更多会员了!</view>
     </view>
   </view>
 </view>

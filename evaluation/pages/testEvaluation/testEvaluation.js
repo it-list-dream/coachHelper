@@ -1,23 +1,38 @@
-// evaluation/pages/testEvaluation/testEvaluation.js
+var service = require("../../../utils/request.js")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    statureCount: 0,
+    bodyTestCount: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getTestCount();
+  },
+  getTestCount() {
+    service.post('/StatureDetermineCount', {
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      let {
+        statureCount,
+        bodyTestCount
+      } = res.data;
+      this.setData({
+        statureCount: parseInt(statureCount),
+        bodyTestCount: parseInt(bodyTestCount)
+      })
+    })
   },
   testFitness() {
     wx.navigateTo({
-      url: '/evaluation/pages/fitnessList/fitnessList',
-    })
+      url: '/pages/chooseCustom/chooseCustom?type=1',
+    });
   },
   posture() {
     wx.navigateTo({

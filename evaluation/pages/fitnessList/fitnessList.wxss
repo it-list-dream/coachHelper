@@ -1,4 +1,7 @@
-/* evaluation/pages/fitnessList/fitnessList.wxss */
+page {
+  background: #FEFEFE;
+}
+
 .fitness-bg {
   display: flex;
   flex-direction: column;
@@ -46,6 +49,7 @@
 .addappoinment {
   margin-left: 20rpx;
 }
+
 .addappoinment image {
   width: 24rpx;
   height: 24rpx;
@@ -71,23 +75,47 @@
   box-sizing: border-box;
 }
 
-.fitness-content {
-  margin-top: 30rpx;
-  padding-bottom: 86rpx;
+.datepicker {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 130rpx;
+  font-size: 36rpx;
+  color: #2765F6;
 }
 
-.fitness-content .fitness-item {
+.datepicker .pick-box:first-child {
+  margin-left: 72rpx;
+}
+
+.datepicker .line {
+  width: 70rpx;
+  height: 4rpx;
+  background: #A1ACC6;
+  margin-left: 72rpx;
+  margin-right: 100rpx;
+}
+
+.picker {
+  vertical-align: middle;
+}
+
+.picker image {
+  width: 36rpx;
+  height: 36rpx;
+  vertical-align: middle;
+}
+
+.fitness-item {
   position: relative;
-  margin: 0 auto;
-  margin-bottom: 30rpx;
+  margin: 0 auto 30rpx;
   width: 690rpx;
   height: 214rpx;
   padding: 0 22rpx;
   box-sizing: border-box;
   background: #FFFFFF;
-  box-shadow: 0px 0px 14px 0px rgba(0, 34, 112, 0.08);
+  box-shadow: 0px 0px 14rpx 0px rgba(0, 34, 112, 0.08);
   border-radius: 12rpx;
-
 }
 
 .icon-bg {
@@ -199,7 +227,7 @@
   background-color: #FFFFFF;
 }
 
-.fitness-content .complete {
+.bottombtn .complete {
   margin: 0 auto;
   width: 620rpx;
   height: 86rpx;

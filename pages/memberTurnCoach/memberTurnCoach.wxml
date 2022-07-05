@@ -1,36 +1,39 @@
 <view class="memberturncoach">
-  <view class="turnMmeber">
+  <view class="turnMmeber" wx:for="{{turnMember}}" wx:key="ROWID">
     <view class="member-head">
-      <!-- <image src="/assets/images/header.png"></image> -->
-      <view>周</view>
+      <image wx:if="{{item.UI_Face2.length>0}}" src="/assets/images/header.png"></image>
+      <view wx:else>{{item.firstName}}</view>
     </view>
     <view class="member-info">
       <view class="member-first">
-        星轻灿 <text style="color:#2564F6;">（王教练/15节）</text>
+        {{item.UI_Name}} <text style="color:#2564F6;">({{ item.CP_Name }}/{{ item.CO_Have }}节)</text>
       </view>
       <view class="member-last">
-        <text>ruyu909090</text>
-        <text>有效期：2022/3/10</text>
+        <text>{{ item.UI_No }} ({{ item.TeachName }})</text>
+        <text wx:if="{{item.CO_ActiveEnd}}">有效期:{{ item.CO_ActiveEnd }}</text>
       </view>
     </view>
   </view>
   <view class="turnClassinfo">
-    <view class="turn-title">转课会员信息</view>
+    <view class="turn-title">私人教练</view>
     <view class="card">
-      <view class="card-title">会员姓名</view>
-      <picker class="mmeberPicker"  bindchange="bindPickerChange" value="{{chooseIndex}}" range="{{memberList}}">
+      <view class="card-title">私人教练</view>
+      <picker class="mmeberPicker"  bindchange="bindPickerChange" value="{{chooseIndex}}" range="{{coachList}}" range-key="AI_Name">
         <view class="picker-box">
-           <text>{{memberList[chooseIndex]?memberList[chooseIndex]:'选择会员'}}</text>
+           <text>{{coachList[chooseIndex].AI_Name?coachList[chooseIndex].AI_Name:'选择教练'}}</text>
            <image src="/assets/images/black-arrow.png"></image>
         </view>
       </picker>
     </view>
     <view class="card">
-      <view class="card-title">会员卡号</view>
-      <view class="card-item">ftb0918</view>
+      <view class="card-title">转课数量</view>
+      <view class="card-item">
+          <view wx:if="{{turnMember.length>1}}">全部</view>
+          <input wx:else type="text" value="{{turnClass}}" bindinput="turnNumber"/>
+      </view>
     </view>
   </view>
   <view class="submit-box">
-    <button class="turnSubmit">提交</button>
+    <button class="turnSubmit" bindtap="turnCoachCommit">提交</button>
   </view>
 </view>

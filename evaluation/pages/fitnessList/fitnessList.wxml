@@ -2,10 +2,10 @@
   <view class="fitness-bg">
     <view class="fitness-member">
       <image src="/assets/images/header.png"></image>
-      <view class="name">娜娜</view>
+      <view class="name">{{custom.UI_Name}}</view>
     </view>
     <view class="fitness-comparison">
-      <navigator url="/evaluation/pages/physicalTest/physicalTest" class="addbodytest">+添加身体测试</navigator>
+      <!-- <navigator url="/evaluation/pages/physicalTest/physicalTest" class="addbodytest">+添加身体测试</navigator> -->
       <view class="addappoinment" bindtap="appoinement">
         <image src="./images/appointment.png"></image>
         <text>预约下次体侧</text>
@@ -13,40 +13,61 @@
       <view class="comparisonbtn" bindtap="handleComparison">{{btnType}}</view>
     </view>
   </view>
-  <view class="fitness-content">
-    <view class="fitness-item" wx:for="{{testList}}" bindtap="test">
-      <image src="./images/bg.png" class="icon-bg"></image>
-      <view class="f-box">
-        <view class="test-report" bindtap="chooseMultip" data-index="{{index}}" data-value="{{item.testName}}"
-          data-test="{{item}}">
-          <view class="report-info">
-            <text>测试报告</text>
-            <text>{{item.testName}} {{item.testTime}}</text>
+  <view class="datepicker">
+    <view class="pick-box">
+      <picker class="picker" mode="date" value="{{firstDate}}" start="2018-01-01" end="{{endDate}}"
+        bindchange="bindDateChange" fields="year" fields="month">
+        {{firstDate}}
+        <image src="/assets/images/right_arrow.png"></image>
+      </picker>
+    </view>
+    <view class="line"></view>
+    <view class="pick-box">
+      <picker class="picker" mode="date" value="{{lastDate}}" start="2018-01-01" end="{{endDate}}"
+        bindchange="bindDateChange2" fields="year" fields="month">
+        {{lastDate}}
+        <image src="/assets/images/right_arrow.png"></image>
+      </picker>
+    </view>
+  </view>
+  <scroll-view scroll-y class="scroll-y" style="height:calc(100vh - {{isComparison?'566rpx':'480rpx' }})">
+    <view class="f-cont">
+      <view class="fitness-item" wx:for="{{testList}}" bindtap="test" data-id="{{item.BR_ID}}" wx:key="*this">
+        <image src="./images/bg.png" class="icon-bg"></image>
+        <view class="f-box">
+          <view class="test-report" bindtap="chooseMultip" data-index="{{index}}" data-id="{{item.BR_ID}}"
+          wx:key="BR_ID"
+          >
+            <view class="report-info">
+              <text>测试报告</text>
+              <text>{{item.testName}} {{item.testTime}}</text>
+            </view>
+            <view class="icon-box" wx:if="{{isComparison}}">
+              <image wx:if="{{item.selected}}" src="/assets/images/selected.png"></image>
+              <text class="icon-border" wx:else></text>
+            </view>
+            <image wx:else src="/assets/images/right_arrow.png" class="m36"></image>
           </view>
-          <view class="icon-box" wx:if="{{isComparison}}">
-            <image wx:if="{{item.selected}}" src="/assets/images/selected.png"></image>
-            <text class="icon-border" wx:else></text>
-          </view>
-          <image wx:else src="/assets/images/right_arrow.png" class="m36"></image>
-        </view>
-        <view class="test-report-data">
-          <view class="test-report-item">
-            <text>130.0kg</text>
-            <text>体重</text>
-          </view>
-          <view class="test-report-item">
-            <text>-22.1%</text>
-            <text>体脂率</text>
-          </view>
-          <view class="test-report-item">
-            <text>1.0</text>
-            <text>腰臀比</text>
+          <view class="test-report-data">
+            <view class="test-report-item">
+              <text>{{item.StartDate}}</text>
+              <text>检测时间</text>
+            </view>
+            <view class="test-report-item">
+              <text>{{item.BodyAge}}</text>
+              <text>身体年龄</text>
+            </view>
+            <view class="test-report-item">
+              <text>{{item.Score}}</text>
+              <text>健康评分</text>
+            </view>
           </view>
         </view>
       </view>
     </view>
-    <view class="bottombtn">
-      <button wx:if="{{ isComparison}}" class="complete" bindtap="toCompeletDetail">对比</button>
-    </view>
+  </scroll-view>
+  <!--  -->
+  <view class="bottombtn" wx:if="{{ isComparison}}">
+    <button class="complete" bindtap="toCompeletDetail">对比</button>
   </view>
 </view>

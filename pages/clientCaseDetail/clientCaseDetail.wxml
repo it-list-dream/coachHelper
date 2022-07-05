@@ -1,23 +1,23 @@
 <view class="achievenment">
   <view class="achievenment-time">
-    <text>周期时间由短到长</text>
+    <text>{{cycleText}}</text>
     <image src="/assets/images/blue_arrow.png" bindtap="chooseTime"></image>
     <view class="time-mask" hidden="{{!ishowPeroid}}">
-      <view bindtap="peroidSort" data-index="0">周期时间由短到长</view>
-      <view bindtap="peroidSort" data-index="1">周期时间由长到短</view>
+      <view bindtap="peroidSort" data-text="周期时间由短到长" data-index="0">周期时间由短到长</view>
+      <view bindtap="peroidSort" data-text="周期时间由长到短" data-index="1">周期时间由长到短</view>
     </view>
   </view>
-  <view class="achievenment-content" wx:for="{{4}}">
-    <view class="achievenment-item" bindtap="achievement">
+  <view class="achievenment-content">
+    <view class="achievenment-item" bindtap="achievement" wx:for="{{custDeatil}}" wx:key="cc_id" data-cust="{{item}}">
       <view class="bodychange">
         <image src="/assets/images/header.png"></image>
-        <text class="body-name">娜娜</text>
-        <text>体重：2.0kg</text>
-        <text>周期：2天</text>
+        <text class="body-name">{{item.UI_Name}}</text>
+        <text>体重：{{item.CastData}}kg</text>
+        <text>周期：{{item.CycleDays}}天</text>
       </view>
       <view class="achieve-picture">
-        <image src="/assets/images/case.png"></image>
-        <view class="date">2022.01.16-2022.02.16</view>
+        <image src="{{item.imgurl}}"></image>
+        <view class="date">{{item.data[0].StartDate}}-{{item.data[1].StartDate}}</view>
       </view>
       <view class="arrow-box">
         <image class="gray" src="/assets/images/gay.png"></image>

@@ -2,29 +2,29 @@
   <view class="top">
     <view class="top-blue">
       <view>
-        <view>{{teachList[3].AllMoney}}</view>
+        <view>{{teachList[3].AllMoney?teachList[3].AllMoney:0}}</view>
         <view>总金额</view>
       </view>
       <view>
-        <view>{{teachList[3].AllNum}}</view>
+        <view>{{teachList[3].AllNum?teachList[3].AllNum:0}}</view>
         <view>总节数</view>
       </view>
     </view>
     <view class="income-head">
       <view class="income-item">
-        <text>{{teachList[0].AllMoney}}</text>
+        <text>{{teachList[0].AllMoney?teachList[0].AllMoney:0}}</text>
         <text>POS成单</text>
-        <text>{{teachList[0].AllNum}}单</text>
+        <text>{{teachList[0].AllNum?teachList[0].AllNum:0}}单</text>
       </view>
       <view class="income-item">
-        <text>{{teachList[1].AllMoney}}</text>
+        <text>{{teachList[1].AllMoney?teachList[1].AllMoney:0}}</text>
         <text>新会员买课</text>
-        <text>{{teachList[1].AllNum}}节</text>
+        <text>{{teachList[1].AllNum?teachList[1].AllNum:0}}节</text>
       </view>
       <view class="income-item">
-        <text>{{teachList[2].AllMoney}}</text>
+        <text>{{teachList[2].AllMoney?teachList[2].AllMoney:0}}</text>
         <text>老会员续课</text>
-        <text>{{teachList[2].AllNum}}节</text>
+        <text>{{teachList[2].AllNum?teachList[2].AllNum:0}}节</text>
       </view>
     </view>
   </view>
@@ -63,7 +63,7 @@
             <text>×{{item.CO_Num}}</text>
         </view>
       </view>
-      <view class="botEnd">抱歉，没有更多会员了!</view>
+      <view class="botEnd" wx:if="{{isEnd}}">抱歉，没有更多会员了!</view>
     </view>
   </view>
 </view>

@@ -6,7 +6,6 @@
     "pages/venueIntroduce/venueIntroduce",
     "pages/signature/signature",
     "pages/tabbar/profile/profile",
-    "pages/selectMember/selectMember",
     "pages/amountInclass/amountInclass",
     "pages/personalSet/personalSet",
     "pages/allocationCustom/allocationCustom",
@@ -51,7 +50,8 @@
     "pages/customerDetail/customerDetail",
     "pages/classType/classType",
     "pages/classDetail/classDetail",
-    "pages/actionSearch/actionSearch"
+    "pages/actionSearch/actionSearch",
+    "pages/selectMember/selectMember"
   ],
   "subpackages": [
     {

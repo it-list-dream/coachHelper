@@ -2,7 +2,7 @@
   "usingComponents": {
     "van-search": "@vant/weapp/search/index"
   },
-  "navigationBarBackgroundColor":"#2564F6",
-  "navigationBarTextStyle":"white",
-  "navigationBarTitleText":"选择教练"
+  "navigationBarBackgroundColor": "#2564F6",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "选择会员"
 }

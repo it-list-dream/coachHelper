@@ -192,9 +192,11 @@ Page({
     })
   },
   saveCustom() {
+    var tags = this.data.newTargetsList;
+    tags = tags.join(',');
     var jsonStr = {
       UI_ID: this.data.custom.UI_ID,
-      TrainTarget: "xx,xx,x,xx",
+      TrainTarget: tags,
       UI_Sex: this.data.custom.UI_Sex,
       UI_Birthday: this.data.custom.UI_Birthday,
       UI_Name: this.data.custom.UI_Name,
@@ -204,7 +206,7 @@ Page({
       json: JSON.stringify(jsonStr),
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
-       console.log(res)
+      console.log(res)
     })
   },
   /**

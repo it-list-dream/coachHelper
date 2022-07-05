@@ -1,4 +1,4 @@
-<view class="physicalReportContainer">
+<view class="phy_ReportIndex">
   <van-tabs active="{{ physcalActive }}" bind:change="onChange" title-active-color="#000000"
     title-inactive-color="#999999" sticky="{{true}}">
     <van-tab title="综合分析">
@@ -7,81 +7,44 @@
           <view class="analysis-bg">
             <image src="./images/body-bg.png"></image>
           </view>
-          <view class="analysis-item analysis-weight">
-            <view>130.0kg</view>
-            <view>体重 <text class="analysis-status">偏高</text></view>
+          <view class="analysis-item analysis-weight" wx:if="{{phsicalList[0]}}">
+            <view>{{phsicalList[0].analysis.value+''+phsicalList[0].monad}}</view>
+            <view>{{phsicalList[0].value}} <text style="background:{{phsicalList[0].health_color}}"
+                class="analysis-status">{{phsicalList[0].body_health}}</text></view>
           </view>
-          <view class="analysis-item fat-percentage">
-            <view>-22.1%</view>
-            <view>体脂率 <text class="analysis-status">偏低</text></view>
+          <view class="analysis-item fat-percentage" wx:if="{{phsicalList[1]}}">
+            <view>{{phsicalList[1].analysis.value+''+phsicalList[1].monad}}</view>
+            <view>{{phsicalList[1].value}} <text style="background:{{phsicalList[1].health_color}}"
+                class="analysis-status">{{phsicalList[1].body_health}}</text></view>
           </view>
-          <view class="analysis-item bmi">
-            <view>38.8</view>
-            <view>BMI <text class="analysis-status">偏高</text></view>
+          <view class="analysis-item bmi" wx:if="{{phsicalList[2]}}">
+            <view>{{phsicalList[2].analysis.value+''+phsicalList[2].monad}}</view>
+            <view>{{phsicalList[2].value}} <text style="background:{{phsicalList[2].health_color}}"
+                class="analysis-status">{{phsicalList[2].body_health}}</text></view>
           </view>
-          <view class="analysis-item whr">
-            <view>1.0</view>
-            <view>腰臀比 <text class="analysis-status">偏高</text></view>
+          <view class="analysis-item whr" wx:if="{{phsicalList[3]}}">
+            <view>{{phsicalList[3].analysis.value+''+phsicalList[3].monad}}</view>
+            <view>{{phsicalList[3].value}} <text style="background:{{phsicalList[3].health_color}}"
+                class="analysis-status">{{phsicalList[3].body_health}}</text></view>
           </view>
         </view>
         <!--  -->
-        <view class="run_type">运动员型</view>
+        <view class="run_type">{{figure}}</view>
         <!-- 基本情况 -->
         <view class="basic-infromation">
           <view class="basic-title">基本情况</view>
           <view class="basic-body-box">
-            <view class="basic-body-item">
+            <view class="basic-body-item" wx:for="{{newBaseList}}" wx:key="value">
               <view class="left">
-                <image src="../physicalTest/images/muscle.png"></image>
-                <text class="b-name">肌肉量</text>
-                <text>23.0kg</text>
+                <image src="{{item.icon}}"></image>
+                <text class="b-name">{{item.value}}</text>
+                <text>{{item.analysis.value+''+item.monad}}</text>
               </view>
-              <view class="right">偏低</view>
-            </view>
-            <view class="basic-body-item">
-              <view class="left">
-                <image src="../physicalTest/images/guangjie.png"></image>
-                <text class="b-name">骨骼肌</text>
-                <text>17.9kg</text>
-              </view>
-              <view class="right">偏低</view>
-            </view>
-            <view class="basic-body-item">
-              <view class="left">
-                <image src="../physicalTest/images/muscle.png"></image>
-                <text class="b-name">肌肉率</text>
-                <text>23.0%</text>
-              </view>
-              <view class="right">偏高</view>
-            </view>
-            <view class="basic-body-item">
-              <view class="left">
-                <image src="../physicalTest/images/fat.png"></image>
-                <text class="b-name">脂肪量</text>
-                <text>50.0kg</text>
-              </view>
-              <view class="right">偏高</view>
-            </view>
-            <view class="basic-body-item">
-              <view class="left">
-                <image src="../physicalTest/images/waist.png"></image>
-                <text class="b-name">脂肪量</text>
-                <text>腰臀比</text>
-              </view>
-              <view class="right">偏高</view>
-            </view>
-            <view class="basic-body-item">
-              <view class="left">
-                <image src="./images/daixie.png"></image>
-                <text class="b-name">基础代谢率</text>
-                <text>2598.0</text>
-              </view>
-              <view class="right">偏高</view>
+              <view class="right" style="background:{{item.health_color}}">{{item.body_health}}</view>
             </view>
           </view>
-          <view class="standard-title">理想标准</view>
-          <!--  -->
-          <view class="standard-list">
+          <!-- <view class="standard-title">理想标准</view> -->
+          <!-- <view class="standard-list">
             <view class="standard-item">
               <text>标准体重</text>
               <text>72.1kg</text>
@@ -98,7 +61,7 @@
               <text>建议脂肪量</text>
               <text>20.0kg</text>
             </view>
-          </view>
+          </view> -->
         </view>
       </view>
     </van-tab>
@@ -106,21 +69,22 @@
       <view class="examination-detail">
         <view class="health-title">健康分析</view>
         <view class="health-item">
-          <view class="health-data"  wx:for="{{10}}">
+          <view class="health-data" wx:for="{{composition}}" wx:key="key">
             <view class="health-data-left">
               <view class="data-top-box">
-                <image src="./images/bim.png"></image>
-                <text class="text">体重</text>
-                <text>130kg</text>
+                <image src="{{item.icon}}"></image>
+                <text class="text">{{item.value}}</text>
+                <text>{{item.analysis.value}}{{item.monad}}</text>
               </view>
-              <view class="health-data-right">偏高</view>
+              <view style="background:{{item.health_color}}" class="health-data-right">{{item.body_health}}</view>
             </view>
             <view class="progress-title">
-              <text>53.47</text>
-              <text>69.07</text>
+              <text>{{item.analysis.prv['0']}}</text>
+              <text>{{item.analysis.prv['1']}}</text>
             </view>
             <view class="progress-box">
-              <progress percent="20" stroke-width="12" border-radius="6" backgroundColor="#EBEBEB" active="{{true}}"/>
+              <progress percent="{{item.analysis.grade == 1?'20':(item.analysis.grade == 2?'50':'90')}}"
+                stroke-width="12" border-radius="6" backgroundColor="#EBEBEB" active />
             </view>
             <view class="progress-value">
               <text>偏低</text>
@@ -129,15 +93,88 @@
             </view>
           </view>
         </view>
-        <!--  hidden="{{true}}" -->
+        <!-- 图片 -->
         <view class="health-picture">
-          <image src="https://img1.baidu.com/it/u=4020265515,2294312709&fm=253&fmt=auto&app=138&f=JPEG?w=577&h=500"></image>
-          <image src="https://img1.baidu.com/it/u=4020265515,2294312709&fm=253&fmt=auto&app=138&f=JPEG?w=577&h=500"></image>
-          <image src="https://img1.baidu.com/it/u=4020265515,2294312709&fm=253&fmt=auto&app=138&f=JPEG?w=577&h=500"></image>
-          <image src="https://img1.baidu.com/it/u=4020265515,2294312709&fm=253&fmt=auto&app=138&f=JPEG?w=577&h=500"></image>
+          <view class="health-image" bindtap="uploadPicture" data-index="1">
+            <image wx:if="{{testImage[0]}}" src="{{testImage[0].imgurl}}"></image>
+            <view wx:else class="gray"></view>
+          </view>
+          <view class="health-image" bindtap="uploadPicture" data-index="2">
+            <image wx:if="{{testImage[1]}}" src="{{testImage[1].imgurl}}"></image>
+            <view wx:else class="gray"></view>
+          </view>
+          <view class="health-image" bindtap="uploadPicture" data-index="3">
+            <image wx:if="{{testImage[2]}}" src="{{testImage[2].imgurl}}"></image>
+            <view wx:else class="gray"></view>
+          </view>
+          <view class="health-image" bindtap="uploadPicture" data-index="3">
+            <image wx:if="{{testImage[3]}}" src="{{testImage[3].imgurl}}"></image>
+            <view wx:else class="gray"></view>
+          </view>
         </view>
-        <!-- 身体测量 -->
-        <view class="health-title">身体测量</view>
+        <!--  身体数据分析-->
+        <view class="segment_box">
+          <view class="segment-muscle">
+            <view class="segment-title">节段肌肉</view>
+            <view class="segment-bg">
+              <image src="./images/body.png" class="bg"></image>
+              <view class="segment-item">
+                <view>左上肢 {{segmental_fat.la.value}}kg</view>
+                <view>{{segmental_fat.la.grade == 1?'偏低':(segmental_fat.la.grade == 2?'正常':'偏高') }}</view>
+              </view>
+              <view class="segment-item2">
+                <view>右上肢 {{segmental_fat.ra.value}}kg</view>
+                <view>{{segmental_fat.ra.grade == 1?'偏低':(segmental_fat.ra.grade == 2?'正常':'偏高') }}</view>
+              </view>
+              <view class="segment-item3">躯干</view>
+              <view class="segment-item4">
+                <view>左下肢 {{segmental_fat.ll.value}}kg</view>
+                <view>{{segmental_fat.ll.grade == 1?'偏低':(segmental_fat.ll.grade == 2?'正常':'偏高') }}</view>
+              </view>
+              <view class="segment-item5">
+                <view>右下肢 {{segmental_fat.rl.value}}kg</view>
+                <view>{{segmental_fat.rl.grade == 1?'偏低':(segmental_fat.rl.grade == 2?'正常':'偏高') }}</view>
+              </view>
+              <view class="segment-item6">
+                <view>躯干</view>
+                <view>{{segmental_fat.tr.value}}kg {{segmental_fat.tr.grade == 1?'偏低':(segmental_fat.tr.grade ==
+                  2?'正常':'偏高')
+                  }}</view>
+              </view>
+            </view>
+          </view>
+          <view class="segmet-fat">
+            <view class="segment-title">节段脂肪</view>
+            <view class="segment-bg">
+              <image src="./images/body.png" class="bg"></image>
+              <view class="segment-item">
+                <view>左上肢 {{segmental_fat.la.value}}kg</view>
+                <view>{{segmental_fat.la.grade == 1?'偏低':(segmental_fat.la.grade == 2?'正常':'偏高') }}</view>
+              </view>
+              <view class="segment-item2">
+                <view>右上肢 {{segmental_fat.ra.value}}kg</view>
+                <view>{{segmental_fat.ra.grade == 1?'偏低':(segmental_fat.ra.grade == 2?'正常':'偏高') }}</view>
+              </view>
+              <view class="segment-item3">躯干</view>
+              <view class="segment-item4">
+                <view>左下肢 {{segmental_fat.ll.value}}kg</view>
+                <view>{{segmental_fat.ll.grade == 1?'偏低':(segmental_fat.ll.grade == 2?'正常':'偏高') }}</view>
+              </view>
+              <view class="segment-item5">
+                <view>右下肢 {{segmental_fat.rl.value}}kg</view>
+                <view>{{segmental_fat.rl.grade == 1?'偏低':(segmental_fat.rl.grade == 2?'正常':'偏高') }}</view>
+              </view>
+              <view class="segment-item6">
+                <view>躯干</view>
+                <view>{{segmental_fat.tr.value}}kg {{segmental_fat.tr.grade == 1?'偏低':(segmental_fat.tr.grade ==
+                  2?'正常':'偏高')
+                  }}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!--  -->
+        <!-- <view class="health-title">身体测量</view>
         <view class="measurement">
           <view class="measurement-item">
             <text>身高(cm)</text>
@@ -195,7 +232,7 @@
             <text>右小腿围</text>
             <text>--</text>
           </view>
-        </view>
+        </view> -->
       </view>
     </van-tab>
   </van-tabs>
