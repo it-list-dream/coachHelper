@@ -15,10 +15,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    this.coId = options.co_id;
-    this.caId = options.ca_id;
-    console.log(options.co_id)
+    // this.coId = options.co_id;
+    // this.caId = options.ca_id;
+    //console.log(options.co_id)
+    console.log(app)
     this.setData({
       custom: app.globalData.custom
     });
@@ -40,44 +40,51 @@ Page({
       newList = myList.filter(item => item.CS_State == "预约中")
     }
     app.globalData.temIdList = newList;
-    app.globalData.coId = this.coId;
-    console.log(newList)
+    // app.globalData.coId = this.coId;
+    console.log(app.globalData.coId )
     wx.navigateTo({
       url: '/pages/courseTemplate/courseTemplate'
     });
   },
   // 
-  getClassStatus(cs_id, ca_id, className) {
+  getClassStatus(className) {
     service.post('/CoachActLibDetails', {
-      co_id: this.coId,
-      cs_id: cs_id,
+      co_id: app.globalData.coId,
+      cs_id: app.globalData.csId,
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
       var list = res.data.data;
       if (list.length > 0) {
         wx.navigateTo({
-          url: `/pages/haveClass/haveClass?cs_id=${cs_id}&co_id=${this.coId}`,
+          url: '/pages/haveClass/haveClass',
         })
       } else {
         wx.navigateTo({
-          url: `/pages/editCourse/editCourse?csID=${cs_id}&caId=${ca_id}&coId=${this.coId}&courseName=${className}`,
+          url: `/pages/editCourse/editCourse?courseName=${className}`,
         });
       }
     })
   },
   newcurriculum(e) {
+    //co_id在修改动作库时候传递
     let cs_id = e.currentTarget.dataset.csid,
-      ca_id = e.currentTarget.dataset.ca_id,
       className = e.currentTarget.dataset.ctitle,
       cList = this.data.classDetail,
-      index = e.currentTarget.dataset.index;
+      index = e.currentTarget.dataset.index,
+      isReady = e.currentTarget.dataset.isready;
     app.globalData.csId = cs_id;
-    if(cs_id==0){
-       wx.showToast({
-         icon:"none",
-         title: '你还未预约，请先去预约',
-       })
-       return;
+    if (cs_id == 0) {
+      wx.showToast({
+        icon: "none",
+        title: '你还未预约，请先去预约',
+      })
+      return;
+    }
+    if (isReady == 1) {
+      wx.navigateTo({
+        url: '/pages/startClass/startClass',
+      })
+      return;
     }
     if (cList[index].CS_State == "已完成") {
       wx.navigateTo({
@@ -85,10 +92,10 @@ Page({
       });
     } else {
       //根据ca_id区分到那个页面
-      this.getClassStatus(cs_id, ca_id, className);
+      this.getClassStatus(className);
     }
   },
-  coachClassListAappoint(co_id) {
+  appointmentList(co_id) {
     service.post('/CoachClassListAappoint', {
       co_id: co_id,
       gi_id: wx.getStorageSync('gi_id')
@@ -115,7 +122,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.coachClassListAappoint(this.coId);
+    this.appointmentList(app.globalData.coId);
   },
 
   /**

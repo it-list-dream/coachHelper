@@ -1,30 +1,42 @@
-// pages/poster/poster.js
+var service = require('../../../utils/request.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    weight: '-0.4kg',
+    fat: "-1.4kg",
+    pbf: "-12%"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let {
+      reportId,
+      reportId2,
+      weight,
+      fat,
+      pbf
+    } = options;
+    this.getMyPicture(52, 53);
+    // console.log(reportId,reportId2,weight,fat,pbf);
     wx.getSystemInfo({
       success: res => {
         this.setData({
           canvasWidth: 750
         })
-        console.log(res.windowWidth, res.pixelRatio)
+        // console.log(res.windowWidth, res.pixelRatio)
       }
     })
   },
   drawCanvas() {
     const ctx = wx.createCanvasContext('shareCanvas');
     var that = this,
-      ratio = 2;
+      ratio = 2,
+      imageList = this.data.imageList;
     wx.getImageInfo({
       src: "../../images/bg.png",
       success(res) {
@@ -53,14 +65,14 @@ Page({
         // ctx.draw();
         //图片路径 裁剪的x坐标 裁剪的y坐标 裁剪的宽 裁剪的高 图片在画布中的x轴 图片画布中的y轴
         //图片在画布中的宽度 和高度  
-        ctx.drawImage('../../../assets/images/case.png', 36 * ratio, 100 * ratio, 142 * ratio, 178 * ratio);
-        ctx.drawImage('../../../assets/images/case.png', 196 * ratio, 100 * ratio, 142 * ratio, 178 * ratio);
-        ctx.drawImage('../../../assets/images/case.png', 36 * ratio, 290 * ratio, 142 * ratio, 178 * ratio);
-        ctx.drawImage('../../../assets/images/case.png', 196 * ratio, 290 * ratio, 142 * ratio, 178 * ratio);
-        ctx.drawImage('../../../assets/images/case.png', 36 * ratio, 480 * ratio, 142 * ratio, 178 * ratio);
-        ctx.drawImage('../../../assets/images/case.png', 196 * ratio, 480 * ratio, 142 * ratio, 178 * ratio);
-        ctx.drawImage('../../../assets/images/case.png', 36 * ratio, 670 * ratio, 142 * ratio, 178 * ratio);
-        ctx.drawImage('../../../assets/images/case.png', 196 * ratio, 670 * ratio, 142 * ratio, 178 * ratio);
+        ctx.drawImage(imageList[0], 36 * ratio, 100 * ratio, 142 * ratio, 178 * ratio);
+        ctx.drawImage(imageList[1], 196 * ratio, 100 * ratio, 142 * ratio, 178 * ratio);
+        ctx.drawImage(imageList[2], 36 * ratio, 290 * ratio, 142 * ratio, 178 * ratio);
+        ctx.drawImage(imageList[3], 196 * ratio, 290 * ratio, 142 * ratio, 178 * ratio);
+        ctx.drawImage(imageList[4], 36 * ratio, 480 * ratio, 142 * ratio, 178 * ratio);
+        ctx.drawImage(imageList[5], 196 * ratio, 480 * ratio, 142 * ratio, 178 * ratio);
+        ctx.drawImage(imageList[6], 36 * ratio, 670 * ratio, 142 * ratio, 178 * ratio);
+        ctx.drawImage(imageList[7], 196 * ratio, 670 * ratio, 142 * ratio, 178 * ratio);
         ctx.setFontSize(16 * ratio);
         ctx.setTextAlign('left');
         ctx.fillText('体重', 44 * ratio, 916 * ratio);
@@ -84,7 +96,6 @@ Page({
                 that.setData({
                   tempFilePath: res.tempFilePath
                 })
-                // that.saveImage();
                 that.openSetting();
               }
             });
@@ -165,6 +176,16 @@ Page({
         }
       }
     })
+  },
+  getMyPicture(rb_id, rb_id2) {
+    service.post('/BodyTestImageList', {
+      rb_id: rb_id + ',' + rb_id2,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      this.setData({
+        imageList: res.data.data
+      })
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

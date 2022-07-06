@@ -3,11 +3,11 @@
   <!--  -->
   <tabs-list custom-class="parentClass" id="tabs" is-border="{{true}}" tList="{{tabsList}}" current-tab="{{currentActive}}"
     bind:changeCurrent="tabsChange" bind:scrollHeight="getHeight">
-    <scroll-view class="scroll-y" scroll-y
+    <scroll-view class="scroll-y" scroll-y scroll-top="{{scrollTop}}"
       style="height:calc(100vh - {{scrollHeight}}px - {{searchHeight}}px - 100rpx);" bindscrolltolower="loadMore">
-      <view class="power" wx:if="{{jurisdiction && currentActive == 2}}">
-          <text style="color:{{isMy == 0?'#2564F6':''}}" bindtap="ismyMember" data-index="0">全部私教会员</text>
-          <text style="color:{{isMy == 1?'#2564F6':''}}" bindtap="ismyMember" data-index="1">所属自己会员</text>
+      <view class="power" wx:if="{{jurisdiction && currentActive == 1}}" >
+          <text style="color:{{filterIndex == 0?'#2564F6':''}}" bindtap="ismyMember" data-index="0">全部私教会员</text>
+          <text style="color:{{filterIndex == 1?'#2564F6':''}}" bindtap="ismyMember" data-index="1">所属自己会员</text>
       </view>
       <block wx:for="{{tabsList}}" wx:key="name">
         <view class="tab-item" hidden="{{currentActive != index}}">

@@ -17,7 +17,7 @@
     <view class="pick-box">
       <picker class="picker" mode="date" value="{{firstDate}}" start="2018-01-01" end="{{endDate}}"
         bindchange="bindDateChange" fields="year" fields="month">
-        {{firstDate}}
+        <text>{{firstDate}}</text>
         <image src="/assets/images/right_arrow.png"></image>
       </picker>
     </view>
@@ -25,7 +25,7 @@
     <view class="pick-box">
       <picker class="picker" mode="date" value="{{lastDate}}" start="2018-01-01" end="{{endDate}}"
         bindchange="bindDateChange2" fields="year" fields="month">
-        {{lastDate}}
+        <text>{{lastDate}}</text>
         <image src="/assets/images/right_arrow.png"></image>
       </picker>
     </view>
@@ -36,8 +36,7 @@
         <image src="./images/bg.png" class="icon-bg"></image>
         <view class="f-box">
           <view class="test-report" bindtap="chooseMultip" data-index="{{index}}" data-id="{{item.BR_ID}}"
-          wx:key="BR_ID"
-          >
+            wx:key="BR_ID">
             <view class="report-info">
               <text>测试报告</text>
               <text>{{item.testName}} {{item.testTime}}</text>

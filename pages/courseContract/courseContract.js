@@ -78,6 +78,7 @@ Page({
     this.setData({
       showPay: false
     })
+    clearInterval(this.operId);
   },
   //日期
   startDateChange(e) {

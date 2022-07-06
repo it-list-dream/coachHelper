@@ -95,7 +95,7 @@
         <view class="no-picture" wx:else>暂无照片</view>
       </view>
       <view class="side-item">
-        <image wx:if="{{photoList[2]}}" src="{{photoList[2].imgurl}}" class="profile-pic" ></image>
+        <image wx:if="{{photoList2[2]}}" src="{{photoList2[2].imgurl}}" class="profile-pic" ></image>
         <view class="no-picture" wx:else>暂无照片</view>
       </view>
       <view class="side-item">

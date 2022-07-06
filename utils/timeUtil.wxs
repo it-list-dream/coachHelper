@@ -60,10 +60,21 @@ var filterClass = function (allClass) {
   }
   return newList;
 }
+
+
+function replaceChar(str) {
+  if (str != null) {
+    return str.replace(getRegExp('、', 'g'), '  |  ');
+  } else {
+    return str
+  }
+}
+
 module.exports = {
   dateFormat: dateFormat,
   sub: sub,
   filterString: filterString,
   filterUnitPrice: filterUnitPrice,
-  filterClass: filterClass
+  filterClass: filterClass,
+  replaceChar: replaceChar
 };

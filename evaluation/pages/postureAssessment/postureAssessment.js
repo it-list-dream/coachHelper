@@ -1,7 +1,7 @@
 // pages/postureAssessment/postureAssessment.js
-var service = require('../../../utils/request.js');
 const app = getApp();
-const util = require('../../../utils/util.js')
+const util = require('../../../utils/util.js');
+var service = require('../../../utils/request.js');
 Page({
 
   /**

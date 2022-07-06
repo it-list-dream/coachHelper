@@ -1,7 +1,8 @@
+page{
+  padding-top: 40rpx;
+}
 .poster {
   position: relative;
-  margin-top: 40rpx;
-  overflow: hidden;
   height: 2082rpx;
 }
 

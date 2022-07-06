@@ -35,7 +35,9 @@ Page({
     totalPage: 0,
     isEnd: false,
     jurisdiction: 0,
-    isMy: 0
+    isMy: 0,
+    // 竖向滚动条位置
+    scrollTop: 0,
   },
   /**
    * 生命周期函数--监听页面加载
@@ -63,6 +65,7 @@ Page({
         tabsList: tabsList
       });
     }
+    this.getCustomType(0, 0);
   },
   //公海池
   getPublicWaters(isSearch = 0) {
@@ -148,20 +151,25 @@ Page({
     this.setData({
       searchText: e.detail
     });
+    this.data.isEnd = false;
+    this.data.pageIndex = 1;
+    this.data.memberList = [];
     switch (this.data.currentActive) {
       case 0:
         this.getCustomType(0, 0, 1)
         break;
       case 1:
-        this.getCustomType(2, 0, 1)
+        if (this.data.filterIndex == 0) {
+          this.getCustomType(2, 0, 1)
+        } else {
+          this.getCustomType(2, 1, 1)
+        }
         break;
       case 2:
-        this.getCustomType(2, this.data.isMy, 1)
+        //普通
+        this.getCustomType(1, 0, 1)
         break;
       case 3:
-        this.getCustomType(1, 0);
-        break;
-      case 4:
         this.getPublicWaters(1);
         break;
     }
@@ -172,38 +180,44 @@ Page({
     })
   },
   ismyMember(e) {
-    //
     let index = e.currentTarget.dataset.index;
-    this.setData({
-      isMy: index,
-      memberList: []
-    });
-    this.getCustomType(2, index, 0);
+    if (index !== this.data.filterIndex) {
+      this.data.isMy = index;
+      this.data.memberList = [];
+      this.data.isEnd = false;
+      this.data.pageIndex = 1;
+      if (index == 0) {
+        this.getCustomType(2, 0);
+      } else {
+        this.getCustomType(2, 1);
+      }
+      this.setData({
+        filterIndex:index,
+        scrollTop:0
+      })
+    }
   },
   tabsChange(e) {
-    if (this.data.currentActive != e.detail.currentNum) {
+    let index = e.detail.currentNum
+    if (this.data.currentActive != index) {
       this.setData({
         currentActive: e.detail.currentNum,
         pageIndex: 1,
         memberList: [],
-        isEnd: false
+        isEnd: false,
+        scrollTop:0
       });
-      switch (e.detail.currentNum) {
+      switch (index) {
         case 0:
-          this.setData({
-            memberList: []
-          })
-          break;
-        case 1:
           this.getCustomType(0, 0)
           break;
-        case 2:
+        case 1:
           this.getCustomType(2, 0)
           break;
-        case 3:
+        case 2:
           this.getCustomType(1, 0);
           break;
-        case 4:
+        case 3:
           this.getPublicWaters();
           break;
       }
@@ -216,12 +230,10 @@ Page({
         pageIndex: curpage
       });
       if (this.data.currentActive == 0) {
-
-      } else if (this.data.currentActive == 1) {
         this.getCustomType(0, 0)
-      } else if (this.data.currentActive == 2) {
+      } else if (this.data.currentActive == 1) {
         this.getCustomType(2, 0)
-      } else if (this.data.currentActive == 3) {
+      } else if (this.data.currentActive == 2) {
         this.getCustomType(1, 0);
       } else {
         this.getPublicWaters();

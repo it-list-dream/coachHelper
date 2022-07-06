@@ -5,7 +5,7 @@
     bind:changeCurrent="tabsChange" bind:scrollHeight="getHeight">
     <!-- 默认插槽 -->
     <scroll-view scroll-y class="scroll" style="height:calc(100vh - {{ searchHeight}}px - {{tabsHeight}}px - 120rpx)"
-      bindscrolltolower="loadMore">
+      bindscrolltolower="loadMore" scroll-top="{{scrollTop}}">
       <view class="tabs-filter" style="top:calc({{searchHeight + tabsHeight}}px)">
         <block wx:for="{{filterList}}" wx:for-index="idx" wx:key="idx">
           <text class="{{filterIndex==idx?'active':''}}" bindtap="filterTab" data-index="{{idx}}">{{item}}</text>

@@ -1,5 +1,5 @@
 <view class="venueContainer">
   <view class="venue-item" wx:for="{{venueList}}" wx:key="index">
-    <image data-index="{{index}}"  bindtap="previewBigImage" src="https://img2.baidu.com/it/u=2602751669,1793957748&fm=253&fmt=auto&app=138&f=JPEG?w=874&h=500" mode="widthFix"></image>
+    <image data-index="{{index}}"  bindtap="previewBigImage" src="{{item.imgurl}}" mode="widthFix"></image>
   </view> 
 </view>

@@ -323,6 +323,12 @@
           "pathName": "pages/birthdayList/birthdayList",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "教练风采",
+          "pathName": "pages/coachMien/coachMien",
+          "query": "",
+          "scene": null
         }
       ]
     }

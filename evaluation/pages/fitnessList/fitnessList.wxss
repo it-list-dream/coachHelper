@@ -87,7 +87,9 @@ page {
 .datepicker .pick-box:first-child {
   margin-left: 72rpx;
 }
-
+.pick-box text{
+  vertical-align: middle;
+}
 .datepicker .line {
   width: 70rpx;
   height: 4rpx;
@@ -101,6 +103,7 @@ page {
 }
 
 .picker image {
+  margin-left: 10rpx;
   width: 36rpx;
   height: 36rpx;
   vertical-align: middle;

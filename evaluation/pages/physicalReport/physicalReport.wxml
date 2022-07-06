@@ -107,7 +107,7 @@
             <image wx:if="{{testImage[2]}}" src="{{testImage[2].imgurl}}"></image>
             <view wx:else class="gray"></view>
           </view>
-          <view class="health-image" bindtap="uploadPicture" data-index="3">
+          <view class="health-image" bindtap="uploadPicture" data-index="4">
             <image wx:if="{{testImage[3]}}" src="{{testImage[3].imgurl}}"></image>
             <view wx:else class="gray"></view>
           </view>

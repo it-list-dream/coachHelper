@@ -2,7 +2,7 @@
   <view class="trainplan-header">
     <view class="trainplan-header-box">
       <image src="/assets/images/header.png"></image>
-      <text>{{custom.UI_Name+'的'+classDetail[0].CP_Name}}</text>
+      <text wx:if="{{classDetail.length>0}}">{{custom.UI_Name+'的'+classDetail[0].CP_Name}}</text>
     </view>
     <view class="train-templete">
       <view class="template-btn" bindtap="templateType" data-type="1">
@@ -22,7 +22,7 @@
   <!--  -->
   <view class="trainclass-list">
     <view class="trainclass" wx:for="{{classDetail}}" wx:key="index" bindtap="newcurriculum" data-csid="{{item.CS_ID}}"
-      data-caid="{{item.CA_ID}}" data-ctitle="{{item.CP_Name}}" data-index="{{index}}">
+    data-ctitle="{{item.CP_Name}}" data-index="{{index}}" data-isready="{{item.IsReady}}">
       <view class="trainclass-name">
         <view>
           <text class="serial">{{index+1}}</text>

@@ -51,7 +51,8 @@
     "pages/classType/classType",
     "pages/classDetail/classDetail",
     "pages/actionSearch/actionSearch",
-    "pages/selectMember/selectMember"
+    "pages/selectMember/selectMember",
+    "pages/coachStyleDetail/coachStyleDetail"
   ],
   "subpackages": [
     {

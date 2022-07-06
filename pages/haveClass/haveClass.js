@@ -18,13 +18,13 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    console.log(options)
+   // console.log(options)
     if (options.cs_id == 0) {
       this.setData({
         appoinmentStatus: "去预约"
       })
     }
-    this.getActLibDetails(options.co_id, options.cs_id)
+    this.getActLibDetails(app.globalData.coId,app.globalData.csId)
   },
   getActLibDetails(co_id, cs_id) {
     var warmUpList = [],
@@ -35,7 +35,6 @@ Page({
       cs_id: cs_id,
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
-     // console.log(res.data.data, res.data.data[0].data);
       var list = res.data.data[0].data;
       list.forEach(item => {
         if (item.CA_Type == 1) {

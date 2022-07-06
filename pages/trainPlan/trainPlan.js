@@ -44,7 +44,7 @@ Page({
     var classId = e.currentTarget.dataset.coid;
     app.globalData.coId = classId;
     wx.navigateTo({
-      url: '/pages/trainPlanDetail/trainPlanDetail?co_id='+classId,
+      url: '/pages/trainPlanDetail/trainPlanDetail',
     })
   },
   switchCustom(){

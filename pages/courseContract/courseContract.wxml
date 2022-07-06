@@ -45,7 +45,8 @@
   <view class="submit">
     <button class="submit-btn" bindtap="payChange">确定</button>
   </view>
-  <van-popup show="{{ showPay}}" bind:close="onClose">
+</view>
+<van-popup custom-class="payPopup" show="{{ showPay}}" bind:close="onClose">
     <view class="pay-box">
       <view class="pay-title">线上支付</view>
       <view class="wechat-code">
@@ -57,4 +58,3 @@
       </view>
     </view>
   </van-popup>
-</view>

@@ -1,11 +1,13 @@
-/* pages/leagueLecture/leagueLecture.wxss */
+page{
+  padding: 20rpx 0 30rpx;
+}
 .leagueContainer {
-  padding: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
 }
 
 .leagueContainer .league {
-  display: flex;
-  justify-content: space-between;
   width: 322rpx;
   height: 224rpx;
   border-radius: 10rpx;

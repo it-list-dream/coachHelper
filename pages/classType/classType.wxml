@@ -1,7 +1,7 @@
 <view class="couserTypeContainer">
   <view class="coursetype" wx:for="{{typeList}}" bindtap="selectedClass" data-classes="{{item}}">
     <view class="class-pic">
-      <image src="/assets/images/home/course_bg.png" ></image>
+      <image src="{{item.CP_Logo?item.CP_Logo:'/assets/images/home/course_bg.png'}}" ></image>
     </view>
     <view class="course-list">
       <view class="course-name">

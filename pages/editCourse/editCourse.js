@@ -19,9 +19,10 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    this.CS_ID = options.csID;
+    this.CS_ID = app.globalData.coId;
     this.CA_ID = options.caId;
-    this.CO_ID = options.coId;
+    console.log(this.CA_ID)
+    this.CO_ID = app.globalData.coId;
     if(options.courseName){
       this.setData({
         classTitle: options.courseName

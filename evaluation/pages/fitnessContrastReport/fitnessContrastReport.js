@@ -260,9 +260,18 @@ Page({
     app.globalData.isCase = false;
   },
   toPoster(){
-    wx.navigateTo({
-      url: '/evaluation/pages/poster/poster',
-    })
+    if(this.data.photoList.length== 4 && this.data.photoList2.length == 4){
+      let {weight,fat,pbf} = this.data.changeData;
+      wx.navigateTo({
+        url: `/evaluation/pages/poster/poster?reportId=${this.options.id}&reportId2=${this.options.id2}&weight=${weight}&fat=${fat}&pbf=${pbf}`,
+      });
+    }else{
+      wx.showToast({
+        icon:"none",
+        title: '请先补全体适能中的照片',
+      })
+    }
+    
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

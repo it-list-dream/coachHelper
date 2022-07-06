@@ -115,12 +115,14 @@ page {
 }
 
 /*  */
+.payPopup{
+  width: 604rpx;
+  height: 648rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
 .pay-box {
   position: relative;
-  width: 603rpx;
-  height: 648rpx;
-  background: #FFFFFF;
-  border-radius: 20rpx;
 }
 
 .pay-box::before {
@@ -153,18 +155,18 @@ page {
   font-family: PingFang SC;
   font-weight: bold;
   color: #010101;
-  padding: 32rpx 0;
+  padding: 35rpx 0 40rpx;
 }
 
 .wechat-code {
   display: flex;
   justify-content: center;
-  border-top: 1px solid #F0F0F0;
-  padding: 30rpx 0;
+  border-top: 0.5px solid #F0F0F0;
+  padding: 30rpx 0 40rpx;
 }
 .wechat-code .canvas{
-  width: 340rpx !important;
-  height: 340rpx !important;
+  width: 160px !important;
+  height: 160px !important;
 }
 .pay-bottom {
   display: flex;

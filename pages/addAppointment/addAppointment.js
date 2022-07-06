@@ -44,7 +44,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      isOthers: options.type || 1
+      isOthers: options.type || 1,
+      custom:{}
     })
   },
   chooseCustom() {

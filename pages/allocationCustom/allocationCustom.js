@@ -27,7 +27,8 @@ Page({
     isFollow: false,
     distributionList: [],
     //
-    isEnd: false
+    isEnd: false,
+    scrollTop:0
   },
 
   /**
@@ -62,7 +63,8 @@ Page({
         this.getAllCustom(1)
       }
       this.setData({
-        tabIndex: index
+        tabIndex: index,
+        scrollTop:0
       })
     }
   },
@@ -83,7 +85,8 @@ Page({
       this.getAllCustom(1)
     }
     this.setData({
-      filterIndex: index
+      filterIndex: index,
+      scrollTop:0
     })
   },
   //选择公海池

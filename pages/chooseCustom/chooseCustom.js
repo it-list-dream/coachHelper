@@ -104,12 +104,10 @@ Page({
         });
         break;
       default:
-        console.log('其他')
     }
   },
   //搜索
   seachChange: util.throttle(function (e) {
-    // console.log(e)
     this.setData({
       searchText: e.detail
     })
@@ -156,7 +154,6 @@ Page({
   },
   //搜索
   getCustomSeach() {
-    let allList = this.data.allmemberList;
     var jsonStr = {
       gi_id: wx.getStorageSync('gi_id'),
       searchText: this.data.searchText,
