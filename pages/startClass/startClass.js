@@ -45,18 +45,30 @@ Page({
     });
   },
   addactionGroup(e) {
-    let index = this.data.currentAction,
-      actionList = this.data.actionList;
-    if (Array.isArray(actionList[index].data)) {
-      actionList[index].data.push({
-        SS_State: "",
-        open: true
-      });
-    }
-    actionList[index].SM_Count = parseInt(actionList[index].SM_Count) + 1;
-    this.setData({
-      actionList
-    });
+    wx.showModal({
+      title: '',
+      content: '是否添加新动作？',
+      success(res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '/pages/action/action',
+          })
+        } else if (res.cancel) {
+          let index = this.data.currentAction,
+            actionList = this.data.actionList;
+          if (Array.isArray(actionList[index].data)) {
+            actionList[index].data.push({
+              SS_State: "",
+              open: true
+            });
+          }
+          actionList[index].SM_Count = parseInt(actionList[index].SM_Count) + 1;
+          this.setData({
+            actionList
+          });
+        }
+      }
+    })
   },
   estimate(e) {
     let index = e.currentTarget.dataset.index,
@@ -93,20 +105,19 @@ Page({
     })
   },
   getStartClass() {
-    let time,
-      cp_time = 0;
     service.post('/StartClass', {
       CS_ID: app.globalData.csId || "3245",
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
-      time = Date.now() - new Date(res.data.data[0].StartDate).getTime();
+      let time,
+        cp_time = res.data.data[0].CP_Time;
       cp_time = res.data.data[0].CP_Time;
-      time = parseInt(time / 1000 / 60);
-      if (time > cp_time) {
-        time = cp_time * 60 * 1000
+      if (Date.now() - Date.parse(res.data.data[0].EndDate) > 0) {
+        time = 0;
       } else {
-        time = time > cp_time ? cp_time : time;
-        time = (cp_time - time) * 60 * 1000;
+        time = Date.now() - Date.parse(res.data.data[0].StartDate);
+        cp_time = cp_time * 60 * 1000;
+        time = cp_time - time;
       }
       this.setData({
         startInfo: res.data.data[0],
@@ -163,7 +174,7 @@ Page({
         }
         this.setData({
           actionList: list,
-          titleList:tList
+          titleList: tList
         });
       } else {
         this.getAllAction();
@@ -231,15 +242,14 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-    // console.log('sdd')
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {},
-
+  onUnload: function () {
+    this.saveStartClass();
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */

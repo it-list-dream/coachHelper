@@ -52,7 +52,41 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    this.getPerpareStatus();
+  },
+  getPerpareStatus() {
+    service.post('/OverClass', {
+      CS_ID: app.globalData.csId,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      if (res.data.data1.length > 0) {
+        let {
+          CustWeight,
+          SleepTime,
+          Appetite,
+          Vitality,
+          CustState
+        } = res.data.data1[0];
+        if( CustState == "不好"){
+          currentStatus = 0;
+        }else if(CustState == "一般"){
+          currentStatus = 1;
+        }else if(CustState =="好"){
+          currentStatus = 2;
+        }else{
+          currentStatus = 3;
+        }
+        this.setData({
+          weight: CustWeight,
+          sleepTime: SleepTime,
+          chooseMood:Appetite,
+          chooseActive:Vitality,
+          currentStatus
+        })
+      }
+    })
+  },
   handleclose() {
     this.setData({
       moodShow: false
@@ -119,7 +153,7 @@ Page({
       Vitality: this.data.chooseActive,
       CO_ID: app.globalData.coId,
       CS_ID: app.globalData.csId,
-      RB_ID:0
+      RB_ID: 0
     };
     if (this.data.chooseMood != "" && this.data.chooseActive.length != "" && this.data.weight != "" && this.data.sleepTime != "" && this.data.currentStatus >= 0) {
       service.post('/ReadyClassBeforeSave', {

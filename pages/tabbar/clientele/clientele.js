@@ -45,26 +45,13 @@ Page({
   onLoad: function (options) {
     var that = this;
     app.editTabbar();
-    let query = wx.createSelectorQuery(),
-      tabsList = this.data.tabsList;
+    let query = wx.createSelectorQuery();
     query.select('#search2').boundingClientRect();
     query.exec(function (res) {
       that.setData({
         searchHeight: res[0].height
       });
     });
-    var coach = wx.getStorageSync('coach');
-    if (coach && coach.RoleName == "私教经理") {
-      tabsList.forEach(item => {
-        if (item.name == '私教会员') {
-          item.flag = true;
-        }
-      })
-      this.setData({
-        jurisdiction: 1,
-        tabsList: tabsList
-      });
-    }
     this.getCustomType(0, 0);
   },
   //公海池
@@ -192,8 +179,8 @@ Page({
         this.getCustomType(2, 1);
       }
       this.setData({
-        filterIndex:index,
-        scrollTop:0
+        filterIndex: index,
+        scrollTop: 0
       })
     }
   },
@@ -205,7 +192,8 @@ Page({
         pageIndex: 1,
         memberList: [],
         isEnd: false,
-        scrollTop:0
+        scrollTop: 0,
+        filterIndex:0
       });
       switch (index) {
         case 0:
@@ -252,7 +240,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let tabsList = this.data.tabsList
+    var coach = wx.getStorageSync('coach');
+    if (coach && coach.RoleName == "私教经理") {
+      tabsList.forEach(item => {
+        if (item.name == '私教会员') {
+          item.flag = true;
+        }
+      })
+      this.setData({
+        jurisdiction: 1,
+        tabsList: tabsList
+      });
+    }
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

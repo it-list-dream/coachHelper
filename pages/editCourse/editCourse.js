@@ -1,4 +1,3 @@
-// pages/editCourse/editCourse.js
 var util = require('../../utils/util.js');
 var service = require('../../utils/request.js');
 const app = getApp();
@@ -18,12 +17,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    this.CS_ID = app.globalData.coId;
-    this.CA_ID = options.caId;
-    console.log(this.CA_ID)
-    this.CO_ID = app.globalData.coId;
-    if(options.courseName){
+    this.CS_ID = options.csID;
+    this.CO_ID = options.coId;
+    if (options.courseName) {
       this.setData({
         classTitle: options.courseName
       });
@@ -78,7 +74,7 @@ Page({
       return;
     }
     var jsonStr = {
-      CA_ID: this.CA_ID == "undefined" ? 0 : this.CA_ID,
+      CA_ID: this.CA_ID ? this.CA_ID : 0,
       UI_ID: app.globalData.custom.UI_ID,
       CO_ID: this.CO_ID,
       CS_ID: this.CS_ID,
@@ -96,8 +92,11 @@ Page({
     var that = this;
     if (this.data.warmUpList.length > 0 || this.data.officialList.length > 0 || this.data.relaxList.length > 0) {
       this.saveEditClass(function () {
-        wx.navigateTo({
-          url: `/pages/haveClass/haveClass?cs_id=${that.CS_ID}&co_id=${that.CO_ID}`
+        // wx.navigateTo({
+        //   url: `/pages/haveClass/haveClass?cs_id=${that.CS_ID}&co_id=${that.CO_ID}`
+        // })
+        wx.redirectTo({
+          url: '/pages/haveClass/haveClass',
         })
       });
     } else {

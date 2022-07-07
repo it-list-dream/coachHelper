@@ -252,27 +252,27 @@ Page({
     })
   },
   getCustomClass() {
-    var time,
+    let time,
+      minute = 0,
+      second = 0,
       finishTime = "",
       isEditAll = true;
-    let minute = 0,
-      second = 0;
     service.post('/StartClass', {
       CS_ID: app.globalData.csId || "3245",
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
-      time = new Date(res.data.data[0].ActualData).getTime() - new Date(res.data.data[0].StartDate);
-      if (parseInt(time / 1000 / 60) > res.data.data[0].CP_Time) {
-        time = res.data.data[0].CP_Time + ':00'
-      } else {
-        console.log(time / 60 / 1000)
+      if (res.data.data[0].CustSign > 0) {
+        isEditAll = false;
+      }
+      if(res.data.data[0].ActualData.length>0){
+        time = Date.parse(res.data.data[0].ActualData) - Date.parse(res.data.data[0].StartDate)
         minute = parseInt(time / 60 / 1000) < 10 ? '0' + parseInt(time / 60 / 1000) : parseInt(time / 60 / 1000);
         second = time % 60 < 10 ? '0' + time % 60 : time % 60;
         time = minute + ':' + second;
-      }
-      finishTime = util.format(res.data.data[0].ActualData, 'yyyy.mm.dd').substr(finishTime.length - 5, 5);
-      if (res.data.data[0].CustSign > 0) {
-        isEditAll = false;
+        finishTime = util.format(res.data.data[0].ActualData, 'yyyy.mm.dd').substr(finishTime.length - 5, 5);
+      }else{
+        finishiDate = "--";
+        duration = "--";
       }
       this.setData({
         finishiDate: finishTime,

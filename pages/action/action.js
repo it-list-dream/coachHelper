@@ -209,32 +209,57 @@ Page({
   actionConfrim() {
     var pages = getCurrentPages(); //当前页面
     var prevPage = pages[pages.length - 2]; //上一页面
-    if (this.flag == 1) {
-      var warmUpList = prevPage.data.warmUpList;
-      let list = [...warmUpList, ...this.data.cartList];
-      list.forEach(item => {
-        item.isOpen = false
-      })
+    //根据路由来判断要跳转的页面
+    if (prevPage.route == 'pages/editCourse/editCourse') {
+      if (this.flag == 1) {
+        var warmUpList = prevPage.data.warmUpList;
+        let list = [...warmUpList, ...this.data.cartList];
+        list.forEach(item => {
+          item.isOpen = false
+        })
+        prevPage.setData({
+          warmUpList: list
+        });
+      } else if (this.flag == 2) {
+        var officialList = prevPage.data.officialList;
+        let list = [...officialList, ...this.data.cartList];
+        list.forEach(item => {
+          item.isOpen = false
+        })
+        prevPage.setData({
+          officialList: list
+        })
+      } else if (this.flag == 3) {
+        var relaxList = prevPage.data.relaxList;
+        let list = [...relaxList, ...this.data.cartList];
+        list.forEach(item => {
+          item.isOpen = false
+        });
+        prevPage.setData({
+          relaxList: list
+        })
+      }
+    } else if (prevPage.route == "pages/startClass/startClass") {
+      //将cartList中的数据添加到上课中去
+      let cartList = this.data.cartList,
+        statusList = [],
+        actionList = prevPage.data.actionList,
+        titleList = prevPage.data.titleList;
+      for (let i = 0; i < cartList.length; i++) {
+        cartList[i].ActualCount = 0;
+        for (let j = 0; j < parseInt(cartList[i].SM_Count); j++) {
+          statusList.push({
+            SS_State: "",
+            open: true
+          })
+        }
+        cartList[i].data = statusList;
+        titleList.push(cartList[i].SM_Name);
+      }
+      actionList = [...actionList,...cartList];
       prevPage.setData({
-        warmUpList: list
-      });
-    } else if (this.flag == 2) {
-      var officialList = prevPage.data.officialList;
-      let list = [...officialList, ...this.data.cartList];
-      list.forEach(item => {
-        item.isOpen = false
-      })
-      prevPage.setData({
-        officialList: list
-      })
-    } else if (this.flag == 3) {
-      var relaxList = prevPage.data.relaxList;
-      let list = [...relaxList, ...this.data.cartList];
-      list.forEach(item => {
-        item.isOpen = false
-      });
-      prevPage.setData({
-        relaxList: list
+        titleList:titleList,
+        actionList:actionList
       })
     }
     wx.navigateBack({

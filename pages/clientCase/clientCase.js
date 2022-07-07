@@ -51,6 +51,11 @@ Page({
       })
     })
   },
+  addNewCase(){
+      wx.navigateTo({
+        url: '/pages/chooseCustom/chooseCustom?type=1',
+      })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

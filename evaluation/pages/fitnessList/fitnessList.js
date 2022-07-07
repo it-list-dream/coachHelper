@@ -94,11 +94,7 @@ Page({
       }
       test.push(rb_id);
     } else {
-      for (var j of test) {
-        if (j == rb_id) {
-          test.splice(j, 1);
-        }
-      }
+      test.splice(test.findIndex(item => item == rb_id), 1);
     }
     testList[index].selected = !val;
     that.setData({

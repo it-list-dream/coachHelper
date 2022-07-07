@@ -18,7 +18,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-   // console.log(options)
     if (options.cs_id == 0) {
       this.setData({
         appoinmentStatus: "去预约"
@@ -45,6 +44,7 @@ Page({
           relaxList.push(item)
         }
       })
+
       this.setData({
         navTitle: res.data.data[0].CP_Name,
         warmUpList,
@@ -81,7 +81,7 @@ Page({
     }else{
       wx.navigateTo({
         url: `/pages/editCourse/editCourse?csID=${this.CS_ID}&coId=${this.CO_ID}`,
-      })
+      });
     }
   },
   /**

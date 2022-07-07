@@ -17,8 +17,6 @@ Page({
   onLoad: function (options) {
     // this.coId = options.co_id;
     // this.caId = options.ca_id;
-    //console.log(options.co_id)
-    console.log(app)
     this.setData({
       custom: app.globalData.custom
     });
@@ -48,9 +46,11 @@ Page({
   },
   // 
   getClassStatus(className) {
+    let co_id = app.globalData.coId,
+        cs_id = app.globalData.csId;
     service.post('/CoachActLibDetails', {
-      co_id: app.globalData.coId,
-      cs_id: app.globalData.csId,
+      co_id: co_id,
+      cs_id: cs_id,
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
       var list = res.data.data;
@@ -60,7 +60,7 @@ Page({
         })
       } else {
         wx.navigateTo({
-          url: `/pages/editCourse/editCourse?courseName=${className}`,
+          url: `/pages/editCourse/editCourse?courseName=${className}&coId=${co_id}&csID=${cs_id}`,
         });
       }
     })
@@ -74,13 +74,25 @@ Page({
       isReady = e.currentTarget.dataset.isready;
     app.globalData.csId = cs_id;
     if (cs_id == 0) {
-      wx.showToast({
-        icon: "none",
-        title: '你还未预约，请先去预约',
+      // wx.showToast({
+      //   icon: "none",
+      //   title: '你还未预约，请先去预约',
+      // })
+      wx.showModal({
+        title: '提示',
+        content: '是否需要去约课？',
+        success (res) {
+          if (res.confirm) {
+           wx.navigateTo({
+             url: '/pages/addAppointment/addAppointment?type=0',
+           })
+          }
+        }
       })
       return;
     }
     if (isReady == 1) {
+      app.globalData.navTitle = className;
       wx.navigateTo({
         url: '/pages/startClass/startClass',
       })
@@ -108,7 +120,7 @@ Page({
       });
       this.setData({
         classDetail: list
-      })
+      });
     })
   },
   /**

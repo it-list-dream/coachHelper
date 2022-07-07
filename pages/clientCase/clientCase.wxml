@@ -8,7 +8,7 @@
       </view>
     </navigator>
   </block>
-  <view class="add-clientcase">
+  <view class="add-clientcase" bindtap="addNewCase">
     <text>+</text>添加客户案例
   </view>
 </view>
