@@ -6,7 +6,7 @@
 
 .r-wrap .r-wrap-title {
   position: absolute;
-  top: 28rpx;
+  top: 42rpx;
   left: 0px;
   font-size: 26rpx;
   color: #333333;

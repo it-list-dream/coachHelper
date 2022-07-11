@@ -1,4 +1,5 @@
-var service = require('../../../utils/request.js')
+var service = require('../../../utils/request.js');
+var util = require('../../../utils/util.js')
 Page({
 
   /**
@@ -45,8 +46,6 @@ Page({
         console.log(res.height)
         //375获取屏幕的宽度
         ctx.setFillStyle('#fff');
-        // ctx.rect(0, 0, 750, bgH);
-        // ctx.fill();
         ctx.fillRect(0, 0, 750, bgH + 60);
         ctx.drawImage('/' + res.path, 45, 30, bgW, bgH);
         //设置文字的大小
@@ -65,14 +64,42 @@ Page({
         // ctx.draw();
         //图片路径 裁剪的x坐标 裁剪的y坐标 裁剪的宽 裁剪的高 图片在画布中的x轴 图片画布中的y轴
         //图片在画布中的宽度 和高度  
-        ctx.drawImage(imageList[0], 36 * ratio, 100 * ratio, 142 * ratio, 178 * ratio);
-        ctx.drawImage(imageList[1], 196 * ratio, 100 * ratio, 142 * ratio, 178 * ratio);
-        ctx.drawImage(imageList[2], 36 * ratio, 290 * ratio, 142 * ratio, 178 * ratio);
-        ctx.drawImage(imageList[3], 196 * ratio, 290 * ratio, 142 * ratio, 178 * ratio);
-        ctx.drawImage(imageList[4], 36 * ratio, 480 * ratio, 142 * ratio, 178 * ratio);
-        ctx.drawImage(imageList[5], 196 * ratio, 480 * ratio, 142 * ratio, 178 * ratio);
-        ctx.drawImage(imageList[6], 36 * ratio, 670 * ratio, 142 * ratio, 178 * ratio);
-        ctx.drawImage(imageList[7], 196 * ratio, 670 * ratio, 142 * ratio, 178 * ratio);
+        util.getWxImageInfo(imageList[0].imgurl).then(res=>{
+          ctx.drawImage(res, 36 * ratio, 100 * ratio, 142 * ratio, 178 * ratio);
+        })
+     
+
+        util.getWxImageInfo(imageList[1].imgurl).then(res=>{
+          ctx.drawImage(res, 196 * ratio, 100 * ratio, 142 * ratio, 178 * ratio);
+        })
+       
+        util.getWxImageInfo(imageList[2].imgurl).then(res=>{
+          ctx.drawImage(res, 196 * ratio, 100 * ratio, 142 * ratio, 178 * ratio);
+        })
+
+        util.getWxImageInfo(imageList[3].imgurl).then(res=>{
+          ctx.drawImage(res.path, 196 * ratio, 290 * ratio, 142 * ratio, 178 * ratio);
+        })
+        
+        util.getWxImageInfo(imageList[4].imgurl).then(res=>{
+          ctx.drawImage(res.path, 36 * ratio, 480 * ratio, 142 * ratio, 178 * ratio);
+        })
+      
+
+        util.getWxImageInfo(imageList[5].imgurl).then(res=>{
+          ctx.drawImage(res, 196 * ratio, 480 * ratio, 142 * ratio, 178 * ratio);
+        })
+       
+        util.getWxImageInfo(imageList[6].imgurl).then(res=>{
+          console.log(res)
+          ctx.drawImage(res, 36 * ratio, 670 * ratio, 142 * ratio, 178 * ratio);
+        })
+      
+
+        util.getWxImageInfo(imageList[7].imgurl).then(res=>{
+          ctx.drawImage(res, 196 * ratio, 670 * ratio, 142 * ratio, 178 * ratio);
+        })
+ 
         ctx.setFontSize(16 * ratio);
         ctx.setTextAlign('left');
         ctx.fillText('体重', 44 * ratio, 916 * ratio);
@@ -83,6 +110,7 @@ Page({
         ctx.fillText('0.0kg', 320 * ratio, 920 * ratio);
         ctx.fillText('25.4%', 320 * ratio, 956 * ratio);
         ctx.fillText('脂肪量', 320 * ratio, 996 * ratio);
+        return;
         ctx.draw(true, () => {
           setTimeout(() => {
             wx.canvasToTempFilePath({

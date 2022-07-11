@@ -15,7 +15,7 @@
         {
           "name": "添加预约",
           "pathName": "pages/addAppointment/addAppointment",
-          "query": "",
+          "query": "type=0",
           "scene": null
         },
         {
@@ -327,6 +327,12 @@
         {
           "name": "教练风采",
           "pathName": "pages/coachMien/coachMien",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "客户详情",
+          "pathName": "pages/customerDetail/customerDetail",
           "query": "",
           "scene": null
         }

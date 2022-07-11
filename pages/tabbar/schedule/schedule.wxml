@@ -4,12 +4,12 @@
     bind:change="tabClick">
     <van-tab title="私教">
       <block wx:for="{{appoinmentList}}" wx:key="CS_ID">
-        <view class="course-content">
+        <view class="tabs-item private-edu">
           <view class="left-box">
             <view class="left-title">{{item.UI_Name}}:{{item.CP_Name}}</view>
             <view class="time-wrapper">
               <image src="/assets/images/time.png" class="time"></image>
-              <text class="quantum">{{item.startTime}}--{{item.endTime}}</text>
+              <text class="quantum">{{item.startTime}} - {{item.endTime}}</text>
             </view>
           </view>
           <view class="right-box">
@@ -27,11 +27,11 @@
     </van-tab>
     <van-tab title="自定义">
       <block wx:for="{{otherAppoinmentList}}" wx:for-index="idx" wx:key="idx">
-        <view class="course-content">
+        <view class="customize tabs-item">
           <view class="left-title">{{item.UI_Name?item.UI_Name+'：':''}}{{item.TypeName}}</view>
           <view class="time-wrapper">
             <image src="/assets/images/time.png" class="time"></image>
-            <text class="quantum">{{item.startTime}}--{{item.endTime}}</text>
+            <text class="quantum">{{item.startTime}} - {{item.endTime}}</text>
           </view>
         </view>
       </block>

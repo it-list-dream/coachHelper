@@ -11,48 +11,57 @@
         <view class="from-col">
             <view>课程类型</view>
             <view class="from-item" bindtap="chooseclasstype">
-                <text class="{{selectedClass.CP_Name?'active-text':''}}" >{{selectedClass.CP_Name.length>0?selectedClass.CP_Name:'请选择课程类型'}}</text>
+                <text
+                    class="{{selectedClass.CP_Name?'active-text':''}}">{{selectedClass.CP_Name.length>0?selectedClass.CP_Name:'请选择课程类型'}}</text>
                 <image src="/assets/images/right_arrow.png" />
             </view>
         </view>
-        <class-type poupon-height="80vh" is-show="{{showclass}}" classes="{{classtypeList}}" bind:cancel="handleCancel" bind:confrim="bindConfrim"></class-type>
+        <class-type poupon-height="80vh" is-show="{{showclass}}" classes="{{classtypeList}}" bind:cancel="handleCancel"
+            bind:confrim="bindConfrim"></class-type>
         <view class="from-col">
             <view>上课时间</view>
             <view class="date">
-                <datetimepicker isHalf="{{true}}" id="date-time-picker" 
-                bind:bindMultiPickerChange="bindMultiPickerChange" bind:bindCancel="bindCancel"></datetimepicker>
+                <datetimepicker isHalf="{{true}}" id="date-time-picker"
+                    bind:bindMultiPickerChange="bindMultiPickerChange" bind:bindCancel="bindCancel"></datetimepicker>
                 <image src="/assets/images/right_arrow.png" />
             </view>
         </view>
         <view class="from-col last">
             <view>训练计划</view>
             <view class="from-item" bindtap="trianPlain">
-                <text class="{{selectedPlan.TemplateName?'active-text':''}}">{{selectedPlan.TemplateName?selectedPlan.TemplateName:'请选择训练计划'}}</text>
+                <text
+                    class="{{selectedPlan.TemplateName?'active-text':''}}">{{selectedPlan.TemplateName?selectedPlan.TemplateName:'请选择训练计划'}}</text>
                 <image src="/assets/images/right_arrow.png" />
             </view>
         </view>
         <!-- 训练计划 -->
-        <van-popup catchtouchmove="{{true}}" show="{{ trianPlain }}" position="bottom" custom-style="height: 420rpx;" bind:close="onClose2">
+        <van-popup catchtouchmove="{{true}}" show="{{ trianPlain }}" position="bottom" custom-style="height: 50%"
+            bind:close="onClose2">
             <view class="choosePlain">
                 <text class="no-choose" bindtap="onClose2">暂不选择</text>
                 <view class="plain-title">选择训练计划</view>
             </view>
-            <view class="pain-content">
-                <view class="pain-item" wx:for="{{trainPlanList}}"  bindtap="chooseClassPlan" wx:for-item="plan" wx:key="AT_ID" data-index="{{index}}">
-                   {{plan.TemplateName}}
+            <scroll-view class="scroll-y" scroll-y :enhanced="true" :show-scrollbar="false" bindscrolltolower="loadMore">
+                <view class="pain-content">
+                    <view class="pain-item" wx:for="{{trainPlanList}}" bindtap="chooseClassPlan" wx:for-item="plan"
+                        wx:key="AT_ID" data-index="{{index}}">
+                        {{plan.TemplateName}}
+                    </view>
                 </view>
-            </view>
+            </scroll-view>
         </van-popup>
     </view>
     <view class="otherorder-from" wx:elif="{{isOthers == 1}}">
         <view class="from-col">
             <view>事件</view>
             <view class="from-item" bindtap="eventPoupon">
-                <text class="{{eventTypeText.length>0?'active-text':''}}">{{eventTypeText.length>0?eventTypeText:'请选择事件类型'}}</text>
+                <text
+                    class="{{eventTypeText.length>0?'active-text':''}}">{{eventTypeText.length>0?eventTypeText:'请选择事件类型'}}</text>
                 <image src="/assets/images/right_arrow.png" />
             </view>
         </view>
-        <van-popup catchtouchmove="{{true}}" show="{{ isEvent }}" position="bottom" custom-style="height: 540rpx;" bind:close="eventClose">
+        <van-popup catchtouchmove="{{true}}" show="{{ isEvent }}" position="bottom" custom-style="height: 540rpx;"
+            bind:close="eventClose">
             <view class="event-box">
                 <view class="event-title">
                     <text class="eventCancel" bindtap="eventClose">取消</text>
@@ -62,8 +71,8 @@
                 <view class="eventContent">
                     <block wx:for="{{eventList}}" wx:for-index="i" wx:key="i">
                         <view class="eventType" bindtap="handleEvent" data-index="{{i}}">
-                           <text style="color:{{item.checked?'#2564F6':'#222222'}}">{{item.event_name}}</text>
-                           <image src="/assets/images/double.png" wx:if="{{item.checked}}"></image>
+                            <text style="color:{{item.checked?'#2564F6':'#222222'}}">{{item.event_name}}</text>
+                            <image src="/assets/images/double.png" wx:if="{{item.checked}}"></image>
                         </view>
                     </block>
                 </view>
@@ -80,7 +89,8 @@
         <view class="from-col">
             <view>开始时间</view>
             <view class="from-item">
-                <datetimepicker  id="date-time-picker" bind:bindMultiPickerChange="bindMultiPickerChange" bind:bindCancel="bindCancel"></datetimepicker>
+                <datetimepicker id="date-time-picker" bind:bindMultiPickerChange="bindMultiPickerChange"
+                    bind:bindCancel="bindCancel"></datetimepicker>
                 <image src="/assets/images/right_arrow.png" />
             </view>
         </view>
@@ -89,14 +99,15 @@
             <view class="from-item">
                 <!-- <text>请选择结束时间</text> -->
                 <picker mode="time" header-text="结束时间" value="{{endTime}}" bindchange="selectedTime">
-                <text class="{{endTime.length>0?'active-text':''}}">{{endTime.length>0?endTime:'请选择结束时间'}}</text>
+                    <text class="{{endTime.length>0?'active-text':''}}">{{endTime.length>0?endTime:'请选择结束时间'}}</text>
                 </picker>
                 <image src="/assets/images/right_arrow.png" />
             </view>
         </view>
     </view>
     <view class="remark">
-        <textarea class="mark-text" id="" cols="30" rows="10" placeholder="请输入备注信息" placeholder-style="color: #A7A7A7;" value="{{remarkText}}" bindinput="handleRemark"></textarea>
+        <textarea class="mark-text" id="" cols="30" rows="10" placeholder="请输入备注信息" placeholder-style="color: #A7A7A7;"
+            value="{{remarkText}}" bindinput="handleRemark"></textarea>
     </view>
     <view class="savelist">
         <button size="mini" class="save-btn" bindtap="saveAppointment">保存</button>

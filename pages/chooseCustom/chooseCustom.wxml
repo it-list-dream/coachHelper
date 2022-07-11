@@ -1,35 +1,38 @@
 <view>
   <view class="serach-box">
     <van-search value="{{searchText}}" placeholder="请输入会员姓名、手机号" bind:change="seachChange" bind:cancel="seachCancel" />
-    <!-- <image class="add" src="/assets/images/add2.png" bindtap="addPeople"></image> -->
   </view>
+
+  <scroll-view wx:if="{{appoinment == 1}}" class="tab-item" style="height:calc(100vh - {{searchHeight}}px)" scroll-y
+    bindscrolltolower="loadAppoinment">
+    <view class="custom-list" bindtap="selectCustom" wx:for="{{appoinmentList}}" wx:key="index" data-index="{{index}}">
+      <image src="/assets/images/photo.png" class="header" wx:if="{{item.img.indexOf('http') ==-1}}"></image>
+      <view class="h1" wx:else>{{item.firstName}}</view>
+      <view class="custom-info">
+        <view>{{item.UI_Name}}</view>
+        <view>{{item.UI_Phone}}</view>
+      </view>
+    </view>
+  </scroll-view>
   <!-- tabs -->
-  <slideTab tList="{{tabsList}}" bind:changeCurrent="swichNav" bind:scrollHeight="getTabHeight"
-    currentTab="{{currentActive}}">
-    <scroll-view class="tab-item" style="height:calc(100vh - {{searchHeight}}px - {{tabsHeight}}px)" scroll-y bindscrolltolower="loadMore">
-      <block wx:if="{{currentActive ==0}}">
-        <view class="custom-list" bindtap="selectCustom" data-member="{{item}}" wx:for="{{recentlyList}}"
-          wx:key="index">
-          <image src="/assets/images/photo.png" class="header" wx:if="{{item.img.indexOf('http') ==-1}}"></image>
-          <view class="h1" wx:else>{{item.firstName}}</view>
-          <view class="custom-info">
-            <view>{{item.UI_Name}}</view>
-            <view>{{item.UI_Phone}}</view>
-          </view>
+  <slideTab wx:else tList="{{tabsList}}" bind:changeCurrent="swichNav" bind:scrollHeight="getTabHeight" currentTab="{{active}}"
+    isBorder="{{true}}">
+    <scroll-view class="tab-item" style="height:calc(100vh - {{searchHeight}}px - {{tabsHeight}}px)" scroll-y
+      bindscrolltolower="loadMore" scroll-top="{{scrollTop}}">
+      <!--  -->
+      <view class="power" wx:if="{{jurisdiction && active ==0 }}">
+        <text style="color:{{isBelong == 0?'#2564F6':''}}" bindtap="ismyMember" data-index="0">全部私教会员</text>
+        <text style="color:{{isBelong == 1?'#2564F6':''}}" bindtap="ismyMember" data-index="1">所属自己会员</text>
+      </view>
+      <!--  -->
+      <view class="custom-list" bindtap="selectCustom" data-member="{{item}}" wx:for="{{memberList}}" wx:key="index">
+        <image src="/assets/images/photo.png" class="header" wx:if="{{item.img.indexOf('http') ==-1}}"></image>
+        <view class="h1" wx:else>{{item.firstName}}</view>
+        <view class="custom-info">
+          <view>{{item.UI_Name}}</view>
+          <view>{{item.UI_Phone}}</view>
         </view>
-        <view class="no-custom" hidden="{{!recentlyList}}">暂无最近联系</view>
-      </block>
-      <block wx:else>
-        <view class="custom-list" bindtap="selectCustom" wx:for="{{allmemberList}}" data-member="{{item}}"
-          wx:key="index">
-          <image src="/assets/images/photo.png" class="header" wx:if="{{item.img.indexOf('http') ==-1}}"></image>
-          <view class="h1" wx:else>{{item.firstName}}</view>
-          <view class="custom-info">
-            <view>{{item.UI_Name}}</view>
-            <view>{{item.UI_Phone}}</view>
-          </view>
-        </view>
-      </block>
+      </view>
     </scroll-view>
   </slideTab>
 </view>

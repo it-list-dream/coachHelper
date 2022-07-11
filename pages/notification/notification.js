@@ -9,7 +9,7 @@ Page({
     tabList: ['生日提醒', '进场提醒', '课程到期提醒'],
     active: 0,
     scrollHeight: 0,
-    birdthdayList: []
+    newsList:[]
   },
 
   /**
@@ -41,7 +41,7 @@ Page({
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
       this.setData({
-        birdthdayList: res.data.data
+        newsList: res.data.data
       })
     })
   },
@@ -54,7 +54,7 @@ Page({
         item.CO_ActiveEnd = util.format( item.CO_ActiveEnd,'yyyy-mm-dd');
       });
       this.setData({
-        expireList: list
+        newsList: list
       })
     })
   },
@@ -67,7 +67,7 @@ Page({
         item.time = util.format( item.Createdate,'yyyy-mm-dd hh:mm').substr(11);
       });
       this.setData({
-        checkInList: list
+        newsList: list
       })
     })
   },
@@ -125,13 +125,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

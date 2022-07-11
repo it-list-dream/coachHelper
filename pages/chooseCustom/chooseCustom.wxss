@@ -12,9 +12,11 @@
   padding: 0 !important;
   margin-left: 18rpx !important;
 }
-.van-icon{
+
+.van-icon {
   color: #CEC8CB !important;
 }
+
 .serach-box>.add {
   width: 40rpx;
   height: 40rpx;
@@ -29,10 +31,25 @@
   height: 160rpx;
   box-sizing: border-box;
 }
-.tab-item .custom-list:first-child{
+
+/*  */
+.tab-item .power {
+  height: 100rpx;
+}
+
+.tab-item .power text {
+  line-height: 100rpx;
+  padding: 0 30rpx;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+/*  */
+.tab-item .custom-list:first-child {
   padding-top: 18rpx;
   box-sizing: content-box !important;
 }
+
 .custom-list::after {
   content: "";
   position: absolute;
@@ -74,11 +91,12 @@
   background-color: #4980FB;
   color: #ffffff;
 }
-.no-custom{
+
+.no-custom {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size:34rpx;
+  font-size: 34rpx;
   color: #666666;
 }

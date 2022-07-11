@@ -79,7 +79,6 @@
             <text class="rank-rows">{{item.AI_Name}}</text>
             <text class="rank-rows">{{item.Amount}}</text>
           </view>
-          <van-empty image="/assets/images/none.png" description="暂无信息" />
         </view>
       </view>
     </van-tab>

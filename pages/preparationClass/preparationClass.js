@@ -56,6 +56,7 @@ Page({
     this.getPerpareStatus();
   },
   getPerpareStatus() {
+    let currentStatus;
     service.post('/OverClass', {
       CS_ID: app.globalData.csId,
       gi_id: wx.getStorageSync('gi_id')

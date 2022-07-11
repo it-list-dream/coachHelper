@@ -37,7 +37,10 @@ Page({
     ],
     endTime: '',
     eventTypeText: "",
-    pageIndex: 1
+    custom:{},
+    pageIndex: 1,
+    pageSize:10,
+    pageTotal:0
   },
   /**
    * 生命周期函数--监听页面加载
@@ -45,15 +48,16 @@ Page({
   onLoad: function (options) {
     this.setData({
       isOthers: options.type || 1,
-    })
+    });
+    this.getActTemplate();
   },
   chooseCustom() {
     wx.navigateTo({
-      url: '/pages/chooseCustom/chooseCustom?type=6',
+      url: '/pages/chooseCustom/chooseCustom?type=6&appoinment=1',
     })
   },
   chooseclasstype() {
-    if (!this.data.custom.UI_ID) {
+    if (!this.data.custom.FK_UI_ID) {
       wx.showToast({
         icon: "none",
         title: '请先选择会员',
@@ -61,7 +65,7 @@ Page({
       return;
     }
     service.post('/TeachUserClass', {
-      UI_ID: this.data.custom.UI_ID,
+      UI_ID: this.data.custom.FK_UI_ID,
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
       // console.log(res.data.data)
@@ -77,22 +81,40 @@ Page({
     })
   },
   trianPlain() {
-    if (!this.data.custom.UI_ID) {
+    if (!this.data.custom.FK_UI_ID) {
       wx.showToast({
         icon: "none",
         title: '请先选择会员',
       })
       return;
     }
+    this.setData({
+      trianPlain:true
+    });
+  },
+  loadMore(){
+    if(this.data.pageIndex <= this.data.pageTotal ){
+        let curr_page = this.data.pageIndex;
+        curr_page ++;
+        this.setData({
+          pageIndex:curr_page
+        });
+        this.getActTemplate()
+    }else{
+      console.log('已经到底了')
+    }
+  },
+  getActTemplate(){
     service.post('/ActLibTemplateList', {
       pageIndex: this.data.pageIndex,
-      pageSize: 100,
+      pageSize: 10,
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
-      console.log(res)
+      let trainList = this.data.trainPlanList;  
+      let total = Math.floor((res.data.recordCount + this.data.pageSize - 1) / this.data.pageSize);
       this.setData({
-        trianPlain: true,
-        trainPlanList: res.data.data
+        trainPlanList: [...trainList,...res.data.data],
+        pageTotal:total
       })
     })
   },
@@ -117,7 +139,7 @@ Page({
   saveAppointment() {
     let toastContent = "";
     if (this.data.isOthers == 0) {
-      if (!this.data.custom.UI_ID) {
+      if (!this.data.custom.FK_UI_ID) {
         toastContent = "请选择客户";
       } else if (!this.data.selectedClass) {
         toastContent = "请选择课程类型";
@@ -135,7 +157,7 @@ Page({
     } else {
       if (this.data.eventTypeText.length == 0) {
         toastContent = "请选择事件";
-      } else if (this.data.eventTypeText != "其他" && !this.data.custom.UI_ID) {
+      } else if (this.data.eventTypeText != "其他" && !this.data.custom.FK_UI_ID) {
         toastContent = "请选择客户";
       } else if (!this.date && endTime.length == 0) {
         toastContent = "请选择开始时间或结束时间";
@@ -217,11 +239,12 @@ Page({
       e_minute = s_minute + cp_time - 60 * parseInt((cp_time + s_minute) / 60);
     }
     time = util.subTen(s_hour) + ":" + util.subTen(s_minute) + "-" + util.subTen(e_hour) + ":" + util.subTen(e_minute);
+    return;
     service.post('/Coach_SpendAddFromCoach', {
       Content: this.data.remarkText,
       templateId: this.data.selectedPlan ? this.data.selectedPlan.AT_ID : 0,
       CO_ID: this.data.selectedClass.CO_ID,
-      UI_ID: this.data.custom.UI_ID,
+      UI_ID: this.data.custom.FK_UI_ID,
       FK_CP_ID: this.data.selectedClass.CP_ID,
       SpendDate: spendDate,
       Time: time,
@@ -233,10 +256,10 @@ Page({
     })
   },
   saveOthersSchedule() {
-    console.log(this.date);
+   // console.log(this.date);
     let s_date = this.date[0] + "-" + util.subTen(this.date[1]) + "-" + util.subTen(this.date[2]);
     var jsonStr = {
-      UI_ID: this.data.custom.UI_ID?this.data.custom.UI_ID:0,
+      UI_ID: this.data.custom.FK_UI_ID?this.data.custom.FK_UI_ID:0,
       StartDate: s_date + " " + this.date[3] + ":" + this.date[4],
       EndDate: s_date + " " + this.data.endTime,
       Remarks: this.data.remarkText,
@@ -261,9 +284,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      custom: app.globalData.custom
-    })
+ 
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

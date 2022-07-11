@@ -21,22 +21,22 @@
   </view>
   <view class="custom-content">
     <view class="custom-grid">
-      <navigator hover-class="none" url="/pages/chooseCustom/chooseCustom?type=0" class="grid-item">
+      <view class="grid-item" bindtap="selectGrid" data-index="1">
         <image src="/assets/images/customer-detail/1.png"></image>
         <text>调查问卷</text>
-      </navigator>
-      <navigator hover-class="none" url="/pages/chooseCustom/chooseCustom?type=3" class="grid-item">
+      </view>
+      <view class="grid-item" bindtap="selectGrid" data-index="2">
         <image src="/assets/images/customer-detail/2.png"></image>
         <text>训练方案</text>
-      </navigator>
-      <navigator hover-class="none" url="/pages/chooseCustom/chooseCustom?type=5" class="grid-item">
+      </view>
+      <view class="grid-item" bindtap="selectGrid" data-index="3">
         <image src="/assets/images/customer-detail/3.png"></image>
         <text>训练计划</text>
-      </navigator>
-      <navigator hover-class="none" url="/pages/chooseCustom/chooseCustom?type=4" class="grid-item">
+      </view>
+      <view class="grid-item" bindtap="selectGrid" data-index="4">
         <image src="/assets/images/customer-detail/4.png"></image>
         <text>课程规划</text>
-      </navigator>
+      </view>
     </view>
     <!--服务教练-->
     <view class="service-coach">
@@ -57,8 +57,8 @@
         bind:change="tabChange" border>
         <van-tab title="客户动态">
           <view class="sub-order-step">
-            <text class="sub-order-no">2022年</text>
-            <block wx:for="{{dynamicList}}">
+            <!-- <text class="sub-order-no">2022年</text> -->
+            <block wx:for="{{dynamicList}}" wx:key="*this">
               <ct-step class="step-custom" step="{{item}}"></ct-step>
             </block>
           </view>
@@ -90,8 +90,8 @@
     </view>
   </view>
   <!-- 添加跟进 -->
-  <ct-dialog is-show="{{isAdd}}" limit="140" dialog-title="添加跟进记录" bind:cancelEvent="cancel"
-    bind:confirmEvent="confrim"></ct-dialog>
+  <ct-dialog is-show="{{isAdd}}" limit="140" dialog-title="添加跟进记录" bind:cancelEvent="cancelRewords"
+    bind:confirmEvent="confrimRewords"></ct-dialog>
   <!--  -->
   <van-popup catchtouchmove="true" show="{{ isFollow }}" bind:close="onClose">
     <view class="select-list">

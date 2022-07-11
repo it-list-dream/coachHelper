@@ -8,7 +8,7 @@ Page({
    */
   data: {
     // tabsList: ['客户动态', '跟进记录'],
-    tabIndex: 1,
+    tabIndex: 0,
     addRecords: false,
     //记录数组
     recordsList: [],
@@ -30,7 +30,10 @@ Page({
     e_date: "",
     dynamicList: [],
     pageIndex: 1,
+    allTotal: 0,
     followupList: [],
+    f_index:1,
+    f_total:0,
     isAdd: false,
     serviceCoach: [],
     distributionList: []
@@ -46,7 +49,7 @@ Page({
     this.year = year;
     this.month = month;
     this.day = day;
-    let hobbyTags = app.globalData.custom.TrainTarget.length > 0 ? app.globalData.custom.TrainTarget.split(',') : [];
+    // let hobbyTags = app.globalData.custom.TrainTarget.length > 0 ? app.globalData.custom.TrainTarget.split(',') : [];
     let coach = wx.getStorageSync('coach'),
       isAllow = false;
     if (coach.RoleName == '私教经理') {
@@ -56,7 +59,7 @@ Page({
       startDate: year + '-' + util.subTen(month) + '-' + '01',
       endDate: year + '-' + util.subTen(month) + '-' + day,
       custom: app.globalData.custom,
-      hobbyTags,
+      // hobbyTags,
       allowAllocation: isAllow
     })
     this.getUserDynamic();
@@ -84,20 +87,31 @@ Page({
   },
   getUserDynamic() {
     service.post('/UserDynamic', {
-      UI_ID: app.globalData.custom.UI_ID || "3843",
+      UI_ID: app.globalData.custom.UI_ID || "4233",
       gi_id: wx.getStorageSync('gi_id'),
       pageIndex: this.data.pageIndex,
-      pageSize: 100
+      pageSize: 10
     }).then(res => {
-      let list = res.data.data,
+      let actList = res.data.data,
         dateList = [],
         dynamicList = [],
         dynamicChild = [];
-      for (let i = 0; i < list.length; i++) {
-        list[i].date = util.format(list[i].Createdate, 'yyyy.mm.dd').substr(5);
-        list[i].time = util.format(list[i].Createdate, 'yyyy.mm.dd hh:mm').substr(11);
-        if (!dateList.includes(list[i].date)) {
-          dateList.push(list[i].date);
+        //分页
+      let total = Math.floor((res.data.recordCount + 10 - 1) / 10);
+      for (let i = 0; i < actList.length; i++) {
+        actList[i].time = util.format(actList[i].Createdate, 'yyyy.mm.dd hh:mm').substr(11);
+        actList[i].date = util.format(actList[i].Createdate, 'yyyy.mm.dd').substr(5);
+        actList[0].flag = 1;
+        actList[i].fullDate = util.format(actList[i].Createdate, 'yyyy.mm.dd')
+        if (i + 1 < actList.length) {
+          if (actList[i].cYear == actList[i + 1].cYear) {
+            actList[i + 1].flag = 0;
+          } else {
+            actList[i + 1].flag = 1;
+          }
+        }
+        if (!dateList.includes(actList[i].fullDate)) {
+          dateList.push(actList[i].fullDate);
         }
       }
       for (let j = 0; j < dateList.length; j++) {
@@ -105,26 +119,28 @@ Page({
           date: dateList[j],
           children: []
         });
-        for (let k = 0; k < list.length; k++) {
-          if (dateList[j] == list[k].date) {
-            dynamicChild.push(list[k]);
+        for (let k = 0; k < actList.length; k++) {
+          if (dateList[j] == actList[k].fullDate) {
+            dynamicChild.push(actList[k]);
           }
         }
         dynamicList[j].children = dynamicChild;
         dynamicChild = [];
       }
       this.setData({
-        dynamicList: dynamicList
+        allTotal: total,
+        dynamicList:[...this.data.dynamicList,... dynamicList]
       })
     })
   },
   getUserFollowUp(searchDate, endDate) {
+    //f_index:1,  f_total:0,
     service.post('/UserFollowUp', {
       UI_ID: app.globalData.custom.UI_ID || "3887",
       gi_id: wx.getStorageSync('gi_id'),
       SearchDate: searchDate,
       endDate: endDate,
-      pageIndex: this.data.pageIndex,
+      pageIndex: this.data.f_index,
       pageSize: 100,
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
@@ -210,7 +226,12 @@ Page({
   getTagValue(e) {
     this.getUserFollowUp(this.data.startDate, this.data.endDate)
   },
-  confrim(e) {
+  cancelRewords() {
+    this.setData({
+      isAdd: false
+    })
+  },
+  confrimRewords(e) {
     let value = e.detail;
     if (value.length > 0) {
       service.post('/UserFollowUpDetailAdd', {
@@ -225,7 +246,6 @@ Page({
         this.getUserFollowUp(this.data.startDate, this.data.endDate);
       })
     }
-
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -297,19 +317,38 @@ Page({
   addFollow2(e) {
     this.setData({
       isAdd: true
-    })
+    });
+  },
+  selectGrid(e) {
+    let index = Number(e.currentTarget.dataset.index);
+    app.globalData.custom = this.data.custom;
+    switch (index) {
+      case 1:
+        wx.navigateTo({
+          url: '/questionnaire/pages/questionList/questionList',
+        });
+        break;
+      case 2:
+        wx.navigateTo({
+          url: '/pages/trainning/trainning',
+        });
+        break;
+      case 3:
+        wx.navigateTo({
+          url: '/pages/trainPlan/trainPlan',
+        });
+        break;
+      case 4:
+        wx.navigateTo({
+          url: '/pages/coursePlanning/coursePlanning',
+        });
+        break;
+    }
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
 
   },
 
@@ -321,16 +360,23 @@ Page({
   },
 
   /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    let curr_page = 0;
+    if(this.data.tabIndex == 0){
+       if(this.data.pageIndex < this.data.allTotal){
+         curr_page = this.data.pageIndex;
+         curr_page ++;
+         this.setData({
+          pageIndex:curr_page
+        });
+        this.getUserDynamic();
+       }else{
+         console.log('到底了')
+       }
+    }else{
 
+    }
   }
 })

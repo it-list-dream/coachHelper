@@ -1,3 +1,11 @@
+.step-title {
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 54rpx;
+}
+
 /* 每一行数据容器 */
 .r-wrap {
   position: relative;

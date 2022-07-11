@@ -11,22 +11,24 @@
   padding: 34rpx 30rpx 0;
 }
 
-.course-content {
-  position: relative;
+.private-edu {
   display: flex;
   justify-content: space-between;
+}
+
+.tabs-item {
+  position: relative;
   width: 690rpx;
   height: 180rpx;
   margin: 0 auto 30rpx;
   background: #FFFFFF;
   box-shadow: 0px 0px 20rpx 0px rgba(102, 102, 102, 0.1);
-  border-radius: 9rpx;
-  padding: 0 40rpx;
+  border-radius: 10rpx;
   box-sizing: border-box;
-  overflow: hidden;
+  padding:30rpx 30rpx 0;
 }
 
-.course-content::before {
+.tabs-item::before {
   content: '';
   position: absolute;
   top: 0;
@@ -37,23 +39,20 @@
   border-radius: 8rpx 0px 0px 8rpx;
 }
 
+.left-box {
+  margin-left: 18rpx;
 
-.left-title {
-  margin-top: 40rpx;
+}
+
+.left-box .left-title {
+  padding-top: 10rpx;
   font-size: 32rpx;
-  font-weight: 500;
+  font-family: PingFang SC;
   color: #333333;
 }
 
-.time-wrapper {
-  margin-top: 16rpx;
-}
-
-.time-wrapper .quantum {
-  font-size: 30rpx;
-  color: #6C6C6C;
-  vertical-align: middle;
-  margin-left: 18rpx;
+.time-wrapper{
+  margin-top: 22rpx;
 }
 
 .time-wrapper .time {
@@ -62,9 +61,14 @@
   vertical-align: middle;
 }
 
-.right-box{
-  margin-top: 30rpx;
+.time-wrapper .quantum {
+  margin-left: 12rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  color: #6C6C6C;
 }
+
+
 .right-box .status {
   display: block;
   width: 120rpx;
@@ -95,6 +99,9 @@
   color: #2564F6;
 }
 
+.customize>view{
+  margin-left: 18rpx;
+}
 /* add-appointment */
 .add-appointment {
   display: flex;
@@ -104,7 +111,7 @@
   height: 180rpx;
   background: #FFFFFF;
   box-shadow: 0px 0px 20rpx 0px rgba(102, 102, 102, 0.1);
-  border-radius: 9rpx;
+  border-radius: 10rpx;
   margin-bottom: 120rpx;
 }
 

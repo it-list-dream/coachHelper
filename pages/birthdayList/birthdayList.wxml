@@ -4,8 +4,8 @@
     <block wx:for="{{tabList}}" wx:key="index">
       <van-tab title="{{item}}">
         <scroll-view class="scroll-y" style="height:{{scrollHeight}}px;" scroll-y>
-          <block wx:for="{{birthdayList}}" wx:for-index="i" wx:key="i">
-            <view class="birthday-content">
+          <block wx:if="{{birthdayList.length>0}}">
+            <view class="birthday-content" wx:for="{{birthdayList}}" wx:for-index="i" wx:key="i">
               <view class="birthday-item">
                 <image src="{{item.UI_Face?item.UI_Face:'/assets/images/header.png'}}"></image>
                 <view class="birthday-info">
@@ -18,6 +18,7 @@
               </view>
             </view>
           </block>
+          <van-empty wx:else image="/assets/images/none.png" description="暂无信息" />
         </scroll-view>
       </van-tab>
     </block>

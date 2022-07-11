@@ -89,18 +89,66 @@ var showModal = (params) => {
     wx.showModal({
       title: params.title || "",
       content: params.content || "",
-      showCancel:params.showCancel || true,
-      cancelText:params.cancelText || "取消",
-      confirmText:params.confirmText || "确定",
+      showCancel: params.showCancel || true,
+      cancelText: params.cancelText || "取消",
+      confirmText: params.confirmText || "确定",
       success(res) {
-         resolve(res);
+        resolve(res);
       },
-      fail(err){
+      fail(err) {
         reject(err);
       }
     })
   })
 
+}
+
+
+const getWxImageInfo = (imgPath) => {
+  return new Promise((resolve, reject) => {
+    wx.getImageInfo({
+      src: imgPath,
+      success: res => {
+        resolve(res)
+      },
+      fail: res => {
+        reject(res)
+      }
+    })
+  })
+}
+const getShape = (shape) => {
+  let shapeStaus = "";
+  switch (Number(shape)) {
+    case 1:
+      shapeStaus = "隐形肥胖型";
+      break;
+    case 2:
+      shapeStaus = "肌肉不足型";
+      break;
+    case 3:
+      shapeStaus = "消瘦型";
+      break;
+    case 4:
+      shapeStaus = "脂肪过多型";
+      break;
+    case 5:
+      shapeStaus = "健康匀称型";
+      break;
+    case 6:
+      shapeStaus = "低脂肪型";
+      break;
+    case 7:
+      shapeStaus = "肥胖型";
+      break;
+    case 8:
+      shapeStaus = "超重肌肉型";
+      break;
+    case 9:
+      shapeStaus = "运动员型";
+      break;
+  }
+  return shapeStaus;
 }
 module.exports = {
   format,
@@ -109,5 +157,7 @@ module.exports = {
   yesterday,
   throttle,
   filterFn,
-  showModal
+  showModal,
+  getWxImageInfo,
+  getShape
 }

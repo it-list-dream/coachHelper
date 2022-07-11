@@ -121,11 +121,11 @@ Page({
       })
     }
   },
-  addPeople() {
-    wx.navigateTo({
-      url: '/pages/addCustom/addCustom',
-    });
-  },
+  // addPeople() {
+  //   wx.navigateTo({
+  //     url: '/pages/addCustom/addCustom',
+  //   });
+  // },
   memberDetail(e) {
     let member = e.currentTarget.dataset.member;
     app.globalData.custom = member;

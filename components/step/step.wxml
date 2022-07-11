@@ -1,30 +1,33 @@
-<view class="r-wrap">
-  <!-- 每一条数据 -->
-  <view class="r-wrap-title">{{step.date}}</view>
-  <view class="r1">
-    <view class="r-wrap-item" wx:for="{{step.children}}" wx:key="index">
-      <!-- 左子项 -->
-      <view class="r-item-left">
-        <!-- 左子项上块 -->
-        <view class="r-item-left-crd {{index== 0 ?'first':''}} "></view>
-        <!-- 点 -->
-        <view class="r-point-wrap">
-          <view class="r-point-item"></view>
-        </view>
-        <!-- 左子项下块 -->
-        <view class="r-item-left-crd {{index == step.children.length - 1?'last':''}}"></view>
-      </view>
-      <!-- 右子项 -->
-      <view class="r-item-right">
-        <!-- 内容 -->
-        <view class="r-item-right-content">
-          <view class="r-item-text">
-            <text>{{item.time}}</text>
-            <text>{{item.DynamicType}}</text>
+<block wx:for="{{step.children}}" wx:key="index">
+  <view class="step-title" wx:if="{{item.flag == 1}}">{{item.cYear}}</view>
+  <view class="r-wrap">
+    <!-- 每一条数据 -->
+    <view class="r-wrap-title" wx:if="{{index == 0}}">{{item.date}}</view>
+    <view class="r1">
+      <view class="r-wrap-item">
+        <!-- 左子项 --> 
+        <view class="r-item-left">
+          <!-- 左子项上块 -->
+          <view class="r-item-left-crd {{index== 0 ?'first':''}} "></view>
+          <!-- 点 -->
+          <view class="r-point-wrap">
+            <view class="r-point-item"></view>
           </view>
-          <view class="r-item-time"> {{item.CoachName}}</view>
+          <!-- 左子项下块 -->
+          <view class="r-item-left-crd {{index == step.children.length - 1?'last':''}}"></view>
+        </view>
+        <!-- 右子项 -->
+        <view class="r-item-right">
+          <!-- 内容 -->
+          <view class="r-item-right-content">
+            <view class="r-item-text">
+              <text>{{item.time}}</text>
+              <text>{{item.DynamicType}}</text>
+            </view>
+            <view class="r-item-time"> {{item.CoachName}}</view>
+          </view>
         </view>
       </view>
     </view>
   </view>
-</view>
+</block>
