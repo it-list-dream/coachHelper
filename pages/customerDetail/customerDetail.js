@@ -32,8 +32,8 @@ Page({
     pageIndex: 1,
     allTotal: 0,
     followupList: [],
-    f_index:1,
-    f_total:0,
+    f_index: 1,
+    f_total: 0,
     isAdd: false,
     serviceCoach: [],
     distributionList: []
@@ -49,18 +49,10 @@ Page({
     this.year = year;
     this.month = month;
     this.day = day;
-    // let hobbyTags = app.globalData.custom.TrainTarget.length > 0 ? app.globalData.custom.TrainTarget.split(',') : [];
-    let coach = wx.getStorageSync('coach'),
-      isAllow = false;
-    if (coach.RoleName == '私教经理') {
-      isAllow = true;
-    }
+ 
     this.setData({
       startDate: year + '-' + util.subTen(month) + '-' + '01',
-      endDate: year + '-' + util.subTen(month) + '-' + day,
-      custom: app.globalData.custom,
-      // hobbyTags,
-      allowAllocation: isAllow
+      endDate: year + '-' + util.subTen(month) + '-' + day
     })
     this.getUserDynamic();
     this.getUserFollowUp(year + '-' + util.subTen(month) + '-' + '01', year + '-' + util.subTen(month) + '-' + day);
@@ -96,7 +88,7 @@ Page({
         dateList = [],
         dynamicList = [],
         dynamicChild = [];
-        //分页
+      //分页
       let total = Math.floor((res.data.recordCount + 10 - 1) / 10);
       for (let i = 0; i < actList.length; i++) {
         actList[i].time = util.format(actList[i].Createdate, 'yyyy.mm.dd hh:mm').substr(11);
@@ -117,6 +109,7 @@ Page({
       for (let j = 0; j < dateList.length; j++) {
         dynamicList.push({
           date: dateList[j],
+          cYear: dateList[j].split('.')[0],
           children: []
         });
         for (let k = 0; k < actList.length; k++) {
@@ -127,9 +120,21 @@ Page({
         dynamicList[j].children = dynamicChild;
         dynamicChild = [];
       }
+      let m_list = [];
+      if (this.data.dynamicList.length > 0) {
+        if (this.data.dynamicList[this.data.dynamicList.length - 1].date == dynamicList[0].date) {
+          dynamicList[0].children[0].flag = 0;
+          //就将两个数据进行合并
+          this.data.dynamicList[this.data.dynamicList.length - 1].children.push(...dynamicList[0].children);
+          dynamicList.splice(0, 1)
+        }
+      }
+
+      m_list = [...this.data.dynamicList, ...dynamicList];
+      //判断dynamicList中的最后一条记录和
       this.setData({
         allTotal: total,
-        dynamicList:[...this.data.dynamicList,... dynamicList]
+        dynamicList: m_list
       })
     })
   },
@@ -141,43 +146,56 @@ Page({
       SearchDate: searchDate,
       endDate: endDate,
       pageIndex: this.data.f_index,
-      pageSize: 100,
+      pageSize: 30,
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
       let list = res.data.data,
         dateList = [],
         followList = [],
         followChild = [];
-      var curr_date = Date.parse(this.year + '-' + util.subTen(this.month) + '-' + util.subTen(this.day));
+      //分页
+      let total = Math.floor((res.data.recordCount + 30 - 1) / 30);
+      // var curr_date = Date.parse(this.year + '-' + util.subTen(this.month) + '-' + util.subTen(this.day));
       for (let i = 0; i < list.length; i++) {
         list[i].date = util.format(list[i].Createdate, 'yyyy.mm.dd').substr(5);
         list[i].time = util.format(list[i].Createdate, 'yyyy.mm.dd hh:mm').substr(11);
-        if (curr_date > Date.parse(util.format(list[i].Createdate, 'yyyy-mm-dd'))) {
-          this.setData({
-            isNowFollow: true
-          });
-        }
-        if (!dateList.includes(list[i].date)) {
-          dateList.push(list[i].date);
+        list[i].fullDate = util.format(list[i].Createdate, 'yyyy.mm.dd')
+        // if (curr_date > Date.parse(util.format(list[i].Createdate, 'yyyy-mm-dd'))) {
+        //   this.setData({
+        //     isNowFollow: true
+        //   });
+        // }
+        if (!dateList.includes(list[i].fullDate)) {
+          dateList.push(list[i].fullDate);
         }
       }
 
       for (let j = 0; j < dateList.length; j++) {
         followList.push({
           date: dateList[j],
+          c_date: dateList[j].substr(5),
           children: []
         });
         for (let k = 0; k < list.length; k++) {
-          if (dateList[j] == list[k].date) {
+          if (dateList[j] == list[k].fullDate) {
             followChild.push(list[k]);
           }
         }
         followList[j].children = followChild;
         followChild = [];
       }
+      let m_list = [];
+      if (this.data.followupList.length > 0) {
+        if (this.data.followupList[this.data.followupList.length - 1].c_date == followList[0].c_date) {
+          this.data.followupList[this.data.followupList.length - 1].children.push(...followList[0].children);
+          followList.splice(0, 1)
+        }
+      }
+      m_list = [...this.data.followupList, ...followList]
       //是否有当前的跟单记录
       this.setData({
-        followupList: followList
+        followupList: m_list,
+        f_total: total
       })
     })
   },
@@ -246,12 +264,6 @@ Page({
         this.getUserFollowUp(this.data.startDate, this.data.endDate);
       })
     }
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
   },
   selelctCoach(e) {
     let index = e.currentTarget.dataset.index,
@@ -349,7 +361,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let hobbyTags = app.globalData.custom.TrainTarget.length > 0 ? app.globalData.custom.TrainTarget.split(',') : [];
+    let coach = wx.getStorageSync('coach'),
+      isAllow = false;
+    if (coach.RoleName == '私教经理') {
+      isAllow = true;
+    }
+    this.setData({
+      custom: app.globalData.custom,
+      hobbyTags,
+      allowAllocation: isAllow
+    })
   },
 
   /**
@@ -364,19 +386,24 @@ Page({
    */
   onReachBottom: function () {
     let curr_page = 0;
-    if(this.data.tabIndex == 0){
-       if(this.data.pageIndex < this.data.allTotal){
-         curr_page = this.data.pageIndex;
-         curr_page ++;
-         this.setData({
-          pageIndex:curr_page
+    if (this.data.tabIndex == 0) {
+      if (this.data.pageIndex < this.data.allTotal) {
+        curr_page = this.data.pageIndex;
+        curr_page++;
+        this.setData({
+          pageIndex: curr_page
         });
         this.getUserDynamic();
-       }else{
-         console.log('到底了')
-       }
-    }else{
-
+      }
+    } else {
+      if (this.data.f_index < this.data.f_total) {
+        curr_page = this.data.f_index;
+        curr_page++;
+        this.setData({
+          f_index: curr_page
+        });
+        this.getUserFollowUp(this.data.startDate,this.data.endDate);
+      }
     }
   }
 })

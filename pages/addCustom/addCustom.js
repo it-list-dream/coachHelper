@@ -194,6 +194,7 @@ Page({
   saveCustom() {
     var tags = this.data.newTargetsList;
     tags = tags.join(',');
+    let custom = this.data.custom;
     var jsonStr = {
       UI_ID: this.data.custom.UI_ID,
       TrainTarget: tags,
@@ -202,11 +203,17 @@ Page({
       UI_Name: this.data.custom.UI_Name,
       UI_Content: this.data.custom.UI_Content
     };
+    //将健身目标和备注同步到客户详情中去
     service.post('/UpdateUserInfo', {
       json: JSON.stringify(jsonStr),
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
-      console.log(res)
+      custom.UI_Content = this.data.custom.UI_Content;
+      custom.TrainTarget = tags;
+      app.globalData.custom = custom;
+      wx.showToast({
+        title: '修改成功',
+      })
     })
   },
   /**

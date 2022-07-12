@@ -2,7 +2,7 @@
   <view class="train_header">
     <view class="train_picture">
       <view class="picture_box">
-        <image src="/assets/images/header.png"></image>
+        <image src="{{custom.UI_Face.length>0?custom.UI_Face:'/assets/images/header.png'}}"></image>
       </view>
       <view class="trainer_name">{{custom.UI_Name}}</view>
       <view class="train_add_btn" hover-class="none" bindtap="addTrialClass"> +添加体验课</view>

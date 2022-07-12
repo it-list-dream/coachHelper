@@ -28,7 +28,7 @@ Page({
   },
   appoinement() {
     wx.navigateTo({
-      url: '/pages/addAppointment/addAppointment?type=1',
+      url: '/pages/addAppointment/addAppointment?type=1&eventType=客户体测',
     });
   },
   handleComparison() {

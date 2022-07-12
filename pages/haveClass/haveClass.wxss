@@ -88,7 +88,7 @@ page {
   box-sizing: border-box;
 }
 
-.official-train {
+.official-train,.relax-train{
   margin-top: 60rpx;
 }
 

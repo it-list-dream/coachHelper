@@ -1,6 +1,6 @@
 <view class="r-wrap">
   <!-- 每一条数据 -->
-  <view class="r-wrap-title">{{step.date}}</view>
+  <view class="r-wrap-title">{{step.c_date}}</view>
   <view class="r1">
     <view class="r-wrap-item" wx:for="{{step.children}}" wx:key="ROWID">
       <!-- 左子项 -->

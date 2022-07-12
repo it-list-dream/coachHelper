@@ -1,7 +1,7 @@
 <view class="fitnessListIndex">
   <view class="fitness-bg">
     <view class="fitness-member">
-      <image src="/assets/images/header.png"></image>
+      <image src="{{custom.UI_Face.length>0?custom.UI_Face:'/assets/images/header.png'}}"></image>
       <view class="name">{{custom.UI_Name}}</view>
     </view>
     <view class="fitness-comparison">
@@ -18,7 +18,7 @@
       <picker class="picker" mode="date" value="{{firstDate}}" start="2018-01-01" end="{{endDate}}"
         bindchange="bindDateChange" fields="year" fields="month">
         <text>{{firstDate}}</text>
-        <image src="/assets/images/right_arrow.png"></image>
+        <image src="/assets/images/b2.png"></image>
       </picker>
     </view>
     <view class="line"></view>
@@ -26,7 +26,7 @@
       <picker class="picker" mode="date" value="{{lastDate}}" start="2018-01-01" end="{{endDate}}"
         bindchange="bindDateChange2" fields="year" fields="month">
         <text>{{lastDate}}</text>
-        <image src="/assets/images/right_arrow.png"></image>
+        <image src="/assets/images/b2.png"></image>
       </picker>
     </view>
   </view>

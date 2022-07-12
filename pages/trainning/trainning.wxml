@@ -1,7 +1,7 @@
 <view class="train-head">
   <view class="avatar-list">
     <view class="pic_bg">
-      <image src="../../assets/images/header.png"></image>
+      <image src="{{custom.UI_Face.length>0?custom.UI_Face:'/assets/images/header.png'}}"></image>
     </view>
     <view class="custom">{{custom.UI_Name}}</view>
     <button class="train-add" bindtap="addscheme"><span>+</span>添加训练方案</button>

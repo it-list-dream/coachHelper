@@ -69,17 +69,17 @@ Page({
 
     wx.canvasToTempFilePath({
       canvasId: 'handWriting',
-      success: function (res) {
+      success: function (result) {
         let pages = getCurrentPages();
         //获取所需页面
         let prevPage = pages[pages.length - 2]; //上一页
-        prevPage.setData({
-          signImage: res.tempFilePath,
-          signId: res.filesid
-        });
-        upLoad.uploadImage('/ReceiveFiles', res.tempFilePath, 'sign', {
+        upLoad.uploadImage('/ReceiveFiles', result.tempFilePath, 'sign', {
           gi_id: wx.getStorageSync('gi_id')
         }).then(res => {
+          prevPage.setData({
+            signImage: result.tempFilePath,
+            signId: res.filesid
+          });
           wx.navigateBack({
             delta: 1,
           });

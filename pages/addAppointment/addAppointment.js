@@ -46,8 +46,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.eventType == '客户体测'){
+       this.setData({
+        eventTypeText:options.eventType,
+        custom:app.globalData.custom
+       })
+    }
     this.setData({
-      isOthers: options.type || 1,
+      isOthers: options.type,
     });
     this.getActTemplate();
   },
@@ -233,13 +239,12 @@ Page({
       time = "";
     if (s_minute + cp_time < 60) {
       e_minute = s_minute + cp_time;
-      e_minute = s_hour;
+      e_hour = s_hour;
     } else {
       e_hour = s_hour + parseInt((cp_time + s_minute) / 60);
       e_minute = s_minute + cp_time - 60 * parseInt((cp_time + s_minute) / 60);
     }
     time = util.subTen(s_hour) + ":" + util.subTen(s_minute) + "-" + util.subTen(e_hour) + ":" + util.subTen(e_minute);
-    return;
     service.post('/Coach_SpendAddFromCoach', {
       Content: this.data.remarkText,
       templateId: this.data.selectedPlan ? this.data.selectedPlan.AT_ID : 0,

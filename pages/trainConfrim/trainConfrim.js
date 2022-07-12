@@ -65,7 +65,6 @@ Page({
   onLoad: function (options) {
     this.getRecordList();
     this.setData({
-      phone: wx.getStorageSync('phone'),
       custom: app.globalData.custom
     });
     this.getCustomClass();
@@ -271,7 +270,7 @@ Page({
         time = minute + ':' + second;
         finishTime = util.format(res.data.data[0].ActualData, 'yyyy.mm.dd').substr(finishTime.length - 5, 5);
       }else{
-        finishiDate = "--";
+        finishTime = "--";
         duration = "--";
       }
       this.setData({

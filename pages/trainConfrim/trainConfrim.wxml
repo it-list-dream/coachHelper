@@ -10,7 +10,7 @@
         <text>{{custom.UI_Name}}</text>
         <text>{{custom.UserAge?custom.UserAge:'--'}}岁</text>
       </view>
-      <view class="phone">{{phone}}</view>
+      <view class="phone">{{custom.UI_Phone}}</view>
     </view>
   </view>
   <!-- 客户评价 -->

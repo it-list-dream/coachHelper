@@ -1,6 +1,6 @@
 <view class="plan-head">
   <view class="member-info">
-    <image src="/assets/images/header.png"></image>
+    <image src="{{custom.UI_Face.length>0?custom.UI_Face:'/assets/images/header.png'}}"></image>
     <text>{{custom.UI_Name}}</text>
   </view>
   <view class="swichbox" bindtap="switchCustom">

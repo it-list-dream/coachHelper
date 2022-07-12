@@ -13,7 +13,8 @@ Component({
     data: {
         multiArray: [], // 月和日从1开始
         nowDate: [], // 月和日从0开始
-        currentTime: ""
+        currentTime: "",
+        //appointmentTime:[]
     },
     lifetimes: {
         attached: function () {
@@ -184,32 +185,50 @@ Component({
                 }
 
             }
-            if (changeTarget == 3 && !this.properties.isHalf) {
-                let hour = this.data.multiArray[changeTarget][changeIndex].value;
-                let minutes = [];
+            if (changeTarget == 3) {
                 if (!this.properties.isHalf) {
-                    for (let j = 0; j < 60; j++) {
-                        if (hour > this.nowHour) {
-                            j = util.subTen(j);
-                            minutes.push({
-                                title: j + "分",
-                                value: +j
-                            });
-                        } else {
-                            if (this.nowMinute <= j) {
+                    let hour = this.data.multiArray[changeTarget][changeIndex].value;
+                    let minutes = [];
+                    if (!this.properties.isHalf) {
+                        for (let j = 0; j < 60; j++) {
+                            if (hour > this.nowHour) {
                                 j = util.subTen(j);
                                 minutes.push({
                                     title: j + "分",
                                     value: +j
                                 });
+                            } else {
+                                if (this.nowMinute <= j) {
+                                    j = util.subTen(j);
+                                    minutes.push({
+                                        title: j + "分",
+                                        value: +j
+                                    });
+                                }
                             }
                         }
                     }
+                    multiArray[4] = minutes;
+                    this.setData({
+                        multiArray
+                    })
+                } else {
+                    let hour_value = parseInt(this.data.multiArray[changeTarget][changeIndex].title);
+                    hour_value = hour_value.toString();
+                    let n_minute = [];
+                    let minuteList = this.appointmentMap.get(hour_value);
+                    console.log(minuteList)
+                    for(let j =0;j<minuteList.length;j++){
+                        n_minute.push({
+                            title: minuteList[j] + "分",
+                            value: +j
+                        });
+                    }
+                    multiArray[4] = n_minute;
+                    this.setData({
+                        multiArray
+                    })
                 }
-                multiArray[4] = minutes;
-                this.setData({
-                    multiArray
-                })
             }
         },
         getHourAndMinute(searchDate) {
@@ -278,13 +297,17 @@ Component({
                     newHour = [],
                     newMinute = [];
                 myTime = myTime.filter(item => item.StateMsg == "可预约").map(item => item.StartTime);
+                let map = new Map();
                 for (let i = 0; i < myTime.length; i++) {
                     tempList = myTime[i].split(":");
+                    console.log(tempList)
                     if (hour.indexOf(tempList[0]) == -1) {
                         hour.push(tempList[0]);
                     }
-                    if (minute.indexOf(tempList[1]) == -1) {
-                        minute.push(tempList[1]);
+                    if (map.has(tempList[0])) {
+                        map.get(tempList[0]).push(tempList[1]);
+                    } else {
+                        map.set(tempList[0], [tempList[1]])
                     }
                 }
                 hour.forEach((h, index) => {
@@ -293,6 +316,8 @@ Component({
                         value: +index
                     })
                 });
+                this.appointmentMap = map;
+                minute = map.get(hour[0])
                 minute.forEach((m, index) => {
                     newMinute.push({
                         title: m + "分",
@@ -301,6 +326,7 @@ Component({
                 });
                 multiArray[3] = newHour;
                 multiArray[4] = newMinute;
+
                 this.setData({
                     multiArray: multiArray
                 });

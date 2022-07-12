@@ -1,7 +1,7 @@
 <view class="postureContainer">
    <view class="header">
       <view class="profile">
-         <image src="/assets/images/header.png"></image>
+         <image src="{{custom.UI_Face.length>0?custom.UI_Face:'/assets/images/header.png'}}"></image>
          <text>{{custom.UI_Name}}</text>
       </view>
       <view class="assessmentbtn">

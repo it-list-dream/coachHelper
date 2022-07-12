@@ -36,10 +36,11 @@ page {
 
 .fitness-comparison .addbodytest,
 .addappoinment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 230rpx;
   height: 60rpx;
-  text-align: center;
-  line-height: 60rpx;
   background: #FFFFFF;
   border-radius: 12rpx;
   font-size: 28rpx;

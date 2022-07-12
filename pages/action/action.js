@@ -245,8 +245,10 @@ Page({
         statusList = [],
         actionList = prevPage.data.actionList,
         titleList = prevPage.data.titleList;
+      var ca_type = prevPage.data.actionList[prevPage.data.currentAction].CA_Type;
       for (let i = 0; i < cartList.length; i++) {
         cartList[i].ActualCount = 0;
+        cartList[i].CA_Type = ca_type;
         for (let j = 0; j < parseInt(cartList[i].SM_Count); j++) {
           statusList.push({
             SS_State: "",

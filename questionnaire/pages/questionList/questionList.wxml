@@ -2,7 +2,7 @@
 <view class="questionList">
   <view class="questionList-head">
     <view class="member">
-      <image src="/assets/images/header.png"></image>
+      <image src="{{custom.UI_Face.length>0?custom.UI_Face:'/assets/images/header.png'}}"></image>
       <view class="member-name">{{custom.UI_Name}}</view>
     </view>
     <navigator url="/questionnaire/pages/systemList/systemList?ui_id={{custom.UI_ID}}" hover-class="none" class="addquestionBtn"><text

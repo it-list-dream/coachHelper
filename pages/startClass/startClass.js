@@ -213,7 +213,7 @@ Page({
       oper = e.currentTarget.dataset.oper,
       actionCount = this.data.titleList.length;
     if (oper == "next") {
-      if (actionCount > 2 && currentIndex < actionCount - 1) {
+      if (actionCount > 1 && currentIndex < actionCount - 1) {
         currentIndex++;
       }
     } else if (oper == "perv") {
