@@ -128,7 +128,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getReferenceData();
+    let pages = getCurrentPages();
+    let prevpage = pages[pages.length - 2];
+    this.prevpage = prevpage;
+    if (prevpage.route == 'pages/trainning/trainning') {
+      this.getReferenceData();
+    } else {
+      this.getTrainDetail();
+    }
   },
   referenceSave() {
     var custom = app.globalData.custom,
@@ -178,11 +185,49 @@ Page({
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
       app.globalData.rd_id = res.data.rd_id;
-      // wx.navigateBack({
-      //   delta: 1,
-      // })
-      wx.redirectTo({
-        url: '/pages/newtrainProgram/newtrainProgram',
+      if (this.prevpage.route == 'pages/newtrainProgram/newtrainProgram') {
+        wx.navigateBack({
+          delta: 1,
+        });
+        this.prevpage.getReferenceData(false, res.data.rd_id);
+      } else {
+        wx.redirectTo({
+          url: '/pages/newtrainProgram/newtrainProgram',
+        })
+      }
+    })
+  },
+  getTrainDetail() {
+    var fitnessGoals = this.data.fitnessGoals;
+    service.post('/TrainProgrammeDetails', {
+      user_token: wx.getStorageSync('token'),
+      rd_Id: app.globalData.rd_id,
+      gi_id: wx.getStorageSync('gi_id')
+    }).then(res => {
+      let {
+        UserHeight,
+        MuscleMass,
+        UserWeight,
+        BodyFatRatio,
+        BMI
+      } = res.data.data;
+      for (let i = 0; i < fitnessGoals.length; i++) {
+        res.data.data.qsdata.forEach(item => {
+          if (fitnessGoals[i].subjectTitle == item.Questions) {
+            fitnessGoals[i] = this.filterTarget(fitnessGoals[i], item.Answer.split(','));
+          }
+        })
+      }
+      this.setData({
+        reference: res.data.data,
+        bodyStatus: {
+          UserHeight,
+          MuscleMass,
+          UserWeight,
+          BodyFatRatio,
+          BMI
+        },
+        fitnessGoals: fitnessGoals
       })
     })
   },
@@ -229,12 +274,12 @@ Page({
             item.checked = true;
           }
         } else {
-          if(item1 == item.value){
+          if (item1 == item.value) {
             subject.radio = item1;
           }
         }
       })
-    }) 
+    })
     return subject;
   },
   //复选框

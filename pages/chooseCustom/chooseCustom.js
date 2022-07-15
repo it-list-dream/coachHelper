@@ -85,8 +85,10 @@ Page({
     })
   },
   selectCustom(e) {
-    app.globalData.custom = e.currentTarget.dataset.member;
     let index = e.currentTarget.dataset.index;
+    if (index != 6) {
+      app.globalData.custom = e.currentTarget.dataset.member;
+    }
     //0 问卷 1 体适能 2 静态评估
     switch (parseInt(this.type)) {
       case 0:
@@ -125,7 +127,7 @@ Page({
         let pages = getCurrentPages(); //当前页面栈
         let prevPage = pages[pages.length - 2];
         prevPage.setData({
-          custom:this.data.appoinmentList[index]
+          custom: this.data.appoinmentList[index]
         })
         wx.navigateBack({
           delta: 1,

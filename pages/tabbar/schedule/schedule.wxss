@@ -84,19 +84,11 @@
   color: #999999;
 }
 
-.right-box .beCompleted {
+.right-box .already{
   background: #2564F6;
   border-radius: 12rpx;
   font-size: 26rpx;
   color: #FEFEFE;
-}
-
-.right-box .already {
-  background: #FFFFFF;
-  border: 2rpx solid #2564F6;
-  border-radius: 12rpx;
-  font-size: 26rpx;
-  color: #2564F6;
 }
 
 .customize>view{

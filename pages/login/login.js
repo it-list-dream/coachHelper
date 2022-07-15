@@ -61,7 +61,11 @@ Page({
       console.log('登录失败')
     }
   },
-
+  userAgreement() {
+    wx.navigateTo({
+      url: '/pages/serverAgreement/serverAgreement',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

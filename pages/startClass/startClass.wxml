@@ -59,3 +59,16 @@
     </view>
   </view>
 </view>
+<van-popup
+  show="{{ isAddAction }}"
+  closeable
+  custom-style="height: 50%"
+  bind:close="ationClose"
+  custom-class="act-popup"
+>
+ <view class="act-wrapper">
+  <view class="newact-title">请选择添加动作类型</view>
+   <button class="curr-action" bindtap="chooseActType" data-type="1">当前动作</button>
+   <button class="oth-action" bindtap="chooseActType" data-type="2">其他动作</button>
+ </view>
+</van-popup>

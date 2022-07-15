@@ -32,7 +32,7 @@ Page({
       saleDate: nowtime,
       custom: app.globalData.custom,
       formStart: app.globalData.custom.UI_FirstDate,
-      formEnd:app.globalData.custom.UI_LastDate
+      formEnd: app.globalData.custom.UI_LastDate
     });
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('payOrder', function (res) {
@@ -106,7 +106,7 @@ Page({
       });
     });
     var jsonStr = {
-      UI_ID: this.data.custom.UI_ID || 3834,
+      UI_ID: this.data.custom.UI_ID,
       StartDate: this.data.formStart,
       EndDate: this.data.formEnd,
       SaleDate: this.data.saleDate,
@@ -118,7 +118,7 @@ Page({
       json: JSON.stringify(jsonStr),
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
-      console.log(res)
+      // console.log(res)
       let {
         busNo,
         orderAmount,
@@ -129,22 +129,28 @@ Page({
     });
   },
   checkOrderStatus(orderNo) {
-    if (this.operId && this.orderStatus == '已付款') {
-      clearInterval(this.operId);
-      wx.navigateTo({
-        url: '/pages/others/others',
-      });
-      return;
-    }
+    var that = this;
     this.operId = setInterval(function () {
       service.post('/CoachOrderCheckStatus', {
         orderNo: orderNo,
         user_token: wx.getStorageSync('token'),
         gi_id: wx.getStorageSync('gi_id')
       }).then(res => {
-        this.orderStatus = res.data.OrderStatus;
+        if (res.data.data[0].OrderStatus == '已付款') {
+          that.setData({
+            showPay:false
+          });
+          clearInterval(this.operId);
+          wx.redirectTo({
+            url: '/pages/others/others',
+          })
+        }
       })
     }, 2000);
+    // setTimeout(function () {
+    //   that.orderStatus = "已付款"
+    //   console.log('已付款')
+    // }, 4000);
   },
   //线上支付
   onlinePayment(orderNo, body, orderAmount, merchantNo) {

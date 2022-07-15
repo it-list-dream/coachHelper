@@ -6,238 +6,162 @@ Page({
    * 页面的初始数据
    */
   data: {
-    weight: '-0.4kg',
-    fat: "-1.4kg",
-    pbf: "-12%"
+    show: true,
+    canvasWidth: 0,
+    canvasHeight: 0
   },
-
+  onClickHide() {
+    this.setData({
+      show: false
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let {
-      reportId,
-      reportId2,
       weight,
       fat,
       pbf
     } = options;
-    this.getMyPicture(52, 53);
-    // console.log(reportId,reportId2,weight,fat,pbf);
     wx.getSystemInfo({
-      success: res => {
+      success: (res) => {
+        this.rpx = res.windowWidth / 375;
         this.setData({
-          canvasWidth: 750
+          canvasWidth: res.screenWidth,
+          canvasHeight: res.screenHeight,
+          weight,
+          fat,
+          pbf
         })
-        // console.log(res.windowWidth, res.pixelRatio)
-      }
-    })
-  },
-  drawCanvas() {
-    const ctx = wx.createCanvasContext('shareCanvas');
-    var that = this,
-      ratio = 2,
-      imageList = this.data.imageList;
-    wx.getImageInfo({
-      src: "../../images/bg.png",
-      success(res) {
-        let bgW = res.width,
-          bgH = res.height;
-        console.log(res.height)
-        //375获取屏幕的宽度
-        ctx.setFillStyle('#fff');
-        ctx.fillRect(0, 0, 750, bgH + 60);
-        ctx.drawImage('/' + res.path, 45, 30, bgW, bgH);
-        //设置文字的大小
-        ctx.setFontSize(16 * ratio);
-        ctx.setFillStyle('#1B00A5');
-        ctx.setTextAlign('left');
-        ctx.fillText('3天', 42 * ratio, 40 * ratio);
-        //设置文字的大小
-        ctx.setFontSize(13 * ratio);
-        // ctx.setFillStyle('#1B00A5');
-        ctx.setTextAlign('center');
-        ctx.fillText('效 / 果 / 对 / 比', 188 * ratio, 46 * ratio);
-        ctx.setFontSize(10 * ratio);
-        ctx.setTextAlign('center');
-        ctx.fillText('Effect comparison', 188 * ratio, 60 * ratio);
-        // ctx.draw();
-        //图片路径 裁剪的x坐标 裁剪的y坐标 裁剪的宽 裁剪的高 图片在画布中的x轴 图片画布中的y轴
-        //图片在画布中的宽度 和高度  
-        util.getWxImageInfo(imageList[0].imgurl).then(res=>{
-          ctx.drawImage(res, 36 * ratio, 100 * ratio, 142 * ratio, 178 * ratio);
-        })
-     
-
-        util.getWxImageInfo(imageList[1].imgurl).then(res=>{
-          ctx.drawImage(res, 196 * ratio, 100 * ratio, 142 * ratio, 178 * ratio);
-        })
-       
-        util.getWxImageInfo(imageList[2].imgurl).then(res=>{
-          ctx.drawImage(res, 196 * ratio, 100 * ratio, 142 * ratio, 178 * ratio);
-        })
-
-        util.getWxImageInfo(imageList[3].imgurl).then(res=>{
-          ctx.drawImage(res.path, 196 * ratio, 290 * ratio, 142 * ratio, 178 * ratio);
-        })
-        
-        util.getWxImageInfo(imageList[4].imgurl).then(res=>{
-          ctx.drawImage(res.path, 36 * ratio, 480 * ratio, 142 * ratio, 178 * ratio);
-        })
-      
-
-        util.getWxImageInfo(imageList[5].imgurl).then(res=>{
-          ctx.drawImage(res, 196 * ratio, 480 * ratio, 142 * ratio, 178 * ratio);
-        })
-       
-        util.getWxImageInfo(imageList[6].imgurl).then(res=>{
-          console.log(res)
-          ctx.drawImage(res, 36 * ratio, 670 * ratio, 142 * ratio, 178 * ratio);
-        })
-      
-
-        util.getWxImageInfo(imageList[7].imgurl).then(res=>{
-          ctx.drawImage(res, 196 * ratio, 670 * ratio, 142 * ratio, 178 * ratio);
-        })
- 
-        ctx.setFontSize(16 * ratio);
-        ctx.setTextAlign('left');
-        ctx.fillText('体重', 44 * ratio, 916 * ratio);
-        ctx.fillText('体脂率', 44 * ratio, 956 * ratio);
-        //脂肪量
-        ctx.fillText('脂肪量', 44 * ratio, 996 * ratio);
-        ctx.setTextAlign('right');
-        ctx.fillText('0.0kg', 320 * ratio, 920 * ratio);
-        ctx.fillText('25.4%', 320 * ratio, 956 * ratio);
-        ctx.fillText('脂肪量', 320 * ratio, 996 * ratio);
-        return;
-        ctx.draw(true, () => {
-          setTimeout(() => {
-            wx.canvasToTempFilePath({
-              x: 0,
-              y: 0,
-              canvasId: 'shareCanvas',
-              quality: 1.0,
-              fileType: 'jpg',
-              success(res) {
-                console.log('图片保存成功:', res)
-                that.setData({
-                  tempFilePath: res.tempFilePath
-                })
-                that.openSetting();
-              }
-            });
-          }, 500);
-
-        });
-      },
-      fail(err) {
-        reject(err)
       }
     });
+    //this.doPoster();
   },
-  saveImage: function () {
-    var that = this
-    wx.saveImageToPhotosAlbum({
-      filePath: that.data.tempFilePath,
-      success(res) {
-        wx.showModal({
-          content: '图片已保存到相册，赶紧晒一下吧~',
-          showCancel: false,
-          confirmText: '好的',
-          confirmColor: '#333',
-          success: function (res) {
-            if (res.confirm) {
-              console.log('用户点击确定');
-            }
-          },
-          fail: function (res) {
-            wx.showToast({
-              title: '图片保存失败\no(╥﹏╥)o',
-            })
-          }
-        })
-      }
-    })
-  },
-  openSetting: function (e) {
-    var that = this;
-    //获取相册受权
-    wx.getSetting({
-      success(res) {
-        if (!res.authSetting['scope.writePhotosAlbum']) {
-          wx.authorize({
-            scope: 'scope.writePhotosAlbum',
-            success() { //这里是用户赞成受权后的回调
-              console.log('保存图片成功');
-              that.saveImage();
-            },
-            fail() { //这里是用户拒绝受权后的回调
-              wx.showModal({
-                title: '提示',
-                content: '若不打开受权，则没法将图片保存在相册中！',
-                showCancel: true,
-                cancelText: '暂不受权',
-                cancelColor: '#000000',
-                confirmText: '去受权',
-                confirmColor: '#3CC51F',
-                success: function (res) {
-                  if (res.confirm) {
-                    console.log('用户点击确定');
-                    wx.openSetting({
-                      success: function (result) {
-                        console.log(result)
-                        if (result.authSetting['scope.writePhotosAlbum']) {
-                          that.saveImage();
-                        }
-                      }
-                    })
-                  } else if (res.cancel) {
-                    console.log('用户点击取消')
-                  }
-                }
-              })
-            }
-          })
-        } else { //用户已经受权过了 
-          that.saveImage();
-        }
-      }
-    })
-  },
-  getMyPicture(rb_id, rb_id2) {
-    service.post('/BodyTestImageList', {
-      rb_id: rb_id + ',' + rb_id2,
-      gi_id: wx.getStorageSync('gi_id')
-    }).then(res => {
-      this.setData({
-        imageList: res.data.data
-      })
-    });
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
 
   },
+
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
 
   },
+
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
 
   },
+  doPoster() {
+    var that = this,
+      rpx = this.rpx;
+    //生成海报
+    const ctx = wx.createCanvasContext('myCanvas');
+    ctx.setFillStyle('#7F7CFF');
+    ctx.fillRect(0, 0, this.data.canvasWidth, this.data.canvasHeight);
+    ctx.drawImage('../../images/poster/bg.png', 13 * rpx, 64 * rpx, 349 * rpx, 577 * rpx);
+    ctx.font = `bold 16px sans-serif`;
+    ctx.setFontSize(16 * rpx);
+    ctx.setFillStyle('#000000');
+    ctx.setTextAlign('left');
+    ctx.fillText('效果数据图', 40 * rpx, 114 * rpx);
+    ctx.setLineDash([2, 4]);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = '#A998FF';
+    ctx.beginPath();
+    ctx.moveTo(40 * rpx, 142 * rpx);
+    ctx.lineTo(338 * rpx, 142 * rpx);
+    ctx.stroke();
+    ctx.drawImage('../../images/poster/fit-bg.png', 32 * rpx, 160 * rpx, 309 * rpx, 313 * rpx);
+    //图片
+    ctx.font = `bold 18px sans-serif`;
+    ctx.setFontSize(18 * rpx);
+    ctx.drawImage('../../images/poster/weight.png', 36 * rpx, 502 * rpx, 21 * rpx, 21 * rpx);
+    ctx.fillText(this.data.weight || '1.0', 57 * rpx, 521 * rpx);
+    //
+    ctx.drawImage('../../images/poster/fat.png', 151 * rpx, 505 * rpx, 21 * rpx, 21 * rpx);
+    ctx.fillText(this.data.fat || '-33.0', 176 * rpx, 521 * rpx);
+    //
+    ctx.drawImage('../../images/poster/body-fat.png', 269 * rpx, 505 * rpx, 21 * rpx, 21 * rpx);
+    ctx.fillText(this.data.pbf || '-25.4', 294 * rpx, 521 * rpx);
+    ctx.setFillStyle('#989898');
+    ctx.font = `normal 12px sans-serif`;
+    ctx.setFontSize(12 * rpx);
+    ctx.fillText('体重(千克)', 38 * rpx, 540 * rpx);
+    ctx.fillText('脂肪量(千克)', 150 * rpx, 540 * rpx);
+    ctx.fillText('体脂率(百分比)', 266 * rpx, 540 * rpx);
+    ctx.draw(true, function (e) {
+      wx.canvasToTempFilePath({
+        x: 0,
+        y: 0,
+        canvasId: 'myCanvas',
+        quality: 1.0,
+        fileType: 'jpg',
+        success: function (res) {
+          console.log('图片保存成功')
+          var tempFilePath = res.tempFilePath;
+          that.setData({
+            imagePath: tempFilePath
+          });
+          wx.showModal({
+            title: '温馨提示',
+            content: '活动海报已经生成，您可以保存到手机相册分享给您的朋友。',
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户点击确定');
+                wx.getSetting({
+                  success(res) {
+                    if (!res.authSetting['scope.writePhotosAlbum']) {
+                      wx.authorize({
+                        scope: 'scope.writePhotosAlbum',
+                        success() {
+                          wx.saveImageToPhotosAlbum({
+                            filePath: tempFilePath,
+                            success(res) {
+                              wx.showToast({
+                                title: '保存成功',
+                                icon: 'success',
+                                duration: 2000
+                              })
+                            },
+                            fail() {}
+                          });
+                        },
+                        fail() {}
+                      })
+                    } else if (res.authSetting['scope.writePhotosAlbum']) {
+                      wx.saveImageToPhotosAlbum({
+                        filePath: tempFilePath,
+                        success(res) {
+                          wx.showToast({
+                            title: '保存成功',
+                            icon: 'success',
+                            duration: 2000
+                          })
+                        },
+                        fail() {}
+                      });
+                    }
+                  }
+                })
+              } else if (res.cancel) {
+                //console.log('用户点击取消')
+              }
+            }
+          })
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      });
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+    });
   }
 })

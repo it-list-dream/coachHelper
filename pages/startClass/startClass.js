@@ -12,7 +12,8 @@ Page({
     //memeList: ['一般', '良好', '优秀'],
     currentAction: 0,
     startInfo: {},
-    titleList: []
+    titleList: [],
+    isAddAction: false
   },
   timeChange(e) {
     this.setData({
@@ -27,7 +28,10 @@ Page({
       success(res) {
         if (res.confirm) {
           that.saveStartClass(function () {
-            wx.navigateTo({
+            // wx.navigateTo({
+            //   url: '/pages/trainConfrim/trainConfrim',
+            // });
+            wx.redirectTo({
               url: '/pages/trainConfrim/trainConfrim',
             });
           });
@@ -38,36 +42,45 @@ Page({
     })
   },
   gameover() {
-    this.saveStartClass(function () {
-      wx.navigateTo({
-        url: '/pages/trainConfrim/trainConfrim',
-      });
-    });
+    // wx.navigateTo({
+    //   url: '/pages/trainConfrim/trainConfrim',
+    // });
+    wx.redirectTo({
+      url: '/pages/trainConfrim/trainConfrim',
+    })
   },
   addactionGroup(e) {
-    wx.showModal({
-      title: '',
-      content: '是否添加新动作？',
-      success(res) {
-        if (res.confirm) {
-          wx.navigateTo({
-            url: '/pages/action/action',
-          })
-        } else if (res.cancel) {
-          let index = this.data.currentAction,
-            actionList = this.data.actionList;
-          if (Array.isArray(actionList[index].data)) {
-            actionList[index].data.push({
-              SS_State: "",
-              open: true
-            });
-          }
-          actionList[index].SM_Count = parseInt(actionList[index].SM_Count) + 1;
-          this.setData({
-            actionList
-          });
-        }
+    this.setData({
+      isAddAction: true
+    })
+  },
+  ationClose(){
+    this.setData({
+      isAddAction: false
+    })
+  },
+  chooseActType(e) {
+    let type = e.currentTarget.dataset.type;
+    if (type == 1) {
+      let index = this.data.currentAction,
+        actionList = this.data.actionList;
+      if (Array.isArray(actionList[index].data)) {
+        actionList[index].data.push({
+          SS_State: "",
+          open: true
+        });
       }
+      actionList[index].SM_Count = parseInt(actionList[index].SM_Count) + 1;
+      this.setData({
+        actionList
+      });
+    } else {
+      wx.navigateTo({
+        url: '/pages/action/action',
+      })
+    }
+    this.setData({
+      isAddAction:false
     })
   },
   estimate(e) {
@@ -226,13 +239,6 @@ Page({
     });
   },
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
@@ -249,11 +255,5 @@ Page({
    */
   onUnload: function () {
     this.saveStartClass();
-  },
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
   }
 })

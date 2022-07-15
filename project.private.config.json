@@ -335,6 +335,24 @@
           "pathName": "pages/customerDetail/customerDetail",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "身体测量",
+          "pathName": "evaluation/pages/physicalTest/physicalTest",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "协议",
+          "pathName": "pages/serverAgreement/serverAgreement",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "登录",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
         }
       ]
     }

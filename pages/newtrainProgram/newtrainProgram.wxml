@@ -140,6 +140,6 @@
       </block>
     </van-collapse>
     <view class="addMyStage" bindtap="addperiod">+ 添加阶段</view>
-    <button size="mini" class="createBtn" bindtap="StageDataSave">创建训练方案</button>
+    <button size="mini" class="createBtn" bindtap="StageDataSave">{{trainBtnText}}</button>
   </view>
 </view>

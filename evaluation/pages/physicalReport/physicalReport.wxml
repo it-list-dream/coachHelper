@@ -95,21 +95,40 @@
         </view>
         <!-- 图片 -->
         <view class="health-picture">
+          <!-- <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" data-index="1">
+            <view class="upload-box">
+               <image src="/assets/images/photo2.png"></image>
+               <text class="upload-text">正面照片</text>
+            </view>
+          </van-uploader> -->
+         
           <view class="health-image" bindtap="uploadPicture" data-index="1">
             <image wx:if="{{testImage[0]}}" src="{{testImage[0].imgurl}}"></image>
-            <view wx:else class="gray"></view>
+            <view wx:else class="upload-box">
+              <image src="/assets/images/photo2.png"></image>
+                <view class="upload-view">正面照片</view>
+            </view>
           </view>
           <view class="health-image" bindtap="uploadPicture" data-index="2">
             <image wx:if="{{testImage[1]}}" src="{{testImage[1].imgurl}}"></image>
-            <view wx:else class="gray"></view>
+            <view wx:else class="upload-box">
+              <image src="/assets/images/photo2.png"></image>
+                <view class="upload-view">侧面照片</view>
+            </view>
           </view>
           <view class="health-image" bindtap="uploadPicture" data-index="3">
             <image wx:if="{{testImage[2]}}" src="{{testImage[2].imgurl}}"></image>
-            <view wx:else class="gray"></view>
+            <view wx:else class="upload-box">
+              <image src="/assets/images/photo2.png"></image>
+                <view class="upload-view">右侧照片</view>
+            </view>
           </view>
           <view class="health-image" bindtap="uploadPicture" data-index="4">
             <image wx:if="{{testImage[3]}}" src="{{testImage[3].imgurl}}"></image>
-            <view wx:else class="gray"></view>
+            <view wx:else class="upload-box">
+              <image src="/assets/images/photo2.png"></image>
+                <view class="upload-view">背面照片</view>
+            </view>
           </view>
         </view>
         <!--  身体数据分析-->

@@ -2,7 +2,7 @@
   <view class="addcase-box">
     <view class="addcase-btn" bindtap="addexmple">{{exampleText}}</view>
     <view class="addcase-info">
-      <image src="/assets/images/header.png" class="headportrait"></image>
+      <image src="{{custom.UI_Face.length>0?custom.UI_Face:'/assets/images/header.png'}}" class="headportrait"></image>
       <text>{{custom.UI_Name}}</text>
       <text>{{date}} vs {{date2}}</text>
     </view>

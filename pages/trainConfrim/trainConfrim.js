@@ -223,26 +223,32 @@ Page({
   },
   saveFinalClass() {
     //签字了就不能修改
-    var jsonStr = {
-      CustState: this.data.customState,
-      CustWeight: this.data.customInfo.weight,
-      SleepTime: this.data.customInfo.sleeptime,
-      Appetite: this.data.customInfo.appetite,
-      Vitality: this.data.customInfo.vitality,
-      TrainResults: this.data.trainFeel,
-      Remarks: this.data.customFeel,
-      CustSign: this.data.signId,
-      CS_ID: app.globalData.csId || "3245",
-      data: this.data.actionList
-    };
-    service.post('/UpdateClass', {
-      gi_id: wx.getStorageSync('gi_id'),
-      json: JSON.stringify(jsonStr)
-    }).then(res => {
+    if (this.data.pageEdit) {
+      var jsonStr = {
+        CustState: this.data.customState,
+        CustWeight: this.data.customInfo.weight,
+        SleepTime: this.data.customInfo.sleeptime,
+        Appetite: this.data.customInfo.appetite,
+        Vitality: this.data.customInfo.vitality,
+        TrainResults: this.data.trainFeel,
+        Remarks: this.data.customFeel,
+        CustSign: this.data.signId,
+        CS_ID: app.globalData.csId || "3245",
+        data: this.data.actionList
+      };
+      service.post('/UpdateClass', {
+        gi_id: wx.getStorageSync('gi_id'),
+        json: JSON.stringify(jsonStr)
+      }).then(res => {
+        wx.reLaunch({
+          url: '/pages/tabbar/home/home',
+        });
+      })
+    } else {
       wx.reLaunch({
         url: '/pages/tabbar/home/home',
       });
-    })
+    }
   },
   //确定
   handlefeel(e) {
@@ -263,13 +269,13 @@ Page({
       if (res.data.data[0].CustSign > 0) {
         isEditAll = false;
       }
-      if(res.data.data[0].ActualData.length>0){
+      if (res.data.data[0].ActualData.length > 0) {
         time = Date.parse(res.data.data[0].ActualData) - Date.parse(res.data.data[0].StartDate)
         minute = parseInt(time / 60 / 1000) < 10 ? '0' + parseInt(time / 60 / 1000) : parseInt(time / 60 / 1000);
         second = time % 60 < 10 ? '0' + time % 60 : time % 60;
         time = minute + ':' + second;
         finishTime = util.format(res.data.data[0].ActualData, 'yyyy.mm.dd').substr(finishTime.length - 5, 5);
-      }else{
+      } else {
         finishTime = "--";
         duration = "--";
       }

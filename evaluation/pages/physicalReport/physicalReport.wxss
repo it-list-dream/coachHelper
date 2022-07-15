@@ -298,7 +298,7 @@
 .health-picture {
   display: flex;
   justify-content: space-between;
-  padding: 0 50rpx;
+  padding: 0 48rpx;
   margin-bottom: 80rpx;
 }
 
@@ -423,3 +423,31 @@
 }
 
 /* 身体图表显示 */
+/* .van-uploader {
+  width: 150rpx;
+}
+
+.van-uploader__upload {
+  margin: 0 !important;
+} */
+
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150rpx;
+  height: 188rpx;
+  background: #F1F6FF;
+}
+
+.upload-box image {
+  width: 32rpx;
+  height: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.upload-box .upload-view {
+  font-size: 22rpx;
+  color: #CDD6E8;
+}

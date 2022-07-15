@@ -167,7 +167,8 @@ Page({
       }
     ],
     //身体数据
-    bodyInfo: {}
+    bodyInfo: {},
+    trainBtnText: "创建训练方案"
   },
 
   /**
@@ -181,11 +182,18 @@ Page({
     projectList = [...projectList, ...(wx.getStorageSync('trainProject') || [])];
     this.setData({
       trainProjectList: projectList,
-      trainPointList: pointList
+      trainPointList: pointList,
+      trainBtnText: options.rdId == undefined ? "创建训练方案" : "保存"
     });
-    console.log(options);
+    //console.log(options)
     //参考数据
-    this.getReferenceData(options.isEdit, options.rdId);
+    if (options.rdId) {
+      app.globalData.rd_id = options.rdId;
+    }
+    // this.rdId = options.rdId;
+    this.isEdit = options.isEdit;
+    this.getReferenceData(options.isEdit, options.rdId || app.globalData.rd_id);
+
   },
   getPickerList() {
     let weightList = [
@@ -240,9 +248,10 @@ Page({
   },
   //添加阶段
   addperiod() {
-    let pList = this.data.periodList;
+    let pList = this.data.periodList,
+      coll_title = pList.length + 1;
     pList.push({
-      collapseTitle: "第" + (pList.length + 1) + "阶段",
+      collapseTitle: "第" + coll_title + "阶段",
       //选中训练重点
       pointList: [],
       //选中训练项目
@@ -405,7 +414,7 @@ Page({
     // var custom = app.globalData.custom;
     service.post('/TrainProgrammeDetails', {
       user_token: wx.getStorageSync('token'),
-      rd_Id: rdId || app.globalData.rd_id || 10,
+      rd_Id: rdId,
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
       let {
@@ -418,19 +427,19 @@ Page({
       let fitnessGoals = res.data.data.qsdata[0].Answer,
         frequency = parseInt(res.data.data.qsdata[3].Answer),
         period = res.data.data.qsdata[2].Answer;
-      if (fitnessGoals) {
+      if (fitnessGoals.length > 0) {
         fitnessGoals = fitnessGoals.split(',');
       } else {
         fitnessGoals = [];
       }
       if (isEdit) {
-        //console.log('编辑')
+        console.log('编辑')
         let periodList = this.data.periodList,
           traindata = res.data.data.traindata;
-        if (traindata.length>periodList.length) {
-          for (let k = 0; k < traindata.length - periodList.length;k++){
+        if (traindata.length > periodList.length) {
+          for (let k = 0; k < traindata.length - periodList.length; k++) {
             periodList.push({
-              collapseTitle: "第" + (periodList.length + 1 + traindata.length - periodList.length) + "阶段",
+              collapseTitle: "第" + traindata.length + "阶段",
               //选中训练重点
               pointList: [],
               //选中训练项目
@@ -455,8 +464,8 @@ Page({
         traindata.forEach(item => {
           periodList.forEach(stage => {
             if (item.StageName == stage.collapseTitle) {
-              stage.pointList = item.TrainingFocus.split(',');
-              stage.projectList = item.TrainingProject.split(',');
+              stage.pointList = item.TrainingFocus.length > 0 ? item.TrainingFocus.split(',') : [];
+              stage.projectList = item.TrainingProject.length>0? item.TrainingProject.split(','):[];
               stage.weight = parseFloat(item.WeightRecord) > 0 ? '增加' + item.WeightRecord : '减少' + Math.abs(item.WeightRecord);
               stage.fat = parseFloat(item.BodyFatChange) > 0 ? '增加' + item.BodyFatChange : '减少' + Math.abs(item.BodyFatChange);
               stage.muscle = parseFloat(item.MuscleChanges) > 0 ? '增加' + item.MuscleChanges : '减少' + Math.abs(item.MuscleChanges);
@@ -486,13 +495,21 @@ Page({
     })
   },
   subStrChar(remarks) {
+    let number = '';
     if (remarks.includes('增加')) {
-      return Number(remarks.match(/[0-9]*[.][0-9]+$/)[0]);
+      if (remarks.match(/\d+\.\d+/g)) {
+        number = remarks.match(/\d+\.\d+/g)[0]
+      } else {
+        number = remarks.match(/\d+/g)[0]
+      }
     } else if (remarks.includes('减少')) {
-      return Number('-' + remarks.match(/[0-9]*[.][0-9]+$/)[0]);
-    } else {
-      return ""
+      if (remarks.match(/\d+\.\d+/g)) {
+        number = '-' + remarks.match(/\d+\.\d+/g)[0]
+      } else {
+        number = '-' + remarks.match(/\d+/g)[0]
+      }
     }
+    return number;
   },
   //训练方案保存
   StageDataSave() {
@@ -522,9 +539,15 @@ Page({
       json: JSON.stringify(jsonStrArr),
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
-      wx.redirectTo({
-        url: '/pages/trainning/trainning',
-      })
+      if (this.isEdit) {
+        wx.navigateBack({
+          delta: 1
+        });
+      } else {
+        wx.redirectTo({
+          url: '/pages/trainning/trainning',
+        })
+      }
     })
   },
   //添加
