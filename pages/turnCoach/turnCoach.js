@@ -24,7 +24,7 @@ Page({
       that.setData({
         searchHeight: res[0].height
       })
-    })
+    });
     this.getUserList();
   },
   getUserList() {
@@ -131,7 +131,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

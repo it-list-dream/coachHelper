@@ -38,23 +38,40 @@ Page({
     });
   },
   turnCommit() {
-    service.post('/UserTransferClass', {
-      newUi_Id: this.data.giveMember.UI_ID,
-      co_Id: this.data.giveMember.co_ID,
-      oldUi_Id: this.data.turnClassMember.UI_ID,
-      co_Have: this.data.turnNumber,
-      gi_id: wx.getStorageSync('gi_id')
-    }).then(res => {
-      wx.showToast({
-        icon: "none",
-        title: '转课成功',
-      })
-      setTimeout(() => {
-        wx.navigateBack({
-          delta: 1,
+    let giveMember = this.data.giveMember;
+    if(giveMember){
+      service.post('/UserTransferClass', {
+        newUi_Id: this.data.giveMember.UI_ID,
+        co_Id: this.data.turnClassMember.co_ID,
+        oldUi_Id: this.data.turnClassMember.UI_ID,
+        co_Have: this.data.turnNumber,
+        gi_id: wx.getStorageSync('gi_id')
+      }).then(res => {
+        let pages = getCurrentPages();
+        let prevpage = pages[pages.length - 2];
+        prevpage.setData({
+          memberList:[],
+          select:-1,
+          pageIndex:1,
+          isEnd:false
+        });
+        prevpage.getUserList();
+        wx.showToast({
+          icon: "none",
+          title: '转课成功',
         })
-      }, 1500)
-    })
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1,
+          })
+        }, 1500)
+      })
+    }else{
+      wx.showToast({
+        icon:"none",
+        title: '请选择要转课的会员',
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

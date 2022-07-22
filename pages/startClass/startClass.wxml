@@ -35,7 +35,7 @@
           <view class="instrument-table-tr" wx:for="{{actionList[currentAction].data}}" wx:for-index="j"
             wx:key="j">
             <view class="left-td">
-              <text>{{actionList[currentAction].SM_Num}}</text>
+              <text>{{actionList[currentAction].SM_Count}}</text>
               <text>{{actionList[currentAction].SM_Resistance+''+actionList[currentAction].SM_ResistanceType}}</text>
               <text>{{actionList[currentAction].SM_Rest+''+actionList[currentAction].SM_RestType}}</text>
               <text class="stru">{{actionList[currentAction].SM_Apparatus}}</text>

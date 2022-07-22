@@ -8,7 +8,7 @@ Page({
     coachList: [],
     chooseIndex: -1,
     turnMember: [],
-    turnClass: 1
+    turnClass: ""
   },
 
   /**
@@ -29,6 +29,11 @@ Page({
       })
     });
     this.getCoachList();
+  },
+  turnNumber(e){
+     this.setData({
+       turnClass:e.detail.value
+     })
   },
   bindPickerChange(e) {
     this.setData({
@@ -53,12 +58,12 @@ Page({
   turnCoachCommit() {
     let turnMember = this.data.turnMember;
     //多个会员转直接全部将所有课程剩余数量全部转出
-    if (this.data.chooseIndex > 0) {
+    if (this.data.chooseIndex >= 0) {
       let coachId = this.data.coachList[this.data.chooseIndex].AI_ID;
       var co_have = "",
         co_id = "";
       if (turnMember.length > 1) {
-        co_have = turnMember.map(item => item.CO_Have).join(',');
+        co_have = 0;
         co_id = turnMember.map(item => item.co_ID).join(',')
       } else {
         co_have = turnMember[0].CO_Have;
@@ -70,16 +75,24 @@ Page({
         coachId: coachId,
         gi_id: wx.getStorageSync('gi_id')
       }).then(res => {
+        let pages = getCurrentPages();
+        let prevpage = pages[pages.length - 2];
+        prevpage.setData({
+          memberList: [],
+          pageIndex: 1,
+          isEnd: false
+        });
+        prevpage.getUserList();
         wx.showToast({
-          icon:"none",
+          icon: "none",
           title: '转课成功',
         });
-        setTimeout(()=>{
+        setTimeout(() => {
           wx.navigateBack({
             delta: 1,
           });
-        },1500)
-         
+        }, 1500)
+
       })
     } else {
       wx.showToast({

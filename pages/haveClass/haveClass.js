@@ -23,7 +23,6 @@ Page({
         appoinmentStatus: "去预约"
       })
     }
-    this.getActLibDetails(app.globalData.coId,app.globalData.csId)
   },
   getActLibDetails(co_id, cs_id) {
     var warmUpList = [],
@@ -95,7 +94,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getActLibDetails(app.globalData.coId,app.globalData.csId);
   },
 
   /**

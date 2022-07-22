@@ -56,7 +56,8 @@ Page({
         that.setData({
           width: res.windowWidth,
           height: res.windowHeight
-        })
+        });
+        that.rpx = res.pixelRatio;
       }
     })
   },
@@ -69,6 +70,8 @@ Page({
 
     wx.canvasToTempFilePath({
       canvasId: 'handWriting',
+      destWidth:that.data.width * that.rpx,
+      destHeight:that.data.height * that.rpx,
       success: function (result) {
         let pages = getCurrentPages();
         //获取所需页面

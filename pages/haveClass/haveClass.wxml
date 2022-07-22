@@ -12,7 +12,7 @@
       <view class="target-title verticalbar">热身训练</view>
       <view wx:if="{{warmUpList.length>0}}">
         <block wx:for="{{warmUpList}}" wx:key="index" wx:for-item="warm">
-          <view class="train-action">{{warm.SM_Name}}：×{{warm.SM_Count+''+warm.SM_CountType}}
+          <view class="train-action">{{warm.SM_Name}}：{{warm.SM_Num}}组×{{warm.SM_Count+''+warm.SM_CountType}}
             {{warm.SM_Resistance+''+warm.SM_ResistanceType}}·间休{{warm.SM_Rest+''+warm.SM_RestType}}</view>
         </block>
       </view>
@@ -23,7 +23,7 @@
       <view class="official-title verticalbar">正式训练</view>
       <view wx:if="{{officialList.length>0}}">
         <block wx:for="{{officialList}}" wx:for-index="i" wx:key="i" wx:for-item="official">
-          <view class="train-action">{{official.SM_Name}}：×{{official.SM_Count+''+official.SM_CountType}}
+          <view class="train-action">{{official.SM_Name}}：{{official.SM_Num}}组×{{official.SM_Count+''+official.SM_CountType}}
             {{official.SM_Resistance+''+official.SM_ResistanceType}}·间休{{official.SM_Rest+''+official.SM_RestType}}
           </view>
         </block>
@@ -35,7 +35,7 @@
       <view class="relax-title verticalbar">放松整理</view>
       <view wx:if="{{relaxList.length>0}}">
         <block wx:for="{{relaxList}}" wx:for-index="j" wx:key="j" wx:for-item="relax">
-          <view class="train-action">{{relax.SM_Name}}：×{{relax.SM_Count+''+relax.SM_CountType}}
+          <view class="train-action">{{relax.SM_Name}}：{{relax.SM_Num}}×{{relax.SM_Count+''+relax.SM_CountType}}
             {{relax.SM_Resistance+''+relax.SM_ResistanceType}}·间休{{relax.SM_Rest+''+relax.SM_RestType}}
           </view>
         </block>

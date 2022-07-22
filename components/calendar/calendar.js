@@ -140,8 +140,8 @@ Component({
         open: !this.data.open
       })
       this.triggerEvent("aaa", { a: 0 })
-      this.dateInit()
-      this.setSpot()
+      this.dateInit();
+      this.setSpot();
     },
     //设置日历底下是否展示小圆点
     setSpot() {

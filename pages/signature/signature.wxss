@@ -4,32 +4,35 @@
   height: 100%;
 }
 
-.btn-ok {
+
+.handdesc {
+  display: inline-flex;
   position: absolute;
-  bottom: 300rpx;
-  left: 10rpx;
+  bottom: 280rpx;
+  left: -48rpx;
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #2564F6;
   transform: rotate(90deg);
+}
+
+.btn-reset,.subCanvas{
+  position: relative;
   z-index: 100;
 }
 
 .btn-reset {
   display: inline-flex;
   align-items: center;
-  position: absolute;
-  bottom: 120rpx;
-  left: 0;
-  transform: rotate(90deg);
-  z-index: 100;
+  margin-left: 146rpx;
 }
 
-.btn-ok,
-.btn-reset {
-  font-size: 36rpx;
-  font-family: PingFang SC;
-  color: #2564F6;
+.btn-reset .reset-img{
+  margin-left: 20rpx;
 }
 
-.btn-reset cover-image {
+.btn-reset .reset-img {
   width: 32rpx;
   height: 32rpx;
 }

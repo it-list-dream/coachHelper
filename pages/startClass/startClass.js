@@ -28,9 +28,6 @@ Page({
       success(res) {
         if (res.confirm) {
           that.saveStartClass(function () {
-            // wx.navigateTo({
-            //   url: '/pages/trainConfrim/trainConfrim',
-            // });
             wx.redirectTo({
               url: '/pages/trainConfrim/trainConfrim',
             });
@@ -42,9 +39,6 @@ Page({
     })
   },
   gameover() {
-    // wx.navigateTo({
-    //   url: '/pages/trainConfrim/trainConfrim',
-    // });
     wx.redirectTo({
       url: '/pages/trainConfrim/trainConfrim',
     })
@@ -70,7 +64,7 @@ Page({
           open: true
         });
       }
-      actionList[index].SM_Count = parseInt(actionList[index].SM_Count) + 1;
+      actionList[index].SM_Num = parseInt(actionList[index].SM_Num) + 1;
       this.setData({
         actionList
       });
@@ -88,7 +82,6 @@ Page({
       actionIndex = this.data.currentAction,
       actionList = this.data.actionList,
       express = e.currentTarget.dataset.express;
-    console.log(index, express);
     actionList[actionIndex].data[index].SS_State = express;
     actionList[actionIndex].data[index].open = false;
     this.setData({
@@ -102,6 +95,7 @@ Page({
       actList = this.data.actionList;
     if (actList[actionIndex].data.length > 1) {
       actList[actionIndex].data.splice(index, 1);
+      actList[actionIndex].SM_Num = Number(actList[actionIndex].SM_Num) -1;
     }
     this.setData({
       actionList: actList
@@ -205,7 +199,7 @@ Page({
     }).then(res => {
       actionList = res.data.data[0].data;
       for (let i = 0; i < actionList.length; i++) {
-        for (let j = 0; j < parseInt(actionList[i].SM_Count); j++) {
+        for (let j = 0; j < parseInt(actionList[i].SM_Num); j++) {
           list.push({
             SS_State: "",
             open: true

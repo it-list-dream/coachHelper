@@ -1,6 +1,6 @@
 <view class="customDetailContainer">
   <view class="customdetail-header">
-    <image src="/assets/images/customer-detail/edit.png" bindtap="editProfile" class="edit-icon"></image>
+    <image src="{{custom.UI_Face && custom.UI_Face.length>0?custom.UI_Face:'/assets/images/customer-detail/edit.png'}} " bindtap="editProfile" class="edit-icon"></image>
     <block wx:for="{{hobbyTags}}" wx:for-index="j" wx:key="j">
       <view class="hobby-tags" style="top:{{tagsPostion[j][0]}}rpx;left:{{tagsPostion[j][1]}}rpx">{{item}}</view>
     </block>

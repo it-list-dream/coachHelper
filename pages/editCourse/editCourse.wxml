@@ -8,8 +8,7 @@
         <view class="perparat-item" wx:for="{{warmUpList}}" wx:for-item="action" wx:for-index="i" wx:key="i">
             <van-swipe-cell right-width="{{ 65 }}">
                 <view class="perparat-item-title">
-                    <text>{{action.SM_Name}}：×{{action.SM_Count+''+action.SM_CountType}}
-                        {{action.SM_Resistance+''+action.SM_ResistanceType}}·间休{{action.SM_Rest+''+action.SM_RestType}}</text>
+                    <text>{{action.SM_Name}}：{{action.SM_Num}}组×{{action.SM_Count+''+action.SM_CountType}} {{action.SM_Resistance+''+action.SM_ResistanceType}}·间休{{action.SM_Rest+''+action.SM_RestType}}</text>
                     <view class="arrow-box" bindtap="closeArrow" data-index="{{i}}" data-identify="热身训练">
                         <image class="arrow {{warmUpList[i].isOpen?'tansition':''}}" src="/assets/images/top.png">
                         </image>
@@ -23,7 +22,7 @@
                     <view class="dot"></view>
                     <view class="instrument-row">
                         {{action.SM_Count+''+action.SM_CountType}}（{{action.SM_Apparatus.length>0?action.SM_Apparatus:'无器械'}}）
-                        ---
+                        --
                         间休{{action.SM_Rest+''+action.SM_RestType}}</view>
                     <view class="delete" bindtap="delete" data-index="{{i}}" data-identify="热身训练">
                         <image class="delete-icon" src="/assets/images/delete.png"></image>
@@ -40,8 +39,7 @@
         <view class="perparat-item" wx:for="{{officialList}}" wx:for-item="off" wx:for-index="j" wx:key="j">
             <van-swipe-cell right-width="{{ 65 }}">
                 <view class="perparat-item-title">
-                    <text>{{off.SM_Name}}：×{{off.SM_Count+''+off.SM_CountType}}
-                        {{off.SM_Resistance+''+off.SM_ResistanceType}}·间休{{off.SM_Rest+''+off.SM_RestType}}</text>
+                    <text>{{off.SM_Name}}：{{off.SM_Num}}组×{{off.SM_Count+''+off.SM_CountType}} {{off.SM_Resistance+''+off.SM_ResistanceType}}·间休{{off.SM_Rest+''+off.SM_RestType}}</text>
                     <view class="arrow-box" bindtap="closeArrow" data-index="{{j}}" data-identify="正式训练">
                         <image class="arrow {{officialList[j].isOpen?'tansition':''}}" src="/assets/images/top.png">
                         </image>
@@ -55,7 +53,7 @@
                     <view class="dot"></view>
                     <view class="instrument-row">
                         {{off.SM_Count+''+off.SM_CountType}}（{{off.SM_Apparatus.length>0?off.SM_Apparatus:'无器械'}}）
-                        ---
+                        --
                         间休{{off.SM_Rest+''+off.SM_RestType}}</view>
                     <view class="delete" bindtap="delete" data-index="{{j}}" data-identify="正式训练">
                         <image class="delete-icon" src="/assets/images/delete.png"></image>
@@ -71,8 +69,7 @@
         <view class="perparat-item" wx:for="{{relaxList}}" wx:for-item="relax" wx:for-index="k" wx:key="k">
             <van-swipe-cell right-width="{{ 65 }}">
                 <view class="perparat-item-title">
-                    <text>{{relax.SM_Name}}：×{{relax.SM_Count+''+relax.SM_CountType}}
-                        {{relax.SM_Resistance+''+relax.SM_ResistanceType}}·间休{{relax.SM_Rest+''+relax.SM_RestType}}</text>
+                    <text>{{relax.SM_Name}}：{{relax.SM_Num}}组×{{relax.SM_Count+''+relax.SM_CountType}} {{relax.SM_Resistance+''+relax.SM_ResistanceType}}·间休{{relax.SM_Rest+''+relax.SM_RestType}}</text>
                     <view class="arrow-box" bindtap="closeArrow" data-index="{{k}}" data-identify="放松整理">
                         <image class="arrow {{relaxList[k].isOpen?'tansition':''}}" src="/assets/images/top.png">
                         </image>
@@ -85,7 +82,7 @@
                 <view class="instrument" wx:for="{{relax.SM_Num}}">
                     <view class="dot"></view>
                     <view class="instrument-row">{{relax.SM_Count+''+relax.SM_CountType}}
-                        （{{relax.SM_Apparatus.length>0?relax.SM_Apparatus:'无器械'}}） ---
+                        （{{relax.SM_Apparatus.length>0?relax.SM_Apparatus:'无器械'}}） --
                         间休{{relax.SM_Rest+''+relax.SM_RestType}}</view>
                     <view class="delete" bindtap="delete" data-index="{{k}}" data-identify="放松整理">
                         <image class="delete-icon" src="/assets/images/delete.png"></image>

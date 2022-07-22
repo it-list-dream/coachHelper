@@ -92,12 +92,17 @@ Page({
     var that = this;
     if (this.data.warmUpList.length > 0 || this.data.officialList.length > 0 || this.data.relaxList.length > 0) {
       this.saveEditClass(function () {
-        // wx.navigateTo({
-        //   url: `/pages/haveClass/haveClass?cs_id=${that.CS_ID}&co_id=${that.CO_ID}`
-        // })
-        wx.redirectTo({
-          url: '/pages/haveClass/haveClass',
-        })
+        let pages = getCurrentPages();
+        let prevPage = pages[pages.length - 2];
+        if (prevPage.route == 'pages/trainPlanDetail/trainPlanDetail') {
+          wx.redirectTo({
+            url: '/pages/haveClass/haveClass',
+          })
+        } else {
+          wx.navigateBack({
+            delta: 1,
+          })
+        }
       });
     } else {
       wx.showToast({

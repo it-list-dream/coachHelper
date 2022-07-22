@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+  
   },
 
   /**
@@ -14,9 +14,14 @@ Page({
   onLoad: function (options) {
 
   },
-  successful() {
-    wx.switchTab({
-      url: "/pages/tabbar/home/home",
+  toIndex(){
+   wx.reLaunch({
+     url: '/pages/tabbar/home/home',
+   })
+  },
+  toTrainPlan(){
+    wx.redirectTo({
+      url: '/pages/trainPlan/trainPlan',
     })
   },
   /**

@@ -3,7 +3,7 @@
   <view class="gym">
     <view class="brand">
       <text class="brand-name">{{allBrand.BrandName}}</text>
-      <text class="brand-count">共{{allBrand.brandCount}}家</text>
+      <text class="brand-count">共{{allBrand.brandCount?allBrand.brandCount:0}}家</text>
     </view>
     <block wx:for="{{allBrand.list}}" wx:for-index="idx" wx:for-item="brand">
       <view class="store-detail" bindtap="switchStore" data-store="{{brand}}">

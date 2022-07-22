@@ -48,11 +48,10 @@ const request = (url, options, isPay = 0) => {
                 reject(error.data)
             },
             complete: () => {
-                ajaxTimes--;
-                if (ajaxTimes === 0) {
-                    //  关闭正在等待的图标
-                    //wx.hideLoading();
-                }
+                // ajaxTimes--;
+                // if (ajaxTimes === 0) {
+                //     wx.hideLoading();
+                // }
             }
         })
     })

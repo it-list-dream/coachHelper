@@ -5,8 +5,8 @@
 
   <scroll-view wx:if="{{appoinment == 1}}" class="tab-item" style="height:calc(100vh - {{searchHeight}}px)" scroll-y
     bindscrolltolower="loadAppoinment">
-    <view class="custom-list" bindtap="selectCustom" wx:for="{{appoinmentList}}" wx:key="index" data-index="{{index}}">
-      <image src="/assets/images/photo.png" class="header" wx:if="{{item.img.indexOf('http') ==-1}}"></image>
+    <view class="custom-list" bindtap="selectCustom" wx:for="{{appoinmentList}}" wx:key="index" data-member="{{item}}">
+      <image src="{{item.UI_Face}}" class="header" wx:if="{{item.img.indexOf('http') ==-1}}"></image>
       <view class="h1" wx:else>{{item.firstName}}</view>
       <view class="custom-info">
         <view>{{item.UI_Name}}</view>
@@ -26,7 +26,7 @@
       </view>
       <!--  -->
       <view class="custom-list" bindtap="selectCustom" data-member="{{item}}" wx:for="{{memberList}}" wx:key="index">
-        <image src="/assets/images/photo.png" class="header" wx:if="{{item.img.indexOf('http') ==-1}}"></image>
+        <image src="{{item.UI_Face}}" class="header" wx:if="{{item.img.indexOf('http') ==-1}}"></image>
         <view class="h1" wx:else>{{item.firstName}}</view>
         <view class="custom-info">
           <view>{{item.UI_Name}}</view>

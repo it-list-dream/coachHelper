@@ -300,7 +300,7 @@ Component({
                 let map = new Map();
                 for (let i = 0; i < myTime.length; i++) {
                     tempList = myTime[i].split(":");
-                    console.log(tempList)
+                    //console.log(tempList)
                     if (hour.indexOf(tempList[0]) == -1) {
                         hour.push(tempList[0]);
                     }
@@ -317,16 +317,17 @@ Component({
                     })
                 });
                 this.appointmentMap = map;
-                minute = map.get(hour[0])
-                minute.forEach((m, index) => {
-                    newMinute.push({
-                        title: m + "分",
-                        value: +index
-                    })
-                });
+                minute = map.get(hour[0]);
+                if(Array.isArray(minute)){
+                    minute.forEach((m, index) => {
+                        newMinute.push({
+                            title: m + "分",
+                            value: +index
+                        })
+                    });
+                } 
                 multiArray[3] = newHour;
                 multiArray[4] = newMinute;
-
                 this.setData({
                     multiArray: multiArray
                 });

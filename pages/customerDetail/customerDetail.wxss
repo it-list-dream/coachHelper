@@ -170,8 +170,10 @@ page {
 }
 
 .select-coach {
+  width: 20%;
   padding: 0 20rpx;
   margin: 0 20rpx;
+  box-sizing: border-box;
 }
 
 .select-coach text {
@@ -191,6 +193,9 @@ page {
 }
 
 .select-coach text:last-child {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   margin-top: 22rpx;
   font-size: 26rpx;
   color: #333333;

@@ -1,4 +1,3 @@
-<!-- pages/addAppointment/addAppointment.wxml -->
 <view class="appoinmentContainer">
     <view class="appoinment-from" wx:if="{{isOthers == 0}}">
         <view class="from-col">

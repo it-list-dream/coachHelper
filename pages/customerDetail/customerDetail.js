@@ -53,7 +53,7 @@ Page({
     this.setData({
       startDate: year + '-' + util.subTen(month) + '-' + '01',
       endDate: year + '-' + util.subTen(month) + '-' + day
-    })
+    });
     this.getUserDynamic();
     this.getUserFollowUp(year + '-' + util.subTen(month) + '-' + '01', year + '-' + util.subTen(month) + '-' + day);
     this.coachList();
@@ -79,7 +79,7 @@ Page({
   },
   getUserDynamic() {
     service.post('/UserDynamic', {
-      UI_ID: app.globalData.custom.UI_ID || "4233",
+      UI_ID: app.globalData.custom.UI_ID,
       gi_id: wx.getStorageSync('gi_id'),
       pageIndex: this.data.pageIndex,
       pageSize: 10
@@ -155,16 +155,10 @@ Page({
         followChild = [];
       //分页
       let total = Math.floor((res.data.recordCount + 30 - 1) / 30);
-      // var curr_date = Date.parse(this.year + '-' + util.subTen(this.month) + '-' + util.subTen(this.day));
       for (let i = 0; i < list.length; i++) {
         list[i].date = util.format(list[i].Createdate, 'yyyy.mm.dd').substr(5);
         list[i].time = util.format(list[i].Createdate, 'yyyy.mm.dd hh:mm').substr(11);
         list[i].fullDate = util.format(list[i].Createdate, 'yyyy.mm.dd')
-        // if (curr_date > Date.parse(util.format(list[i].Createdate, 'yyyy-mm-dd'))) {
-        //   this.setData({
-        //     isNowFollow: true
-        //   });
-        // }
         if (!dateList.includes(list[i].fullDate)) {
           dateList.push(list[i].fullDate);
         }
@@ -300,6 +294,11 @@ Page({
     }).then(res => {
       this.setData({
         isFollow: false
+      });
+      this.coachList();
+      wx.showToast({
+        icon:"none",
+        title: '分配成功',
       })
     })
   },
@@ -361,7 +360,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let hobbyTags = app.globalData.custom.TrainTarget.length > 0 ? app.globalData.custom.TrainTarget.split(',') : [];
+    let hobbyTags = [];
+    if(app.globalData.custom.TrainTarget && app.globalData.custom.TrainTarget.length>0){
+      hobbyTags = app.globalData.custom.TrainTarget.split(',');
+    }
     let coach = wx.getStorageSync('coach'),
       isAllow = false;
     if (coach.RoleName == '私教经理') {

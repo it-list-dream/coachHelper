@@ -95,7 +95,7 @@ Page({
     }
   },
   turnClass() {
-    if (this.data.select > 0) {
+    if (this.data.select >= 0) {
       let selectMemeber = this.data.memberList[this.data.select];
       let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
       let prevPage = pages[pages.length - 2];

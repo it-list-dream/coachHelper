@@ -23,17 +23,16 @@
   <!-- 日历主体 -->
   <view class="flex-start flex-wrap calendar-main" style="height:{{dateList.length/7*72}}rpx">
     <view class="calendar__month-mark" wx:if="{{dateList.length>7}}">{{currentMonth}}</view>
-    <view wx:for="{{dateList}}" wx:key="dateList" class="day">
+    <view wx:for="{{dateList}}" wx:key="dateList" class="day" catchtap="selectChange" data-day="{{item.day}}"
+      data-year="{{item.year}}" data-month="{{item.month}}" data-date-string="{{item.dateString}}">
       <view
-        class="bg {{(item.year === selectDay.year && item.month === selectDay.month) ? (item.day === selectDay.day?'select':''): 'other-month'}}"
-        catchtap="selectChange" data-day="{{item.day}}" data-year="{{item.year}}" data-month="{{item.month}}"
-        data-date-string="{{item.dateString}}">
+        class="bg {{(item.year === selectDay.year && item.month === selectDay.month) ? (item.day === selectDay.day?'select':''): 'other-month'}}">
         {{item.day}}
       </view>
       <!-- <view class="spot" wx:if="{{item.spot}}"></view> -->
     </view>
   </view>
-  <view class="on-off"  bindtap="openChange" >
-      <view class="blockage"></view>
+  <view class="on-off" bindtap="openChange">
+    <view class="blockage"></view>
   </view>
 </view>

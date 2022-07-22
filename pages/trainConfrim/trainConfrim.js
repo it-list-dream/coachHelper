@@ -49,8 +49,8 @@ Page({
       appetite: "",
       vitality: ""
     },
-    customFeel: 0,
     trainFeel: "",
+    customFeel: "",
     actionList: [],
     pageEdit: true,
     customState: "",
@@ -155,7 +155,7 @@ Page({
   },
   sliderChange(e) {
     this.setData({
-      customFeel: e.detail
+      trainFeel: e.detail
     })
   },
   handleclose() {
@@ -222,7 +222,7 @@ Page({
     })
   },
   saveFinalClass() {
-    //签字了就不能修改
+    //保存
     if (this.data.pageEdit) {
       var jsonStr = {
         CustState: this.data.customState,
@@ -250,10 +250,21 @@ Page({
       });
     }
   },
+  pictureview(e){
+    let curr_src = this.data.signImage;
+    if(this.data.pageEdit){
+      this.customSign();
+      return;
+    }
+    wx.previewImage({
+      current: curr_src, 
+      urls: [curr_src]
+    });
+  },
   //确定
   handlefeel(e) {
     this.setData({
-      trainFeel: e.detail.value
+      customFeel: e.detail.value
     })
   },
   getCustomClass() {
@@ -282,8 +293,8 @@ Page({
       this.setData({
         finishiDate: finishTime,
         duration: time,
-        trainFeel: res.data.data[0].TrainResults,
-        customFeel: res.data.data[0].remarks,
+        trainFeel:Number(res.data.data[0].TrainResults),
+        customFeel: res.data.data[0].Remarks,
         signImage: res.data.data[0].imgurl,
         pageEdit: isEditAll
       });

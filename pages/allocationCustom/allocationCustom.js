@@ -1,4 +1,3 @@
-// pages/allocationCustom/allocationCustom.js
 var service = require('../../utils/request.js')
 Page({
   /**
@@ -28,7 +27,7 @@ Page({
     distributionList: [],
     //
     isEnd: false,
-    scrollTop:0
+    scrollTop: 0
   },
 
   /**
@@ -64,7 +63,8 @@ Page({
       }
       this.setData({
         tabIndex: index,
-        scrollTop:0
+        scrollTop: 0,
+        select: -1
       })
     }
   },
@@ -86,7 +86,8 @@ Page({
     }
     this.setData({
       filterIndex: index,
-      scrollTop:0
+      scrollTop: 0,
+      select: -1
     })
   },
   //选择公海池
@@ -199,7 +200,7 @@ Page({
     })
   },
   allocationCoach() {
-    if (this.data.select > 0) {
+    if (this.data.select >= 0) {
       let curr_id = this.data.customList[this.data.select].UI_ID;
       service.post('/CoachListDistribution', {
         UI_ID: curr_id,
@@ -209,10 +210,16 @@ Page({
           distributionList: res.data.data,
           isFollow: true
         });
+      });
+    } else {
+      wx.showToast({
+        icon: "none",
+        title: '请选择要分配的会员',
       })
     }
   },
   onConfrim() {
+    //教练分配暂时还有问题
     let coachList = this.data.distributionList;
     let curr_id = this.data.customList[this.data.select].UI_ID;
     coachList = coachList.filter(item => item.FSelChk == 1).map((item) => {
@@ -220,17 +227,41 @@ Page({
       obj.coachid = item.AI_ID;
       return obj
     });
+
+    if (coachList.length == 0) {
+      wx.showToast({
+        icon: "none",
+        title: '请选择要分配的教练',
+      });
+      return;
+    }
     var jsonStr = {
       UI_ID: curr_id,
       data: coachList
-    }
+    };
+
     service.post('/CoachListDistributionUser', {
       json: JSON.stringify(jsonStr),
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
       this.setData({
         isFollow: false
-      })
+      });
+      this.setData({
+        select:-1,
+        pageIndex:1,
+        isEnd:false,
+        customList:[]
+      });
+      if (this.data.tabIndex == 0 && this.data.filterIndex == 0) {
+        this.getPublicWaters(2, 1);
+      } else if (this.data.tabIndex == 0 && this.data.filterIndex == 1) {
+        this.getAllCustom(2, 1)
+      } else if (this.data.tabIndex == 1 && this.data.filterIndex == 0) {
+        this.getPublicWaters(1, 1);
+      } else {
+        this.getAllCustom(1, 1)
+      }
       wx.showToast({
         icon: "none",
         title: '分配成功',

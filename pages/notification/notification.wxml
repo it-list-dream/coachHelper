@@ -3,7 +3,6 @@
     title-inactive-color="#333333" ellipsis="{{false}}" id="tabs">
     <block wx:for="{{tabList}}" wx:key="index">
       <van-tab title="{{item}}">
-        <block wx:if="{{newsList.length>0}}">
           <scroll-view class="scroll-y" style="height:{{scrollHeight}}px;" scroll-y>
             <view class="scroll-content" wx:if="{{active == 0}}">
               <view class="scroll-item" wx:for="{{ newsList}}" wx:key="UI_No">
@@ -32,10 +31,10 @@
                 </view>
               </view>
             </view>
+            <van-empty wx:if="{{active == index && newsList.length == 0}}" image="/assets/images/none.png"
+          description="暂无信息" /> 
           </scroll-view>
-        </block>
-        <van-empty wx:if="{{active == index && newsList.length == 0}}" image="/assets/images/none.png"
-          description="暂无信息" />
+        <!-- -->
       </van-tab>
     </block>
   </van-tabs>

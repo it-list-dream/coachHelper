@@ -92,4 +92,3 @@ App({
     custom:{}
   }
 })
-//wx.onAppHide(function callback) 监听小程序切回后台

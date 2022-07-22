@@ -1,10 +1,10 @@
 <view class="othersContainer">
     <view class="other-icon">
-       <image src="/assets/images/success.png"></image>
-       <view class="icon-title">购买成功！</view>
+        <image src="/assets/images/success.png"></image>
+        <view class="icon-title">购买成功！</view>
     </view>
     <view class="other-buttons">
-        <button class="others btn">训练计划</button>
-        <button class="others2 btn" bindtap="successful">完成</button>
+        <button class="others btn" bindtap="toTrainPlan">训练计划</button>
+        <button class="others2 btn" bindtap="toIndex">完成</button>
     </view>
 </view>

@@ -36,7 +36,7 @@
       <view class="action-table" wx:for="{{actionList}}" wx:for-index="j" wx:key="j">
         <view class="action-th">
           <view class="action-td-left">
-            {{item.SM_Name}}<text>{{item.ActualCount}}/{{item.SM_Count}}组</text>
+            {{item.SM_Name}}<text>{{item.ActualCount}}/{{item.SM_Num}}组</text>
           </view>
           <view class="action-td-right">
             <block wx:if="{{pageEdit}}">
@@ -57,7 +57,7 @@
         </view>
         <view hidden="{{!item.isShow}}" class="action-tr" wx:for="{{item.data}}" wx:for-item="action" wx:key="index">
           <view class="left-td">
-            <text>{{item.SM_Num}}</text>
+            <text>{{item.SM_Count}}</text>
             <text>{{item.SM_Resistance+''+item.SM_ResistanceType}}</text>
             <text>{{item.SM_Rest+''+item.SM_RestType}}</text>
             <text class="stru">{{item.SM_Apparatus}}</text>
@@ -107,7 +107,7 @@
         <view class="icon2">稍轻松</view>
         <view class="emotion-icon2">
           <view>非常轻松</view>
-          <van-slider disabled="{{!pageEdit}}" value="{{customFeel}}" bind:change="sliderChange" step="10"
+          <van-slider disabled="{{!pageEdit}}" value="{{trainFeel}}" bind:change="sliderChange" step="10"
             bar-height="10" active-color="#2564F6" />
           <view>非常吃力</view>
         </view>
@@ -115,13 +115,13 @@
       <!-- 训练感受 -->
       <view class="mytrainfeels">
         <textarea class="textarea2" placeholder-style="color:#A7A7A7;" placeholder="说说你的训练感受" disabled="{{!pageEdit}}"
-          value="{{trainFeel}}" bindinput="handlefeel"></textarea>
+          value="{{customFeel}}" bindinput="handlefeel"></textarea>
       </view>
       <view wx:if="{{!signImage && pageEdit}}" class="custom-sign" bindtap="customSign">
         <view class="sign-title">客户签字</view>
       </view>
       <view class="sign-image" wx:if="{{signImage.length>0 || !pageEdit}}">
-        <image src="{{signImage}}"></image>
+        <image src="{{signImage}}" bindtap="pictureview"></image>
       </view>
       <view class="customconfrim">
         <button class="cbtn" bindtap="saveFinalClass">确定</button>

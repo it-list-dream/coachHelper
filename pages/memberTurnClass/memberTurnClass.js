@@ -25,7 +25,7 @@ Page({
       that.setData({
         searchHeight: res[0].height
       })
-    })
+    });
     this.getUserList();
   },
   getUserList() {
@@ -58,7 +58,7 @@ Page({
     let index = e.currentTarget.dataset.index;
     this.setData({
       select: index
-    })
+    });
   },
   onChange(e){
     this.setData({
@@ -95,11 +95,16 @@ Page({
     }
   },
   turnClass() {
-    if (this.data.select > 0) {
+    if (this.data.select >= 0) {
       let selectMemeber = this.data.memberList[this.data.select];
       wx.navigateTo({
         url: '/pages/turnClasDeatil/turnClasDeatil?member=' + JSON.stringify(selectMemeber),
       });
+    }else{
+      wx.showToast({
+        icon:"none",
+        title: '请选择要转课的会员',
+      })
     }
   },
   /**

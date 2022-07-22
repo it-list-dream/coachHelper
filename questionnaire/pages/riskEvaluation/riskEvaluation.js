@@ -25,12 +25,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options)
     var context1 = wx.createCanvasContext('handWriting1');
     context1.setStrokeStyle("#000000")
     context1.setLineWidth(3);
     this.setData({
       context1: context1,
+    });
+    wx.getSystemInfo({
+      success: (result) => {
+        this.descWidth = result.windowWidth * result.pixelRatio;
+        this.descHeight = result.windowHeight * result.pixelRatio;
+      },
     })
     this.ui_id = options.ui_id;
     this.getRiskAssessment();
@@ -94,7 +99,6 @@ Page({
   handleSubmit() {
     var that = this;
     if (!that.data.hasDraw) {
-      //console.log("签字是空白的 没有签字");
       wx.showToast({
         icon: "none",
         title: "签字是空白的 没有签字"
@@ -103,8 +107,9 @@ Page({
       var context1 = that.data.context1;
       context1.draw(true, wx.canvasToTempFilePath({
         canvasId: 'handWriting1',
+        destWidth:this.descWidth,
+        destHeight:this.descWidth,
         success(res) {
-          console.log(res.tempFilePath) //得到了图片下面自己写上传吧
           that.setData({
             src: res.tempFilePath
           })

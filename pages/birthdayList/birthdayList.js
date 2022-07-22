@@ -18,6 +18,7 @@ Page({
   onLoad: function (options) {
     wx.getSystemInfo({
       success: (result) => {
+        console.log(result)
         this.queryMultipleNodes(result.windowHeight);
       },
     })

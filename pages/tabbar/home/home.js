@@ -1,4 +1,3 @@
-// pages/tabbar/home/home.js
 const app = getApp();
 var service = require('../../../utils/request.js')
 Page({

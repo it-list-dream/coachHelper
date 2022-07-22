@@ -148,8 +148,9 @@ Page({
       })
     }, 2000);
     // setTimeout(function () {
-    //   that.orderStatus = "已付款"
-    //   console.log('已付款')
+    //   wx.redirectTo({
+    //     url: '/pages/others/others',
+    //   })
     // }, 4000);
   },
   //线上支付

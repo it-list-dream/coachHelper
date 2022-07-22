@@ -126,8 +126,9 @@ Page({
         //获取上一个页面的数据
         let pages = getCurrentPages(); //当前页面栈
         let prevPage = pages[pages.length - 2];
+        var custom = e.currentTarget.dataset.member;
         prevPage.setData({
-          custom: this.data.appoinmentList[index]
+          custom: custom
         })
         wx.navigateBack({
           delta: 1,
@@ -264,10 +265,12 @@ Page({
     // 数组中索引最大的页面--当前页面
     let currentPage = pages[pages.length - 1];
     this.type = currentPage.options.type;
-    this.setData({
-      appoinment: currentPage.options.appoinment
-    });
-    this.getMyCoachUser();
+    if(currentPage.options.appoinment == 1){
+      this.setData({
+        appoinment: currentPage.options.appoinment
+      });
+      this.getMyCoachUser();
+    }
   },
   //预约列表
   getMyCoachUser(isSearch = 0) {

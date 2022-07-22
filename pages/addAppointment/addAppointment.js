@@ -37,7 +37,7 @@ Page({
     ],
     endTime: '',
     eventTypeText: "",
-    custom:{},
+    custom:null,
     pageIndex: 1,
     pageSize:10,
     pageTotal:0
@@ -46,6 +46,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     if(options.eventType == '客户体测'){
        this.setData({
         eventTypeText:options.eventType,
@@ -55,15 +56,29 @@ Page({
     this.setData({
       isOthers: options.type,
     });
+    const eventChannel = this.getOpenerEventChannel();
+    eventChannel.on('appointment', function(res) {
+      console.log(res)
+      that.setData({
+        custom:res.data
+      })
+    })
     this.getActTemplate();
   },
   chooseCustom() {
-    wx.navigateTo({
-      url: '/pages/chooseCustom/chooseCustom?type=6&appoinment=1',
-    })
+    if(this.data.isOthers == 0){
+      wx.navigateTo({
+        url: '/pages/chooseCustom/chooseCustom?type=6&appoinment=1',
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/chooseCustom/chooseCustom?type=6',
+      })
+    }
+ 
   },
   chooseclasstype() {
-    if (!this.data.custom.FK_UI_ID) {
+    if (!this.data.custom) {
       wx.showToast({
         icon: "none",
         title: '请先选择会员',
@@ -71,10 +86,9 @@ Page({
       return;
     }
     service.post('/TeachUserClass', {
-      UI_ID: this.data.custom.FK_UI_ID,
+      UI_ID: this.data.custom.UI_ID,
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
-      // console.log(res.data.data)
       this.setData({
         classtypeList: res.data.data,
         showclass: true,
@@ -87,7 +101,7 @@ Page({
     })
   },
   trianPlain() {
-    if (!this.data.custom.FK_UI_ID) {
+    if (!this.data.custom) {
       wx.showToast({
         icon: "none",
         title: '请先选择会员',
@@ -113,7 +127,7 @@ Page({
   getActTemplate(){
     service.post('/ActLibTemplateList', {
       pageIndex: this.data.pageIndex,
-      pageSize: 10,
+      pageSize: this.data.pageSize,
       gi_id: wx.getStorageSync('gi_id')
     }).then(res => {
       let trainList = this.data.trainPlanList;  
@@ -145,7 +159,7 @@ Page({
   saveAppointment() {
     let toastContent = "";
     if (this.data.isOthers == 0) {
-      if (!this.data.custom.FK_UI_ID) {
+      if (!this.data.custom) {
         toastContent = "请选择客户";
       } else if (!this.data.selectedClass) {
         toastContent = "请选择课程类型";
@@ -163,7 +177,7 @@ Page({
     } else {
       if (this.data.eventTypeText.length == 0) {
         toastContent = "请选择事件";
-      } else if (this.data.eventTypeText != "其他" && !this.data.custom.FK_UI_ID) {
+      } else if (this.data.eventTypeText != "其他" && !this.data.custom) {
         toastContent = "请选择客户";
       } else if (!this.date && endTime.length == 0) {
         toastContent = "请选择开始时间或结束时间";
@@ -249,7 +263,7 @@ Page({
       Content: this.data.remarkText,
       templateId: this.data.selectedPlan ? this.data.selectedPlan.AT_ID : 0,
       CO_ID: this.data.selectedClass.CO_ID,
-      UI_ID: this.data.custom.FK_UI_ID,
+      UI_ID: this.data.custom.UI_ID,
       FK_CP_ID: this.data.selectedClass.CP_ID,
       SpendDate: spendDate,
       Time: time,
@@ -261,10 +275,9 @@ Page({
     })
   },
   saveOthersSchedule() {
-   // console.log(this.date);
     let s_date = this.date[0] + "-" + util.subTen(this.date[1]) + "-" + util.subTen(this.date[2]);
     var jsonStr = {
-      UI_ID: this.data.custom.FK_UI_ID?this.data.custom.FK_UI_ID:0,
+      UI_ID: this.data.custom.UI_ID?this.data.custom.UI_ID:0,
       StartDate: s_date + " " + this.date[3] + ":" + this.date[4],
       EndDate: s_date + " " + this.data.endTime,
       Remarks: this.data.remarkText,
